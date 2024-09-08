@@ -1,5 +1,5 @@
 ---
-title: "SmeeGuides Release"
+title: "SmeeGuides Release - 2024-09-07"
 date: 2024-09-07
 categories: ['SmeeGuides']
 tags: ['smeeguides-release']
