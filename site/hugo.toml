@@ -1,0 +1,48 @@
+baseURL = "https://anthony-username.github.io/space-networking/"
+languageCode = "en-us"
+title = "Escape Velocity"
+theme = "orbital"
+
+[pagination]
+  pagerSize = 10
+
+[params]
+  description = "A lead engineer's journey into satellite networking, space protocols, and the future of space communications."
+  author = "Anthony"
+  github = "https://github.com/anthony-username"
+  twitterHandle = ""
+  tagline = "One engineer's journey from TCP to space."
+
+[menu]
+  [[menu.main]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.main]]
+    name = "Journal"
+    url = "/blog/"
+    weight = 2
+  [[menu.main]]
+    name = "Skill Tree"
+    url = "/skill-tree/"
+    weight = 3
+  [[menu.main]]
+    name = "Curriculum"
+    url = "/curriculum/"
+    weight = 4
+  [[menu.main]]
+    name = "About"
+    url = "/about/"
+    weight = 5
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+  [markup.highlight]
+    style = "dracula"
+    lineNos = true
+
+[outputs]
+  home = ["HTML", "RSS"]
+  section = ["HTML", "RSS"]

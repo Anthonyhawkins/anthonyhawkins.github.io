@@ -74,7 +74,7 @@ Algebra 2                     Trigonometry
 
 ## Topics
 
-### Phase 1, Weeks 1–4: Algebra 2
+### Phase 1, Weeks 1–8: Algebra 2
 - **Polynomials & rational expressions**
   - *Space application:* polynomial curve fitting for antenna gain patterns
 - **Exponentials & logarithms** ← most important for Day 1 space work
@@ -91,7 +91,7 @@ Algebra 2                     Trigonometry
 - Khan Academy — Algebra 2 (free, self-paced)
 - Textbook: *Algebra and Trigonometry* — Stewart, Redlin, Watson
 
-### Phase 1, Weeks 5–9: Trigonometry
+### Phase 1, Weeks 9–18: Trigonometry
 - **Unit circle, sin/cos/tan, inverse trig**
   - *Space application:* elevation angle = arctan(height/distance) — when can a ground station see a satellite?
 - **Law of sines / cosines**
@@ -111,7 +111,7 @@ Algebra 2                     Trigonometry
 - Work through a combined problem set applying logs + trig to a basic link budget
 - Compute ground station coverage for a satellite at 550km altitude
 
-### Phase 2, Weeks 11–14: Pre-Calculus
+### Phase 2, Weeks 21–28: Pre-Calculus
 - **Functions, composition, inverses**
 - **Exponential & logarithmic functions** (deeper treatment)
 - **Parametric equations**
@@ -125,7 +125,7 @@ Algebra 2                     Trigonometry
 - Khan Academy — Pre-Calculus (free)
 - *Precalculus: Mathematics for Calculus* — Stewart
 
-### Phase 2, Weeks 15–22: Calculus I
+### Phase 2, Weeks 29–44: Calculus I
 - **Limits & continuity**
 - **Derivatives — definition, power rule, chain rule, product/quotient rules**
   - *Space application:* Doppler shift = d(range)/dt — the rate of change of distance
@@ -147,7 +147,7 @@ Algebra 2                     Trigonometry
 - 3Blue1Brown — *Essence of Calculus* (watch early, even before starting Calc I)
 - Khan Academy — Calculus 1 (free)
 
-### Phase 3, Weeks 23–28: Calculus II
+### Phase 3, Weeks 45–56: Calculus II
 - **Advanced integration techniques**
 - **Sequences & series, convergence tests**
 - **Taylor/Maclaurin series**
@@ -160,7 +160,7 @@ Algebra 2                     Trigonometry
 - Stewart, Chapters 7–11
 - 3Blue1Brown — *But what is a Fourier series?*
 
-### Phase 3, Weeks 29–34: Calculus III
+### Phase 3, Weeks 57–68: Calculus III
 - **Vectors in 3D — position, velocity, acceleration**
   - *Space application:* satellite state vector = [x, y, z, vx, vy, vz]
 - **Dot product & cross product**
@@ -176,7 +176,7 @@ Algebra 2                     Trigonometry
 - Stewart, Chapters 12–16
 - *Orbital Mechanics for Engineering Students* (Curtis) — applies these directly
 
-### Phase 3, Weeks 35–38: Linear Algebra
+### Phase 3, Weeks 69–76: Linear Algebra
 - **Matrices — operations, inverse, transpose, determinant**
 - **Rotation matrices & coordinate transforms**
   - *Space application:* ECI ↔ ECEF ↔ topocentric ↔ body frame — every space system uses these
@@ -192,7 +192,7 @@ Algebra 2                     Trigonometry
 - 3Blue1Brown — *Essence of Linear Algebra*
 - MIT OCW 18.06 (full course, free)
 
-### Phase 4, Weeks 39–44: Probability & Statistics
+### Phase 4, Weeks 77–88: Probability & Statistics
 - **Random variables, PDF, CDF, expectation, variance**
 - **Gaussian (Normal) distribution & Central Limit Theorem**
   - *Space application:* thermal noise is Gaussian → this is why Eb/N₀ and BER curves work
@@ -207,7 +207,7 @@ Algebra 2                     Trigonometry
 - *Probability and Statistics for Engineering and the Sciences* — Jay Devore
 - Khan Academy — Probability & Statistics (free)
 
-### Phase 4, Weeks 45–48: Graph Theory & Optimization
+### Phase 4, Weeks 89–96: Graph Theory & Optimization
 - **Graph fundamentals — nodes, edges, weighted, directed**
 - **Shortest path — Dijkstra, Bellman-Ford**
   - *Space application:* satellite routing, inter-satellite link path selection

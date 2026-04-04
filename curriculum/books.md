@@ -58,7 +58,7 @@
 
 ### Calculus: Early Transcendentals — James Stewart
 - **Why:** The standard calculus textbook. Covers single and multivariable calculus needed for orbital mechanics, signal theory, and link budget analysis.
-- **Covers:** Module 00 (Weeks 1–4)
+- **Covers:** Module 00 (Weeks 1–8)
 
 ### Introduction to Linear Algebra — Gilbert Strang
 - **Why:** The definitive linear algebra text. Rotation matrices, coordinate transforms, and least squares are used throughout.
@@ -119,3 +119,7 @@
 - **3Blue1Brown** — *Essence of Calculus* and *Essence of Linear Algebra* (YouTube) — visual intuition
 - **MIT OCW 18.06** — Gilbert Strang's Linear Algebra course (full lectures, free)
 - **Khan Academy** — Calculus, Probability & Statistics (free, self-paced)
+
+## Tier 4 - Best Readings in Satellite Mega Constellations
+a comprehensive list of references that can aid a wide spectrum of researchers, from novices to experts in the field, with a focus on mega constellation satellite communications and networking.
+- The List: https://www.comsoc.org/publications/best-readings/satellite-mega-constellations

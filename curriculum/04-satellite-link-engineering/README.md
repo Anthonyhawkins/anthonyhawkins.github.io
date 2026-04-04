@@ -11,7 +11,7 @@ How to design a communication link that closes — meaning the signal arrives wi
 
 ## Topics
 
-### Week 1–2: Link Budget Analysis
+### Weeks 1–4: Link Budget Analysis
 - The link equation: EIRP + G/T - path loss - atmospheric loss = C/N₀
 - Transmit power, antenna gain, beamwidth
 - Free-space path loss (FSPL) — scales with distance² and frequency²
@@ -32,7 +32,7 @@ How to design a communication link that closes — meaning the signal arrives wi
 - Electronically steered arrays (ESAs) — the key enabler for LEO user terminals
 - Multi-beam satellites and frequency reuse
 
-### Week 5–6: Multiple Access & Capacity
+### Weeks 9–12: Multiple Access & Capacity
 - FDMA, TDMA, CDMA, OFDMA — trade-offs for satellite
 - Demand assignment vs. fixed assignment
 - Bandwidth-limited vs. power-limited systems

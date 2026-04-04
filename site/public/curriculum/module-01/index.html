@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A lead engineer&#39;s journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 01: Foundations of Space Communications | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1774927673" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="/space-networking/%20/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Table</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-00/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Module 00: Mathematics Foundations for Space Networking</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Foundations of Space Communications</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: CCSDS Protocol Stack</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Delay-Tolerant Networking (DTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Satellite Link Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: LEO Constellations &amp; Routing</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Optical Inter-Satellite Links (OISL)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Ground Segment Architecture</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: DVB Standards &amp; Satellite Broadband</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: 5G Non-Terrestrial Networks (NTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: SDN &amp; Autonomous Network Management</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Security in Space Networks</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 01</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 01: Foundations of Space Communications</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Duration:</strong> 6 weeks
+<strong>Prerequisites:</strong> Module 00 (Math Foundations)</p>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>How communication works between Earth and space — the physical constraints, the orbital geometry, and why terrestrial networking assumptions break down.</p>
+<h2 id="topics">Topics</h2>
+<h3 id="weeks-14-the-space-environment">Weeks 1–4: The Space Environment</h3>
+<ul>
+<li>Speed of light delay: LEO (~4–40ms), MEO (~120ms), GEO (~600ms round-trip)</li>
+<li>Signal attenuation: free-space path loss, atmospheric absorption, rain fade</li>
+<li>Doppler shift and its effect on frequency tracking</li>
+<li>The space radiation environment and its effect on electronics (SEU, TID)</li>
+</ul>
+<h3 id="weeks-58-orbits--coverage">Weeks 5–8: Orbits &amp; Coverage</h3>
+<ul>
+<li>Keplerian orbital mechanics: the six orbital elements</li>
+<li>LEO vs. MEO vs. GEO vs. HEO trade-offs</li>
+<li>Ground track patterns and revisit time</li>
+<li>Coverage geometry: elevation angle, slant range, contact duration</li>
+<li>Walker constellations and coverage optimization</li>
+</ul>
+<h3 id="weeks-912-communication-link-basics">Weeks 9–12: Communication Link Basics</h3>
+<ul>
+<li>The communication chain: transmitter → channel → receiver</li>
+<li>Frequency bands used in space: UHF, S, X, Ku, Ka, V, optical</li>
+<li>Modulation basics: BPSK, QPSK, 8PSK, QAM</li>
+<li>Error correction: convolutional codes, turbo codes, LDPC</li>
+<li>Multiplexing: FDMA, TDMA, CDMA</li>
+</ul>
+<h2 id="math-used">Math Used</h2>
+<ul>
+<li><strong>Calculus:</strong> derivatives for Doppler, integrals for signal energy</li>
+<li><strong>Vectors (Calc III):</strong> satellite position and velocity in 3D</li>
+<li><strong>Logarithms:</strong> dB-scale link calculations</li>
+<li><strong>Coordinate transforms (Linear Algebra):</strong> ECI ↔ ECEF ↔ topocentric frames</li>
+</ul>
+<h2 id="protocols--standards-introduced">Protocols &amp; Standards Introduced</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Protocol/Standard</th>
+          <th>Type</th>
+          <th>Problem It Solves</th>
+          <th>New/Legacy</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ITU Radio Regulations</td>
+          <td>Regulatory</td>
+          <td>Frequency coordination &amp; interference management</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>CCSDS 401.0 (RF &amp; Modulation)</td>
+          <td>Physical layer</td>
+          <td>Standardized space link physical parameters</td>
+          <td><code>[LEGACY]</code> evolving</td>
+      </tr>
+      <tr>
+          <td>DVB-S2 (overview)</td>
+          <td>Physical layer</td>
+          <td>Efficient satellite broadcast modulation &amp; coding</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="where-this-tech-is-used">Where This Tech Is Used</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Application</th>
+          <th>Companies</th>
+          <th>Description</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Direct-to-Earth observation downlink</td>
+          <td>Planet Labs, Capella Space, BlackSky</td>
+          <td>Satellites photograph Earth, downlink imagery to ground stations</td>
+      </tr>
+      <tr>
+          <td>GEO broadcast and broadband</td>
+          <td>SES, Intelsat, Eutelsat</td>
+          <td>Traditional TV broadcast and enterprise VSAT</td>
+      </tr>
+      <tr>
+          <td>LEO broadband</td>
+          <td>SpaceX (Starlink), Amazon (Kuiper), OneWeb</td>
+          <td>Consumer/enterprise internet via satellite constellation</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books--resources">Books &amp; Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Chapters/Sections</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><em>Satellite Communications</em> (Pratt et al.)</td>
+          <td>Ch. 1–4 (Orbital mechanics, propagation, link budgets)</td>
+      </tr>
+      <tr>
+          <td><em>Orbital Mechanics for Engineering Students</em> (Curtis)</td>
+          <td>Ch. 1–4 (Two-body problem, orbital elements)</td>
+      </tr>
+      <tr>
+          <td><em>Satellite Comms &amp; Networking with Python</em> (Flux)</td>
+          <td>Ch. 1–3 (Orbit modeling, signal basics)</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="hands-on-exercises">Hands-On Exercises</h2>
+<ol>
+<li><strong>Orbit Propagator (Python):</strong> Use Skyfield or SGP4 (via <code>sgp4</code> package) to propagate a LEO satellite from a TLE and compute ground station contact windows. Plot the ground track with Matplotlib</li>
+<li><strong>Free-Space Path Loss Calculator (C++):</strong> Build a CLI tool that computes FSPL for different frequency bands (S, X, Ka) and orbital altitudes (LEO, MEO, GEO). Use Eigen for vector math</li>
+<li><strong>Doppler Shift Estimator (Python):</strong> Calculate Doppler for a LEO pass at various elevation angles. Plot Doppler curve vs. time for a full overhead pass</li>
+</ol>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    <a href="/space-networking/curriculum/module-02/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 02: CCSDS Protocol Stack</div>
+                    </a>
+                    
+
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline">One engineer&#39;s journey from TCP to space.</p>
+      <div class="footer-links">
+        <a href="https://github.com/anthony-username" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

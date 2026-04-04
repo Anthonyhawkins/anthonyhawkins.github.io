@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A lead engineer&#39;s journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 04: Satellite Link Engineering | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1774927673" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="/space-networking/%20/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Table</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-00/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Module 00: Mathematics Foundations for Space Networking</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Foundations of Space Communications</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: CCSDS Protocol Stack</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Delay-Tolerant Networking (DTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Satellite Link Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: LEO Constellations &amp; Routing</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Optical Inter-Satellite Links (OISL)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Ground Segment Architecture</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: DVB Standards &amp; Satellite Broadband</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: 5G Non-Terrestrial Networks (NTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: SDN &amp; Autonomous Network Management</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Security in Space Networks</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 04</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 04: Satellite Link Engineering</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Duration:</strong> 6 weeks
+<strong>Prerequisites:</strong> Module 01</p>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>How to design a communication link that closes — meaning the signal arrives with enough energy to be decoded. This is the equivalent of &ldquo;capacity planning&rdquo; in terrestrial networking, except you&rsquo;re fighting physics instead of budget.</p>
+<h2 id="topics">Topics</h2>
+<h3 id="weeks-14-link-budget-analysis">Weeks 1–4: Link Budget Analysis</h3>
+<ul>
+<li>The link equation: EIRP + G/T - path loss - atmospheric loss = C/N₀</li>
+<li>Transmit power, antenna gain, beamwidth</li>
+<li>Free-space path loss (FSPL) — scales with distance² and frequency²</li>
+<li>System noise temperature and noise figure</li>
+<li>Eb/N₀ requirements for different modulation + coding schemes</li>
+<li>Link margin philosophy: how much margin is enough?</li>
+</ul>
+<h3 id="week-3-atmospheric-effects">Week 3: Atmospheric Effects</h3>
+<ul>
+<li>Rain attenuation (ITU-R P.618 model) — critical for Ka-band and above</li>
+<li>Gaseous absorption, cloud attenuation, scintillation</li>
+<li>Faraday rotation at lower frequencies</li>
+<li>Site diversity: using multiple ground stations to combat weather</li>
+<li>Why Ka-band is dominant in new LEO constellations despite rain issues</li>
+</ul>
+<h3 id="week-4-antenna-systems">Week 4: Antenna Systems</h3>
+<ul>
+<li>Parabolic reflectors, phased arrays, flat-panel antennas</li>
+<li>Antenna gain, beamwidth, sidelobe patterns</li>
+<li>Electronically steered arrays (ESAs) — the key enabler for LEO user terminals</li>
+<li>Multi-beam satellites and frequency reuse</li>
+</ul>
+<h3 id="weeks-912-multiple-access--capacity">Weeks 9–12: Multiple Access &amp; Capacity</h3>
+<ul>
+<li>FDMA, TDMA, CDMA, OFDMA — trade-offs for satellite</li>
+<li>Demand assignment vs. fixed assignment</li>
+<li>Bandwidth-limited vs. power-limited systems</li>
+<li>Capacity calculations for a bent-pipe vs. regenerative transponder</li>
+<li>High Throughput Satellites (HTS) — multi-spot-beam architecture</li>
+</ul>
+<h2 id="protocol-reference-table">Protocol Reference Table</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Protocol/Standard</th>
+          <th>Spec</th>
+          <th>Problem It Solves</th>
+          <th>New/Legacy</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ITU-R P.618</td>
+          <td>ITU</td>
+          <td>Rain attenuation prediction</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>ITU-R S.1503</td>
+          <td>ITU</td>
+          <td>EPFD limits — interference to GEO from NGSO</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>DVB-S2X ACM</td>
+          <td>ETSI EN 302 307-2</td>
+          <td>Adaptive coding/modulation for varying link conditions</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="where-this-tech-is-used">Where This Tech Is Used</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Application</th>
+          <th>Companies</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>LEO user terminal design</td>
+          <td>SpaceX (Starlink), Amazon (Kuiper)</td>
+          <td>Phased array design, Ka-band links</td>
+      </tr>
+      <tr>
+          <td>GEO HTS operations</td>
+          <td>Viasat, Hughes (EchoStar), SES</td>
+          <td>Multi-spot-beam capacity planning</td>
+      </tr>
+      <tr>
+          <td>Ground gateway design</td>
+          <td>SpaceX, Amazon, Telesat</td>
+          <td>Gateway diversity, rain mitigation</td>
+      </tr>
+      <tr>
+          <td>Deep space comms</td>
+          <td>NASA DSN, ESA ESTRACK</td>
+          <td>X-band and Ka-band link budgets</td>
+      </tr>
+      <tr>
+          <td>CubeSat missions</td>
+          <td>Planet Labs, Spire</td>
+          <td>Low-power S/X-band link design</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books--resources">Books &amp; Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Chapters/Sections</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><em>Satellite Communications</em> (Pratt et al.)</td>
+          <td>Ch. 4–6 (Link budgets, propagation, multiple access)</td>
+      </tr>
+      <tr>
+          <td><em>Satellite Comms Systems Engineering</em> (Ippolito)</td>
+          <td>Entire book focuses on this</td>
+      </tr>
+      <tr>
+          <td><em>Satellite Comms Systems</em> (Maral et al.)</td>
+          <td>Ch. 5–7 (Link design, multiple access)</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="math-used">Math Used</h2>
+<ul>
+<li><strong>Logarithms:</strong> Everything in a link budget is dB — addition in log domain = multiplication in linear</li>
+<li><strong>Calculus:</strong> Integration for total received energy, thermal noise power</li>
+<li><strong>Probability:</strong> BER curves, rain attenuation statistics, availability calculations</li>
+<li><strong>Trigonometry:</strong> Elevation angle, slant range geometry</li>
+</ul>
+<h2 id="hands-on-exercises">Hands-On Exercises</h2>
+<ol>
+<li><strong>Link Budget Calculator (Python):</strong> Build a link budget calculator for a LEO-to-ground Ka-band link using NumPy. Include FSPL, atmospheric attenuation, antenna gain, and required Eb/N₀. Output a formatted table</li>
+<li><strong>Rain Fade Simulator (Python):</strong> Implement the ITU-R P.618 rain attenuation model with SciPy. Given a ground station location and link frequency, calculate and plot availability at different rain rates</li>
+<li><strong>Capacity Planner (C++):</strong> For a given satellite with N spot beams, each with a specific bandwidth and frequency reuse pattern, calculate total forward and return capacity. Build as a CLI tool with JSON config input</li>
+</ol>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    <a href="/space-networking/curriculum/module-05/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 05: LEO Constellations &amp; Routing</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-03/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 03: Delay-Tolerant Networking (DTN)</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline">One engineer&#39;s journey from TCP to space.</p>
+      <div class="footer-links">
+        <a href="https://github.com/anthony-username" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

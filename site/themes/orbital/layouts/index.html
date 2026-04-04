@@ -1,0 +1,74 @@
+{{ define "main" }}
+<section class="hero">
+    <div class="hero-content">
+        <div class="hero-eyebrow">
+            <span class="pulse-dot"></span>
+            <span>IN TRANSIT</span>
+        </div>
+        <h1 class="hero-title">Engineering the<br /><span class="gradient-text">Space Internet</span></h1>
+        <p class="hero-subtitle">{{ .Site.Params.description }}</p>
+        <div class="hero-cta">
+            <a href="{{ " /curriculum/" | relURL }}" class="btn btn-primary">View Curriculum</a>
+            <a href="{{ " /blog/" | relURL }}" class="btn btn-ghost">Read Journal</a>
+        </div>
+    </div>
+    <div class="hero-visual">
+        <div class="hero-grid-art">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+        </div>
+    </div>
+</section>
+
+<section class="section recent-posts">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">Latest <span class="gradient-text">Journal Entries</span></h2>
+            <a href="{{ " /blog/" | relURL }}" class="section-link">All entries →</a>
+        </div>
+        <div class="post-grid">
+            {{ $posts := where .Site.RegularPages "Section" "blog" }}
+            {{ range first 3 $posts }}
+            <article class="post-card">
+                <div class="post-card-meta">
+                    <time datetime="{{ .Date.Format " 2006-01-02" }}">{{ .Date.Format "Jan 02, 2006" }}</time>
+                    {{ with .Params.tags }}
+                    <div class="post-tags">
+                        {{ range first 2 . }}<span class="tag">{{ . }}</span>{{ end }}
+                    </div>
+                    {{ end }}
+                </div>
+                <h3 class="post-card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+                <p class="post-card-summary">{{ .Summary | plainify | truncate 140 }}</p>
+                <a href="{{ .RelPermalink }}" class="post-card-link">Read more →</a>
+            </article>
+            {{ else }}
+            <p class="empty-state">No journal entries yet — the mission has just begun.</p>
+            {{ end }}
+        </div>
+    </div>
+</section>
+
+<section class="section curriculum-preview">
+    <div class="container">
+        <div class="section-header">
+            <h2 class="section-title">The <span class="gradient-text">Curriculum</span></h2>
+            <a href="{{ " /skill-tree/" | relURL }}" class="section-link">Full skill tree →</a>
+        </div>
+        <div class="module-grid">
+            {{ $modules := where .Site.RegularPages "Section" "curriculum" }}
+            {{ range first 4 $modules }}
+            <a href="{{ .RelPermalink }}" class="module-card">
+                <div class="module-number">{{ printf "%02d" .Params.module_number }}</div>
+                <h3 class="module-card-title">{{ .Title }}</h3>
+                <p class="module-card-desc">{{ .Params.summary }}</p>
+                <div class="module-tags">
+                    {{ with .Params.math_level }}<span class="tag tag-math">{{ . }}</span>{{ end }}
+                </div>
+            </a>
+            {{ end }}
+        </div>
+    </div>
+</section>
+{{ end }}

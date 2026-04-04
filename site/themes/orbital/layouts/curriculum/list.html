@@ -1,0 +1,29 @@
+{{ define "main" }}
+<div class="docs-layout container">
+    {{ partial "docs-sidebar.html" . }}
+    <div class="docs-content">
+        <header class="docs-header">
+            <h1 class="docs-title">The Curriculum Overview</h1>
+            <p class="docs-subtitle">A 104-week (2-year) parallel-track study plan. Three tracks run simultaneously: mathematics,
+                C++ programming, and space networking.</p>
+        </header>
+
+        <div class="curriculum-tracks" style="margin: 2rem 0;">
+            <div class="track-badge track-math">🔢 Math Track</div>
+            <div class="track-badge track-cpp">💻 C++ Track</div>
+            <div class="track-badge track-space">🛰️ Space Networking</div>
+        </div>
+
+        <div class="docs-body prose">
+            <h2>How to use this curriculum</h2>
+            <p>Select a module from the sidebar on the left to begin your journey. The modules start with foundational
+                networking concepts mapped to the space environment, before moving into deeper orbital mechanics and
+                protocol specifics.</p>
+            <p>Each module specifies whether mathematics prerequisites are required. Many pure protocol modules can be
+                started immediately.</p>
+            <!-- Render _index.md content if any -->
+            {{ .Content }}
+        </div>
+    </div>
+</div>
+{{ end }}

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A lead engineer&#39;s journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 08: DVB Standards &amp; Satellite Broadband | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1774927673" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="/space-networking/%20/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Table</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-00/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Module 00: Mathematics Foundations for Space Networking</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Foundations of Space Communications</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: CCSDS Protocol Stack</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Delay-Tolerant Networking (DTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Satellite Link Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: LEO Constellations &amp; Routing</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Optical Inter-Satellite Links (OISL)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Ground Segment Architecture</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: DVB Standards &amp; Satellite Broadband</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: 5G Non-Terrestrial Networks (NTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: SDN &amp; Autonomous Network Management</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Security in Space Networks</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module %!d(float64=08)</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 08: DVB Standards &amp; Satellite Broadband</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Duration:</strong> 4 weeks
+<strong>Prerequisites:</strong> Modules 04, 07</p>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>DVB-S2/S2X and DVB-RCS2 are the dominant standards for satellite broadband — they define how data is modulated, multiplexed, and delivered over satellite. This is the &ldquo;how&rdquo; behind nearly every commercial satellite internet service (GEO VSAT and increasingly LEO broadband).</p>
+<h2 id="the-problem">The Problem</h2>
+<p>You need to deliver IP traffic (web, video, VoIP) over a satellite link that has:</p>
+<ul>
+<li>Variable signal quality (weather, elevation angle)</li>
+<li>Shared bandwidth among many users (VSAT network)</li>
+<li>Asymmetric forward/return capacity</li>
+<li>Need for TCP acceleration (PEP) due to latency</li>
+</ul>
+<p>DVB-S2/RCS2 provides the complete system: forward link broadcast, return link multiple access, and adaptive mechanisms to maximize throughput.</p>
+<h2 id="topics">Topics</h2>
+<h3 id="week-1-dvb-s2--s2x-forward-link">Week 1: DVB-S2 / S2X (Forward Link)</h3>
+<ul>
+<li>Physical layer: modulation (QPSK to 256APSK), coding (LDPC+BCH)</li>
+<li>MODCOD table: mapping signal quality to efficiency</li>
+<li>ACM (Adaptive Coding &amp; Modulation): real-time adaptation to link conditions</li>
+<li>Frame structure: BBFRAME → FECFRAME → PLFRAME</li>
+<li>GSE (Generic Stream Encapsulation): mapping IP packets into DVB-S2 frames</li>
+<li>S2X extensions: finer MODCODs, lower roll-off, beam hopping</li>
+</ul>
+<h3 id="week-2-dvb-rcs2-return-link">Week 2: DVB-RCS2 (Return Link)</h3>
+<ul>
+<li>MF-TDMA (Multi-Frequency TDMA): how terminals share return bandwidth</li>
+<li>Burst structure, timing, synchronization</li>
+<li>RLE (Return Link Encapsulation): efficient IP mapping for return channel</li>
+<li>DAMA (Demand Assigned Multiple Access): capacity request categories (CRA, RBDC, VBDC, AVBDC)</li>
+<li>NCC (Network Control Center): the brain that allocates return capacity</li>
+<li>Terminal logon and synchronization procedures</li>
+</ul>
+<h3 id="week-3-performance-enhancement">Week 3: Performance Enhancement</h3>
+<ul>
+<li>TCP/IP over satellite: latency, ACK delays, slow start problems</li>
+<li>PEPs (Performance Enhancing Proxies): TCP splitting, spoofing, acceleration</li>
+<li>IP header compression (ROHC)</li>
+<li>Quality of Service: traffic shaping, bandwidth allocation</li>
+<li>Comparison with Starlink&rsquo;s approach (proprietary PHY, different architecture)</li>
+</ul>
+<h3 id="week-4-system-architecture--deployment">Week 4: System Architecture &amp; Deployment</h3>
+<ul>
+<li>Star (hub-spoke) vs. mesh vs. multi-star topologies</li>
+<li>Transparent vs. regenerative payloads — impact on networking</li>
+<li>VSAT network design: sizing, capacity planning</li>
+<li>Migration from DVB-S/S2 to S2X</li>
+<li>Industry convergence: will LEO constellations adopt DVB standards?</li>
+</ul>
+<h2 id="protocol-reference-table">Protocol Reference Table</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Protocol</th>
+          <th>Spec</th>
+          <th>Layer</th>
+          <th>Problem It Solves</th>
+          <th>New/Legacy</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>DVB-S2</td>
+          <td>EN 302 307-1</td>
+          <td>Physical (forward)</td>
+          <td>Efficient satellite broadcast modulation</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>DVB-S2X</td>
+          <td>EN 302 307-2</td>
+          <td>Physical (forward)</td>
+          <td>Extended MODCODs, beam hopping</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td>DVB-RCS2</td>
+          <td>EN 301 545-2</td>
+          <td>MAC/Physical (return)</td>
+          <td>Multi-user return channel access</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>GSE</td>
+          <td>TS 102 606</td>
+          <td>Adaptation</td>
+          <td>IP encapsulation into DVB-S2</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>RLE</td>
+          <td>EN 301 545-2</td>
+          <td>Adaptation</td>
+          <td>IP encapsulation for return link</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>TRANSEC</td>
+          <td>EN 301 545-2</td>
+          <td>Security</td>
+          <td>Over-the-air encryption</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>PEP / TCP acceleration</td>
+          <td>RFC 3135</td>
+          <td>Transport</td>
+          <td>Mitigate TCP over high-latency satellite</td>
+          <td><code>[LEGACY]</code> evolving</td>
+      </tr>
+      <tr>
+          <td>ROHC</td>
+          <td>RFC 5795</td>
+          <td>Adaptation</td>
+          <td>IP header compression</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="companies">Companies</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Company</th>
+          <th>Role</th>
+          <th>New/Legacy</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>ST Engineering iDirect</strong></td>
+          <td>VSAT platform (Dialog), DVB-S2X hubs</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Hughes (EchoStar)</strong></td>
+          <td>Jupiter system, VSAT platforms</td>
+          <td><code>[LEGACY]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Viasat</strong></td>
+          <td>ViaSat-3 ground system, VSAT</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Newtec (ST Engineering)</strong></td>
+          <td>DVB-S2X modems and hubs</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Gilat Satellite Networks</strong></td>
+          <td>VSAT platforms, multi-orbit</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Comtech</strong></td>
+          <td>VSAT, mobile satcom, troposcatter</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td><strong>UHP Networks</strong></td>
+          <td>Software-defined VSAT</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td><strong>SES</strong></td>
+          <td>O3b mPOWER (MEO), Astra (GEO)</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books--resources">Books &amp; Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><em>Satellite Communications and Networking</em> (Höyhtyä, 2025)</td>
+          <td>Modern DVB-S2/RCS2 coverage</td>
+      </tr>
+      <tr>
+          <td>ETSI EN 302 307-1/2</td>
+          <td>DVB-S2/S2X specifications (free from ETSI)</td>
+      </tr>
+      <tr>
+          <td>ETSI TR 101 545-4</td>
+          <td>DVB-RCS2 implementation guidelines</td>
+      </tr>
+      <tr>
+          <td><em>Digital Video Broadcasting</em> (DVB Project docs)</td>
+          <td><a href="https://www.dvb.org">https://www.dvb.org</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="hands-on-exercises">Hands-On Exercises</h2>
+<ol>
+<li><strong>MODCOD Selector (Python):</strong> Build a tool that, given Es/N₀, selects the optimal MODCOD from the DVB-S2X table and computes the resulting spectral efficiency and throughput. Plot efficiency vs. SNR curves with Matplotlib</li>
+<li><strong>ACM Simulator (Python):</strong> Simulate a forward link with time-varying channel quality (rain event). Show how ACM adapts MODCOD and maintains throughput vs. fixed coding. Animate with Matplotlib</li>
+<li><strong>DAMA Allocator (C++):</strong> Implement a simplified NCC that processes capacity requests (CRA, RBDC, VBDC) from terminals and assigns MF-TDMA slots. Build as a simulation with configurable terminal count</li>
+<li><strong>PEP Experiment (Python):</strong> Set up a delayed link (using <code>tc netem</code>), run TCP and compare throughput with/without a TCP splitting proxy. Plot results</li>
+</ol>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    <a href="/space-networking/curriculum/module-09/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 09: 5G Non-Terrestrial Networks (NTN)</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-07/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 07: Ground Segment Architecture</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline">One engineer&#39;s journey from TCP to space.</p>
+      <div class="footer-links">
+        <a href="https://github.com/anthony-username" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+# Skill Tree Completion Progress
+# Add a node's data-id value to this list to mark it as complete on the site.
+# After editing, redeploy (make deploy) for changes to take effect.
+#
+# Available node IDs:
+#   Tier 0: ccsds, dtn, ground, ntn, security, cpp-basics
+#   Tier 1: link-math, antenna-geo, dvb, coverage, cpp-oop
+#   Tier 2: kepler, ground-track, sdn, cpp-async
+#   Tier 3: orbital-vel, doppler, contact-energy, cpp-sockets
+#   Tier 4: spectral, coords, optical-isl, constellation, cpp-eigen
+#   Tier 5: ber, rain-fade, full-link, fec
+#   Tier 6: cgr, traffic-eng, fsm, leo-routing
+#   Capstone: cap-sim, cap-network, cap-profile
+
+completed: []

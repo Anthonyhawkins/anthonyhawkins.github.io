@@ -26,7 +26,7 @@ A single LEO satellite sees a ground station for ~5–10 minutes per pass. A con
 - Coverage analysis: latitude-dependent performance
 - Starlink's shell architecture (540km, 550km, 570km shells)
 
-### Week 2–3: Inter-Satellite Link Routing
+### Weeks 3–6: Inter-Satellite Link Routing
 - **Static routing:** Pre-computed based on orbital mechanics (deterministic topology)
 - **Shortest-path:** Modified Dijkstra over time-varying topology snapshots
 - **Segment routing:** Pre-computed path segments, stitched at runtime

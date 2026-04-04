@@ -11,13 +11,13 @@ The CCSDS protocol stack is to space what the TCP/IP stack is to the internet. Y
 
 ## Topics
 
-### Week 1–2: Architecture Overview
+### Weeks 1–4: Architecture Overview
 - CCSDS layered reference model vs. OSI vs. TCP/IP
 - The three link types: Space Link (long-range), Proximity Link (short-range), Ground-Ground
 - Transfer frames vs. packets: why space uses both
 - Read: CCSDS 130.0-G-4 — *Overview of Space Communications Protocols*
 
-### Week 3–4: Data Link Layer Protocols
+### Weeks 5–8: Data Link Layer Protocols
 - **TM Space Data Link Protocol (CCSDS 132.0):** Telemetry frames, virtual channels, idle data insertion
 - **TC Space Data Link Protocol (CCSDS 232.0):** Telecommand frames, COP-1 (reliable delivery), FARM/FOP state machines
 - **AOS Space Data Link Protocol (CCSDS 732.0):** Advanced Orbiting Systems — multiplexing, bitstream services

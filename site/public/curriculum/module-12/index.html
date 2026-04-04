@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A lead engineer&#39;s journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 12: Capstone Projects | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1774927673" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="/space-networking/%20/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Table</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-00/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Module 00: Mathematics Foundations for Space Networking</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Foundations of Space Communications</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: CCSDS Protocol Stack</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Delay-Tolerant Networking (DTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Satellite Link Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: LEO Constellations &amp; Routing</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Optical Inter-Satellite Links (OISL)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Ground Segment Architecture</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: DVB Standards &amp; Satellite Broadband</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: 5G Non-Terrestrial Networks (NTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: SDN &amp; Autonomous Network Management</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Security in Space Networks</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 12</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 12: Capstone Projects</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Duration:</strong> 6 weeks
+<strong>Prerequisites:</strong> All previous modules</p>
+<hr>
+<h2 id="overview">Overview</h2>
+<p>Choose 2 of the following 5 capstone projects. Each synthesizes multiple modules and produces portfolio-grade work that demonstrates your space networking expertise to potential employers.</p>
+<hr>
+<h2 id="project-a-dtn-bundle-protocol-implementation">Project A: DTN Bundle Protocol Implementation</h2>
+<p><strong>Modules Used:</strong> 02, 03, 11
+<strong>Language:</strong> C++
+<strong>Duration:</strong> 3 weeks</p>
+<h3 id="deliverable">Deliverable</h3>
+<p>A complete, working BPv7 (RFC 9171) node implementation in C++ that can:</p>
+<ul>
+<li>Create, serialize (CBOR via tinycbor), and parse bundles</li>
+<li>Store bundles persistently (SQLite or filesystem)</li>
+<li>Forward bundles over simulated disrupted links using LTP or TCPCL</li>
+<li>Support BPSec integrity and confidentiality blocks</li>
+<li>Implement basic CGR for multi-hop routing</li>
+</ul>
+<h3 id="math-used">Math Used</h3>
+<ul>
+<li>Graph theory (CGR), probability (error modeling), finite state machines</li>
+</ul>
+<h3 id="why-it-matters">Why It Matters</h3>
+<p>This directly demonstrates the highest-value skill in space networking. NASA, ESA, and defense contractors all need DTN engineers. C++ is ION-DTN&rsquo;s implementation language.</p>
+<h3 id="stretch-goals">Stretch Goals</h3>
+<ul>
+<li>Interop with ION-DTN (also written in C)</li>
+<li>Performance benchmarks vs. TCP over disrupted link</li>
+<li>Python dashboard (Flask/Dash) showing bundle flow and node status</li>
+</ul>
+<hr>
+<h2 id="project-b-leo-constellation-network-simulator">Project B: LEO Constellation Network Simulator</h2>
+<p><strong>Modules Used:</strong> 00, 01, 05, 06, 10
+<strong>Language:</strong> Python (analysis/visualization) + C++ (routing engine)
+<strong>Duration:</strong> 3 weeks</p>
+<h3 id="deliverable-1">Deliverable</h3>
+<p>A simulator that:</p>
+<ul>
+<li>Generates a configurable Walker constellation (altitude, inclination, planes, sats/plane) using Skyfield</li>
+<li>Computes inter-satellite link topology with optical link constraints</li>
+<li>Routes traffic across the mesh using shortest-path (C++ engine with Boost.Graph) or CGR</li>
+<li>Compares satellite-routed latency vs. great-circle fiber for city pairs worldwide</li>
+<li>Visualizes the constellation and routing in 3D with Plotly or on a map with Cartopy</li>
+</ul>
+<h3 id="math-used-1">Math Used</h3>
+<ul>
+<li>Linear algebra (coordinate transforms), calculus III (orbital vectors), graph theory (shortest path)</li>
+</ul>
+<h3 id="why-it-matters-1">Why It Matters</h3>
+<p>Constellation operators (SpaceX, Amazon, Telesat, Rivada) need people who understand the networking layer of their constellations, not just the RF or orbital mechanics.</p>
+<h3 id="stretch-goals-1">Stretch Goals</h3>
+<ul>
+<li>SDN controller (C++) that pushes routes dynamically</li>
+<li>Model gateway handover and ground segment</li>
+<li>Capacity simulation: apply traffic demand and show congestion</li>
+</ul>
+<hr>
+<h2 id="project-c-ground-station-network-orchestrator">Project C: Ground Station Network Orchestrator</h2>
+<p><strong>Modules Used:</strong> 07, 10
+<strong>Language:</strong> C++ (core engine) + Python (scheduling optimization)
+<strong>Duration:</strong> 3 weeks</p>
+<h3 id="deliverable-2">Deliverable</h3>
+<p>A microservice system that:</p>
+<ul>
+<li>Ingests satellite ephemeris data (TLEs) and computes passes with Skyfield</li>
+<li>Computes contact schedules for a global network of ground stations</li>
+<li>Allocates contacts to satellites based on priority, data volume, and antenna availability</li>
+<li>Exposes a gRPC API (C++ with grpc++) for scheduling and status queries</li>
+<li>Python dashboard for monitoring contact status and ground station utilization</li>
+</ul>
+<h3 id="math-used-2">Math Used</h3>
+<ul>
+<li>Optimization (LP/ILP for scheduling), probability (weather modeling), spherical geometry</li>
+</ul>
+<h3 id="why-it-matters-2">Why It Matters</h3>
+<p><strong>This project directly leverages your gRPC expertise</strong> while demonstrating space domain knowledge. Ground segment orchestration is a hot area — AWS Ground Station, Azure Orbital, and companies like Atlas Space Operations all need this.</p>
+<h3 id="stretch-goals-2">Stretch Goals</h3>
+<ul>
+<li>Multi-constellation support (manage contacts for different customers)</li>
+<li>Weather-aware scheduling (pull weather data, avoid rain-impacted Ka-band contacts)</li>
+<li>Cost optimizer for GSaaS pricing models</li>
+</ul>
+<hr>
+<h2 id="project-d-satellite-friendly-transport-protocol">Project D: Satellite-Friendly Transport Protocol</h2>
+<p><strong>Modules Used:</strong> 00, 03, 04, 08
+<strong>Language:</strong> C++
+<strong>Duration:</strong> 3 weeks</p>
+<h3 id="deliverable-3">Deliverable</h3>
+<p>A transport protocol in C++ optimized for satellite links that:</p>
+<ul>
+<li>Implements a custom congestion control algorithm for high-latency, variable-capacity links</li>
+<li>Supports both reliable and unreliable delivery modes</li>
+<li>Handles link disruptions gracefully (reconnect, resume)</li>
+<li>Benchmarks against TCP and LTP over simulated satellite conditions (Python test harness with <code>tc netem</code>)</li>
+<li>Publishes results as a technical blog post or paper</li>
+</ul>
+<h3 id="math-used-3">Math Used</h3>
+<ul>
+<li>Calculus (rate calculations), probability (loss modeling, queuing), statistics (benchmark analysis)</li>
+</ul>
+<h3 id="why-it-matters-3">Why It Matters</h3>
+<p><strong>This is the most direct application of your TCP expertise.</strong> You&rsquo;re designing the next generation of satellite transport — this is the kind of work SpaceX&rsquo;s network team does.</p>
+<h3 id="stretch-goals-3">Stretch Goals</h3>
+<ul>
+<li>Implement as a QUIC extension</li>
+<li>Multipath support (ground link + ISL)</li>
+<li>Integration with your BPv7 as a convergence layer</li>
+</ul>
+<hr>
+<h2 id="project-e-space-network-security-testbed">Project E: Space Network Security Testbed</h2>
+<p><strong>Modules Used:</strong> 02, 03, 11
+<strong>Language:</strong> C++ (crypto implementations) + Python (attack simulation &amp; analysis)
+<strong>Duration:</strong> 3 weeks</p>
+<h3 id="deliverable-4">Deliverable</h3>
+<p>A security testbed that:</p>
+<ul>
+<li>Implements SDLS (CCSDS 355.0) encryption for TM/TC frames in C++ (using OpenSSL or libsodium)</li>
+<li>Implements BPSec for DTN bundles in C++</li>
+<li>Simulates attacks in Python: replay, injection, jamming (at protocol level)</li>
+<li>Demonstrates detection and mitigation of each attack</li>
+<li>Produces a security analysis report with Matplotlib visualizations</li>
+</ul>
+<h3 id="math-used-4">Math Used</h3>
+<ul>
+<li>Probability (detection rates, false alarms), signal processing (spread spectrum), number theory (crypto)</li>
+</ul>
+<h3 id="why-it-matters-4">Why It Matters</h3>
+<p>Space systems security is a critical growth area, especially for defense-adjacent roles (SDA, L3Harris, Northrop). Few engineers can bridge networking + security + space.</p>
+<h3 id="stretch-goals-4">Stretch Goals</h3>
+<ul>
+<li>Key management subsystem for multi-satellite constellation</li>
+<li>Anomaly detection using ML (scikit-learn) on telemetry patterns</li>
+<li>Compliance mapping to NIST SP 800-53 (space systems security framework)</li>
+</ul>
+<hr>
+<h2 id="presentation--portfolio">Presentation &amp; Portfolio</h2>
+<p>For each completed capstone:</p>
+<ol>
+<li><strong>GitHub Repository:</strong> Clean C++/Python code with README, architecture diagram, CMakeLists.txt / pyproject.toml, build instructions</li>
+<li><strong>Technical Blog Post:</strong> 1500–3000 words explaining the problem, your design decisions, and results</li>
+<li><strong>Demo Video:</strong> 3–5 minute screen recording showing the system in action</li>
+<li><strong>Benchmark/Analysis:</strong> Quantitative results with charts (latency, throughput, reliability) — use Matplotlib/Plotly</li>
+</ol>
+<p>These artifacts become the centerpiece of your job applications.</p>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    <a href="/space-networking/curriculum/learning-path/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Learning Table</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-11/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 11: Security in Space Networks</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline">One engineer&#39;s journey from TCP to space.</p>
+      <div class="footer-links">
+        <a href="https://github.com/anthony-username" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

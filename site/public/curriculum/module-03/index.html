@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A lead engineer&#39;s journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 03: Delay-Tolerant Networking (DTN) | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1774927673" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="/space-networking/%20/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Table</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-00/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Module 00: Mathematics Foundations for Space Networking</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Foundations of Space Communications</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: CCSDS Protocol Stack</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Delay-Tolerant Networking (DTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Satellite Link Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: LEO Constellations &amp; Routing</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Optical Inter-Satellite Links (OISL)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Ground Segment Architecture</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: DVB Standards &amp; Satellite Broadband</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: 5G Non-Terrestrial Networks (NTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: SDN &amp; Autonomous Network Management</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Security in Space Networks</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 03</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 03: Delay-Tolerant Networking (DTN)</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Duration:</strong> 5 weeks
+<strong>Prerequisites:</strong> Modules 01–02</p>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>DTN is the most important paradigm shift from terrestrial networking. TCP assumes end-to-end connectivity exists. DTN assumes it doesn&rsquo;t. You&rsquo;ll learn the Bundle Protocol, Licklider Transmission Protocol, and Contact Graph Routing — the core of how the &ldquo;Solar System Internet&rdquo; works.</p>
+<h2 id="the-problem-dtn-solves">The Problem DTN Solves</h2>
+<p>In terrestrial networks, if you send a TCP SYN, you expect a SYN-ACK within milliseconds. In space:</p>
+<ul>
+<li>A Mars link has <strong>4–24 minute one-way delay</strong> (8–48 min round-trip)</li>
+<li>A LEO satellite has <strong>~5 minutes of contact</strong> per ground station pass</li>
+<li>Links are <strong>scheduled</strong>, not always-on — a node may only be reachable at specific orbital windows</li>
+<li>TCP&rsquo;s assumption of continuous end-to-end path <strong>completely breaks</strong></li>
+</ul>
+<p>DTN solves this with <strong>store-and-forward</strong> at the application layer, using custodial transfer where each node takes responsibility for data until the next hop is available.</p>
+<h2 id="topics">Topics</h2>
+<h3 id="weeks-14-bundle-protocol-bp">Weeks 1–4: Bundle Protocol (BP)</h3>
+<ul>
+<li>RFC 9171 (BPv7) — the current standard</li>
+<li>Bundle structure: primary block, canonical blocks, payload block, extension blocks</li>
+<li>Bundle endpoint IDs (EIDs) — <code>ipn:</code> and <code>dtn:</code> URI schemes</li>
+<li>Custody transfer and bundle status reports</li>
+<li>Fragmentation and reassembly</li>
+<li>How BP compares to IP — and why it&rsquo;s an overlay, not a replacement</li>
+</ul>
+<h3 id="week-3-licklider-transmission-protocol-ltp">Week 3: Licklider Transmission Protocol (LTP)</h3>
+<ul>
+<li>RFC 5326 — LTP specification</li>
+<li>The &ldquo;convergence layer&rdquo; concept — how BP sits on top of LTP (or TCP, or UDP)</li>
+<li>LTP segments: red parts (reliable) vs. green parts (unreliable)</li>
+<li>Checkpoint/report retransmission mechanism</li>
+<li>Why LTP exists: TCP can&rsquo;t handle 8-minute RTTs, but you still need reliability</li>
+<li><strong>Your TCP expertise directly maps here</strong> — LTP is essentially &ldquo;TCP redesigned for space delays&rdquo;</li>
+</ul>
+<h3 id="week-4-contact-graph-routing-cgr">Week 4: Contact Graph Routing (CGR)</h3>
+<ul>
+<li>Time-variant routing: the topology changes on a schedule</li>
+<li>Contact plans: list of (start_time, end_time, node_A, node_B, data_rate) tuples</li>
+<li>Route computation: Dijkstra-like but over a time-expanded graph</li>
+<li>Overbooking and congestion management</li>
+<li>CGR in ION — NASA/JPL&rsquo;s reference implementation</li>
+</ul>
+<h3 id="week-5-integration--deployment">Week 5: Integration &amp; Deployment</h3>
+<ul>
+<li>DTN on the ISS — operational since 2018</li>
+<li>DTN in deep space: Mars relay network architecture</li>
+<li>HDTN — NASA Glenn&rsquo;s High-rate DTN implementation</li>
+<li>DTN for LEO constellations — emerging applications</li>
+<li>DTN vs. TCP/IP in space: when to use which</li>
+</ul>
+<h2 id="protocol-reference-table">Protocol Reference Table</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Protocol</th>
+          <th>Spec</th>
+          <th>Layer</th>
+          <th>Problem It Solves</th>
+          <th>New/Legacy</th>
+          <th>Who Uses It</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Bundle Protocol v7</td>
+          <td>RFC 9171</td>
+          <td>Overlay/Application</td>
+          <td>Store-and-forward across disrupted links</td>
+          <td><code>[NEW SPACE]</code></td>
+          <td>ISS, future deep space missions</td>
+      </tr>
+      <tr>
+          <td>Bundle Protocol v6</td>
+          <td>RFC 5050</td>
+          <td>Overlay/Application</td>
+          <td>Original BP (being superseded)</td>
+          <td><code>[LEGACY]</code></td>
+          <td>Early ISS DTN experiments</td>
+      </tr>
+      <tr>
+          <td>LTP</td>
+          <td>RFC 5326</td>
+          <td>Convergence Layer</td>
+          <td>Reliable transfer over long-delay links</td>
+          <td><code>[NEW SPACE]</code></td>
+          <td>Deep space, ISS</td>
+      </tr>
+      <tr>
+          <td>TCPCL (TCP Conv. Layer)</td>
+          <td>RFC 9174</td>
+          <td>Convergence Layer</td>
+          <td>BP over TCP for ground segments</td>
+          <td><code>[BOTH]</code></td>
+          <td>Ground networks</td>
+      </tr>
+      <tr>
+          <td>UDPCL</td>
+          <td>Draft</td>
+          <td>Convergence Layer</td>
+          <td>BP over UDP for low-overhead links</td>
+          <td><code>[NEW SPACE]</code></td>
+          <td>Experimental</td>
+      </tr>
+      <tr>
+          <td>CGR</td>
+          <td>CCSDS Green Book</td>
+          <td>Routing</td>
+          <td>Time-variant multi-hop routing</td>
+          <td><code>[NEW SPACE]</code></td>
+          <td>ION, research networks</td>
+      </tr>
+      <tr>
+          <td>BIBE</td>
+          <td>RFC 9172</td>
+          <td>Tunneling</td>
+          <td>BP-in-BP encapsulation for admin regions</td>
+          <td><code>[NEW SPACE]</code></td>
+          <td>Future architectures</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="where-this-tech-is-used">Where This Tech Is Used</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Application</th>
+          <th>Organizations</th>
+          <th>Status</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ISS payload data relay</td>
+          <td>NASA</td>
+          <td><strong>Operational</strong> since 2018</td>
+      </tr>
+      <tr>
+          <td>Mars relay network</td>
+          <td>NASA/JPL</td>
+          <td>DTN planned for future surface ops</td>
+      </tr>
+      <tr>
+          <td>Lunar communications</td>
+          <td>NASA (LunaNet)</td>
+          <td>DTN is baseline architecture</td>
+      </tr>
+      <tr>
+          <td>LEO constellation store-forward</td>
+          <td>Research / startups</td>
+          <td>Emerging — DTN for IoT data mules</td>
+      </tr>
+      <tr>
+          <td>Disaster/disrupted terrestrial</td>
+          <td>Military, humanitarian</td>
+          <td>DTN for networks with no infrastructure</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="companies--organizations">Companies &amp; Organizations</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Entity</th>
+          <th>Role</th>
+          <th>New/Legacy</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>NASA/JPL</td>
+          <td>ION-DTN development, CGR research</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>NASA Glenn</td>
+          <td>HDTN (High-rate DTN)</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td>ESA</td>
+          <td>µPCN, DTN for European missions</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>IETF DTN WG</td>
+          <td>Standards body for BP, LTP, TCPCL</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td>CCSDS SIS Area</td>
+          <td>Space DTN standardization</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="math-used">Math Used</h2>
+<ul>
+<li><strong>Graph theory (Discrete Math):</strong> CGR is Dijkstra over a time-expanded graph</li>
+<li><strong>Queuing theory (Probability):</strong> buffer management, bundle congestion</li>
+<li><strong>Logarithms:</strong> data rate calculations, contact capacity</li>
+</ul>
+<h2 id="books--resources">Books &amp; Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>RFC 9171 (BPv7)</td>
+          <td><strong>Read this first.</strong> The actual standard.</td>
+      </tr>
+      <tr>
+          <td>RFC 5326 (LTP)</td>
+          <td>LTP specification — compare mentally to TCP</td>
+      </tr>
+      <tr>
+          <td><em>Delay-Tolerant Satellite Networks</em> (Fraire, Burleigh)</td>
+          <td><strong>The</strong> book for this module — by the creators of CGR and ION</td>
+      </tr>
+      <tr>
+          <td>CCSDS 734.x (DTN standards)</td>
+          <td>CCSDS profiling of BP for space missions</td>
+      </tr>
+      <tr>
+          <td>ION-DTN Documentation</td>
+          <td><a href="https://ion-dtn.readthedocs.io/">https://ion-dtn.readthedocs.io/</a></td>
+      </tr>
+      <tr>
+          <td>NASA HDTN GitHub</td>
+          <td><a href="https://github.com/nasa/HDTN">https://github.com/nasa/HDTN</a></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="hands-on-exercises">Hands-On Exercises</h2>
+<ol>
+<li><strong>Deploy ION-DTN:</strong> Set up NASA&rsquo;s ION on a VM using the DTN Development Kit ISO. Run the included tutorials — send bundles between nodes</li>
+<li><strong>Build a Minimal BP Forwarder (C++):</strong> Implement BPv7 bundle creation, serialization (CBOR via tinycbor or nlohmann), and store-and-forward — start with <code>ipn:</code> EIDs</li>
+<li><strong>LTP Simulator (C++):</strong> Build an LTP sender/receiver over UDP sockets. Implement red/green segments, checkpoints, and retransmission. Inject artificial delay (use <code>tc netem</code>) to simulate a 5-second one-way delay</li>
+<li><strong>CGR Path Finder (Python):</strong> Given a contact plan (list of scheduled contacts), implement Dijkstra over a time-expanded graph using NetworkX to find the earliest-arrival path between two nodes</li>
+<li><strong>DTN vs TCP Experiment (Python):</strong> Run a file transfer over a simulated disrupted link using both TCP and your BP implementation. Measure completion time, plot results with Matplotlib. Write up findings.</li>
+</ol>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    <a href="/space-networking/curriculum/module-04/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 04: Satellite Link Engineering</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-02/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 02: CCSDS Protocol Stack</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline">One engineer&#39;s journey from TCP to space.</p>
+      <div class="footer-links">
+        <a href="https://github.com/anthony-username" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

@@ -21,7 +21,7 @@ DTN solves this with **store-and-forward** at the application layer, using custo
 
 ## Topics
 
-### Week 1–2: Bundle Protocol (BP)
+### Weeks 1–4: Bundle Protocol (BP)
 - RFC 9171 (BPv7) — the current standard
 - Bundle structure: primary block, canonical blocks, payload block, extension blocks
 - Bundle endpoint IDs (EIDs) — `ipn:` and `dtn:` URI schemes

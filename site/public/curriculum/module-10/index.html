@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A lead engineer&#39;s journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 10: SDN &amp; Autonomous Network Management | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1774927673" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="/space-networking/%20/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Table</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-00/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Module 00: Mathematics Foundations for Space Networking</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Foundations of Space Communications</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: CCSDS Protocol Stack</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Delay-Tolerant Networking (DTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Satellite Link Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: LEO Constellations &amp; Routing</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Optical Inter-Satellite Links (OISL)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Ground Segment Architecture</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: DVB Standards &amp; Satellite Broadband</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: 5G Non-Terrestrial Networks (NTN)</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: SDN &amp; Autonomous Network Management</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Security in Space Networks</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 10</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 10: SDN &amp; Autonomous Network Management</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Duration:</strong> 4 weeks
+<strong>Prerequisites:</strong> Modules 05, 07</p>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>Software-Defined Networking (SDN) and Network Function Virtualization (NFV) are transforming satellite networks from manually configured, static systems into programmable, self-healing networks. This is where your software engineering skills dominate.</p>
+<h2 id="the-problem">The Problem</h2>
+<p>Traditional satellite networks are:</p>
+<ul>
+<li><strong>Statically configured:</strong> Link parameters set at launch, hard to change</li>
+<li><strong>Manually managed:</strong> Operators monitor and intervene by hand</li>
+<li><strong>Vendor-locked:</strong> Proprietary ground systems tied to specific satellite platforms</li>
+<li><strong>Inflexible:</strong> Can&rsquo;t dynamically reroute traffic or adapt to changing demand</li>
+</ul>
+<p>Modern constellations with 1000+ satellites can&rsquo;t be managed this way. SDN/NFV brings the same revolution to space that it brought to data center networking.</p>
+<h2 id="topics">Topics</h2>
+<h3 id="week-1-sdn-fundamentals-for-space">Week 1: SDN Fundamentals for Space</h3>
+<ul>
+<li>SDN architecture review: control plane / data plane separation</li>
+<li>OpenFlow, P4, and programmable forwarding in satellite context</li>
+<li>Centralized vs. distributed controllers for constellations</li>
+<li>Challenge: controller-to-satellite communication latency</li>
+<li>Ground-based vs. on-board controllers</li>
+</ul>
+<h3 id="week-2-network-function-virtualization">Week 2: Network Function Virtualization</h3>
+<ul>
+<li>NFV in satellite ground segments: virtualized modems, gateways</li>
+<li>On-board processing (OBP): moving compute to orbit</li>
+<li>Edge computing in space: processing data before downlink</li>
+<li>Container orchestration for ground segment (Kubernetes in ground stations)</li>
+<li>Virtualized network functions: firewalls, load balancers, PEPs in the cloud</li>
+</ul>
+<h3 id="week-3-autonomous-network-operations">Week 3: Autonomous Network Operations</h3>
+<ul>
+<li>Intent-based networking for constellations</li>
+<li>AI/ML for traffic prediction and resource allocation</li>
+<li>Self-healing networks: automatic rerouting around failed satellites or links</li>
+<li>Cognitive radio: dynamic spectrum access and interference mitigation</li>
+<li>Digital twin: simulation-based network planning and optimization</li>
+</ul>
+<h3 id="week-4-aalyria-spacetime--industry">Week 4: Aalyria Spacetime &amp; Industry</h3>
+<ul>
+<li>Aalyria&rsquo;s &ldquo;Spacetime&rdquo; platform: the most ambitious space SDN effort (ex-Google Loon)</li>
+<li>Temporospatial SDN (TS-SDN): controlling networks whose topology changes in time</li>
+<li>Network orchestration across heterogeneous assets (LEO, MEO, GEO, HAPs, ground)</li>
+<li>Multi-orbit, multi-operator networking</li>
+</ul>
+<h2 id="technology-reference">Technology Reference</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Technology</th>
+          <th>Problem It Solves</th>
+          <th>New/Legacy</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>SDN / OpenFlow</td>
+          <td>Programmable forwarding, centralized control</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td>P4 (Protocol-Indep. Switch Architecture)</td>
+          <td>Custom packet processing on satellite routers</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td>ONOS / OpenDaylight</td>
+          <td>SDN controllers (adapted for space)</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td>Kubernetes (ground segment)</td>
+          <td>Orchestrating virtualized ground functions</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td>Digital Twin (network simulation)</td>
+          <td>Testing changes before deployment</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td>TS-SDN (Temporospatial SDN)</td>
+          <td>Controlling topology that changes over time</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="companies">Companies</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Company</th>
+          <th>Product/Focus</th>
+          <th>New/Legacy</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td><strong>Aalyria</strong> (ex-Google Loon team)</td>
+          <td>Spacetime platform — network orchestration for space/ground/air</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Rivada Space Networks</strong></td>
+          <td>SDN-managed optical LEO mesh</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Lockheed Martin</strong></td>
+          <td>SmartSat — software-defined satellite platform</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Northrop Grumman</strong></td>
+          <td>Payload-agnostic, software-reconfigurable satellites</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td><strong>SES</strong></td>
+          <td>O3b mPOWER — software-defined MEO constellation</td>
+          <td><code>[BOTH]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Astranis</strong></td>
+          <td>Software-defined GEO microsats</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+      <tr>
+          <td><strong>Isotropic Systems</strong></td>
+          <td>Software-defined multi-beam terminals</td>
+          <td><code>[NEW SPACE]</code></td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books--resources">Books &amp; Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Aalyria Spacetime docs/papers</td>
+          <td><a href="https://aalyria.com/">https://aalyria.com/</a> — read their technical blog</td>
+      </tr>
+      <tr>
+          <td>&ldquo;Software-Defined Networking for Satellites&rdquo; (IEEE papers)</td>
+          <td>Search IEEE Xplore for &ldquo;SDN satellite&rdquo;</td>
+      </tr>
+      <tr>
+          <td>ONF (Open Networking Foundation) SDN specs</td>
+          <td><a href="https://opennetworking.org/">https://opennetworking.org/</a></td>
+      </tr>
+      <tr>
+          <td>Lockheed Martin SmartSat documentation</td>
+          <td>Public whitepapers</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="hands-on-exercises">Hands-On Exercises</h2>
+<ol>
+<li><strong>SDN Controller for Satellite Mesh (C++):</strong> Build a simplified SDN controller that computes forwarding tables for a 6-satellite ring topology. Expose a REST API (use cpp-httplib or Crow) for pushing routes</li>
+<li><strong>Dynamic Rerouting Demo (Python):</strong> Simulate a link failure in a constellation using NetworkX. Show the controller detecting the failure and computing alternate paths in real-time. Animate with Matplotlib</li>
+<li><strong>Traffic Engineering Optimizer (Python):</strong> Given a constellation topology and a traffic demand matrix, compute optimal link utilization using LP solvers (PuLP or SciPy linprog)</li>
+<li><strong>Temporal Topology Manager (C++):</strong> Build a system that loads a contact plan and pre-computes SDN flow rules for each time window. Simulate rule installation as the topology evolves</li>
+</ol>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    <a href="/space-networking/curriculum/module-11/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 11: Security in Space Networks</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-09/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 09: 5G Non-Terrestrial Networks (NTN)</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline">One engineer&#39;s journey from TCP to space.</p>
+      <div class="footer-links">
+        <a href="https://github.com/anthony-username" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

@@ -11,20 +11,20 @@ How communication works between Earth and space — the physical constraints, th
 
 ## Topics
 
-### Week 1–2: The Space Environment
+### Weeks 1–4: The Space Environment
 - Speed of light delay: LEO (~4–40ms), MEO (~120ms), GEO (~600ms round-trip)
 - Signal attenuation: free-space path loss, atmospheric absorption, rain fade
 - Doppler shift and its effect on frequency tracking
 - The space radiation environment and its effect on electronics (SEU, TID)
 
-### Week 3–4: Orbits & Coverage
+### Weeks 5–8: Orbits & Coverage
 - Keplerian orbital mechanics: the six orbital elements
 - LEO vs. MEO vs. GEO vs. HEO trade-offs
 - Ground track patterns and revisit time
 - Coverage geometry: elevation angle, slant range, contact duration
 - Walker constellations and coverage optimization
 
-### Week 5–6: Communication Link Basics
+### Weeks 9–12: Communication Link Basics
 - The communication chain: transmitter → channel → receiver
 - Frequency bands used in space: UHF, S, X, Ku, Ka, V, optical
 - Modulation basics: BPSK, QPSK, 8PSK, QAM

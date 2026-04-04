@@ -1,0 +1,27 @@
+<aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="{{ " /curriculum/" | relURL }}" class="sidebar-link {{ if eq .RelPermalink " /curriculum/"
+                    }}active{{ end }}">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            {{ $modules := .Site.GetPage "page" "curriculum" }}
+            {{ if $modules }}
+            {{ range $modules.Pages.ByParam "module_number" }}
+            <li>
+                <a href="{{ .RelPermalink }}"
+                    class="sidebar-link {{ if eq $.RelPermalink .RelPermalink }}active{{ end }}">
+                    <span class="sidebar-number">{{ printf "%02d" (int .Params.module_number) }}</span>
+                    <span class="sidebar-text">{{ .Title }}</span>
+                </a>
+            </li>
+            {{ end }}
+            {{ end }}
+        </ul>
+    </nav>
+</aside>

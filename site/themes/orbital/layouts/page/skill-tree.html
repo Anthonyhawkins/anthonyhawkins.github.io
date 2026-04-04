@@ -1,0 +1,665 @@
+{{ define "main" }}
+<div class="st-page">
+
+    <header class="st-header">
+        <div class="st-header-inner">
+            <div class="hero-eyebrow"><span class="pulse-dot"></span><span>UNLOCK MAP</span></div>
+            <h1 class="st-title">Skill <span class="gradient-text">Tree</span></h1>
+            <p class="st-subtitle">Start at the top. Each tier unlocks as you complete its math prerequisite.<br>Gray =
+                locked &nbsp;·&nbsp; White = available &nbsp;·&nbsp; Connected lines show dependencies.</p>
+            <div class="st-legend">
+                <span class="legend-item"><span class="legend-dot ld-now"></span>Start Now</span>
+                <span class="legend-item"><span class="legend-dot ld-math"></span>Math Required</span>
+                <span class="legend-item"><span class="legend-dot ld-project"></span>Project</span>
+                <span class="legend-item"><span class="legend-dot ld-capstone"></span>Capstone</span>
+            </div>
+        </div>
+    </header>
+
+    <div class="st-tree" id="skillTree">
+
+        <!-- ── TIER 0 ─────────────────────────────────────────────── -->
+        <div class="st-tier" id="tier0">
+            <div class="st-tier-label">
+                <span class="tier-num">TIER 0</span>
+                <span class="tier-req req-now">No Prerequisites</span>
+            </div>
+            <div class="st-row">
+                <div class="st-node node-now" data-tier="0">
+                    <div class="node-icon">📡</div>
+                    <div class="node-title">CCSDS Stack</div>
+                    <div class="node-sub">Space Packets · USLP · AOS</div>
+                </div>
+                <div class="st-node node-now" data-tier="0">
+                    <div class="node-icon">🔗</div>
+                    <div class="node-title">DTN / BPv7</div>
+                    <div class="node-sub">Bundle Protocol · LTP concept</div>
+                </div>
+                <div class="st-node node-now" data-tier="0">
+                    <div class="node-icon">🛰️</div>
+                    <div class="node-title">Ground Segment</div>
+                    <div class="node-sub">Antenna · Mission Ops · Networks</div>
+                </div>
+                <div class="st-node node-now" data-tier="0">
+                    <div class="node-icon">🌐</div>
+                    <div class="node-title">5G NTN</div>
+                    <div class="node-sub">Non-Terrestrial Networks · NGSO</div>
+                </div>
+                <div class="st-node node-now" data-tier="0">
+                    <div class="node-icon">🔒</div>
+                    <div class="node-title">Space Security</div>
+                    <div class="node-sub">COMSEC · Crypto · ITAR</div>
+                </div>
+                <div class="st-node node-now" data-tier="0">
+                    <div class="node-icon">💻</div>
+                    <div class="node-title">C++ Basics</div>
+                    <div class="node-sub">Types · Control flow · Functions</div>
+                </div>
+            </div>
+            <div class="st-project">
+                <span class="proj-label">🛠 Week 4 Project</span>
+                <strong>CCSDS Packet Parser</strong> — parse raw Space Packet headers in C++
+            </div>
+        </div>
+
+        <div class="st-connector">
+            <div class="connector-line"></div>
+            <div class="connector-text">complete Algebra 2 → Trigonometry</div>
+        </div>
+
+        <!-- ── TIER 1 ─────────────────────────────────────────────── -->
+        <div class="st-tier" id="tier1">
+            <div class="st-tier-label">
+                <span class="tier-num">TIER 1</span>
+                <span class="tier-req req-math">Algebra 2 + Trig</span>
+            </div>
+            <div class="st-row">
+                <div class="st-node node-math" data-tier="1">
+                    <div class="node-icon">📊</div>
+                    <div class="node-title">dB &amp; Link Math</div>
+                    <div class="node-sub">Logarithms · EIRP · Path Loss · G/T</div>
+                </div>
+                <div class="st-node node-math" data-tier="1">
+                    <div class="node-icon">📐</div>
+                    <div class="node-title">Antenna Geometry</div>
+                    <div class="node-sub">Elevation · Beamwidth · Slant Range</div>
+                </div>
+                <div class="st-node node-math" data-tier="1">
+                    <div class="node-icon">👁️</div>
+                    <div class="node-title">Ground Coverage</div>
+                    <div class="node-sub">Visibility windows · Arc length</div>
+                </div>
+                <div class="st-node node-math" data-tier="1">
+                    <div class="node-icon">📡</div>
+                    <div class="node-title">DVB-S2 / DVB-S2X</div>
+                    <div class="node-sub">Modulation · ACM · Efficiency</div>
+                </div>
+                <div class="st-node node-math" data-tier="1">
+                    <div class="node-icon">⚙️</div>
+                    <div class="node-title">C++ OOP</div>
+                    <div class="node-sub">Classes · RAII · Pointers · STL</div>
+                </div>
+            </div>
+            <div class="st-project">
+                <span class="proj-label">🛠 Week 10 Project</span>
+                <strong>Link Budget Calculator</strong> — compute dB margins + ground station visibility in C++
+            </div>
+        </div>
+
+        <div class="st-connector">
+            <div class="connector-line"></div>
+            <div class="connector-text">complete Pre-Calculus</div>
+        </div>
+
+        <!-- ── TIER 2 ─────────────────────────────────────────────── -->
+        <div class="st-tier" id="tier2">
+            <div class="st-tier-label">
+                <span class="tier-num">TIER 2</span>
+                <span class="tier-req req-math">Pre-Calculus</span>
+            </div>
+            <div class="st-row">
+                <div class="st-node node-math" data-tier="2">
+                    <div class="node-icon">🪐</div>
+                    <div class="node-title">Kepler Orbits</div>
+                    <div class="node-sub">Ellipses · Eccentricity · Orbital elements</div>
+                </div>
+                <div class="st-node node-math" data-tier="2">
+                    <div class="node-icon">🗺️</div>
+                    <div class="node-title">Ground Tracks</div>
+                    <div class="node-sub">Parametric curves · Subsatellite point</div>
+                </div>
+                <div class="st-node node-math" data-tier="2">
+                    <div class="node-icon">📶</div>
+                    <div class="node-title">SDN for Space</div>
+                    <div class="node-sub">OpenFlow · Centralized control planes</div>
+                </div>
+                <div class="st-node node-math" data-tier="2">
+                    <div class="node-icon">🧵</div>
+                    <div class="node-title">C++ Concurrency</div>
+                    <div class="node-sub">Threads · Mutexes · Async I/O</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="st-connector">
+            <div class="connector-line"></div>
+            <div class="connector-text">complete Calculus I</div>
+        </div>
+
+        <!-- ── TIER 3 ─────────────────────────────────────────────── -->
+        <div class="st-tier" id="tier3">
+            <div class="st-tier-label">
+                <span class="tier-num">TIER 3</span>
+                <span class="tier-req req-math">Calculus I</span>
+            </div>
+            <div class="st-row">
+                <div class="st-node node-math" data-tier="3">
+                    <div class="node-icon">🚀</div>
+                    <div class="node-title">Orbital Velocity</div>
+                    <div class="node-sub">v = d(pos)/dt · vis-viva equation</div>
+                </div>
+                <div class="st-node node-math" data-tier="3">
+                    <div class="node-icon">〰️</div>
+                    <div class="node-title">Doppler Analysis</div>
+                    <div class="node-sub">Frequency shift = d(range)/dt</div>
+                </div>
+                <div class="st-node node-math" data-tier="3">
+                    <div class="node-icon">⚡</div>
+                    <div class="node-title">Contact Window Energy</div>
+                    <div class="node-sub">E = ∫ P(t) dt over satellite pass</div>
+                </div>
+                <div class="st-node node-math" data-tier="3">
+                    <div class="node-icon">🔌</div>
+                    <div class="node-title">C++ Sockets &amp; UDP</div>
+                    <div class="node-sub">POSIX sockets · Boost.Asio basics</div>
+                </div>
+            </div>
+            <div class="st-project">
+                <span class="proj-label">🛠 Week 22 Project</span>
+                <strong>LTP Simulator</strong> — Licklider Transmission Protocol over UDP with Doppler model
+            </div>
+        </div>
+
+        <div class="st-connector">
+            <div class="connector-line"></div>
+            <div class="connector-text">complete Calculus II · III · Linear Algebra</div>
+        </div>
+
+        <!-- ── TIER 4 ─────────────────────────────────────────────── -->
+        <div class="st-tier" id="tier4">
+            <div class="st-tier-label">
+                <span class="tier-num">TIER 4</span>
+                <span class="tier-req req-math">Calc II + III + Linear Algebra</span>
+            </div>
+            <div class="st-row">
+                <div class="st-node node-math" data-tier="4">
+                    <div class="node-icon">📡</div>
+                    <div class="node-title">Spectral Efficiency</div>
+                    <div class="node-sub">Fourier · Bandwidth · Shannon limit</div>
+                </div>
+                <div class="st-node node-math" data-tier="4">
+                    <div class="node-icon">🌍</div>
+                    <div class="node-title">Coordinate Frames</div>
+                    <div class="node-sub">ECI · ECEF · Topocentric · Rotation matrices</div>
+                </div>
+                <div class="st-node node-math" data-tier="4">
+                    <div class="node-icon">🔭</div>
+                    <div class="node-title">Optical ISL</div>
+                    <div class="node-sub">OISL · Pointing · Acquisition · Tracking</div>
+                </div>
+                <div class="st-node node-math" data-tier="4">
+                    <div class="node-icon">⚙️</div>
+                    <div class="node-title">C++ Eigen &amp; Boost</div>
+                    <div class="node-sub">Matrix ops · Graph library · Algorithms</div>
+                </div>
+                <div class="st-node node-math" data-tier="4">
+                    <div class="node-icon">🛰️</div>
+                    <div class="node-title">Constellation Geometry</div>
+                    <div class="node-sub">Walker · 3D vectors · Coverage math</div>
+                </div>
+            </div>
+            <div class="st-project">
+                <span class="proj-label">🛠 Week 38 Project</span>
+                <strong>Orbit Propagator</strong> — SGP4-lite in C++ using Eigen, plot ground tracks with
+                Python/Skyfield
+            </div>
+        </div>
+
+        <div class="st-connector">
+            <div class="connector-line"></div>
+            <div class="connector-text">complete Probability + Statistics</div>
+        </div>
+
+        <!-- ── TIER 5 ─────────────────────────────────────────────── -->
+        <div class="st-tier" id="tier5">
+            <div class="st-tier-label">
+                <span class="tier-num">TIER 5</span>
+                <span class="tier-req req-math">Probability + Statistics</span>
+            </div>
+            <div class="st-row">
+                <div class="st-node node-math" data-tier="5">
+                    <div class="node-icon">📉</div>
+                    <div class="node-title">BER &amp; Noise</div>
+                    <div class="node-sub">Eb/N₀ · Gaussian · BER curves · AWGN</div>
+                </div>
+                <div class="st-node node-math" data-tier="5">
+                    <div class="node-icon">🌧️</div>
+                    <div class="node-title">Rain Fade &amp; Availability</div>
+                    <div class="node-sub">ITU-R P.618 · Margin · Link availability</div>
+                </div>
+                <div class="st-node node-math" data-tier="5">
+                    <div class="node-icon">📡</div>
+                    <div class="node-title">Full Link Budget</div>
+                    <div class="node-sub">Noise + Margin + Availability combined</div>
+                </div>
+                <div class="st-node node-math" data-tier="5">
+                    <div class="node-icon">📦</div>
+                    <div class="node-title">LDPC / Turbo Codes</div>
+                    <div class="node-sub">Coding gain · DVB FEC schemes</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="st-connector">
+            <div class="connector-line"></div>
+            <div class="connector-text">complete Graph Theory + Discrete Math</div>
+        </div>
+
+        <!-- ── TIER 6 ─────────────────────────────────────────────── -->
+        <div class="st-tier" id="tier6">
+            <div class="st-tier-label">
+                <span class="tier-num">TIER 6</span>
+                <span class="tier-req req-math">Graph Theory + Optimization</span>
+            </div>
+            <div class="st-row">
+                <div class="st-node node-math" data-tier="6">
+                    <div class="node-icon">🕸️</div>
+                    <div class="node-title">Contact Graph Routing</div>
+                    <div class="node-sub">CGR · Time-expanded graphs · Dijkstra</div>
+                </div>
+                <div class="st-node node-math" data-tier="6">
+                    <div class="node-icon">🚦</div>
+                    <div class="node-title">Traffic Engineering</div>
+                    <div class="node-sub">LP/ILP · Scheduling · Multi-path</div>
+                </div>
+                <div class="st-node node-math" data-tier="6">
+                    <div class="node-icon">🔄</div>
+                    <div class="node-title">Protocol State Machines</div>
+                    <div class="node-sub">COP-1 · FARM · FOP · FSM design</div>
+                </div>
+                <div class="st-node node-math" data-tier="6">
+                    <div class="node-icon">🛰️</div>
+                    <div class="node-title">LEO Routing</div>
+                    <div class="node-sub">Handover · ISL topology · Disruption tolerance</div>
+                </div>
+            </div>
+            <div class="st-project">
+                <span class="proj-label">🛠 Week 48 Project</span>
+                <strong>CGR Simulator</strong> — full Contact Graph Router using Boost.Graph, simulate a 24-satellite
+                constellation
+            </div>
+        </div>
+
+        <div class="st-connector">
+            <div class="connector-line"></div>
+            <div class="connector-text">all tiers complete</div>
+        </div>
+
+        <!-- ── CAPSTONE ────────────────────────────────────────────── -->
+        <div class="st-tier tier-capstone" id="tierCapstone">
+            <div class="st-tier-label">
+                <span class="tier-num">CAPSTONE</span>
+                <span class="tier-req req-capstone">Week 52</span>
+            </div>
+            <div class="st-row">
+                <div class="st-node node-capstone" data-tier="capstone">
+                    <div class="node-icon">🌌</div>
+                    <div class="node-title">LEO Constellation<br>Simulator</div>
+                    <div class="node-sub">Full C++ sim · Walker delta · CGR routing · Skyfield ground track</div>
+                </div>
+                <div class="st-node node-capstone" data-tier="capstone">
+                    <div class="node-icon">🤖</div>
+                    <div class="node-title">Autonomous Network<br>Manager</div>
+                    <div class="node-sub">gRPC control plane · SDN-style policy engine · Real TLE data</div>
+                </div>
+                <div class="st-node node-capstone" data-tier="capstone">
+                    <div class="node-icon">📋</div>
+                    <div class="node-title">Space Mission<br>Profile</div>
+                    <div class="node-sub">Full link budget · Schedule · Protocol stack · Portfolio write-up</div>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /st-tree -->
+</div><!-- /st-page -->
+
+<style>
+    /* ── Skill Tree Page Styles ────────────────────────────────── */
+    .st-page {
+        min-height: 100vh;
+        position: relative;
+        z-index: 1;
+    }
+
+    /* Header */
+    .st-header {
+        padding: 5rem 2rem 3rem;
+        text-align: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .st-header-inner {
+        max-width: 680px;
+        margin: 0 auto;
+    }
+
+    .st-title {
+        font-family: 'Orbitron', sans-serif;
+        font-size: clamp(2.5rem, 5vw, 4rem);
+        font-weight: 900;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        line-height: 1.1;
+        margin: 1rem 0 1.25rem;
+    }
+
+    .st-subtitle {
+        color: #8892a4;
+        font-size: 0.95rem;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .st-legend {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.75rem;
+        flex-wrap: wrap;
+    }
+
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: #8892a4;
+        letter-spacing: 0.05em;
+    }
+
+    .legend-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        border: 1.5px solid;
+    }
+
+    .ld-now {
+        background: rgba(240, 244, 255, 0.1);
+        border-color: rgba(240, 244, 255, 0.5);
+    }
+
+    .ld-math {
+        background: rgba(255, 255, 255, 0.03);
+        border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .ld-project {
+        background: rgba(160, 168, 184, 0.15);
+        border-color: #a0a8b8;
+    }
+
+    .ld-capstone {
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.6);
+    }
+
+    /* Tree wrapper */
+    .st-tree {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 4rem 2rem 6rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    /* Tier block */
+    .st-tier {
+        position: relative;
+    }
+
+    .st-tier-label {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .tier-num {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        color: #4a5568;
+        text-transform: uppercase;
+    }
+
+    .tier-req {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.2rem 0.75rem;
+        border-radius: 100px;
+        border: 1px solid;
+    }
+
+    .req-now {
+        color: #d1d5db;
+        border-color: rgba(209, 213, 219, 0.3);
+        background: rgba(209, 213, 219, 0.05);
+    }
+
+    .req-math {
+        color: #6b7280;
+        border-color: rgba(107, 114, 128, 0.3);
+        background: transparent;
+    }
+
+    .req-capstone {
+        color: #f0f4ff;
+        border-color: rgba(240, 244, 255, 0.4);
+        background: rgba(240, 244, 255, 0.05);
+    }
+
+    /* Row of nodes */
+    .st-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    /* Individual node */
+    .st-node {
+        width: 160px;
+        min-height: 110px;
+        border-radius: 12px;
+        border: 1px solid;
+        padding: 1.1rem 1rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0.4rem;
+        cursor: default;
+        transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+        position: relative;
+    }
+
+    .st-node:hover {
+        transform: translateY(-3px);
+    }
+
+    /* Node variants */
+    .node-now {
+        background: rgba(240, 244, 255, 0.04);
+        border-color: rgba(240, 244, 255, 0.2);
+    }
+
+    .node-now:hover {
+        border-color: rgba(240, 244, 255, 0.5);
+        box-shadow: 0 8px 28px rgba(255, 255, 255, 0.06);
+    }
+
+    .node-math {
+        background: rgba(255, 255, 255, 0.01);
+        border-color: rgba(255, 255, 255, 0.07);
+    }
+
+    .node-math:hover {
+        border-color: rgba(160, 168, 184, 0.35);
+        box-shadow: 0 8px 28px rgba(160, 168, 184, 0.06);
+    }
+
+    .node-capstone {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.25);
+        width: 200px;
+        min-height: 130px;
+    }
+
+    .node-capstone:hover {
+        border-color: rgba(255, 255, 255, 0.6);
+        box-shadow: 0 12px 40px rgba(255, 255, 255, 0.08);
+    }
+
+    /* Node parts */
+    .node-icon {
+        font-size: 1.5rem;
+        line-height: 1;
+    }
+
+    .node-title {
+        font-family: 'Inter', sans-serif;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: #f0f4ff;
+        line-height: 1.3;
+        letter-spacing: 0.02em;
+    }
+
+    .node-now .node-title {
+        color: #ffffff;
+    }
+
+    .node-math .node-title {
+        color: #c9ced8;
+    }
+
+    .node-capstone .node-title {
+        color: #ffffff;
+        font-size: 0.85rem;
+    }
+
+    .node-sub {
+        font-size: 0.7rem;
+        color: #4a5568;
+        line-height: 1.5;
+    }
+
+    .node-now .node-sub {
+        color: #6b7280;
+    }
+
+    .node-capstone .node-sub {
+        color: #6b7280;
+    }
+
+    /* Connector between tiers */
+    .st-connector {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        gap: 0.4rem;
+    }
+
+    .connector-line {
+        width: 1px;
+        height: 40px;
+        background: linear-gradient(180deg, rgba(160, 168, 184, 0.15) 0%, rgba(160, 168, 184, 0.4) 50%, rgba(160, 168, 184, 0.15) 100%);
+    }
+
+    .connector-text {
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #4a5568;
+    }
+
+    /* Project callout */
+    .st-project {
+        margin-top: 0.25rem;
+        margin-bottom: 0.5rem;
+        padding: 0.75rem 1.25rem;
+        border: 1px dashed rgba(160, 168, 184, 0.2);
+        border-radius: 8px;
+        font-size: 0.82rem;
+        color: #6b7280;
+        text-align: center;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .st-project strong {
+        color: #a0a8b8;
+        font-weight: 600;
+    }
+
+    .proj-label {
+        display: block;
+        font-size: 0.65rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #4a5568;
+        margin-bottom: 0.3rem;
+    }
+
+    /* Capstone tier */
+    .tier-capstone .st-tier-label {
+        justify-content: center;
+    }
+
+    .tier-capstone .st-row {
+        gap: 1.5rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 640px) {
+        .st-row {
+            gap: 0.75rem;
+        }
+
+        .st-node {
+            width: 140px;
+            min-height: 100px;
+            padding: 0.9rem 0.75rem;
+        }
+
+        .node-capstone {
+            width: 160px;
+        }
+
+        .node-icon {
+            font-size: 1.25rem;
+        }
+
+        .st-title {
+            font-size: 2rem;
+        }
+    }
+</style>
+{{ end }}
