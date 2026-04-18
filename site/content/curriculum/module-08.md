@@ -1,99 +1,147 @@
 ---
-title: "Module 08: DVB Standards & Satellite Broadband"
+title: "Module 08: LEO Constellations & Routing"
 module_number: 08
 weight: 08
 ---
 
 
-**Duration:** 4 weeks
-**Prerequisites:** Modules 04, 07
+**Phase:** 3 — Depth
+**Builds on:** Modules 03, 04, 05
 
 ---
 
-## What You'll Learn
+## 🔢 Math You'll Learn
 
-DVB-S2/S2X and DVB-RCS2 are the dominant standards for satellite broadband — they define how data is modulated, multiplexed, and delivered over satellite. This is the "how" behind nearly every commercial satellite internet service (GEO VSAT and increasingly LEO broadband).
+### Calculus II Completion + Calculus III: 3D Vectors
 
-## The Problem
+The math that makes constellation engineering possible — signal decomposition and 3D orbital geometry.
 
-You need to deliver IP traffic (web, video, VoIP) over a satellite link that has:
-- Variable signal quality (weather, elevation angle)
-- Shared bandwidth among many users (VSAT network)
-- Asymmetric forward/return capacity
-- Need for TCP acceleration (PEP) due to latency
+- **Calculus II: Taylor/Maclaurin series** — approximating complex functions
+- **Calculus II: Fourier series intro** — decomposing signals into frequency components
+  - *Space application:* understanding bandwidth, spectral efficiency, why OFDM works
+- **Calculus III: Vectors in 3D** — position, velocity, acceleration vectors
+  - *Space application:* satellite state vector = [x, y, z, vx, vy, vz]
+- **Calc III: Dot product & cross product** — angles between vectors, perpendicular components
+  - *Space application:* angular momentum = r × v, orbital plane normal vector
+- **Calc III: Partial derivatives & gradients** — how functions change in multiple directions
+  - *Space application:* link quality gradient as elevation, range, and weather change simultaneously
 
-DVB-S2/RCS2 provides the complete system: forward link broadcast, return link multiple access, and adaptive mechanisms to maximize throughput.
+**🔓 After this:** You can propagate orbits, compute satellite positions in 3D, and work with constellation geometry.
 
-## Topics
+**Resources:**
+- *Calculus: Early Transcendentals* — Stewart (Chapters 7–14)
+- *Orbital Mechanics for Engineering Students* (Curtis) — applies Calc III directly
+- 3Blue1Brown — *Essence of Linear Algebra* (watch early for context)
+- 3Blue1Brown — *But what is a Fourier series?*
 
-### Week 1: DVB-S2 / S2X (Forward Link)
-- Physical layer: modulation (QPSK to 256APSK), coding (LDPC+BCH)
-- MODCOD table: mapping signal quality to efficiency
-- ACM (Adaptive Coding & Modulation): real-time adaptation to link conditions
-- Frame structure: BBFRAME → FECFRAME → PLFRAME
-- GSE (Generic Stream Encapsulation): mapping IP packets into DVB-S2 frames
-- S2X extensions: finer MODCODs, lower roll-off, beam hopping
+---
 
-### Week 2: DVB-RCS2 (Return Link)
-- MF-TDMA (Multi-Frequency TDMA): how terminals share return bandwidth
-- Burst structure, timing, synchronization
-- RLE (Return Link Encapsulation): efficient IP mapping for return channel
-- DAMA (Demand Assigned Multiple Access): capacity request categories (CRA, RBDC, VBDC, AVBDC)
-- NCC (Network Control Center): the brain that allocates return capacity
-- Terminal logon and synchronization procedures
+## 🛰️ What You'll Learn
 
-### Week 3: Performance Enhancement
-- TCP/IP over satellite: latency, ACK delays, slow start problems
-- PEPs (Performance Enhancing Proxies): TCP splitting, spoofing, acceleration
-- IP header compression (ROHC)
-- Quality of Service: traffic shaping, bandwidth allocation
-- Comparison with Starlink's approach (proprietary PHY, different architecture)
+How to design, model, and route traffic through large LEO constellations. This is where your networking skills become your superpower — constellation routing is essentially distributed systems + graph theory under extreme dynamism.
 
-### Week 4: System Architecture & Deployment
-- Star (hub-spoke) vs. mesh vs. multi-star topologies
-- Transparent vs. regenerative payloads — impact on networking
-- VSAT network design: sizing, capacity planning
-- Migration from DVB-S/S2 to S2X
-- Industry convergence: will LEO constellations adopt DVB standards?
+### The Problem
+A single LEO satellite sees a ground station for ~5–10 minutes per pass. A constellation of thousands of satellites creates a **continuously changing mesh topology** where:
+- Neighbors change every few minutes
+- Inter-satellite link (ISL) distances vary with orbital geometry
+- Ground station handover happens every ~15 seconds for a user terminal
+- You need end-to-end latency competitive with terrestrial fiber (~20–40ms)
+
+### Constellation Design
+- Walker Delta and Walker Star patterns
+- Orbital planes, phasing, and the "seam" problem (counter-rotating planes)
+- Constellation parameters: altitude, inclination, satellites/plane, number of planes
+- Coverage analysis: latitude-dependent performance
+- Starlink's shell architecture (540km, 550km, 570km shells)
+
+### Inter-Satellite Link Routing
+- **Static routing:** Pre-computed based on orbital mechanics (deterministic topology)
+- **Shortest-path:** Modified Dijkstra over time-varying topology snapshots
+- **Segment routing:** Pre-computed path segments, stitched at runtime
+- **+Grid routing:** Exploiting the regular grid structure of Walker constellations
+- **Bent-pipe vs. ISL:** When satellites relay to each other vs. always bounce to ground
+- Latency optimization: ISL path vs. fiber path — when does space routing win?
+
+### Ground Segment Integration
+- User terminal handover: beam switching, cell assignment
+- Gateway handover and load balancing
+- POP (Point of Presence) integration with terrestrial internet
+- **This is where your edge routing experience is directly applicable**
+
+### Traffic Engineering & QoS
+- Capacity allocation across ISL topology
+- Traffic matrices for a global constellation
+- Congestion management when ISL capacity is limited
+- QoS differentiation: real-time (voice/video) vs. bulk transfer
+
+---
+
+## 💻 C++ & Python Skills
+
+**C++ focus:** Eigen library, Boost.Graph, `std::async`/`std::future`, spatial algorithms
+**Python focus:** Skyfield, Plotly/Cartopy for 3D visualization, NetworkX
+
+This module introduces **Eigen** for linear algebra and **async patterns** for concurrent computation.
+
+---
+
+## Projects
+
+### Project 1: Constellation Topology Engine (C++)
+
+Build a C++ engine that computes satellite positions and inter-satellite link topology for a Walker constellation.
+
+**What you'll build:**
+- Generate Walker Delta constellation parameters (altitude, inclination, planes, sats/plane)
+- Propagate satellite positions using simplified circular orbit model (Eigen vectors)
+- Compute ISL links: determine which satellites can see each other (line-of-sight, max distance)
+- Build a graph of the constellation topology at each timestep using Boost.Graph
+- Run Dijkstra to find lowest-latency path between two ground points through the constellation
+- Use `std::async` to parallelize orbit propagation across satellites
+
+**C++ skills used:** Eigen, Boost.Graph, `std::async`, `std::future`, spatial geometry, CMake with external libraries
+
+**🔧 Toolkit:** Add `ConstellationEngine` to the Space Network Toolkit
+
+### Project 2: Constellation Visualizer & Latency Comparator (Python)
+
+Visualize and benchmark your constellation.
+
+**What you'll build:**
+- Visualize the constellation on a 3D globe (Plotly) or 2D map (Cartopy)
+- For 10 city pairs (NYC↔London, LA↔Tokyo, etc.), compute: (a) great-circle fiber latency, (b) satellite ISL latency
+- Plot comparative bar charts showing where satellite routing beats fiber
+- Animate the constellation topology over one orbital period
+
+**Python skills used:** Skyfield, Plotly or Cartopy, NetworkX, matplotlib animation
+
+---
 
 ## Protocol Reference Table
 
-| Protocol | Spec | Layer | Problem It Solves | New/Legacy |
+| Protocol/Concept | Spec/Source | Problem It Solves | New/Legacy |
+|---|---|---|---|
+| CGR (Contact Graph Routing) | CCSDS / ION | Time-variant routing with scheduled contacts | `[NEW SPACE]` |
+| Segment Routing (SRv6 in space) | Research | Source-routing for deterministic path control | `[NEW SPACE]` |
+| OSPF/IS-IS adaptations | Research | Traditional IGP adapted for dynamic satellite topology | `[NEW SPACE]` |
+| BGP (ground peering) | RFC 4271 | Peering at satellite ground gateways | `[BOTH]` |
+
+## Where This Tech Is Used
+
+| System | Company | Satellites | ISLs | Notes |
 |---|---|---|---|---|
-| DVB-S2 | EN 302 307-1 | Physical (forward) | Efficient satellite broadcast modulation | `[BOTH]` |
-| DVB-S2X | EN 302 307-2 | Physical (forward) | Extended MODCODs, beam hopping | `[NEW SPACE]` |
-| DVB-RCS2 | EN 301 545-2 | MAC/Physical (return) | Multi-user return channel access | `[BOTH]` |
-| GSE | TS 102 606 | Adaptation | IP encapsulation into DVB-S2 | `[BOTH]` |
-| RLE | EN 301 545-2 | Adaptation | IP encapsulation for return link | `[BOTH]` |
-| TRANSEC | EN 301 545-2 | Security | Over-the-air encryption | `[BOTH]` |
-| PEP / TCP acceleration | RFC 3135 | Transport | Mitigate TCP over high-latency satellite | `[LEGACY]` evolving |
-| ROHC | RFC 5795 | Adaptation | IP header compression | `[BOTH]` |
-
-## Companies
-
-| Company | Role | New/Legacy |
-|---|---|---|
-| **ST Engineering iDirect** | VSAT platform (Dialog), DVB-S2X hubs | `[BOTH]` |
-| **Hughes (EchoStar)** | Jupiter system, VSAT platforms | `[LEGACY]` |
-| **Viasat** | ViaSat-3 ground system, VSAT | `[BOTH]` |
-| **Newtec (ST Engineering)** | DVB-S2X modems and hubs | `[BOTH]` |
-| **Gilat Satellite Networks** | VSAT platforms, multi-orbit | `[BOTH]` |
-| **Comtech** | VSAT, mobile satcom, troposcatter | `[BOTH]` |
-| **UHP Networks** | Software-defined VSAT | `[NEW SPACE]` |
-| **SES** | O3b mPOWER (MEO), Astra (GEO) | `[BOTH]` |
+| Starlink | SpaceX | ~6,000+ | Laser (4 per sat) | Largest operational LEO constellation |
+| Kuiper | Amazon | 3,236 planned | Laser | Launching 2026+ |
+| OneWeb (Eutelsat) | Eutelsat | ~648 | No ISLs (bent-pipe) | GW-reliant architecture |
+| Lightspeed | Telesat | 188 planned | Laser | Enterprise/gov focus |
+| SDA Transport Layer | US DoD / SDA | ~300+ | Laser | Military PWSA mesh |
 
 ## Books & Resources
 
 | Resource | Notes |
 |---|---|
-| *Satellite Communications and Networking* (Höyhtyä, 2025) | Modern DVB-S2/RCS2 coverage |
-| ETSI EN 302 307-1/2 | DVB-S2/S2X specifications (free from ETSI) |
-| ETSI TR 101 545-4 | DVB-RCS2 implementation guidelines |
-| *Digital Video Broadcasting* (DVB Project docs) | https://www.dvb.org |
-
-## Hands-On Exercises
-
-1. **MODCOD Selector (Python):** Build a tool that, given Es/N₀, selects the optimal MODCOD from the DVB-S2X table and computes the resulting spectral efficiency and throughput. Plot efficiency vs. SNR curves with Matplotlib
-2. **ACM Simulator (Python):** Simulate a forward link with time-varying channel quality (rain event). Show how ACM adapts MODCOD and maintains throughput vs. fixed coding. Animate with Matplotlib
-3. **DAMA Allocator (C++):** Implement a simplified NCC that processes capacity requests (CRA, RBDC, VBDC) from terminals and assigns MF-TDMA slots. Build as a simulation with configurable terminal count
-4. **PEP Experiment (Python):** Set up a delayed link (using `tc netem`), run TCP and compare throughput with/without a TCP splitting proxy. Plot results
+| *Satellite Communications Systems* (Maral et al.) | Constellation design chapters |
+| *Delay-Tolerant Satellite Networks* (Fraire, Burleigh) | CGR algorithms and analysis |
+| Handley 2018 — "Delay is Not an Option" | Foundational analysis of Starlink routing |
+| Bhattacherjee et al. — "Network Topology Design at 27000 km/h" | Grid routing for LEO constellations |
+| Hypatia simulator | https://github.com/snkas/hypatia |

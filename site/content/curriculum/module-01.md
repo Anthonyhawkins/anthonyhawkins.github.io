@@ -1,73 +1,133 @@
 ---
-title: "Module 01: Foundations of Space Communications"
+title: "Module 01: CCSDS Protocol Stack"
 module_number: 01
 weight: 01
 ---
 
 
-**Duration:** 6 weeks
-**Prerequisites:** Module 00 (Math Foundations)
+**Phase:** 1 — Foundation
+**Builds on:** None — this is your starting point
 
 ---
 
-## What You'll Learn
+## 🔢 Math You'll Learn
 
-How communication works between Earth and space — the physical constraints, the orbital geometry, and why terrestrial networking assumptions break down.
+### Algebra 2: Logarithms, Exponentials & dB Arithmetic
 
-## Topics
+This is the most immediately useful math for space communications. Every link budget, every power measurement, and every gain calculation uses decibels.
 
-### Weeks 1–4: The Space Environment
-- Speed of light delay: LEO (~4–40ms), MEO (~120ms), GEO (~600ms round-trip)
-- Signal attenuation: free-space path loss, atmospheric absorption, rain fade
-- Doppler shift and its effect on frequency tracking
-- The space radiation environment and its effect on electronics (SEU, TID)
+- **Exponentials & logarithms** — signal power decays exponentially with distance; logarithms compress this into manageable numbers
+  - *Space application:* dB = 10·log₁₀(P₂/P₁) — every link budget uses this
+  - *Space application:* adding dB values = multiplying linear powers — the language of RF engineering
+- **Polynomials & rational expressions** — polynomial curve fitting for antenna gain patterns
+- **Logarithm properties & equations** — converting between dB, dBW, dBm; combining gains and losses
 
-### Weeks 5–8: Orbits & Coverage
-- Keplerian orbital mechanics: the six orbital elements
-- LEO vs. MEO vs. GEO vs. HEO trade-offs
-- Ground track patterns and revisit time
-- Coverage geometry: elevation angle, slant range, contact duration
-- Walker constellations and coverage optimization
+**🔓 After this:** You can compute link budgets in dB, understand EIRP, path loss, and G/T.
 
-### Weeks 9–12: Communication Link Basics
-- The communication chain: transmitter → channel → receiver
-- Frequency bands used in space: UHF, S, X, Ku, Ka, V, optical
-- Modulation basics: BPSK, QPSK, 8PSK, QAM
-- Error correction: convolutional codes, turbo codes, LDPC
-- Multiplexing: FDMA, TDMA, CDMA
+**Resources:**
+- Khan Academy — Algebra 2 (free, self-paced)
+- Textbook: *Algebra and Trigonometry* — Stewart, Redlin, Watson
+- 3Blue1Brown — *Essence of Calculus* (watch early for context, even though you won't use calculus yet)
 
-## Math Used
-- **Calculus:** derivatives for Doppler, integrals for signal energy
-- **Vectors (Calc III):** satellite position and velocity in 3D
-- **Logarithms:** dB-scale link calculations
-- **Coordinate transforms (Linear Algebra):** ECI ↔ ECEF ↔ topocentric frames
+---
 
-## Protocols & Standards Introduced
+## 🛰️ What You'll Learn
 
-| Protocol/Standard | Type | Problem It Solves | New/Legacy |
-|---|---|---|---|
-| ITU Radio Regulations | Regulatory | Frequency coordination & interference management | `[BOTH]` |
-| CCSDS 401.0 (RF & Modulation) | Physical layer | Standardized space link physical parameters | `[LEGACY]` evolving |
-| DVB-S2 (overview) | Physical layer | Efficient satellite broadcast modulation & coding | `[BOTH]` |
+The CCSDS protocol stack is to space what the TCP/IP stack is to the internet. You'll learn its layered architecture — from Space Packets down to physical-layer framing — and understand which missions use which protocols and why.
+
+### Architecture Overview
+- CCSDS layered reference model vs. OSI vs. TCP/IP
+- The three link types: Space Link (long-range), Proximity Link (short-range), Ground-Ground
+- Transfer frames vs. packets: why space uses both
+- Read: CCSDS 130.0-G-4 — *Overview of Space Communications Protocols*
+
+### Data Link Layer Protocols
+- **TM Space Data Link Protocol (CCSDS 132.0):** Telemetry frames, virtual channels, idle data insertion
+- **TC Space Data Link Protocol (CCSDS 232.0):** Telecommand frames, COP-1 (reliable delivery), FARM/FOP state machines
+- **AOS Space Data Link Protocol (CCSDS 732.0):** Advanced Orbiting Systems — multiplexing, bitstream services
+- **Unified Space Data Link Protocol (USLP, CCSDS 732.1):** The modern replacement unifying TM, TC, and AOS
+- **Proximity-1 (CCSDS 211.x):** Short-range orbiter-to-lander/rover links (used on Mars missions)
+
+### Application Layer
+- **Space Packet Protocol (CCSDS 133.0):** The primary application data unit — analogous to IP datagrams
+- **CCSDS File Delivery Protocol (CFDP, CCSDS 727.0):** Reliable file transfer for space — analogous to FTP but designed for disruption
+- **Asynchronous Message Service (AMS):** Publish-subscribe messaging for space
+
+### Sync, Coding & Security
+- **TM/TC Synchronization and Channel Coding:** Frame synchronization markers, randomization, Reed-Solomon, turbo, LDPC
+- **Space Data Link Security (SDLS, CCSDS 355.0):** Authentication and encryption at the data link layer — your TLS/mTLS experience maps here
+- **Space Link Extension (SLE):** How ground stations from different agencies interoperate — cross-support services
+
+---
+
+## 💻 C++ & Python Skills
+
+**C++ focus:** Variables, types, control flow, functions, arrays, pointers, binary I/O, bitwise operations
+**Python focus:** Basic scripting, matplotlib for visualization
+
+This is your first C++ module — you'll learn the language fundamentals by building practical tools that parse binary protocol data.
+
+---
+
+## Projects
+
+### Project 1: CCSDS Space Packet Parser (C++)
+
+Build a CLI tool that parses CCSDS Space Packet primary headers from binary data.
+
+**What you'll build:**
+- Parse the 6-byte primary header: version, type, secondary header flag, APID, sequence flags, sequence count, data length
+- Use `std::span` and bitwise ops for field extraction
+- Read binary files from stdin or file argument
+- Output parsed fields in a human-readable table
+
+**C++ skills used:** Binary I/O, bitwise operators, `std::span`, command-line arguments, `struct`
+
+**🔧 Toolkit:** This starts the **Space Network Toolkit** — save the parser as a reusable library (`PacketParser`)
+
+### Project 2: dB Conversion Toolkit (Python)
+
+Build a Python tool for RF power calculations.
+
+**What you'll build:**
+- Convert between linear power (Watts, milliwatts) and dB scales (dB, dBW, dBm)
+- Compute EIRP given transmit power and antenna gain
+- Chain gains and losses in a simple link budget
+- Visualize the CCSDS protocol stack layers as a diagram with matplotlib
+
+**Python skills used:** Functions, f-strings, matplotlib, basic NumPy
+
+---
+
+## Protocol Reference Table
+
+| Protocol | CCSDS Doc | Layer | Problem It Solves | New/Legacy | Who Uses It |
+|---|---|---|---|---|---|
+| Space Packet Protocol | 133.0-B | Application | Standard data unit format across agencies | `[BOTH]` | All CCSDS-compliant missions |
+| TM Data Link | 132.0-B | Data Link | Multiplexed telemetry downlink | `[LEGACY]` | ISS, most Earth orbiters |
+| TC Data Link | 232.0-B | Data Link | Reliable commanding with COP-1 | `[LEGACY]` | Most missions |
+| AOS Data Link | 732.0-B | Data Link | High-rate, multi-service downlink | `[LEGACY]` | ISS, high-rate science missions |
+| USLP | 732.1-B | Data Link | Unified modern replacement for TM/TC/AOS | `[NEW SPACE]` | Next-gen missions, Lunar Gateway |
+| Proximity-1 | 211.x-B | Physical + Data Link | Short-range links (orbiter↔lander) | `[BOTH]` | Mars rovers (Curiosity, Perseverance) |
+| CFDP | 727.0-B | Application | Reliable file delivery over disrupted links | `[BOTH]` | Deep space missions, ISS |
+| SDLS | 355.0-B | Data Link | Link-layer encryption and authentication | `[NEW SPACE]` | Classified & sensitive missions |
+| SLE | 911.x-B | Cross-support | Ground station interoperability | `[LEGACY]` | DSN, ESTRACK, JAXA |
 
 ## Where This Tech Is Used
 
-| Application | Companies | Description |
+| Application | Companies/Agencies | Notes |
 |---|---|---|
-| Direct-to-Earth observation downlink | Planet Labs, Capella Space, BlackSky | Satellites photograph Earth, downlink imagery to ground stations |
-| GEO broadcast and broadband | SES, Intelsat, Eutelsat | Traditional TV broadcast and enterprise VSAT |
-| LEO broadband | SpaceX (Starlink), Amazon (Kuiper), OneWeb | Consumer/enterprise internet via satellite constellation |
+| Deep space exploration | NASA/JPL, ESA, JAXA | CCSDS is mandatory for interoperability |
+| ISS operations | NASA, ESA, JAXA, CSA | Uses TM, TC, AOS, CFDP |
+| Mars surface operations | NASA/JPL | Proximity-1 for MRO↔rover relay |
+| Lunar Gateway | NASA, ESA | Will use USLP and CFDP |
+| CubeSat/SmallSat missions | Universities, startups | Increasingly adopting CCSDS for interop |
+| Commercial ground station networks | KSAT, SSC, AWS Ground Station | SLE for cross-support |
 
 ## Books & Resources
 
 | Resource | Chapters/Sections |
 |---|---|
-| *Satellite Communications* (Pratt et al.) | Ch. 1–4 (Orbital mechanics, propagation, link budgets) |
-| *Orbital Mechanics for Engineering Students* (Curtis) | Ch. 1–4 (Two-body problem, orbital elements) |
-| *Satellite Comms & Networking with Python* (Flux) | Ch. 1–3 (Orbit modeling, signal basics) |
-
-## Hands-On Exercises
-
-1. **Orbit Propagator (Python):** Use Skyfield or SGP4 (via `sgp4` package) to propagate a LEO satellite from a TLE and compute ground station contact windows. Plot the ground track with Matplotlib
-2. **Free-Space Path Loss Calculator (C++):** Build a CLI tool that computes FSPL for different frequency bands (S, X, Ka) and orbital altitudes (LEO, MEO, GEO). Use Eigen for vector math
-3. **Doppler Shift Estimator (Python):** Calculate Doppler for a LEO pass at various elevation angles. Plot Doppler curve vs. time for a full overhead pass
+| CCSDS 130.0-G-4 (Green Book) | Entire document — the "map" |
+| CCSDS Blue Books (individual protocol specs) | Reference as needed per protocol |
+| *Satellite Communications Systems* (Maral et al.) | Ch. on data handling & protocols |

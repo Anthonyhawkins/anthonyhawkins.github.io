@@ -1,27 +1,37 @@
-# Module 08: DVB Standards & Satellite Broadband
+# Module 06: DVB Standards & Satellite Broadband
 
-**Duration:** 4 weeks
-**Prerequisites:** Modules 04, 07
+**Phase:** 2 — Acceleration
+**Builds on:** Modules 03, 05
 
 ---
 
-## What You'll Learn
+## 🔢 Math You'll Learn
 
-DVB-S2/S2X and DVB-RCS2 are the dominant standards for satellite broadband — they define how data is modulated, multiplexed, and delivered over satellite. This is the "how" behind nearly every commercial satellite internet service (GEO VSAT and increasingly LEO broadband).
+### Calculus I: Derivatives — Chain Rule, Optimization & Applications
 
-## The Problem
+Deepening your calculus with the tools for optimization and rate-of-change analysis.
 
-You need to deliver IP traffic (web, video, VoIP) over a satellite link that has:
-- Variable signal quality (weather, elevation angle)
-- Shared bandwidth among many users (VSAT network)
-- Asymmetric forward/return capacity
-- Need for TCP acceleration (PEP) due to latency
+- **Chain rule, product/quotient rules** — composing derivatives of complex functions
+  - *Space application:* Doppler shift rate — how fast Doppler changes during a pass
+- **Implicit differentiation** — related rates in orbital rendezvous
+- **Applications — optimization, related rates** — finding maxima/minima
+  - *Space application:* optimizing antenna pointing angle for maximum gain
+  - *Space application:* maximum data throughput given power and bandwidth constraints
+  - *Space application:* ACM optimization — choosing the best MODCOD for current conditions
 
-DVB-S2/RCS2 provides the complete system: forward link broadcast, return link multiple access, and adaptive mechanisms to maximize throughput.
+**🔓 After this:** You can optimize system parameters, compute rate-of-change for dynamic systems, and understand adaptive coding/modulation mathematically.
 
-## Topics
+**Resources:**
+- *Calculus: Early Transcendentals* — Stewart (Chapters 3–4)
+- Khan Academy — Calculus 1: Derivatives (free)
 
-### Week 1: DVB-S2 / S2X (Forward Link)
+---
+
+## 🛰️ What You'll Learn
+
+DVB-S2/S2X and DVB-RCS2 are the dominant standards for satellite broadband — they define how data is modulated, multiplexed, and delivered over satellite. This is the "how" behind nearly every commercial satellite internet service.
+
+### DVB-S2 / S2X (Forward Link)
 - Physical layer: modulation (QPSK to 256APSK), coding (LDPC+BCH)
 - MODCOD table: mapping signal quality to efficiency
 - ACM (Adaptive Coding & Modulation): real-time adaptation to link conditions
@@ -29,7 +39,7 @@ DVB-S2/RCS2 provides the complete system: forward link broadcast, return link mu
 - GSE (Generic Stream Encapsulation): mapping IP packets into DVB-S2 frames
 - S2X extensions: finer MODCODs, lower roll-off, beam hopping
 
-### Week 2: DVB-RCS2 (Return Link)
+### DVB-RCS2 (Return Link)
 - MF-TDMA (Multi-Frequency TDMA): how terminals share return bandwidth
 - Burst structure, timing, synchronization
 - RLE (Return Link Encapsulation): efficient IP mapping for return channel
@@ -37,19 +47,57 @@ DVB-S2/RCS2 provides the complete system: forward link broadcast, return link mu
 - NCC (Network Control Center): the brain that allocates return capacity
 - Terminal logon and synchronization procedures
 
-### Week 3: Performance Enhancement
+### Performance Enhancement
 - TCP/IP over satellite: latency, ACK delays, slow start problems
 - PEPs (Performance Enhancing Proxies): TCP splitting, spoofing, acceleration
 - IP header compression (ROHC)
 - Quality of Service: traffic shaping, bandwidth allocation
 - Comparison with Starlink's approach (proprietary PHY, different architecture)
 
-### Week 4: System Architecture & Deployment
+### System Architecture & Deployment
 - Star (hub-spoke) vs. mesh vs. multi-star topologies
 - Transparent vs. regenerative payloads — impact on networking
 - VSAT network design: sizing, capacity planning
-- Migration from DVB-S/S2 to S2X
 - Industry convergence: will LEO constellations adopt DVB standards?
+
+---
+
+## 💻 C++ & Python Skills
+
+**C++ focus:** Templates, state machine patterns, design patterns (strategy, observer), enum classes
+**Python focus:** Animated plots, interactive simulation with matplotlib
+
+---
+
+## Projects
+
+### Project 1: DAMA Capacity Allocator (C++)
+
+Build a simplified NCC (Network Control Center) that manages bandwidth allocation.
+
+**What you'll build:**
+- Simulate N terminals, each requesting capacity via CRA, RBDC, or VBDC
+- Implement the NCC scheduling algorithm: allocate MF-TDMA slots based on request priorities
+- Use a state machine pattern for terminal states (logged-off → syncing → logged-on → transmitting)
+- Support configurable total bandwidth and slot sizes
+- Output utilization statistics and allocation tables
+
+**C++ skills used:** Templates, enum classes, state machine pattern, STL algorithms, strategy pattern for allocator
+
+### Project 2: MODCOD Selector & ACM Simulator (Python)
+
+Visualize adaptive coding and modulation in action.
+
+**What you'll build:**
+- Load the DVB-S2X MODCOD table (Es/N₀ threshold → spectral efficiency)
+- Given an Es/N₀ value, select the optimal MODCOD
+- Simulate a forward link with time-varying channel quality (rain event that reduces Es/N₀ over time)
+- Animate how ACM adapts MODCOD in real-time to maintain throughput vs. fixed coding that drops out
+- Plot spectral efficiency vs. SNR curves
+
+**Python skills used:** matplotlib animation, NumPy, lookup tables, event simulation
+
+---
 
 ## Protocol Reference Table
 
@@ -73,7 +121,6 @@ DVB-S2/RCS2 provides the complete system: forward link broadcast, return link mu
 | **Viasat** | ViaSat-3 ground system, VSAT | `[BOTH]` |
 | **Newtec (ST Engineering)** | DVB-S2X modems and hubs | `[BOTH]` |
 | **Gilat Satellite Networks** | VSAT platforms, multi-orbit | `[BOTH]` |
-| **Comtech** | VSAT, mobile satcom, troposcatter | `[BOTH]` |
 | **UHP Networks** | Software-defined VSAT | `[NEW SPACE]` |
 | **SES** | O3b mPOWER (MEO), Astra (GEO) | `[BOTH]` |
 
@@ -85,10 +132,3 @@ DVB-S2/RCS2 provides the complete system: forward link broadcast, return link mu
 | ETSI EN 302 307-1/2 | DVB-S2/S2X specifications (free from ETSI) |
 | ETSI TR 101 545-4 | DVB-RCS2 implementation guidelines |
 | *Digital Video Broadcasting* (DVB Project docs) | https://www.dvb.org |
-
-## Hands-On Exercises
-
-1. **MODCOD Selector (Python):** Build a tool that, given Es/N₀, selects the optimal MODCOD from the DVB-S2X table and computes the resulting spectral efficiency and throughput. Plot efficiency vs. SNR curves with Matplotlib
-2. **ACM Simulator (Python):** Simulate a forward link with time-varying channel quality (rain event). Show how ACM adapts MODCOD and maintains throughput vs. fixed coding. Animate with Matplotlib
-3. **DAMA Allocator (C++):** Implement a simplified NCC that processes capacity requests (CRA, RBDC, VBDC) from terminals and assigns MF-TDMA slots. Build as a simulation with configurable terminal count
-4. **PEP Experiment (Python):** Set up a delayed link (using `tc netem`), run TCP and compare throughput with/without a TCP splitting proxy. Plot results

@@ -1,38 +1,98 @@
-# Module 02: CCSDS Protocol Stack
+# Module 01: CCSDS Protocol Stack
 
-**Duration:** 6 weeks
-**Prerequisites:** Module 01
+**Phase:** 1 — Foundation
+**Builds on:** None — this is your starting point
 
 ---
 
-## What You'll Learn
+## 🔢 Math You'll Learn
+
+### Algebra 2: Logarithms, Exponentials & dB Arithmetic
+
+This is the most immediately useful math for space communications. Every link budget, every power measurement, and every gain calculation uses decibels.
+
+- **Exponentials & logarithms** — signal power decays exponentially with distance; logarithms compress this into manageable numbers
+  - *Space application:* dB = 10·log₁₀(P₂/P₁) — every link budget uses this
+  - *Space application:* adding dB values = multiplying linear powers — the language of RF engineering
+- **Polynomials & rational expressions** — polynomial curve fitting for antenna gain patterns
+- **Logarithm properties & equations** — converting between dB, dBW, dBm; combining gains and losses
+
+**🔓 After this:** You can compute link budgets in dB, understand EIRP, path loss, and G/T.
+
+**Resources:**
+- Khan Academy — Algebra 2 (free, self-paced)
+- Textbook: *Algebra and Trigonometry* — Stewart, Redlin, Watson
+- 3Blue1Brown — *Essence of Calculus* (watch early for context, even though you won't use calculus yet)
+
+---
+
+## 🛰️ What You'll Learn
 
 The CCSDS protocol stack is to space what the TCP/IP stack is to the internet. You'll learn its layered architecture — from Space Packets down to physical-layer framing — and understand which missions use which protocols and why.
 
-## Topics
-
-### Weeks 1–4: Architecture Overview
+### Architecture Overview
 - CCSDS layered reference model vs. OSI vs. TCP/IP
 - The three link types: Space Link (long-range), Proximity Link (short-range), Ground-Ground
 - Transfer frames vs. packets: why space uses both
 - Read: CCSDS 130.0-G-4 — *Overview of Space Communications Protocols*
 
-### Weeks 5–8: Data Link Layer Protocols
+### Data Link Layer Protocols
 - **TM Space Data Link Protocol (CCSDS 132.0):** Telemetry frames, virtual channels, idle data insertion
 - **TC Space Data Link Protocol (CCSDS 232.0):** Telecommand frames, COP-1 (reliable delivery), FARM/FOP state machines
 - **AOS Space Data Link Protocol (CCSDS 732.0):** Advanced Orbiting Systems — multiplexing, bitstream services
 - **Unified Space Data Link Protocol (USLP, CCSDS 732.1):** The modern replacement unifying TM, TC, and AOS
 - **Proximity-1 (CCSDS 211.x):** Short-range orbiter-to-lander/rover links (used on Mars missions)
 
-### Week 5: Application Layer
+### Application Layer
 - **Space Packet Protocol (CCSDS 133.0):** The primary application data unit — analogous to IP datagrams
 - **CCSDS File Delivery Protocol (CFDP, CCSDS 727.0):** Reliable file transfer for space — analogous to FTP but designed for disruption
 - **Asynchronous Message Service (AMS):** Publish-subscribe messaging for space
 
-### Week 6: Sync, Coding & Security
+### Sync, Coding & Security
 - **TM/TC Synchronization and Channel Coding:** Frame synchronization markers, randomization, Reed-Solomon, turbo, LDPC
 - **Space Data Link Security (SDLS, CCSDS 355.0):** Authentication and encryption at the data link layer — your TLS/mTLS experience maps here
 - **Space Link Extension (SLE):** How ground stations from different agencies interoperate — cross-support services
+
+---
+
+## 💻 C++ & Python Skills
+
+**C++ focus:** Variables, types, control flow, functions, arrays, pointers, binary I/O, bitwise operations
+**Python focus:** Basic scripting, matplotlib for visualization
+
+This is your first C++ module — you'll learn the language fundamentals by building practical tools that parse binary protocol data.
+
+---
+
+## Projects
+
+### Project 1: CCSDS Space Packet Parser (C++)
+
+Build a CLI tool that parses CCSDS Space Packet primary headers from binary data.
+
+**What you'll build:**
+- Parse the 6-byte primary header: version, type, secondary header flag, APID, sequence flags, sequence count, data length
+- Use `std::span` and bitwise ops for field extraction
+- Read binary files from stdin or file argument
+- Output parsed fields in a human-readable table
+
+**C++ skills used:** Binary I/O, bitwise operators, `std::span`, command-line arguments, `struct`
+
+**🔧 Toolkit:** This starts the **Space Network Toolkit** — save the parser as a reusable library (`PacketParser`)
+
+### Project 2: dB Conversion Toolkit (Python)
+
+Build a Python tool for RF power calculations.
+
+**What you'll build:**
+- Convert between linear power (Watts, milliwatts) and dB scales (dB, dBW, dBm)
+- Compute EIRP given transmit power and antenna gain
+- Chain gains and losses in a simple link budget
+- Visualize the CCSDS protocol stack layers as a diagram with matplotlib
+
+**Python skills used:** Functions, f-strings, matplotlib, basic NumPy
+
+---
 
 ## Protocol Reference Table
 
@@ -66,14 +126,3 @@ The CCSDS protocol stack is to space what the TCP/IP stack is to the internet. Y
 | CCSDS 130.0-G-4 (Green Book) | Entire document — the "map" |
 | CCSDS Blue Books (individual protocol specs) | Reference as needed per protocol |
 | *Satellite Communications Systems* (Maral et al.) | Ch. on data handling & protocols |
-
-## Math Used
-- **Finite state machines (Discrete Math):** COP-1 FARM/FOP state machines
-- **Binary arithmetic:** Frame header parsing, bit-level protocol fields
-
-## Hands-On Exercises
-
-1. **Packet Parser (C++):** Write a CCSDS Space Packet parser — parse the 6-byte primary header (version, type, APID, sequence, length). Use `std::span` and bitwise ops for field extraction
-2. **TM Frame Decoder (C++):** Decode a raw TM transfer frame — extract virtual channel ID, frame count, embedded packets. Build with CMake and gtest unit tests
-3. **COP-1 State Machine (C++):** Implement the FOP (Flight Ops Procedure) and FARM (Frame Acceptance and Reporting) state machines for TC acknowledgment — this maps directly to your TCP state machine knowledge
-4. **CFDP Sender/Receiver (Python):** Build a minimal CFDP Class 1 (unreliable) file delivery tool over a simulated lossy UDP link

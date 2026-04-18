@@ -1,15 +1,38 @@
-# Module 03: Delay-Tolerant Networking (DTN)
+# Module 04: Delay-Tolerant Networking
 
-**Duration:** 5 weeks
-**Prerequisites:** Modules 01–02
+**Phase:** 2 — Acceleration
+**Builds on:** Modules 01, 02, 03
 
 ---
 
-## What You'll Learn
+## 🔢 Math You'll Learn
+
+### Trigonometry Completion + Pre-Calculus Introduction
+
+Finishing trig and starting pre-calc — the bridge to calculus.
+
+- **Trig review & polar coordinates** — antenna radiation patterns are plotted in polar coordinates
+- **Angular velocity, arc length, radians** — satellite angular rate as seen from ground
+- **Functions, composition, inverses** — building mathematical models that chain together
+  - *Space application:* composing coordinate transforms, signal processing chains
+- **Parametric equations** — curves defined by a parameter (time)
+  - *Space application:* satellite ground tracks are parametric curves (lat(t), lon(t))
+- **Vectors introduction** — magnitude, direction, addition
+  - *Space application:* relative position and velocity between nodes in a DTN network
+
+**🔓 After this:** You can trace satellite ground tracks, work with antenna patterns, and reason about parametric motion.
+
+**Resources:**
+- Khan Academy — Trigonometry completion + Pre-Calculus (free)
+- *Precalculus: Mathematics for Calculus* — Stewart
+
+---
+
+## 🛰️ What You'll Learn
 
 DTN is the most important paradigm shift from terrestrial networking. TCP assumes end-to-end connectivity exists. DTN assumes it doesn't. You'll learn the Bundle Protocol, Licklider Transmission Protocol, and Contact Graph Routing — the core of how the "Solar System Internet" works.
 
-## The Problem DTN Solves
+### The Problem DTN Solves
 
 In terrestrial networks, if you send a TCP SYN, you expect a SYN-ACK within milliseconds. In space:
 - A Mars link has **4–24 minute one-way delay** (8–48 min round-trip)
@@ -19,9 +42,7 @@ In terrestrial networks, if you send a TCP SYN, you expect a SYN-ACK within mill
 
 DTN solves this with **store-and-forward** at the application layer, using custodial transfer where each node takes responsibility for data until the next hop is available.
 
-## Topics
-
-### Weeks 1–4: Bundle Protocol (BP)
+### Bundle Protocol (BP)
 - RFC 9171 (BPv7) — the current standard
 - Bundle structure: primary block, canonical blocks, payload block, extension blocks
 - Bundle endpoint IDs (EIDs) — `ipn:` and `dtn:` URI schemes
@@ -29,7 +50,7 @@ DTN solves this with **store-and-forward** at the application layer, using custo
 - Fragmentation and reassembly
 - How BP compares to IP — and why it's an overlay, not a replacement
 
-### Week 3: Licklider Transmission Protocol (LTP)
+### Licklider Transmission Protocol (LTP)
 - RFC 5326 — LTP specification
 - The "convergence layer" concept — how BP sits on top of LTP (or TCP, or UDP)
 - LTP segments: red parts (reliable) vs. green parts (unreliable)
@@ -37,19 +58,58 @@ DTN solves this with **store-and-forward** at the application layer, using custo
 - Why LTP exists: TCP can't handle 8-minute RTTs, but you still need reliability
 - **Your TCP expertise directly maps here** — LTP is essentially "TCP redesigned for space delays"
 
-### Week 4: Contact Graph Routing (CGR)
+### Contact Graph Routing (CGR) — Concepts
 - Time-variant routing: the topology changes on a schedule
 - Contact plans: list of (start_time, end_time, node_A, node_B, data_rate) tuples
 - Route computation: Dijkstra-like but over a time-expanded graph
-- Overbooking and congestion management
-- CGR in ION — NASA/JPL's reference implementation
+- *Note: Full CGR implementation comes in Module 12 (Capstone) after you learn Graph Theory*
 
-### Week 5: Integration & Deployment
+### Integration & Deployment
 - DTN on the ISS — operational since 2018
 - DTN in deep space: Mars relay network architecture
 - HDTN — NASA Glenn's High-rate DTN implementation
 - DTN for LEO constellations — emerging applications
-- DTN vs. TCP/IP in space: when to use which
+
+---
+
+## 💻 C++ & Python Skills
+
+**C++ focus:** Networking (POSIX sockets, UDP), serialization (CBOR via tinycbor), Boost.Asio intro, async I/O basics
+**Python focus:** Socket programming, scientific comparison, matplotlib for results
+
+---
+
+## Projects
+
+### Project 1: BPv7 Bundle Creator (C++)
+
+Build a library that creates, serializes, and parses Bundle Protocol v7 bundles.
+
+**What you'll build:**
+- Define bundle structures: primary block, payload block, extension blocks
+- Serialize bundles to CBOR format (using tinycbor or nlohmann/json for prototyping)
+- Parse CBOR-encoded bundles back into structured data
+- Support `ipn:` endpoint IDs
+- Build as a reusable library with CMake
+
+**C++ skills used:** Structs/classes, serialization, CBOR, CMake library targets, unit tests (gtest)
+
+**🔧 Toolkit:** Add `BundleProtocol` module to the Space Network Toolkit — builds on the `PacketParser` from Module 01
+
+### Project 2: DTN vs TCP File Transfer Experiment (Python)
+
+Compare file delivery over a simulated disrupted link using TCP vs. a simple store-and-forward approach.
+
+**What you'll build:**
+- Set up a simulated lossy, delayed link using `tc netem` (add 2-second delay, 10% packet loss)
+- Transfer a file using TCP sockets
+- Transfer the same file using a basic store-and-forward approach over UDP
+- Measure completion time for both, plot comparison with matplotlib
+- Write up findings: when does DTN-style delivery win?
+
+**Python skills used:** Socket programming, subprocess (for `tc netem`), timing, matplotlib
+
+---
 
 ## Protocol Reference Table
 
@@ -73,21 +133,6 @@ DTN solves this with **store-and-forward** at the application layer, using custo
 | LEO constellation store-forward | Research / startups | Emerging — DTN for IoT data mules |
 | Disaster/disrupted terrestrial | Military, humanitarian | DTN for networks with no infrastructure |
 
-## Companies & Organizations
-
-| Entity | Role | New/Legacy |
-|---|---|---|
-| NASA/JPL | ION-DTN development, CGR research | `[BOTH]` |
-| NASA Glenn | HDTN (High-rate DTN) | `[NEW SPACE]` |
-| ESA | µPCN, DTN for European missions | `[BOTH]` |
-| IETF DTN WG | Standards body for BP, LTP, TCPCL | `[BOTH]` |
-| CCSDS SIS Area | Space DTN standardization | `[BOTH]` |
-
-## Math Used
-- **Graph theory (Discrete Math):** CGR is Dijkstra over a time-expanded graph
-- **Queuing theory (Probability):** buffer management, bundle congestion
-- **Logarithms:** data rate calculations, contact capacity
-
 ## Books & Resources
 
 | Resource | Notes |
@@ -98,11 +143,3 @@ DTN solves this with **store-and-forward** at the application layer, using custo
 | CCSDS 734.x (DTN standards) | CCSDS profiling of BP for space missions |
 | ION-DTN Documentation | https://ion-dtn.readthedocs.io/ |
 | NASA HDTN GitHub | https://github.com/nasa/HDTN |
-
-## Hands-On Exercises
-
-1. **Deploy ION-DTN:** Set up NASA's ION on a VM using the DTN Development Kit ISO. Run the included tutorials — send bundles between nodes
-2. **Build a Minimal BP Forwarder (C++):** Implement BPv7 bundle creation, serialization (CBOR via tinycbor or nlohmann), and store-and-forward — start with `ipn:` EIDs
-3. **LTP Simulator (C++):** Build an LTP sender/receiver over UDP sockets. Implement red/green segments, checkpoints, and retransmission. Inject artificial delay (use `tc netem`) to simulate a 5-second one-way delay
-4. **CGR Path Finder (Python):** Given a contact plan (list of scheduled contacts), implement Dijkstra over a time-expanded graph using NetworkX to find the earliest-arrival path between two nodes
-5. **DTN vs TCP Experiment (Python):** Run a file transfer over a simulated disrupted link using both TCP and your BP implementation. Measure completion time, plot results with Matplotlib. Write up findings.

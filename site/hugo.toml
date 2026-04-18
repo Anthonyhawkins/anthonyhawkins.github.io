@@ -7,11 +7,11 @@ theme = "orbital"
   pagerSize = 10
 
 [params]
-  description = "A lead engineer's journey into satellite networking, space protocols, and the future of space communications."
+  description = "My journey into satellite networking, space protocols, and the future of space communications."
   author = "Anthony"
-  github = "https://github.com/anthony-username"
+  github = "https://github.com/anthonyhawkins"
   twitterHandle = ""
-  tagline = "One engineer's journey from TCP to space."
+  tagline = ""
 
 [menu]
   [[menu.main]]

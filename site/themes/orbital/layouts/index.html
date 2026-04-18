@@ -1,15 +1,11 @@
 {{ define "main" }}
 <section class="hero">
     <div class="hero-content">
-        <div class="hero-eyebrow">
-            <span class="pulse-dot"></span>
-            <span>IN TRANSIT</span>
-        </div>
         <h1 class="hero-title">Engineering the<br /><span class="gradient-text">Space Internet</span></h1>
         <p class="hero-subtitle">{{ .Site.Params.description }}</p>
         <div class="hero-cta">
-            <a href="{{ " /curriculum/" | relURL }}" class="btn btn-primary">View Curriculum</a>
-            <a href="{{ " /blog/" | relURL }}" class="btn btn-ghost">Read Journal</a>
+            <a href="{{ .Site.BaseURL }}curriculum/" class="btn btn-primary">View Curriculum</a>
+            <a href="{{ .Site.BaseURL }}blog/" class="btn btn-ghost">Read Journal</a>
         </div>
     </div>
     <div class="hero-visual">
@@ -25,14 +21,14 @@
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">Latest <span class="gradient-text">Journal Entries</span></h2>
-            <a href="{{ " /blog/" | relURL }}" class="section-link">All entries →</a>
+            <a href="{{ .Site.BaseURL }}blog/" class="section-link">All entries →</a>
         </div>
         <div class="post-grid">
             {{ $posts := where .Site.RegularPages "Section" "blog" }}
             {{ range first 3 $posts }}
             <article class="post-card">
                 <div class="post-card-meta">
-                    <time datetime="{{ .Date.Format " 2006-01-02" }}">{{ .Date.Format "Jan 02, 2006" }}</time>
+                    <time datetime="{{ .Date.Format `2006-01-02` }}">{{ .Date.Format `Jan 02, 2006` }}</time>
                     {{ with .Params.tags }}
                     <div class="post-tags">
                         {{ range first 2 . }}<span class="tag">{{ . }}</span>{{ end }}
@@ -53,8 +49,8 @@
 <section class="section curriculum-preview">
     <div class="container">
         <div class="section-header">
-            <h2 class="section-title">The <span class="gradient-text">Curriculum</span></h2>
-            <a href="{{ " /skill-tree/" | relURL }}" class="section-link">Full skill tree →</a>
+            <h2 class="section-title">Learning <span class="gradient-text">Trajectory</span></h2>
+            <a href="{{ .Site.BaseURL }}curriculum/" class="section-link">Full curriculum →</a>
         </div>
         <div class="module-grid">
             {{ $modules := where .Site.RegularPages "Section" "curriculum" }}

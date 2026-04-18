@@ -1,15 +1,65 @@
-# Skill Tree Completion Progress
-# Add a node's data-id value to this list to mark it as complete on the site.
-# After editing, redeploy (make deploy) for changes to take effect.
+# Skill Tree Progress
+# Set each node to one of: not_started, in_progress, complete
+# Outline colors: gray = not_started, blue = in_progress, green = complete
 #
-# Available node IDs:
-#   Tier 0: ccsds, dtn, ground, ntn, security, cpp-basics
-#   Tier 1: link-math, antenna-geo, dvb, coverage, cpp-oop
-#   Tier 2: kepler, ground-track, sdn, cpp-async
-#   Tier 3: orbital-vel, doppler, contact-energy, cpp-sockets
-#   Tier 4: spectral, coords, optical-isl, constellation, cpp-eigen
-#   Tier 5: ber, rain-fade, full-link, fec
-#   Tier 6: cgr, traffic-eng, fsm, leo-routing
+# Node IDs:
+#   Phase 1: ccsds, dtn, ground, ntn, security, cpp-basics
+#   Phase 2: link-math, antenna-geo, dvb, coverage, cpp-oop
+#           kepler, ground-track, sdn, cpp-async
+#   Phase 3: orbital-vel, doppler, contact-energy, cpp-sockets
+#            spectral, coords, optical-isl, constellation, cpp-eigen
+#   Phase 4: ber, rain-fade, full-link, fec
+#            cgr, traffic-eng, fsm, leo-routing
 #   Capstone: cap-sim, cap-network, cap-profile
 
-completed: []
+nodes:
+  # Phase 1 — Foundation
+  ccsds: in_progress
+  dtn: not_started
+  ground: not_started
+  ntn: not_started
+  security: not_started
+  cpp-basics: not_started
+
+  # Phase 2 — Acceleration (Tier 1)
+  link-math: not_started
+  antenna-geo: not_started
+  dvb: not_started
+  coverage: not_started
+  cpp-oop: not_started
+
+  # Phase 2 — Acceleration (Tier 2)
+  kepler: not_started
+  ground-track: not_started
+  sdn: not_started
+  cpp-async: not_started
+
+  # Phase 3 — Depth (Tier 3)
+  orbital-vel: not_started
+  doppler: not_started
+  contact-energy: not_started
+  cpp-sockets: not_started
+
+  # Phase 3 — Depth (Tier 4)
+  spectral: not_started
+  coords: not_started
+  optical-isl: not_started
+  constellation: not_started
+  cpp-eigen: not_started
+
+  # Phase 4 — Mastery (Tier 5)
+  ber: not_started
+  rain-fade: not_started
+  full-link: not_started
+  fec: not_started
+
+  # Phase 4 — Mastery (Tier 6)
+  cgr: not_started
+  traffic-eng: not_started
+  fsm: not_started
+  leo-routing: not_started
+
+  # Capstone
+  cap-sim: not_started
+  cap-network: not_started
+  cap-profile: not_started

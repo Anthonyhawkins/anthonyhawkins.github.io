@@ -18,47 +18,38 @@
 
     <div class="st-tree" id="skillTree">
 
-        <!-- ── TIER 0 ─────────────────────────────────────────────── -->
+        <!-- ── TIER 0 — PHASE 1: FOUNDATION ───────────────────────── -->
         <div class="st-tier" id="tier0">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 0</span>
-                <span class="tier-req req-now">No Prerequisites</span>
+                <span class="tier-num">PHASE 1</span>
+                <span class="tier-req req-now">Foundation — Algebra 2 + Trig</span>
             </div>
             <div class="st-row">
                 <div class="st-node node-now" data-tier="0">
                     <div class="node-icon">📡</div>
                     <div class="node-title">CCSDS Stack</div>
-                    <div class="node-sub">Space Packets · USLP · AOS</div>
+                    <div class="node-sub">Module 01 · Space Packets · dB Math</div>
                 </div>
                 <div class="st-node node-now" data-tier="0">
-                    <div class="node-icon">🔗</div>
-                    <div class="node-title">DTN / BPv7</div>
-                    <div class="node-sub">Bundle Protocol · LTP concept</div>
+                    <div class="node-icon">📊</div>
+                    <div class="node-title">Space Comms Foundations</div>
+                    <div class="node-sub">Module 02 · Frequencies · Delays</div>
                 </div>
                 <div class="st-node node-now" data-tier="0">
                     <div class="node-icon">🛰️</div>
                     <div class="node-title">Ground Segment</div>
-                    <div class="node-sub">Antenna · Mission Ops · Networks</div>
-                </div>
-                <div class="st-node node-now" data-tier="0">
-                    <div class="node-icon">🌐</div>
-                    <div class="node-title">5G NTN</div>
-                    <div class="node-sub">Non-Terrestrial Networks · NGSO</div>
-                </div>
-                <div class="st-node node-now" data-tier="0">
-                    <div class="node-icon">🔒</div>
-                    <div class="node-title">Space Security</div>
-                    <div class="node-sub">COMSEC · Crypto · ITAR</div>
+                    <div class="node-sub">Module 03 · Elevation · Slant Range</div>
                 </div>
                 <div class="st-node node-now" data-tier="0">
                     <div class="node-icon">💻</div>
-                    <div class="node-title">C++ Basics</div>
-                    <div class="node-sub">Types · Control flow · Functions</div>
+                    <div class="node-title">C++ Basics → OOP</div>
+                    <div class="node-sub">Types · Classes · STL · CMake</div>
                 </div>
             </div>
             <div class="st-project">
-                <span class="proj-label">🛠 Week 4 Project</span>
-                <strong>CCSDS Packet Parser</strong> — parse raw Space Packet headers in C++
+                <span class="proj-label">🛠 Module 01 Project</span>
+                <strong>CCSDS Packet Parser</strong> — parse raw Space Packet headers in C++ · starts the Space Network
+                Toolkit
             </div>
         </div>
 
@@ -67,249 +58,130 @@
             <div class="connector-text">complete Algebra 2 → Trigonometry</div>
         </div>
 
-        <!-- ── TIER 1 ─────────────────────────────────────────────── -->
+        <!-- ── TIER 1 — PHASE 2: ACCELERATION ────────────────────── -->
         <div class="st-tier" id="tier1">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 1</span>
-                <span class="tier-req req-math">Algebra 2 + Trig</span>
+                <span class="tier-num">PHASE 2</span>
+                <span class="tier-req req-math">Acceleration — Pre-Calc → Calc I</span>
             </div>
             <div class="st-row">
                 <div class="st-node node-math" data-tier="1">
-                    <div class="node-icon">📊</div>
-                    <div class="node-title">dB &amp; Link Math</div>
-                    <div class="node-sub">Logarithms · EIRP · Path Loss · G/T</div>
+                    <div class="node-icon">🔗</div>
+                    <div class="node-title">DTN / BPv7</div>
+                    <div class="node-sub">Module 04 · Bundle Protocol · LTP</div>
                 </div>
                 <div class="st-node node-math" data-tier="1">
                     <div class="node-icon">📐</div>
-                    <div class="node-title">Antenna Geometry</div>
-                    <div class="node-sub">Elevation · Beamwidth · Slant Range</div>
-                </div>
-                <div class="st-node node-math" data-tier="1">
-                    <div class="node-icon">👁️</div>
-                    <div class="node-title">Ground Coverage</div>
-                    <div class="node-sub">Visibility windows · Arc length</div>
+                    <div class="node-title">Link Engineering</div>
+                    <div class="node-sub">Module 05 · FSPL · Rain Fade · Margin</div>
                 </div>
                 <div class="st-node node-math" data-tier="1">
                     <div class="node-icon">📡</div>
-                    <div class="node-title">DVB-S2 / DVB-S2X</div>
-                    <div class="node-sub">Modulation · ACM · Efficiency</div>
+                    <div class="node-title">DVB Standards</div>
+                    <div class="node-sub">Module 06 · MODCOD · ACM · DAMA</div>
                 </div>
                 <div class="st-node node-math" data-tier="1">
-                    <div class="node-icon">⚙️</div>
-                    <div class="node-title">C++ OOP</div>
-                    <div class="node-sub">Classes · RAII · Pointers · STL</div>
+                    <div class="node-icon">🌐</div>
+                    <div class="node-title">5G NTN</div>
+                    <div class="node-sub">Module 07 · HARQ · Handover · D2D</div>
+                </div>
+                <div class="st-node node-math" data-tier="1">
+                    <div class="node-icon">🧵</div>
+                    <div class="node-title">C++ Networking</div>
+                    <div class="node-sub">Sockets · Threads · State Machines</div>
                 </div>
             </div>
             <div class="st-project">
-                <span class="proj-label">🛠 Week 10 Project</span>
-                <strong>Link Budget Calculator</strong> — compute dB margins + ground station visibility in C++
+                <span class="proj-label">🛠 Module 05 Project</span>
+                <strong>Link Budget Calculator</strong> — complete link budget with JSON config + gtest · adds to
+                Toolkit
             </div>
         </div>
 
         <div class="st-connector">
             <div class="connector-line"></div>
-            <div class="connector-text">complete Pre-Calculus</div>
+            <div class="connector-text">complete Calculus I → start Calculus II</div>
         </div>
 
-        <!-- ── TIER 2 ─────────────────────────────────────────────── -->
+        <!-- ── TIER 2 — PHASE 3: DEPTH ────────────────────────────── -->
         <div class="st-tier" id="tier2">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 2</span>
-                <span class="tier-req req-math">Pre-Calculus</span>
+                <span class="tier-num">PHASE 3</span>
+                <span class="tier-req req-math">Depth — Calc II · III · Linear Algebra</span>
             </div>
             <div class="st-row">
                 <div class="st-node node-math" data-tier="2">
-                    <div class="node-icon">🪐</div>
-                    <div class="node-title">Kepler Orbits</div>
-                    <div class="node-sub">Ellipses · Eccentricity · Orbital elements</div>
+                    <div class="node-icon">🛰️</div>
+                    <div class="node-title">LEO Constellations</div>
+                    <div class="node-sub">Module 08 · Walker · ISL Routing · 3D Vectors</div>
                 </div>
                 <div class="st-node node-math" data-tier="2">
-                    <div class="node-icon">🗺️</div>
-                    <div class="node-title">Ground Tracks</div>
-                    <div class="node-sub">Parametric curves · Subsatellite point</div>
+                    <div class="node-icon">🔭</div>
+                    <div class="node-title">Optical ISL</div>
+                    <div class="node-sub">Module 09 · Laser Links · Coord Transforms</div>
                 </div>
                 <div class="st-node node-math" data-tier="2">
                     <div class="node-icon">📶</div>
                     <div class="node-title">SDN for Space</div>
-                    <div class="node-sub">OpenFlow · Centralized control planes</div>
+                    <div class="node-sub">Module 10 · TS-SDN · Traffic Engineering</div>
                 </div>
                 <div class="st-node node-math" data-tier="2">
-                    <div class="node-icon">🧵</div>
-                    <div class="node-title">C++ Concurrency</div>
-                    <div class="node-sub">Threads · Mutexes · Async I/O</div>
+                    <div class="node-icon">⚙️</div>
+                    <div class="node-title">C++ Eigen &amp; Async</div>
+                    <div class="node-sub">Eigen · Boost.Graph · pybind11 · REST API</div>
                 </div>
+            </div>
+            <div class="st-project">
+                <span class="proj-label">🛠 Module 08 Project</span>
+                <strong>Constellation Topology Engine</strong> — orbit propagation + Dijkstra routing with Eigen &amp;
+                std::async
             </div>
         </div>
 
         <div class="st-connector">
             <div class="connector-line"></div>
-            <div class="connector-text">complete Calculus I</div>
+            <div class="connector-text">complete Linear Algebra → start Probability</div>
         </div>
 
-        <!-- ── TIER 3 ─────────────────────────────────────────────── -->
+        <!-- ── TIER 3 — PHASE 4: MASTERY ──────────────────────────── -->
         <div class="st-tier" id="tier3">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 3</span>
-                <span class="tier-req req-math">Calculus I</span>
+                <span class="tier-num">PHASE 4</span>
+                <span class="tier-req req-math">Mastery — Probability · Graph Theory</span>
             </div>
             <div class="st-row">
                 <div class="st-node node-math" data-tier="3">
-                    <div class="node-icon">🚀</div>
-                    <div class="node-title">Orbital Velocity</div>
-                    <div class="node-sub">v = d(pos)/dt · vis-viva equation</div>
+                    <div class="node-icon">🔒</div>
+                    <div class="node-title">Space Security</div>
+                    <div class="node-sub">Module 11 · SDLS · BPSec · BER Curves</div>
                 </div>
                 <div class="st-node node-math" data-tier="3">
-                    <div class="node-icon">〰️</div>
-                    <div class="node-title">Doppler Analysis</div>
-                    <div class="node-sub">Frequency shift = d(range)/dt</div>
-                </div>
-                <div class="st-node node-math" data-tier="3">
-                    <div class="node-icon">⚡</div>
-                    <div class="node-title">Contact Window Energy</div>
-                    <div class="node-sub">E = ∫ P(t) dt over satellite pass</div>
-                </div>
-                <div class="st-node node-math" data-tier="3">
-                    <div class="node-icon">🔌</div>
-                    <div class="node-title">C++ Sockets &amp; UDP</div>
-                    <div class="node-sub">POSIX sockets · Boost.Asio basics</div>
-                </div>
-            </div>
-            <div class="st-project">
-                <span class="proj-label">🛠 Week 22 Project</span>
-                <strong>LTP Simulator</strong> — Licklider Transmission Protocol over UDP with Doppler model
-            </div>
-        </div>
-
-        <div class="st-connector">
-            <div class="connector-line"></div>
-            <div class="connector-text">complete Calculus II · III · Linear Algebra</div>
-        </div>
-
-        <!-- ── TIER 4 ─────────────────────────────────────────────── -->
-        <div class="st-tier" id="tier4">
-            <div class="st-tier-label">
-                <span class="tier-num">TIER 4</span>
-                <span class="tier-req req-math">Calc II + III + Linear Algebra</span>
-            </div>
-            <div class="st-row">
-                <div class="st-node node-math" data-tier="4">
-                    <div class="node-icon">📡</div>
-                    <div class="node-title">Spectral Efficiency</div>
-                    <div class="node-sub">Fourier · Bandwidth · Shannon limit</div>
-                </div>
-                <div class="st-node node-math" data-tier="4">
-                    <div class="node-icon">🌍</div>
-                    <div class="node-title">Coordinate Frames</div>
-                    <div class="node-sub">ECI · ECEF · Topocentric · Rotation matrices</div>
-                </div>
-                <div class="st-node node-math" data-tier="4">
-                    <div class="node-icon">🔭</div>
-                    <div class="node-title">Optical ISL</div>
-                    <div class="node-sub">OISL · Pointing · Acquisition · Tracking</div>
-                </div>
-                <div class="st-node node-math" data-tier="4">
-                    <div class="node-icon">⚙️</div>
-                    <div class="node-title">C++ Eigen &amp; Boost</div>
-                    <div class="node-sub">Matrix ops · Graph library · Algorithms</div>
-                </div>
-                <div class="st-node node-math" data-tier="4">
-                    <div class="node-icon">🛰️</div>
-                    <div class="node-title">Constellation Geometry</div>
-                    <div class="node-sub">Walker · 3D vectors · Coverage math</div>
-                </div>
-            </div>
-            <div class="st-project">
-                <span class="proj-label">🛠 Week 38 Project</span>
-                <strong>Orbit Propagator</strong> — SGP4-lite in C++ using Eigen, plot ground tracks with
-                Python/Skyfield
-            </div>
-        </div>
-
-        <div class="st-connector">
-            <div class="connector-line"></div>
-            <div class="connector-text">complete Probability + Statistics</div>
-        </div>
-
-        <!-- ── TIER 5 ─────────────────────────────────────────────── -->
-        <div class="st-tier" id="tier5">
-            <div class="st-tier-label">
-                <span class="tier-num">TIER 5</span>
-                <span class="tier-req req-math">Probability + Statistics</span>
-            </div>
-            <div class="st-row">
-                <div class="st-node node-math" data-tier="5">
-                    <div class="node-icon">📉</div>
-                    <div class="node-title">BER &amp; Noise</div>
-                    <div class="node-sub">Eb/N₀ · Gaussian · BER curves · AWGN</div>
-                </div>
-                <div class="st-node node-math" data-tier="5">
-                    <div class="node-icon">🌧️</div>
-                    <div class="node-title">Rain Fade &amp; Availability</div>
-                    <div class="node-sub">ITU-R P.618 · Margin · Link availability</div>
-                </div>
-                <div class="st-node node-math" data-tier="5">
-                    <div class="node-icon">📡</div>
-                    <div class="node-title">Full Link Budget</div>
-                    <div class="node-sub">Noise + Margin + Availability combined</div>
-                </div>
-                <div class="st-node node-math" data-tier="5">
-                    <div class="node-icon">📦</div>
-                    <div class="node-title">LDPC / Turbo Codes</div>
-                    <div class="node-sub">Coding gain · DVB FEC schemes</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="st-connector">
-            <div class="connector-line"></div>
-            <div class="connector-text">complete Graph Theory + Discrete Math</div>
-        </div>
-
-        <!-- ── TIER 6 ─────────────────────────────────────────────── -->
-        <div class="st-tier" id="tier6">
-            <div class="st-tier-label">
-                <span class="tier-num">TIER 6</span>
-                <span class="tier-req req-math">Graph Theory + Optimization</span>
-            </div>
-            <div class="st-row">
-                <div class="st-node node-math" data-tier="6">
                     <div class="node-icon">🕸️</div>
-                    <div class="node-title">Contact Graph Routing</div>
-                    <div class="node-sub">CGR · Time-expanded graphs · Dijkstra</div>
+                    <div class="node-title">Graph Theory &amp; CGR</div>
+                    <div class="node-sub">Module 12 · Dijkstra · Time-expanded Graphs</div>
                 </div>
-                <div class="st-node node-math" data-tier="6">
-                    <div class="node-icon">🚦</div>
-                    <div class="node-title">Traffic Engineering</div>
-                    <div class="node-sub">LP/ILP · Scheduling · Multi-path</div>
-                </div>
-                <div class="st-node node-math" data-tier="6">
-                    <div class="node-icon">🔄</div>
-                    <div class="node-title">Protocol State Machines</div>
-                    <div class="node-sub">COP-1 · FARM · FOP · FSM design</div>
-                </div>
-                <div class="st-node node-math" data-tier="6">
-                    <div class="node-icon">🛰️</div>
-                    <div class="node-title">LEO Routing</div>
-                    <div class="node-sub">Handover · ISL topology · Disruption tolerance</div>
+                <div class="st-node node-math" data-tier="3">
+                    <div class="node-icon">⚙️</div>
+                    <div class="node-title">Production C++</div>
+                    <div class="node-sub">OpenSSL · gRPC · Distributed Systems</div>
                 </div>
             </div>
             <div class="st-project">
-                <span class="proj-label">🛠 Week 48 Project</span>
-                <strong>CGR Simulator</strong> — full Contact Graph Router using Boost.Graph, simulate a 24-satellite
-                constellation
+                <span class="proj-label">🛠 Module 11 Project</span>
+                <strong>SDLS Encryptor + BPSec</strong> — AES-GCM frame encryption with concurrent pipeline
             </div>
         </div>
 
         <div class="st-connector">
             <div class="connector-line"></div>
-            <div class="connector-text">all tiers complete</div>
+            <div class="connector-text">all modules complete</div>
         </div>
 
         <!-- ── CAPSTONE ────────────────────────────────────────────── -->
         <div class="st-tier tier-capstone" id="tierCapstone">
             <div class="st-tier-label">
                 <span class="tier-num">CAPSTONE</span>
-                <span class="tier-req req-capstone">Week 52</span>
+                <span class="tier-req req-capstone">Module 12 — Choose 2</span>
             </div>
             <div class="st-row">
                 <div class="st-node node-capstone" data-tier="capstone">

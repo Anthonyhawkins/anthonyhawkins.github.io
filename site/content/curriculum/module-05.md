@@ -1,101 +1,133 @@
 ---
-title: "Module 05: LEO Constellations & Routing"
+title: "Module 05: Satellite Link Engineering"
 module_number: 05
 weight: 05
 ---
 
 
-**Duration:** 5 weeks
-**Prerequisites:** Modules 01, 03, 04
+**Phase:** 2 — Acceleration
+**Builds on:** Modules 01, 02, 03
 
 ---
 
-## What You'll Learn
+## 🔢 Math You'll Learn
 
-How to design, model, and route traffic through large LEO constellations. This is where your networking skills become your superpower — constellation routing is essentially distributed systems + graph theory under extreme dynamism.
+### Pre-Calculus Completion + Calculus I Introduction
 
-## The Problem
+The math that makes satellite link design quantitative — and the start of calculus.
 
-A single LEO satellite sees a ground station for ~5–10 minutes per pass. A constellation of thousands of satellites creates a **continuously changing mesh topology** where:
-- Neighbors change every few minutes
-- Inter-satellite link (ISL) distances vary with orbital geometry
-- Ground station handover happens every ~15 seconds for a user terminal
-- You need end-to-end latency competitive with terrestrial fiber (~20–40ms)
+- **Exponential & logarithmic functions (deeper)** — exponential decay, log-linear relationships
+  - *Space application:* signal power decay models, noise floor calculations
+- **Conic sections — focus on ellipses** — eccentricity, semi-major axis, foci
+  - *Space application:* **Kepler's orbits are ellipses** — orbit shape, apogee/perigee geometry
+- **Calculus I: Limits & continuity** — the foundation for derivatives
+- **Calculus I: Derivatives — definition, power rule** — rate of change
+  - *Space application:* Doppler shift = d(range)/dt — the rate of change of distance to a satellite
 
-## Topics
+**🔓 After this:** You understand orbit shapes (ellipses), can compute Doppler shift conceptually, and can build complete link budgets.
 
-### Week 1: Constellation Design
-- Walker Delta and Walker Star patterns
-- Orbital planes, phasing, and the "seam" problem (counter-rotating planes)
-- Constellation parameters: altitude, inclination, satellites/plane, number of planes
-- Coverage analysis: latitude-dependent performance
-- Starlink's shell architecture (540km, 550km, 570km shells)
+**Resources:**
+- Khan Academy — Pre-Calculus completion (free)
+- *Calculus: Early Transcendentals* — James Stewart (Chapters 1–3)
+- 3Blue1Brown — *Essence of Calculus* (watch now!)
 
-### Weeks 3–6: Inter-Satellite Link Routing
-- **Static routing:** Pre-computed based on orbital mechanics (deterministic topology)
-- **Shortest-path:** Modified Dijkstra over time-varying topology snapshots
-- **Segment routing:** Pre-computed path segments, stitched at runtime
-- **+Grid routing:** Exploiting the regular grid structure of Walker constellations
-- **Bent-pipe vs. ISL:** When satellites relay to each other vs. always bounce to ground
-- Latency optimization: ISL path vs. fiber path — when does space routing win?
+---
 
-### Week 4: Ground Segment Integration
-- User terminal handover: beam switching, cell assignment
-- Gateway handover and load balancing
-- POP (Point of Presence) integration with terrestrial internet
-- Peering and traffic engineering at ground gateways
-- **This is where your edge routing experience is directly applicable**
+## 🛰️ What You'll Learn
 
-### Week 5: Traffic Engineering & QoS
-- Capacity allocation across ISL topology
-- Traffic matrices for a global constellation
-- Congestion management when ISL capacity is limited
-- QoS differentiation: real-time (voice/video) vs. bulk transfer
-- Multi-path routing and load spreading
+How to design a communication link that "closes" — meaning the signal arrives with enough energy to be decoded. This is the equivalent of "capacity planning" in terrestrial networking, except you're fighting physics instead of budget.
+
+### Link Budget Analysis
+- The link equation: EIRP + G/T - path loss - atmospheric loss = C/N₀
+- Transmit power, antenna gain, beamwidth
+- Free-space path loss (FSPL) — scales with distance² and frequency²
+- System noise temperature and noise figure
+- Eb/N₀ requirements for different modulation + coding schemes
+- Link margin philosophy: how much margin is enough?
+
+### Atmospheric Effects
+- Rain attenuation (ITU-R P.618 model) — critical for Ka-band and above
+- Gaseous absorption, cloud attenuation, scintillation
+- Faraday rotation at lower frequencies
+- Site diversity: using multiple ground stations to combat weather
+- Why Ka-band is dominant in new LEO constellations despite rain issues
+
+### Antenna Systems
+- Parabolic reflectors, phased arrays, flat-panel antennas
+- Antenna gain, beamwidth, sidelobe patterns
+- Electronically steered arrays (ESAs) — the key enabler for LEO user terminals
+- Multi-beam satellites and frequency reuse
+
+### Multiple Access & Capacity
+- FDMA, TDMA, CDMA, OFDMA — trade-offs for satellite
+- Demand assignment vs. fixed assignment
+- Bandwidth-limited vs. power-limited systems
+- Capacity calculations for a bent-pipe vs. regenerative transponder
+- High Throughput Satellites (HTS) — multi-spot-beam architecture
+
+---
+
+## 💻 C++ & Python Skills
+
+**C++ focus:** File I/O, JSON config parsing (nlohmann/json), CMake project structure, Google Test (gtest)
+**Python focus:** SciPy for statistical models, matplotlib for curves
+
+---
+
+## Projects
+
+### Project 1: Complete Link Budget Calculator (C++)
+
+Build a configurable link budget calculator with JSON input.
+
+**What you'll build:**
+- Read link parameters from a JSON config file (transmit power, antenna gain, frequency, distance, atmospheric model)
+- Compute full link budget: EIRP → path loss → atmospheric loss → G/T → C/N₀ → Eb/N₀ → link margin
+- Output a formatted link budget table (like a real engineering spreadsheet)
+- Support presets for common scenarios (LEO Ka-band, GEO Ku-band, Deep space X-band)
+- Unit tests with gtest for each calculation step
+
+**C++ skills used:** nlohmann/json, file I/O, gtest, CMake, structured output
+
+**🔧 Toolkit:** Add `LinkBudget` module to the Space Network Toolkit
+
+### Project 2: Rain Fade Availability Simulator (Python)
+
+Simulate how rain affects Ka-band link availability.
+
+**What you'll build:**
+- Implement a simplified ITU-R P.618 rain attenuation model
+- Given a ground station location and link frequency, calculate attenuation at different rain rates
+- Plot availability curves: what percentage of time does the link meet its margin requirement?
+- Compare Ka-band vs. Ku-band vs. X-band rain sensitivity
+- Show how site diversity (2 ground stations) improves availability
+
+**Python skills used:** SciPy, NumPy, matplotlib, statistical distributions
+
+---
 
 ## Protocol Reference Table
 
-| Protocol/Concept | Spec/Source | Problem It Solves | New/Legacy |
+| Protocol/Standard | Spec | Problem It Solves | New/Legacy |
 |---|---|---|---|
-| CGR (Contact Graph Routing) | CCSDS / ION | Time-variant routing with scheduled contacts | `[NEW SPACE]` |
-| Segment Routing (SRv6 in space) | Research (various) | Source-routing for deterministic path control | `[NEW SPACE]` |
-| OSPF/IS-IS adaptations | Research | Traditional IGP adapted for dynamic satellite topology | `[NEW SPACE]` |
-| BGP (ground peering) | RFC 4271 | Peering at satellite ground gateways | `[BOTH]` |
-| MPLS-TP | RFC 5921 | Label-switched paths for satellite backhaul | `[NEW SPACE]` |
+| ITU-R P.618 | ITU | Rain attenuation prediction | `[BOTH]` |
+| ITU-R S.1503 | ITU | EPFD limits — interference to GEO from NGSO | `[BOTH]` |
+| DVB-S2X ACM | ETSI EN 302 307-2 | Adaptive coding/modulation for varying link conditions | `[NEW SPACE]` |
 
 ## Where This Tech Is Used
 
-| System | Company | Satellites | ISLs | Notes |
-|---|---|---|---|---|
-| Starlink | SpaceX | ~6,000+ | Laser (4 per sat) | Largest operational LEO constellation |
-| Kuiper | Amazon | 3,236 planned | Laser | Launching 2026+ |
-| OneWeb (Eutelsat) | Eutelsat | ~648 | No ISLs (bent-pipe) | GW-reliant architecture |
-| Lightspeed | Telesat | 188 planned | Laser | Enterprise/gov focus |
-| SDA Transport Layer | US DoD / SDA | ~300+ | Laser | Military PWSA mesh |
-| Rivada | Rivada Space | 600 planned | Laser mesh | Network-as-a-service |
-
-## Math Used
-- **Graph theory:** Dijkstra's algorithm, time-expanded graphs for CGR
-- **Linear algebra:** Coordinate transforms for satellite positions (ECI↔ECEF↔lat/lon)
-- **Calculus III:** Orbital velocity vectors, relative geometry between satellites
-- **Linear programming:** Traffic engineering optimization
-- **Probability:** Queuing theory for traffic modeling
+| Application | Companies | Notes |
+|---|---|---|
+| LEO user terminal design | SpaceX (Starlink), Amazon (Kuiper) | Phased array design, Ka-band links |
+| GEO HTS operations | Viasat, Hughes (EchoStar), SES | Multi-spot-beam capacity planning |
+| Ground gateway design | SpaceX, Amazon, Telesat | Gateway diversity, rain mitigation |
+| Deep space comms | NASA DSN, ESA ESTRACK | X-band and Ka-band link budgets |
+| CubeSat missions | Planet Labs, Spire | Low-power S/X-band link design |
 
 ## Books & Resources
 
-| Resource | Notes |
+| Resource | Chapters/Sections |
 |---|---|
-| *Satellite Communications Systems* (Maral et al.) | Constellation design chapters |
-| *SMAD* (Larson & Wertz) | Constellation design methodology |
-| *Delay-Tolerant Satellite Networks* (Fraire, Burleigh) | CGR algorithms and analysis |
-| Papers: Handley 2018 — "Delay is Not an Option" | Foundational analysis of Starlink routing |
-| Papers: Bhattacherjee et al. — "Network Topology Design at 27000 km/h" | Grid routing for LEO constellations |
-| Hypatia simulator | https://github.com/snkas/hypatia |
-
-## Hands-On Exercises
-
-1. **Constellation Visualizer (Python):** Generate and visualize a Walker Delta constellation with Matplotlib/Plotly. Compute ISL link geometry over one orbital period using Skyfield
-2. **Shortest Path Router (C++):** Given a snapshot of constellation topology (nodes + links with latency weights), implement Dijkstra to find the lowest-latency path between two cities. Use Boost.Graph or a hand-written adjacency list
-3. **Latency Comparison (Python):** For 10 city pairs (NYC↔London, LA↔Tokyo, etc.), compute: (a) great-circle fiber latency, (b) satellite ISL latency through your constellation. Plot comparative bar charts with Matplotlib
-4. **Handover Simulator (Python):** Simulate a user terminal's view of the constellation. Track which satellite is "serving" at each timestep and how often handover occurs
-5. **Hypatia Lab:** Set up the Hypatia simulator, define a Starlink-like constellation, and run routing experiments
+| *Satellite Communications* (Pratt et al.) | Ch. 4–6 (Link budgets, propagation, multiple access) |
+| *Satellite Comms Systems Engineering* (Ippolito) | Entire book focuses on this |
+| *Satellite Comms Systems* (Maral et al.) | Ch. 5–7 (Link design, multiple access) |

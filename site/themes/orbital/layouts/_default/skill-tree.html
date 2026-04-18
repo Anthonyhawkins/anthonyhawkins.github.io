@@ -5,22 +5,26 @@
         <div class="st-header-inner">
             <div class="hero-eyebrow"><span class="pulse-dot"></span><span>UNLOCK MAP</span></div>
             <h1 class="st-title">Skill <span class="gradient-text">Tree</span></h1>
-            <p class="st-subtitle">Start at the top. Each tier unlocks as you complete its math prerequisite.<br>Click
-                any node to view details and mark it complete.</p>
+            <div class="st-legend">
+                <span class="legend-item"><span class="legend-dot ld-notstarted"></span>Not Started</span>
+                <span class="legend-item"><span class="legend-dot ld-inprogress"></span>In Progress</span>
+                <span class="legend-item"><span class="legend-dot ld-complete"></span>Complete</span>
+            </div>
         </div>
     </header>
 
-    {{ $completedJSON := "[]" }}
+    {{ $nodeStates := dict }}
     {{ with .Site.Data.skill_progress }}
-    {{ $completedJSON = .completed | jsonify }}
+    {{ $nodeStates = .nodes }}
     {{ end }}
+    {{ $nodeStatesJSON := $nodeStates | jsonify }}
     <div class="st-tree" id="skillTree">
 
         <!-- ── TIER 0 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier0">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 0</span>
-                <span class="tier-req req-now">No Prerequisites — Start Now</span>
+                <span class="tier-num">PHASE 1</span>
+                <span class="tier-req req-now">Foundation — Algebra 2 + Trig</span>
             </div>
             <div class="st-row">
                 <div class="st-node" data-id="ccsds" data-tag="ccsds" data-title="CCSDS Stack"
@@ -73,8 +77,8 @@
                 </div>
             </div>
             <div class="st-project">
-                <span class="proj-label">🛠 Week 8 Project</span>
-                <strong>CCSDS Packet Parser</strong> — parse raw Space Packet headers in C++
+                <span class="proj-label">🛠 Module 01 Project</span>
+                <strong>CCSDS Packet Parser</strong> — parse raw Space Packet headers in C++ · starts the Toolkit
             </div>
         </div>
 
@@ -86,8 +90,8 @@
         <!-- ── TIER 1 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier1">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 1</span>
-                <span class="tier-req req-math">Algebra 2 + Trig</span>
+                <span class="tier-num">PHASE 2</span>
+                <span class="tier-req req-math">Acceleration — Pre-Calc → Calc I</span>
             </div>
             <div class="st-row">
                 <div class="st-node" data-id="link-math" data-tag="link-budget" data-title="dB & Link Math"
@@ -132,21 +136,22 @@
                 </div>
             </div>
             <div class="st-project">
-                <span class="proj-label">🛠 Week 20 Project</span>
-                <strong>Link Budget Calculator</strong> — compute dB margins + ground station visibility in C++
+                <span class="proj-label">🛠 Module 05 Project</span>
+                <strong>Link Budget Calculator</strong> — complete link budget with JSON config + gtest · adds to
+                Toolkit
             </div>
         </div>
 
         <div class="st-connector">
             <div class="connector-line"></div>
-            <div class="connector-text">complete Pre-Calculus</div>
+            <div class="connector-text">complete Calculus I → start Calculus II</div>
         </div>
 
         <!-- ── TIER 2 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier2">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 2</span>
-                <span class="tier-req req-math">Pre-Calculus</span>
+                <span class="tier-num">PHASE 2</span>
+                <span class="tier-req req-math">Pre-Calculus → Calculus I</span>
             </div>
             <div class="st-row">
                 <div class="st-node" data-id="kepler" data-tag="orbital-mechanics" data-title="Kepler Orbits"
@@ -186,14 +191,14 @@
 
         <div class="st-connector">
             <div class="connector-line"></div>
-            <div class="connector-text">complete Calculus I</div>
+            <div class="connector-text">complete Calculus II · III</div>
         </div>
 
         <!-- ── TIER 3 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier3">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 3</span>
-                <span class="tier-req req-math">Calculus I</span>
+                <span class="tier-num">PHASE 3</span>
+                <span class="tier-req req-math">Depth — Calc II + III + Linear Algebra</span>
             </div>
             <div class="st-row">
                 <div class="st-node" data-id="orbital-vel" data-tag="orbital-mechanics"
@@ -231,21 +236,22 @@
                 </div>
             </div>
             <div class="st-project">
-                <span class="proj-label">🛠 Week 44 Project</span>
-                <strong>LTP Simulator</strong> — Licklider Transmission Protocol over UDP with Doppler frequency model
+                <span class="proj-label">🛠 Module 08 Project</span>
+                <strong>Constellation Topology Engine</strong> — orbit propagation + Dijkstra routing with Eigen &
+                std::async
             </div>
         </div>
 
         <div class="st-connector">
             <div class="connector-line"></div>
-            <div class="connector-text">complete Calculus II · III · Linear Algebra</div>
+            <div class="connector-text">complete Linear Algebra → start Probability</div>
         </div>
 
         <!-- ── TIER 4 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier4">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 4</span>
-                <span class="tier-req req-math">Calc II + III + Linear Algebra</span>
+                <span class="tier-num">PHASE 3</span>
+                <span class="tier-req req-math">Linear Algebra + Optimization</span>
             </div>
             <div class="st-row">
                 <div class="st-node" data-id="spectral" data-tag="modulation" data-title="Spectral Efficiency"
@@ -291,9 +297,8 @@
                 </div>
             </div>
             <div class="st-project">
-                <span class="proj-label">🛠 Week 76 Project</span>
-                <strong>Orbit Propagator</strong> — SGP4-lite in C++ using Eigen, plot ground tracks with
-                Python/Skyfield
+                <span class="proj-label">🛠 Module 10 Project</span>
+                <strong>SDN Controller</strong> — REST API for satellite mesh routing · ties Toolkit together
             </div>
         </div>
 
@@ -305,8 +310,8 @@
         <!-- ── TIER 5 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier5">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 5</span>
-                <span class="tier-req req-math">Probability + Statistics</span>
+                <span class="tier-num">PHASE 4</span>
+                <span class="tier-req req-math">Mastery — Probability + Graph Theory</span>
             </div>
             <div class="st-row">
                 <div class="st-node" data-id="ber" data-tag="link-budget" data-title="BER & Noise Analysis"
@@ -346,13 +351,13 @@
 
         <div class="st-connector">
             <div class="connector-line"></div>
-            <div class="connector-text">complete Graph Theory + Discrete Math</div>
+            <div class="connector-text">complete Graph Theory + Optimization</div>
         </div>
 
         <!-- ── TIER 6 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier6">
             <div class="st-tier-label">
-                <span class="tier-num">TIER 6</span>
+                <span class="tier-num">PHASE 4</span>
                 <span class="tier-req req-math">Graph Theory + Optimization</span>
             </div>
             <div class="st-row">
@@ -391,22 +396,21 @@
                 </div>
             </div>
             <div class="st-project">
-                <span class="proj-label">🛠 Week 96 Project</span>
-                <strong>CGR Simulator</strong> — full Contact Graph Router using Boost.Graph, simulate a 24-satellite
-                constellation
+                <span class="proj-label">🛠 Module 11 Project</span>
+                <strong>SDLS Encryptor + BPSec</strong> — AES-GCM frame encryption with concurrent pipeline
             </div>
         </div>
 
         <div class="st-connector">
             <div class="connector-line"></div>
-            <div class="connector-text">all tiers complete</div>
+            <div class="connector-text">all modules complete</div>
         </div>
 
         <!-- ── CAPSTONE ────────────────────────────────────────────── -->
         <div class="st-tier tier-capstone" id="tierCapstone">
             <div class="st-tier-label">
                 <span class="tier-num">CAPSTONE</span>
-                <span class="tier-req req-capstone">Week 104</span>
+                <span class="tier-req req-capstone">Module 12 — Choose 2</span>
             </div>
             <div class="st-row">
                 <div class="st-node node-capstone" data-id="cap-sim" data-tag="constellation"
@@ -600,14 +604,73 @@
         box-shadow: 0 12px 40px rgba(255, 255, 255, 0.07);
     }
 
-    /* Completed state */
-    .st-node.node-done {
-        border-color: rgba(160, 185, 160, 0.35) !important;
-        background: rgba(100, 160, 100, 0.04) !important;
+    /* Legend */
+    .st-legend {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1.75rem;
+        flex-wrap: wrap;
+        margin-top: 1.5rem;
     }
 
-    .st-node.node-done .node-title {
-        color: #9ab89a;
+    .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.8rem;
+        color: #8892a4;
+        letter-spacing: 0.05em;
+    }
+
+    .legend-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 2px solid;
+        background: transparent;
+    }
+
+    .ld-notstarted {
+        border-color: #4a5568;
+    }
+
+    .ld-inprogress {
+        border-color: #3b82f6;
+    }
+
+    .ld-complete {
+        border-color: #22c55e;
+    }
+
+    /* Progress state outlines — outline only, no fill change */
+    .st-node.node-not-started {
+        border-color: rgba(74, 85, 104, 0.5);
+    }
+
+    .st-node.node-in-progress {
+        border-color: rgba(59, 130, 246, 0.7) !important;
+        box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
+    }
+
+    .st-node.node-in-progress:hover {
+        border-color: rgba(59, 130, 246, 1) !important;
+        box-shadow: 0 8px 28px rgba(59, 130, 246, 0.25);
+    }
+
+    .st-node.node-complete {
+        border-color: rgba(34, 197, 94, 0.7) !important;
+        box-shadow: 0 0 12px rgba(34, 197, 94, 0.1);
+    }
+
+    .st-node.node-complete:hover {
+        border-color: rgba(34, 197, 94, 1) !important;
+        box-shadow: 0 8px 28px rgba(34, 197, 94, 0.2);
+    }
+
+    /* keep old node-done for JS localStorage compat */
+    .st-node.node-done {
+        border-color: rgba(34, 197, 94, 0.7) !important;
     }
 
     .node-check {
@@ -615,12 +678,13 @@
         top: 7px;
         right: 9px;
         font-size: 0.65rem;
-        color: #4a7c4a;
+        color: #22c55e;
         opacity: 0;
         transition: opacity 0.2s;
         font-weight: 700;
     }
 
+    .st-node.node-complete .node-check,
     .st-node.node-done .node-check {
         opacity: 1;
     }
@@ -902,70 +966,68 @@
 
 <script>
     (function () {
-        const STORAGE_KEY = 'ev-skill-complete';
         const BASE = '{{ .Site.BaseURL }}';
 
-        // Load completed from localStorage
-        function loadDone() {
-            try { return JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}'); } catch { return {}; }
-        }
-        function saveDone(d) {
-            try { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); } catch { }
-        }
+        // Server-side states from skill_progress.yaml
+        const yamlStates = JSON.parse({{ $nodeStatesJSON }});
 
-        // Apply completed state on load
-        function applyState() {
-            const done = loadDone();
-            document.querySelectorAll('.st-node[data-id]').forEach(n => {
-                if (done[n.dataset.id]) n.classList.add('node-done');
-                else n.classList.remove('node-done');
-            });
-        }
-
-        // Modal elements
-        const backdrop = document.getElementById('stBackdrop');
-        const modal = document.getElementById('stModal');
-        const closeBtn = document.getElementById('stModalClose');
-        const postsLink = document.getElementById('stModalPostsLink');
-
-        function openModal(node) {
-            activeId = node.dataset.id;
-            document.getElementById('stModalIcon').textContent = node.querySelector('.node-icon').textContent;
-            document.getElementById('stModalTitle').textContent = node.dataset.title;
-            document.getElementById('stModalDesc').textContent = node.dataset.desc;
-
-            // Resources
-            const list = document.getElementById('stResourceList');
-            list.innerHTML = '';
-            (node.dataset.resources || '').split('|').forEach(r => {
-                if (r.trim()) { const li = document.createElement('li'); li.textContent = r.trim(); list.appendChild(li); }
-            });
-
-            // Posts link
-            const tag = node.dataset.tag || '';
-            postsLink.href = BASE.replace(/\/$/, '') + '/tags/' + tag + '/';
-            postsLink.textContent = '📖 View journal posts →';
-
-            backdrop.classList.add('open');
-            modal.classList.add('open');
-            backdrop.setAttribute('aria-hidden', 'false');
-        }
-
-        function closeModal() {
-            backdrop.classList.remove('open');
-            modal.classList.remove('open');
-            backdrop.setAttribute('aria-hidden', 'true');
-        }
-
-        closeBtn.addEventListener('click', closeModal);
-        backdrop.addEventListener('click', closeModal);
-        document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
+    // Apply YAML-driven state classes
+    function applyYamlStates() {
         document.querySelectorAll('.st-node[data-id]').forEach(node => {
-            node.addEventListener('click', () => openModal(node));
+            const id = node.dataset.id;
+            const state = yamlStates[id] || 'not_started';
+            node.classList.remove('node-not-started', 'node-in-progress', 'node-complete');
+            if (state === 'complete') {
+                node.classList.add('node-complete');
+            } else if (state === 'in_progress') {
+                node.classList.add('node-in-progress');
+            } else {
+                node.classList.add('node-not-started');
+            }
+        });
+    }
+
+    // Modal elements
+    const backdrop = document.getElementById('stBackdrop');
+    const modal = document.getElementById('stModal');
+    const closeBtn = document.getElementById('stModalClose');
+    const postsLink = document.getElementById('stModalPostsLink');
+
+    function openModal(node) {
+        document.getElementById('stModalIcon').textContent = node.querySelector('.node-icon').textContent;
+        document.getElementById('stModalTitle').textContent = node.dataset.title;
+        document.getElementById('stModalDesc').textContent = node.dataset.desc;
+
+        const list = document.getElementById('stResourceList');
+        list.innerHTML = '';
+        (node.dataset.resources || '').split('|').forEach(r => {
+            if (r.trim()) { const li = document.createElement('li'); li.textContent = r.trim(); list.appendChild(li); }
         });
 
-        applyState();
-    })();
+        const tag = node.dataset.tag || '';
+        postsLink.href = BASE.replace(/\/$/, '') + '/tags/' + tag + '/';
+        postsLink.textContent = '📖 View journal posts →';
+
+        backdrop.classList.add('open');
+        modal.classList.add('open');
+        backdrop.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+        backdrop.classList.remove('open');
+        modal.classList.remove('open');
+        backdrop.setAttribute('aria-hidden', 'true');
+    }
+
+    closeBtn.addEventListener('click', closeModal);
+    backdrop.addEventListener('click', closeModal);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    document.querySelectorAll('.st-node[data-id]').forEach(node => {
+        node.addEventListener('click', () => openModal(node));
+    });
+
+    applyYamlStates();
+    }) ();
 </script>
 {{ end }}

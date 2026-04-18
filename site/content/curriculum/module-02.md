@@ -1,84 +1,118 @@
 ---
-title: "Module 02: CCSDS Protocol Stack"
+title: "Module 02: Foundations of Space Communications"
 module_number: 02
 weight: 02
 ---
 
 
-**Duration:** 6 weeks
-**Prerequisites:** Module 01
+**Phase:** 1 — Foundation
+**Builds on:** Module 01
 
 ---
 
-## What You'll Learn
+## 🔢 Math You'll Learn
 
-The CCSDS protocol stack is to space what the TCP/IP stack is to the internet. You'll learn its layered architecture — from Space Packets down to physical-layer framing — and understand which missions use which protocols and why.
+### Algebra 2 Completion + Trigonometry Introduction
 
-## Topics
+You'll finish Algebra 2 and begin trigonometry — the math that unlocks satellite geometry.
 
-### Weeks 1–4: Architecture Overview
-- CCSDS layered reference model vs. OSI vs. TCP/IP
-- The three link types: Space Link (long-range), Proximity Link (short-range), Ground-Ground
-- Transfer frames vs. packets: why space uses both
-- Read: CCSDS 130.0-G-4 — *Overview of Space Communications Protocols*
+- **Sequences & summation notation** — time-series data, telemetry streams, serial data patterns
+- **Unit circle, sin/cos/tan** — the foundation for all satellite geometry
+  - *Space application:* elevation angle = arctan(height/distance) — when can a ground station see a satellite?
+- **Inverse trig functions** — computing angles from known distances
+  - *Space application:* determining look angles for antenna pointing
 
-### Weeks 5–8: Data Link Layer Protocols
-- **TM Space Data Link Protocol (CCSDS 132.0):** Telemetry frames, virtual channels, idle data insertion
-- **TC Space Data Link Protocol (CCSDS 232.0):** Telecommand frames, COP-1 (reliable delivery), FARM/FOP state machines
-- **AOS Space Data Link Protocol (CCSDS 732.0):** Advanced Orbiting Systems — multiplexing, bitstream services
-- **Unified Space Data Link Protocol (USLP, CCSDS 732.1):** The modern replacement unifying TM, TC, and AOS
-- **Proximity-1 (CCSDS 211.x):** Short-range orbiter-to-lander/rover links (used on Mars missions)
+**🔓 After this:** You understand the basic geometry of space communication — why signals weaken, how orbits affect links, and what frequency bands are used for what.
 
-### Week 5: Application Layer
-- **Space Packet Protocol (CCSDS 133.0):** The primary application data unit — analogous to IP datagrams
-- **CCSDS File Delivery Protocol (CFDP, CCSDS 727.0):** Reliable file transfer for space — analogous to FTP but designed for disruption
-- **Asynchronous Message Service (AMS):** Publish-subscribe messaging for space
+**Resources:**
+- Khan Academy — Algebra 2 (sequences) + Trigonometry intro (free)
+- Textbook: *Algebra and Trigonometry* — Stewart, Redlin, Watson
 
-### Week 6: Sync, Coding & Security
-- **TM/TC Synchronization and Channel Coding:** Frame synchronization markers, randomization, Reed-Solomon, turbo, LDPC
-- **Space Data Link Security (SDLS, CCSDS 355.0):** Authentication and encryption at the data link layer — your TLS/mTLS experience maps here
-- **Space Link Extension (SLE):** How ground stations from different agencies interoperate — cross-support services
+---
 
-## Protocol Reference Table
+## 🛰️ What You'll Learn
 
-| Protocol | CCSDS Doc | Layer | Problem It Solves | New/Legacy | Who Uses It |
-|---|---|---|---|---|---|
-| Space Packet Protocol | 133.0-B | Application | Standard data unit format across agencies | `[BOTH]` | All CCSDS-compliant missions |
-| TM Data Link | 132.0-B | Data Link | Multiplexed telemetry downlink | `[LEGACY]` | ISS, most Earth orbiters |
-| TC Data Link | 232.0-B | Data Link | Reliable commanding with COP-1 | `[LEGACY]` | Most missions |
-| AOS Data Link | 732.0-B | Data Link | High-rate, multi-service downlink | `[LEGACY]` | ISS, high-rate science missions |
-| USLP | 732.1-B | Data Link | Unified modern replacement for TM/TC/AOS | `[NEW SPACE]` | Next-gen missions, Lunar Gateway |
-| Proximity-1 | 211.x-B | Physical + Data Link | Short-range links (orbiter↔lander) | `[BOTH]` | Mars rovers (Curiosity, Perseverance) |
-| CFDP | 727.0-B | Application | Reliable file delivery over disrupted links | `[BOTH]` | Deep space missions, ISS |
-| SDLS | 355.0-B | Data Link | Link-layer encryption and authentication | `[NEW SPACE]` | Classified & sensitive missions |
-| SLE | 911.x-B | Cross-support | Ground station interoperability | `[LEGACY]` | DSN, ESTRACK, JAXA |
+How communication works between Earth and space — the physical constraints, the space environment, and why terrestrial networking assumptions break down. This is the conceptual foundation for everything that follows.
+
+### The Space Environment
+- Speed of light delay: LEO (~4–40ms), MEO (~120ms), GEO (~600ms round-trip)
+- Signal attenuation: free-space path loss, atmospheric absorption, rain fade
+- The space radiation environment and its effect on electronics (SEU, TID)
+- Why terrestrial networking assumptions break in space
+
+### Frequency Bands & Spectrum
+- Frequency bands used in space: UHF, S, X, Ku, Ka, V, optical
+- Atmospheric absorption windows — why certain frequencies work and others don't
+- ITU Radio Regulations and frequency coordination
+- Trade-offs: bandwidth vs. rain fade vs. antenna size
+
+### Communication Link Concepts
+- The communication chain: transmitter → channel → receiver
+- Modulation basics: BPSK, QPSK, 8PSK, QAM (conceptual — you'll revisit with Calc II math in Module 06)
+- Error correction concepts: why we need FEC, convolutional codes, turbo codes, LDPC
+- Multiplexing: FDMA, TDMA, CDMA (high-level trade-offs)
+
+### Orbits Overview (Conceptual)
+- LEO vs. MEO vs. GEO vs. HEO — trade-offs for communications
+- Why orbit altitude determines delay, coverage, and link budget
+- The concept of ground track patterns and revisit time
+- *Note: Full orbital mechanics math comes in Module 08 after you learn Calc III*
+
+---
+
+## 💻 C++ & Python Skills
+
+**C++ focus:** Control flow, functions, basic classes, constructors, enums
+**Python focus:** NumPy arrays, matplotlib plotting, formatted output
+
+---
+
+## Projects
+
+### Project 1: Signal Propagation Delay Calculator (C++)
+
+Build a CLI tool that computes signal propagation characteristics for different orbit types.
+
+**What you'll build:**
+- Compute one-way and round-trip delay for any orbit altitude (speed of light)
+- Compute free-space path loss (FSPL) for different frequency bands (S, X, Ka) at different altitudes — uses your dB math from Module 01
+- Output a formatted comparison table: LEO vs. MEO vs. GEO at each band
+
+**C++ skills used:** Functions, classes, enums for orbit/band types, formatted output with `<iomanip>`
+
+### Project 2: Frequency Band & Atmospheric Window Plotter (Python)
+
+Build a visualization of space communication frequency bands.
+
+**What you'll build:**
+- Plot the electromagnetic spectrum from UHF to optical with labeled space bands
+- Overlay atmospheric absorption curves (approximate) showing why Ka-band has rain issues
+- Annotate which bands each major constellation uses (Starlink: Ka/Ku, Iridium: L, etc.)
+
+**Python skills used:** matplotlib subplots, annotations, NumPy for curves
+
+---
+
+## Protocols & Standards Introduced
+
+| Protocol/Standard | Type | Problem It Solves | New/Legacy |
+|---|---|---|---|
+| ITU Radio Regulations | Regulatory | Frequency coordination & interference management | `[BOTH]` |
+| CCSDS 401.0 (RF & Modulation) | Physical layer | Standardized space link physical parameters | `[LEGACY]` evolving |
+| DVB-S2 (overview) | Physical layer | Efficient satellite broadcast modulation & coding | `[BOTH]` |
 
 ## Where This Tech Is Used
 
-| Application | Companies/Agencies | Notes |
+| Application | Companies | Description |
 |---|---|---|
-| Deep space exploration | NASA/JPL, ESA, JAXA | CCSDS is mandatory for interoperability |
-| ISS operations | NASA, ESA, JAXA, CSA | Uses TM, TC, AOS, CFDP |
-| Mars surface operations | NASA/JPL | Proximity-1 for MRO↔rover relay |
-| Lunar Gateway | NASA, ESA | Will use USLP and CFDP |
-| CubeSat/SmallSat missions | Universities, startups | Increasingly adopting CCSDS for interop |
-| Commercial ground station networks | KSAT, SSC, AWS Ground Station | SLE for cross-support |
+| Direct-to-Earth observation downlink | Planet Labs, Capella Space, BlackSky | Satellites photograph Earth, downlink imagery to ground stations |
+| GEO broadcast and broadband | SES, Intelsat, Eutelsat | Traditional TV broadcast and enterprise VSAT |
+| LEO broadband | SpaceX (Starlink), Amazon (Kuiper), OneWeb | Consumer/enterprise internet via satellite constellation |
 
 ## Books & Resources
 
 | Resource | Chapters/Sections |
 |---|---|
-| CCSDS 130.0-G-4 (Green Book) | Entire document — the "map" |
-| CCSDS Blue Books (individual protocol specs) | Reference as needed per protocol |
-| *Satellite Communications Systems* (Maral et al.) | Ch. on data handling & protocols |
-
-## Math Used
-- **Finite state machines (Discrete Math):** COP-1 FARM/FOP state machines
-- **Binary arithmetic:** Frame header parsing, bit-level protocol fields
-
-## Hands-On Exercises
-
-1. **Packet Parser (C++):** Write a CCSDS Space Packet parser — parse the 6-byte primary header (version, type, APID, sequence, length). Use `std::span` and bitwise ops for field extraction
-2. **TM Frame Decoder (C++):** Decode a raw TM transfer frame — extract virtual channel ID, frame count, embedded packets. Build with CMake and gtest unit tests
-3. **COP-1 State Machine (C++):** Implement the FOP (Flight Ops Procedure) and FARM (Frame Acceptance and Reporting) state machines for TC acknowledgment — this maps directly to your TCP state machine knowledge
-4. **CFDP Sender/Receiver (Python):** Build a minimal CFDP Class 1 (unreliable) file delivery tool over a simulated lossy UDP link
+| *Satellite Communications* (Pratt et al.) | Ch. 1–2 (Propagation, frequency bands) |
+| *Satellite Comms & Networking with Python* (Flux) | Ch. 1–2 (Signal basics) |
+| CCSDS 401.0-B (RF & Modulation) | Overview sections |

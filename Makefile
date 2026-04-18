@@ -34,6 +34,12 @@ new-module: ## Create a new curriculum module: make new-module NAME=module-13-so
 check: ## Run hugo's built-in content checks
 	cd $(SITE_DIR) && $(HUGO) --printPathWarnings --printUnusedTemplates
 
-deploy: build ## Build and push to gh-pages branch (manual deploy)
-	@echo "NOTE: GitHub Actions handles deploy automatically on push to main."
-	@echo "For a manual deploy, run: git push origin main"
+deploy: build ## Build and push to GitHub Pages
+	@echo "Deploying to GitHub Pages..."
+	cd $(PUBLIC_DIR) && \
+	git init && \
+	git checkout -B main && \
+	git add . && \
+	git commit -m "Deploy to GitHub Pages" && \
+	git push -f https://github.com/Anthonyhawkins/anthonyhawkins.github.io.git main
+	@echo "Deployed successfully!"

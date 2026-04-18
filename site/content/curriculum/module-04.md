@@ -1,83 +1,150 @@
 ---
-title: "Module 04: Satellite Link Engineering"
+title: "Module 04: Delay-Tolerant Networking"
 module_number: 04
 weight: 04
 ---
 
 
-**Duration:** 6 weeks
-**Prerequisites:** Module 01
+**Phase:** 2 — Acceleration
+**Builds on:** Modules 01, 02, 03
 
 ---
 
-## What You'll Learn
+## 🔢 Math You'll Learn
 
-How to design a communication link that closes — meaning the signal arrives with enough energy to be decoded. This is the equivalent of "capacity planning" in terrestrial networking, except you're fighting physics instead of budget.
+### Trigonometry Completion + Pre-Calculus Introduction
 
-## Topics
+Finishing trig and starting pre-calc — the bridge to calculus.
 
-### Weeks 1–4: Link Budget Analysis
-- The link equation: EIRP + G/T - path loss - atmospheric loss = C/N₀
-- Transmit power, antenna gain, beamwidth
-- Free-space path loss (FSPL) — scales with distance² and frequency²
-- System noise temperature and noise figure
-- Eb/N₀ requirements for different modulation + coding schemes
-- Link margin philosophy: how much margin is enough?
+- **Trig review & polar coordinates** — antenna radiation patterns are plotted in polar coordinates
+- **Angular velocity, arc length, radians** — satellite angular rate as seen from ground
+- **Functions, composition, inverses** — building mathematical models that chain together
+  - *Space application:* composing coordinate transforms, signal processing chains
+- **Parametric equations** — curves defined by a parameter (time)
+  - *Space application:* satellite ground tracks are parametric curves (lat(t), lon(t))
+- **Vectors introduction** — magnitude, direction, addition
+  - *Space application:* relative position and velocity between nodes in a DTN network
 
-### Week 3: Atmospheric Effects
-- Rain attenuation (ITU-R P.618 model) — critical for Ka-band and above
-- Gaseous absorption, cloud attenuation, scintillation
-- Faraday rotation at lower frequencies
-- Site diversity: using multiple ground stations to combat weather
-- Why Ka-band is dominant in new LEO constellations despite rain issues
+**🔓 After this:** You can trace satellite ground tracks, work with antenna patterns, and reason about parametric motion.
 
-### Week 4: Antenna Systems
-- Parabolic reflectors, phased arrays, flat-panel antennas
-- Antenna gain, beamwidth, sidelobe patterns
-- Electronically steered arrays (ESAs) — the key enabler for LEO user terminals
-- Multi-beam satellites and frequency reuse
+**Resources:**
+- Khan Academy — Trigonometry completion + Pre-Calculus (free)
+- *Precalculus: Mathematics for Calculus* — Stewart
 
-### Weeks 9–12: Multiple Access & Capacity
-- FDMA, TDMA, CDMA, OFDMA — trade-offs for satellite
-- Demand assignment vs. fixed assignment
-- Bandwidth-limited vs. power-limited systems
-- Capacity calculations for a bent-pipe vs. regenerative transponder
-- High Throughput Satellites (HTS) — multi-spot-beam architecture
+---
+
+## 🛰️ What You'll Learn
+
+DTN is the most important paradigm shift from terrestrial networking. TCP assumes end-to-end connectivity exists. DTN assumes it doesn't. You'll learn the Bundle Protocol, Licklider Transmission Protocol, and Contact Graph Routing — the core of how the "Solar System Internet" works.
+
+### The Problem DTN Solves
+
+In terrestrial networks, if you send a TCP SYN, you expect a SYN-ACK within milliseconds. In space:
+- A Mars link has **4–24 minute one-way delay** (8–48 min round-trip)
+- A LEO satellite has **~5 minutes of contact** per ground station pass
+- Links are **scheduled**, not always-on — a node may only be reachable at specific orbital windows
+- TCP's assumption of continuous end-to-end path **completely breaks**
+
+DTN solves this with **store-and-forward** at the application layer, using custodial transfer where each node takes responsibility for data until the next hop is available.
+
+### Bundle Protocol (BP)
+- RFC 9171 (BPv7) — the current standard
+- Bundle structure: primary block, canonical blocks, payload block, extension blocks
+- Bundle endpoint IDs (EIDs) — `ipn:` and `dtn:` URI schemes
+- Custody transfer and bundle status reports
+- Fragmentation and reassembly
+- How BP compares to IP — and why it's an overlay, not a replacement
+
+### Licklider Transmission Protocol (LTP)
+- RFC 5326 — LTP specification
+- The "convergence layer" concept — how BP sits on top of LTP (or TCP, or UDP)
+- LTP segments: red parts (reliable) vs. green parts (unreliable)
+- Checkpoint/report retransmission mechanism
+- Why LTP exists: TCP can't handle 8-minute RTTs, but you still need reliability
+- **Your TCP expertise directly maps here** — LTP is essentially "TCP redesigned for space delays"
+
+### Contact Graph Routing (CGR) — Concepts
+- Time-variant routing: the topology changes on a schedule
+- Contact plans: list of (start_time, end_time, node_A, node_B, data_rate) tuples
+- Route computation: Dijkstra-like but over a time-expanded graph
+- *Note: Full CGR implementation comes in Module 12 (Capstone) after you learn Graph Theory*
+
+### Integration & Deployment
+- DTN on the ISS — operational since 2018
+- DTN in deep space: Mars relay network architecture
+- HDTN — NASA Glenn's High-rate DTN implementation
+- DTN for LEO constellations — emerging applications
+
+---
+
+## 💻 C++ & Python Skills
+
+**C++ focus:** Networking (POSIX sockets, UDP), serialization (CBOR via tinycbor), Boost.Asio intro, async I/O basics
+**Python focus:** Socket programming, scientific comparison, matplotlib for results
+
+---
+
+## Projects
+
+### Project 1: BPv7 Bundle Creator (C++)
+
+Build a library that creates, serializes, and parses Bundle Protocol v7 bundles.
+
+**What you'll build:**
+- Define bundle structures: primary block, payload block, extension blocks
+- Serialize bundles to CBOR format (using tinycbor or nlohmann/json for prototyping)
+- Parse CBOR-encoded bundles back into structured data
+- Support `ipn:` endpoint IDs
+- Build as a reusable library with CMake
+
+**C++ skills used:** Structs/classes, serialization, CBOR, CMake library targets, unit tests (gtest)
+
+**🔧 Toolkit:** Add `BundleProtocol` module to the Space Network Toolkit — builds on the `PacketParser` from Module 01
+
+### Project 2: DTN vs TCP File Transfer Experiment (Python)
+
+Compare file delivery over a simulated disrupted link using TCP vs. a simple store-and-forward approach.
+
+**What you'll build:**
+- Set up a simulated lossy, delayed link using `tc netem` (add 2-second delay, 10% packet loss)
+- Transfer a file using TCP sockets
+- Transfer the same file using a basic store-and-forward approach over UDP
+- Measure completion time for both, plot comparison with matplotlib
+- Write up findings: when does DTN-style delivery win?
+
+**Python skills used:** Socket programming, subprocess (for `tc netem`), timing, matplotlib
+
+---
 
 ## Protocol Reference Table
 
-| Protocol/Standard | Spec | Problem It Solves | New/Legacy |
-|---|---|---|---|
-| ITU-R P.618 | ITU | Rain attenuation prediction | `[BOTH]` |
-| ITU-R S.1503 | ITU | EPFD limits — interference to GEO from NGSO | `[BOTH]` |
-| DVB-S2X ACM | ETSI EN 302 307-2 | Adaptive coding/modulation for varying link conditions | `[NEW SPACE]` |
+| Protocol | Spec | Layer | Problem It Solves | New/Legacy | Who Uses It |
+|---|---|---|---|---|---|
+| Bundle Protocol v7 | RFC 9171 | Overlay/Application | Store-and-forward across disrupted links | `[NEW SPACE]` | ISS, future deep space missions |
+| Bundle Protocol v6 | RFC 5050 | Overlay/Application | Original BP (being superseded) | `[LEGACY]` | Early ISS DTN experiments |
+| LTP | RFC 5326 | Convergence Layer | Reliable transfer over long-delay links | `[NEW SPACE]` | Deep space, ISS |
+| TCPCL (TCP Conv. Layer) | RFC 9174 | Convergence Layer | BP over TCP for ground segments | `[BOTH]` | Ground networks |
+| UDPCL | Draft | Convergence Layer | BP over UDP for low-overhead links | `[NEW SPACE]` | Experimental |
+| CGR | CCSDS Green Book | Routing | Time-variant multi-hop routing | `[NEW SPACE]` | ION, research networks |
+| BIBE | RFC 9172 | Tunneling | BP-in-BP encapsulation for admin regions | `[NEW SPACE]` | Future architectures |
 
 ## Where This Tech Is Used
 
-| Application | Companies | Notes |
+| Application | Organizations | Status |
 |---|---|---|
-| LEO user terminal design | SpaceX (Starlink), Amazon (Kuiper) | Phased array design, Ka-band links |
-| GEO HTS operations | Viasat, Hughes (EchoStar), SES | Multi-spot-beam capacity planning |
-| Ground gateway design | SpaceX, Amazon, Telesat | Gateway diversity, rain mitigation |
-| Deep space comms | NASA DSN, ESA ESTRACK | X-band and Ka-band link budgets |
-| CubeSat missions | Planet Labs, Spire | Low-power S/X-band link design |
+| ISS payload data relay | NASA | **Operational** since 2018 |
+| Mars relay network | NASA/JPL | DTN planned for future surface ops |
+| Lunar communications | NASA (LunaNet) | DTN is baseline architecture |
+| LEO constellation store-forward | Research / startups | Emerging — DTN for IoT data mules |
+| Disaster/disrupted terrestrial | Military, humanitarian | DTN for networks with no infrastructure |
 
 ## Books & Resources
 
-| Resource | Chapters/Sections |
+| Resource | Notes |
 |---|---|
-| *Satellite Communications* (Pratt et al.) | Ch. 4–6 (Link budgets, propagation, multiple access) |
-| *Satellite Comms Systems Engineering* (Ippolito) | Entire book focuses on this |
-| *Satellite Comms Systems* (Maral et al.) | Ch. 5–7 (Link design, multiple access) |
-
-## Math Used
-- **Logarithms:** Everything in a link budget is dB — addition in log domain = multiplication in linear
-- **Calculus:** Integration for total received energy, thermal noise power
-- **Probability:** BER curves, rain attenuation statistics, availability calculations
-- **Trigonometry:** Elevation angle, slant range geometry
-
-## Hands-On Exercises
-
-1. **Link Budget Calculator (Python):** Build a link budget calculator for a LEO-to-ground Ka-band link using NumPy. Include FSPL, atmospheric attenuation, antenna gain, and required Eb/N₀. Output a formatted table
-2. **Rain Fade Simulator (Python):** Implement the ITU-R P.618 rain attenuation model with SciPy. Given a ground station location and link frequency, calculate and plot availability at different rain rates
-3. **Capacity Planner (C++):** For a given satellite with N spot beams, each with a specific bandwidth and frequency reuse pattern, calculate total forward and return capacity. Build as a CLI tool with JSON config input
+| RFC 9171 (BPv7) | **Read this first.** The actual standard. |
+| RFC 5326 (LTP) | LTP specification — compare mentally to TCP |
+| *Delay-Tolerant Satellite Networks* (Fraire, Burleigh) | **The** book for this module — by the creators of CGR and ION |
+| CCSDS 734.x (DTN standards) | CCSDS profiling of BP for space missions |
+| ION-DTN Documentation | https://ion-dtn.readthedocs.io/ |
+| NASA HDTN GitHub | https://github.com/nasa/HDTN |

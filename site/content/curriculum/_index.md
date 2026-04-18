@@ -1,4 +1,4 @@
 +++
 title = "Curriculum"
-description = "A 52-week parallel-track study plan for space networking."
+description = "A self-paced study plan for space networking — learn the math, learn the topic, build the project."
 +++

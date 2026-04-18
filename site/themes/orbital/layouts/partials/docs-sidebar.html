@@ -5,7 +5,7 @@
     <nav class="sidebar-nav">
         <ul class="sidebar-list">
             <li>
-                <a href="{{ " /curriculum/" | relURL }}" class="sidebar-link {{ if eq .RelPermalink " /curriculum/"
+                <a href="{{ .Site.BaseURL }}curriculum/" class="sidebar-link {{ if eq .RelPermalink ` /curriculum/`
                     }}active{{ end }}">
                     <span class="sidebar-icon">⬡</span> Overview
                 </a>
