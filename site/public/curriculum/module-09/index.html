@@ -1,20 +1,446 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="My journey into satellite networking, space protocols, and the future of space communications."><title>Module 09: Optical Inter-Satellite Links (OISL) | Escape Velocity</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel=stylesheet><link rel=stylesheet href="https://anthony-hawkins.github.io/space-networking/css/orbital.css?v=1776219886"></head><body><div class=starfield id=starfield></div><header class=site-header><nav class=nav-container><a href=https://anthony-hawkins.github.io/space-networking/ class=nav-logo><span class=logo-icon>◈</span>
-<span class=logo-text>Escape Velocity</span></a><ul class=nav-links><li><a href=/space-networking/>Home</a></li><li><a href=/space-networking/blog/>Journal</a></li><li><a href=/space-networking/skill-tree/>Skill Tree</a></li><li><a href=/space-networking/curriculum/>Curriculum</a></li><li><a href=/space-networking/about/>About</a></li></ul><button class=nav-toggle id=navToggle aria-label="Toggle navigation">
-<span></span><span></span><span></span></button></nav></header><main class=site-main><div class="docs-layout container"><aside class=docs-sidebar><div class=sidebar-header><h3 class=sidebar-title>Curriculum</h3></div><nav class=sidebar-nav><ul class=sidebar-list><li><a href=https://anthony-hawkins.github.io/space-networking/curriculum/ class=sidebar-link><span class=sidebar-icon>⬡</span> Overview</a></li><li><a href=/space-networking/curriculum/learning-path/ class=sidebar-link><span class=sidebar-number>00</span>
-<span class=sidebar-text>Learning Path</span></a></li><li><a href=/space-networking/curriculum/module-01/ class=sidebar-link><span class=sidebar-number>01</span>
-<span class=sidebar-text>Module 01: CCSDS Protocol Stack</span></a></li><li><a href=/space-networking/curriculum/module-02/ class=sidebar-link><span class=sidebar-number>02</span>
-<span class=sidebar-text>Module 02: Foundations of Space Communications</span></a></li><li><a href=/space-networking/curriculum/module-03/ class=sidebar-link><span class=sidebar-number>03</span>
-<span class=sidebar-text>Module 03: Ground Segment Architecture</span></a></li><li><a href=/space-networking/curriculum/module-04/ class=sidebar-link><span class=sidebar-number>04</span>
-<span class=sidebar-text>Module 04: Delay-Tolerant Networking</span></a></li><li><a href=/space-networking/curriculum/module-05/ class=sidebar-link><span class=sidebar-number>05</span>
-<span class=sidebar-text>Module 05: Satellite Link Engineering</span></a></li><li><a href=/space-networking/curriculum/module-06/ class=sidebar-link><span class=sidebar-number>06</span>
-<span class=sidebar-text>Module 06: DVB Standards & Satellite Broadband</span></a></li><li><a href=/space-networking/curriculum/module-07/ class=sidebar-link><span class=sidebar-number>07</span>
-<span class=sidebar-text>Module 07: 5G Non-Terrestrial Networks (NTN)</span></a></li><li><a href=/space-networking/curriculum/module-08/ class=sidebar-link><span class=sidebar-number>08</span>
-<span class=sidebar-text>Module 08: LEO Constellations & Routing</span></a></li><li><a href=/space-networking/curriculum/module-09/ class="sidebar-link active"><span class=sidebar-number>09</span>
-<span class=sidebar-text>Module 09: Optical Inter-Satellite Links (OISL)</span></a></li><li><a href=/space-networking/curriculum/module-10/ class=sidebar-link><span class=sidebar-number>10</span>
-<span class=sidebar-text>Module 10: SDN & Autonomous Network Management</span></a></li><li><a href=/space-networking/curriculum/module-11/ class=sidebar-link><span class=sidebar-number>11</span>
-<span class=sidebar-text>Module 11: Security in Space Networks</span></a></li><li><a href=/space-networking/curriculum/module-12/ class=sidebar-link><span class=sidebar-number>12</span>
-<span class=sidebar-text>Module 12: Capstone Projects</span></a></li></ul></nav></aside><div class=docs-content><article class=module-single><header class="module-header docs-header"><div class=module-header-meta style=margin-bottom:1rem;display:flex;gap:.75rem;flex-wrap:wrap><span class=module-number-lg style=color:#60a5fa;font-weight:600;letter-spacing:.05em>Module %!d(float64=09)</span>
-<span class=math-badge style="background:rgba(245,158,11,.1);color:#f59e0b;padding:.2rem .6rem;border-radius:4px;font-size:.75rem">Requires:</span></div><h1 class=docs-title>Module 09: Optical Inter-Satellite Links (OISL)</h1></header><div class="module-body prose docs-body"><p><strong>Phase:</strong> 3 — Depth
-<strong>Builds on:</strong> Modules 05, 08</p><hr><h2 id=-math-youll-learn>🔢 Math You&rsquo;ll Learn</h2><h3 id=calculus-iii-completion--linear-algebra>Calculus III Completion + Linear Algebra</h3><p>Coordinate transforms and rotation matrices — the math behind reference frame conversions.</p><ul><li><strong>Calc III: Coordinate systems</strong> — Cartesian, spherical, cylindrical<ul><li><em>Space application:</em> lat/lon/alt ↔ ECEF ↔ ECI — the core coordinate frames for space</li></ul></li><li><strong>Linear algebra: Matrices</strong> — operations, inverse, transpose, determinant</li><li><strong>Linear algebra: Rotation matrices & coordinate transforms</strong> — the core tool for space math<ul><li><em>Space application:</em> ECI ↔ ECEF ↔ topocentric ↔ body frame — every space system uses these</li><li><em>Space application:</em> pointing vectors for laser terminals</li></ul></li><li><strong>Linear algebra: Eigenvalues & eigenvectors (basics)</strong> — stability analysis<ul><li><em>Space application:</em> principal axes, stability of pointing systems</li></ul></li></ul><p><strong>🔓 After this:</strong> You can transform between any coordinate frame and implement reference frame conversions — essential for laser pointing.</p><p><strong>Resources:</strong></p><ul><li><em>Calculus: Early Transcendentals</em> — Stewart (Chapters 15–16)</li><li><em>Introduction to Linear Algebra</em> — Gilbert Strang</li><li>3Blue1Brown — <em>Essence of Linear Algebra</em></li><li>MIT OCW 18.06 (full course, free)</li></ul><hr><h2 id=-what-youll-learn>🛰️ What You&rsquo;ll Learn</h2><p>Optical (laser) inter-satellite links are the backbone of modern constellations — they&rsquo;re what turn thousands of individual satellites into a coherent global network. You&rsquo;ll learn how they work physically, the networking challenges they introduce, and why they represent the biggest growth area in space networking.</p><h3 id=the-problem-oisl-solves>The Problem OISL Solves</h3><p>RF inter-satellite links are bandwidth-limited. Optical/laser links provide:</p><ul><li><strong>10–100+ Gbps</strong> data rates (vs. RF ISL ~Mbps–low Gbps)</li><li><strong>No spectrum licensing</strong> needed (laser frequencies are unregulated in space)</li><li><strong>Narrow beamwidth</strong> = low probability of intercept/interference</li><li><strong>Lower SWaP</strong> (size, weight, power) per Gbps</li></ul><p>The trade-off: pointing accuracy must be <strong>sub-microradian</strong> — you&rsquo;re aiming a laser at a target moving at 7.5 km/s, hundreds or thousands of km away.</p><h3 id=physics--hardware>Physics & Hardware</h3><ul><li>Free-space optical communication principles</li><li>Laser types: DPSSL, fiber lasers, semiconductor</li><li>Modulation formats: OOK, BPSK, DPSK, coherent detection</li><li>Laser communication terminals (LCTs): gimbal-based vs. MEMS vs. liquid crystal</li><li>Acquisition, tracking, and pointing (ATP) subsystem</li><li>Point-ahead angle: accounting for light travel time</li></ul><h3 id=link-design>Link Design</h3><ul><li>Optical link budget: transmit power, divergence, aperture, detector sensitivity</li><li>Background noise: sun, Earth albedo, other satellites</li><li>Atmospheric effects on optical ground links (scintillation, clouds)</li><li>Optical ground stations and site diversity</li></ul><h3 id=networking-over-oisl>Networking Over OISL</h3><ul><li>Mesh topology formation: which satellites link to which?</li><li>4-link topology: intra-plane (±1) + cross-plane (±1) — the standard approach</li><li>Link scheduling: when to acquire/release optical links</li><li>Integration of L2/L3 routing into optical terminals</li><li><strong>This is where the industry is heading:</strong> satellites as network routers</li></ul><h3 id=industry--future-directions>Industry & Future Directions</h3><ul><li>Starlink laser ISL deployment and capabilities</li><li>Cislunar optical links (LCRD, ILLUMA-T demonstrations)</li><li>Deep space optical: DSOC (NASA&rsquo;s Deep Space Optical Communications)</li><li>Quantum key distribution (QKD) over satellite optical links</li></ul><hr><h2 id=-c--python-skills>💻 C++ & Python Skills</h2><p><strong>C++ focus:</strong> pybind11 (Python/C++ interop), performance-critical patterns, Eigen for coordinate transforms
-<strong>Python focus:</strong> Matplotlib animation, NumPy for optical link geometry, Plotly for heatmaps</p><hr><h2 id=projects>Projects</h2><h3 id=project-1-oisl-mesh-topology-generator-c>Project 1: OISL Mesh Topology Generator (C++)</h3><p>Build a high-performance engine that computes optical link topology for a constellation.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Given Walker constellation parameters (from Module 08&rsquo;s <code>ConstellationEngine</code>), compute the 4-link OISL topology at each timestep</li><li>Implement coordinate transforms: ECI ↔ ECEF ↔ satellite body frame using rotation matrices (Eigen)</li><li>Compute pointing vectors for each laser terminal (which direction to aim)</li><li>Calculate point-ahead angle for each link</li><li>Output topology snapshots as JSON for visualization</li><li>Use concurrent computation for multi-satellite processing</li></ul><p><strong>C++ skills used:</strong> Eigen (rotation matrices), concurrent computation, pybind11 wrapper for Python visualization, JSON output, performance optimization</p><p><strong>🔧 Toolkit:</strong> Add <code>ISLTopology</code> module to the Space Network Toolkit</p><h3 id=project-2-optical-link-budget--atp-visualization-python>Project 2: Optical Link Budget & ATP Visualization (Python)</h3><p>Visualize optical link performance and laser acquisition.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Compute received power for a LEO-LEO laser link given: transmit power, beam divergence, aperture diameter, range, pointing loss</li><li>Plot sensitivity curves: received power vs. range for different aperture sizes</li><li>Animate the ATP acquisition process: spatial uncertainty cone → spiral scan → lock</li><li>Build a global latency heatmap using Module 08&rsquo;s router + your OISL topology</li></ul><p><strong>Python skills used:</strong> NumPy, matplotlib animation, Plotly for heatmaps, calling C++ via pybind11</p><hr><h2 id=technology-reference>Technology Reference</h2><table><thead><tr><th>Technology</th><th>Problem It Solves</th><th>New/Legacy</th><th>Who Uses It</th></tr></thead><tbody><tr><td>Coherent optical detection</td><td>Higher data rates + sensitivity</td><td><code>[NEW SPACE]</code></td><td>Mynaric, CACI, Tesat-Spacecom</td></tr><tr><td>ATP (Acq/Track/Point)</td><td>Establishing/maintaining laser lock</td><td><code>[BOTH]</code></td><td>All OISL vendors</td></tr><tr><td>WDM in free-space optical</td><td>Multiplying capacity per link</td><td><code>[NEW SPACE]</code></td><td>Research, emerging products</td></tr><tr><td>CCSDS Optical Comms standards</td><td>Interoperability for optical links</td><td><code>[NEW SPACE]</code></td><td>CCSDS member agencies</td></tr></tbody></table><h2 id=companies>Companies</h2><table><thead><tr><th>Company</th><th>Product/Focus</th><th>New/Legacy</th></tr></thead><tbody><tr><td><strong>Mynaric</strong> (Germany/US)</td><td>CONDOR laser terminals, high-volume manufacturing</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>Tesat-Spacecom</strong> (Germany)</td><td>LCT heritage (EDRS), new SmartLCT products</td><td><code>[BOTH]</code></td></tr><tr><td><strong>CACI</strong> (ex-SA Photonics)</td><td>Laser comms terminals for DoD/SDA</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>SpaceX</strong></td><td>Custom-built laser ISLs for Starlink (in-house)</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>Honeywell</strong></td><td>Optical terminals for SDA satellites</td><td><code>[BOTH]</code></td></tr><tr><td><strong>NASA/JPL</strong></td><td>DSOC, LCRD, ILLUMA-T demos</td><td><code>[BOTH]</code></td></tr></tbody></table><h2 id=books--resources>Books & Resources</h2><table><thead><tr><th>Resource</th><th>Notes</th></tr></thead><tbody><tr><td><em>Free-Space Laser Communications</em> (Hemmati, ed.)</td><td>Comprehensive reference on optical link physics</td></tr><tr><td>CCSDS Optical Communications Working Group docs</td><td>Standards in development</td></tr><tr><td>NASA DSOC results papers</td><td><a href=https://www.nasa.gov/mission/dsoc/>https://www.nasa.gov/mission/dsoc/</a></td></tr></tbody></table></div><footer class="module-footer docs-footer"><div class=docs-nav style="display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)"><a href=/space-networking/curriculum/module-10/ class="docs-nav-link prev" style="text-decoration:none;color:var(--text-secondary);transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>← Previous</div><div class=nav-title style=color:#fff;font-weight:500>Module 10: SDN & Autonomous Network Management</div></a><a href=/space-networking/curriculum/module-08/ class="docs-nav-link next" style="text-decoration:none;color:var(--text-secondary);text-align:right;transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>Next →</div><div class=nav-title style=color:#fff;font-weight:500>Module 08: LEO Constellations & Routing</div></a></div></footer></article></div></div></main><footer class=site-footer><div class=footer-container><div class=footer-brand><span class=logo-icon>◈</span>
-<span>Escape Velocity</span></div><p class=footer-tagline></p><div class=footer-links><a href=https://github.com/anthonyhawkins target=_blank rel=noopener>GitHub</a></div><p class=footer-copy>Built with Hugo. Deployed to GitHub Pages.</p></div></footer><script src=https://anthony-hawkins.github.io/space-networking/js/orbital.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="My journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1776821511" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="http://localhost:1313/space-networking/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Path</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Starlink System Model, Public Data, and RF Units</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: Starlink RF Foundations and Phased-Array Access Links</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Variable Links, Handover Resilience, and Transport Behavior</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Starlink Security, Resilience, and Operational Reliability</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Starlink-Focused Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 09</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Phase:</strong> 3 - Depth
+<strong>Builds on:</strong> Modules 05 and 08</p>
+<hr>
+<h2 id="math-youll-learn">Math You&rsquo;ll Learn</h2>
+<h3 id="calculus-iii-completion--linear-algebra">Calculus III Completion + Linear Algebra</h3>
+<p>Optical inter-satellite links require coordinate transforms, relative motion, pointing vectors, and graph constraints.</p>
+<ul>
+<li><strong>Coordinate systems</strong> - Cartesian, spherical, cylindrical, ECI, ECEF, topocentric, and satellite body frames.
+<ul>
+<li><em>Starlink application:</em> transform from global satellite positions to laser-terminal pointing vectors.</li>
+</ul>
+</li>
+<li><strong>Matrices</strong> - operations, inverse, transpose, determinant.</li>
+<li><strong>Rotation matrices and coordinate transforms</strong> - core tool for laser pointing and geometry.
+<ul>
+<li><em>Starlink application:</em> ECI to ECEF to body frame to terminal frame.</li>
+</ul>
+</li>
+<li><strong>Eigenvalues/eigenvectors basics</strong> - stability and principal-axis intuition.</li>
+<li><strong>Point-ahead geometry</strong> - target where the receiving satellite will be when light arrives, not where it is now.</li>
+<li><strong>Graph constraints</strong> - limited laser terminals create link-assignment constraints.</li>
+</ul>
+<p><strong>After this:</strong> You can model laser-link geometry, assign constrained OISLs, and study route behavior when the mesh changes.</p>
+<p><strong>Resources:</strong></p>
+<ul>
+<li>Strang, <em>Introduction to Linear Algebra</em></li>
+<li>MIT OCW 18.06</li>
+<li>Hemmati, <em>Free-Space Laser Communications</em></li>
+<li>Starlink Technology and FCC filings for public laser-link context</li>
+</ul>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>Optical inter-satellite links are what turn individual satellites into a space backbone. This module focuses on Starlink-like laser mesh topology, not generic optical communications alone.</p>
+<h3 id="optical-link-physics">Optical Link Physics</h3>
+<ul>
+<li>Free-space optical communication principles.</li>
+<li>Laser divergence, aperture, received power, pointing loss, detector sensitivity.</li>
+<li>Acquisition, tracking, and pointing.</li>
+<li>Point-ahead angle and relative motion.</li>
+<li>Background noise and atmospheric effects for optical ground links.</li>
+</ul>
+<h3 id="starlink-laser-mesh-concepts">Starlink Laser Mesh Concepts</h3>
+<ul>
+<li>Public Starlink OISL model: multiple optical space lasers per satellite and high-capacity inter-satellite backhaul.</li>
+<li>Limited-terminal topology constraints instead of assuming every satellite can link to every neighbor.</li>
+<li>Intra-plane, inter-plane, polar, and shortcut links.</li>
+<li>Link scheduling: acquire, maintain, release, and reacquire.</li>
+<li>Failure modes: terminal failure, blocked geometry, excessive range, pointing degradation, capacity reduction.</li>
+<li>Mini-laser interoperability as an advanced public-facing topic for third-party spacecraft.</li>
+</ul>
+<h3 id="routing-over-the-laser-mesh">Routing Over the Laser Mesh</h3>
+<ul>
+<li>Topology assignment as a constrained graph problem.</li>
+<li>Trade off latency, capacity, stability, and route churn.</li>
+<li>Compare +Grid, fixed-neighbor, shortcut, and adaptive topologies.</li>
+<li>Feed laser-link state into the Module 10 topology controller.</li>
+</ul>
+<hr>
+<h2 id="c-and-python-skills">C++ and Python Skills</h2>
+<p><strong>C++ focus:</strong> Eigen rotation matrices, concurrent computation, pybind11, JSON output, performance profiling.</p>
+<p><strong>Python focus:</strong> NumPy, matplotlib/Plotly animation, topology comparison, failure studies.</p>
+<hr>
+<h2 id="projects">Projects</h2>
+<h3 id="project-1-oisl-link-assignment-and-scheduler-c">Project 1: OISL Link Assignment and Scheduler (C++)</h3>
+<p>Build a constrained laser-link scheduler.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Use Module 08 topology snapshots as input.</li>
+<li>Compute candidate laser links based on line-of-sight, max range, relative geometry, and stability duration.</li>
+<li>Limit each satellite to a configurable number of laser terminals.</li>
+<li>Assign links using a greedy baseline, then improve with local search or matching.</li>
+<li>Compute point-ahead angle and pointing vectors for assigned links.</li>
+<li>Export topology snapshots for routing and visualization.</li>
+</ul>
+<p><strong>C++ skills used:</strong> Eigen, Boost.Graph, algorithms, concurrency, pybind11 optional.</p>
+<p><strong>Toolkit:</strong> Add <code>LaserMeshScheduler</code>.</p>
+<h3 id="project-2-laser-mesh-visualization-and-failure-study-python">Project 2: Laser Mesh Visualization and Failure Study (Python)</h3>
+<p>Visualize and stress-test OISL topology.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Animate laser links over time.</li>
+<li>Compare fixed-grid, limited-terminal, and shortcut-link topologies.</li>
+<li>Simulate laser-terminal failures and forced link drops.</li>
+<li>Plot route latency, hop count, capacity bottlenecks, and path churn.</li>
+<li>Write a brief analysis of which topology is more stable and why.</li>
+</ul>
+<p><strong>Python skills used:</strong> NetworkX, NumPy, Plotly/matplotlib animation.</p>
+<hr>
+<h2 id="technology-reference">Technology Reference</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Technology</th>
+          <th>Problem It Solves</th>
+          <th>Starlink Relevance</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>OISL</td>
+          <td>High-capacity satellite-to-satellite backhaul</td>
+          <td>Starlink space mesh</td>
+      </tr>
+      <tr>
+          <td>ATP/PAT</td>
+          <td>Establish and maintain laser lock</td>
+          <td>Core optical-link constraint</td>
+      </tr>
+      <tr>
+          <td>Point-ahead angle</td>
+          <td>Corrects for light-time and relative motion</td>
+          <td>Required for accurate pointing</td>
+      </tr>
+      <tr>
+          <td>Link assignment</td>
+          <td>Chooses active laser neighbors</td>
+          <td>Topology and routing input</td>
+      </tr>
+      <tr>
+          <td>Mini-laser</td>
+          <td>Third-party spacecraft interop concept</td>
+          <td>Advanced public Starlink service idea</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="where-this-tech-is-used">Where This Tech Is Used</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Application</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Starlink satellite mesh</td>
+          <td>Global routing without immediate gateway visibility</td>
+      </tr>
+      <tr>
+          <td>Polar/ocean coverage</td>
+          <td>Laser backhaul to reachable gateways</td>
+      </tr>
+      <tr>
+          <td>Low-latency routing</td>
+          <td>Space paths can bypass terrestrial detours</td>
+      </tr>
+      <tr>
+          <td>Failure resilience</td>
+          <td>Mesh routing around lost links/satellites</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books-and-resources">Books and Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Hemmati, <em>Free-Space Laser Communications</em></td>
+          <td>Optical link physics</td>
+      </tr>
+      <tr>
+          <td>Starlink Technology</td>
+          <td>Public OISL context</td>
+      </tr>
+      <tr>
+          <td>Handley routing paper</td>
+          <td>Latency through laser-connected constellation</td>
+      </tr>
+      <tr>
+          <td>Hypatia</td>
+          <td>Simulation comparison ideas</td>
+      </tr>
+  </tbody>
+</table>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    
+                    
+                    
+                    
+                    <a href="/space-networking/curriculum/module-08/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-10/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline"></p>
+      <div class="footer-links">
+        <a href="https://github.com/anthonyhawkins" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

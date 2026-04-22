@@ -1,139 +1,133 @@
 ---
-title: "Module 06: DVB Standards & Satellite Broadband"
-module_number: 06
-weight: 06
+title: "Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System"
+module_number: 6
+weight: 6
 ---
 
 
-**Phase:** 2 — Acceleration
-**Builds on:** Modules 03, 05
+**Phase:** 2 - Acceleration
+**Builds on:** Modules 02, 04, and 05
 
 ---
 
-## 🔢 Math You'll Learn
+## Math You'll Learn
 
-### Calculus I: Derivatives — Chain Rule, Optimization & Applications
+### Calculus I: Derivatives, Chain Rule, Optimization, and Applications
 
-Deepening your calculus with the tools for optimization and rate-of-change analysis.
+Scheduling is optimization under changing constraints. You will use derivatives and piecewise functions to reason about marginal capacity, MCS thresholds, and beam-resource allocation.
 
-- **Chain rule, product/quotient rules** — composing derivatives of complex functions
-  - *Space application:* Doppler shift rate — how fast Doppler changes during a pass
-- **Implicit differentiation** — related rates in orbital rendezvous
-- **Applications — optimization, related rates** — finding maxima/minima
-  - *Space application:* optimizing antenna pointing angle for maximum gain
-  - *Space application:* maximum data throughput given power and bandwidth constraints
-  - *Space application:* ACM optimization — choosing the best MODCOD for current conditions
+- **Chain rule, product rule, quotient rule** - composed capacity and link-quality functions.
+  - *Starlink application:* throughput depends on SNR, beam load, bandwidth, and scheduler policy.
+- **Related rates** - changing elevation changes range, FSPL, margin, and capacity.
+- **Optimization** - choose the best allocation under power, bandwidth, beam, and fairness constraints.
+  - *Starlink application:* decide which terminal or beam gets the next unit of resource.
+- **Piecewise functions** - MCS thresholds and outage behavior.
 
-**🔓 After this:** You can optimize system parameters, compute rate-of-change for dynamic systems, and understand adaptive coding/modulation mathematically.
+**After this:** You can simulate a Starlink-like broadband scheduler and explain fairness/throughput trade-offs without assuming Starlink's proprietary MAC.
 
 **Resources:**
-- *Calculus: Early Transcendentals* — Stewart (Chapters 3–4)
-- Khan Academy — Calculus 1: Derivatives (free)
+
+- Stewart, *Calculus: Early Transcendentals*, Chapters 3-4
+- Digital communications texts for MCS, FEC, and spectral efficiency
+- DVB-S2X/RCS2 standards as public comparison material, not assumed Starlink implementation
 
 ---
 
-## 🛰️ What You'll Learn
+## What You'll Learn
 
-DVB-S2/S2X and DVB-RCS2 are the dominant standards for satellite broadband — they define how data is modulated, multiplexed, and delivered over satellite. This is the "how" behind nearly every commercial satellite internet service.
+This module replaces DVB as the central topic with broadband PHY/MAC principles that map better to a proprietary LEO broadband system. DVB remains useful as a public comparison for MODCOD/ACM, but the goal is to reason about Starlink-like scheduling and capacity.
 
-### DVB-S2 / S2X (Forward Link)
-- Physical layer: modulation (QPSK to 256APSK), coding (LDPC+BCH)
-- MODCOD table: mapping signal quality to efficiency
-- ACM (Adaptive Coding & Modulation): real-time adaptation to link conditions
-- Frame structure: BBFRAME → FECFRAME → PLFRAME
-- GSE (Generic Stream Encapsulation): mapping IP packets into DVB-S2 frames
-- S2X extensions: finer MODCODs, lower roll-off, beam hopping
+### Broadband PHY Concepts
 
-### DVB-RCS2 (Return Link)
-- MF-TDMA (Multi-Frequency TDMA): how terminals share return bandwidth
-- Burst structure, timing, synchronization
-- RLE (Return Link Encapsulation): efficient IP mapping for return channel
-- DAMA (Demand Assigned Multiple Access): capacity request categories (CRA, RBDC, VBDC, AVBDC)
-- NCC (Network Control Center): the brain that allocates return capacity
-- Terminal logon and synchronization procedures
+- OFDM/OFDMA, TDMA, SC-FDMA, and why multiple-access choice affects scheduling.
+- Adaptive modulation and coding: MCS/MODCOD thresholds, spectral efficiency, outage.
+- LDPC/FEC basics and coding gain.
+- HARQ/ARQ trade-offs under LEO delay.
+- SNR, SINR, interference, beam isolation, and frequency reuse.
 
-### Performance Enhancement
-- TCP/IP over satellite: latency, ACK delays, slow start problems
-- PEPs (Performance Enhancing Proxies): TCP splitting, spoofing, acceleration
-- IP header compression (ROHC)
-- Quality of Service: traffic shaping, bandwidth allocation
-- Comparison with Starlink's approach (proprietary PHY, different architecture)
+### MAC and Beam Scheduling
 
-### System Architecture & Deployment
-- Star (hub-spoke) vs. mesh vs. multi-star topologies
-- Transparent vs. regenerative payloads — impact on networking
-- VSAT network design: sizing, capacity planning
-- Industry convergence: will LEO constellations adopt DVB standards?
+- Multi-beam scheduling and terminal-to-beam assignment.
+- Proportional fairness, max-throughput, strict priority, and weighted fair scheduling.
+- Return-link scheduling and demand-based allocation.
+- QoS for voice/video/gaming/bulk traffic under variable capacity.
+- Beam hopping and load balancing across satellites.
+- How link budget outputs become scheduler inputs.
+
+### Public vs Proprietary Boundary
+
+- Do not claim Starlink uses DVB, LTE MAC, or any specific waveform internally unless public documentation says so.
+- Use public standards and algorithms to build defensible models.
+- Document what is a generic broadband satellite concept vs what is Starlink-public.
 
 ---
 
-## 💻 C++ & Python Skills
+## C++ and Python Skills
 
-**C++ focus:** Templates, state machine patterns, design patterns (strategy, observer), enum classes
-**Python focus:** Animated plots, interactive simulation with matplotlib
+**C++ focus:** templates, enum classes, state/strategy patterns, STL algorithms, deterministic simulation loops.
+
+**Python focus:** animated plots, lookup tables, event simulation, comparing scheduler policies.
 
 ---
 
 ## Projects
 
-### Project 1: DAMA Capacity Allocator (C++)
+### Project 1: Starlink-Like Beam and Capacity Scheduler (C++)
 
-Build a simplified NCC (Network Control Center) that manages bandwidth allocation.
-
-**What you'll build:**
-- Simulate N terminals, each requesting capacity via CRA, RBDC, or VBDC
-- Implement the NCC scheduling algorithm: allocate MF-TDMA slots based on request priorities
-- Use a state machine pattern for terminal states (logged-off → syncing → logged-on → transmitting)
-- Support configurable total bandwidth and slot sizes
-- Output utilization statistics and allocation tables
-
-**C++ skills used:** Templates, enum classes, state machine pattern, STL algorithms, strategy pattern for allocator
-
-### Project 2: MODCOD Selector & ACM Simulator (Python)
-
-Visualize adaptive coding and modulation in action.
+Build a simplified beam scheduler.
 
 **What you'll build:**
-- Load the DVB-S2X MODCOD table (Es/N₀ threshold → spectral efficiency)
-- Given an Es/N₀ value, select the optimal MODCOD
-- Simulate a forward link with time-varying channel quality (rain event that reduces Es/N₀ over time)
-- Animate how ACM adapts MODCOD in real-time to maintain throughput vs. fixed coding that drops out
-- Plot spectral efficiency vs. SNR curves
 
-**Python skills used:** matplotlib animation, NumPy, lookup tables, event simulation
+- Model terminals with demand, QoS class, SNR, current MCS, and queue backlog.
+- Model beams with bandwidth, capacity, and frequency-reuse constraints.
+- Implement max-throughput, strict-priority, and proportional-fair scheduling strategies.
+- Track utilization, dropped demand, queue delay, and fairness metrics.
+- Allow link-margin inputs from Module 05.
+
+**C++ skills used:** templates, strategy pattern, enum classes, STL algorithms, tests.
+
+**Toolkit:** Add `BeamScheduler`.
+
+### Project 2: MCS/ACM Simulator (Python)
+
+Visualize adaptive link behavior.
+
+**What you'll build:**
+
+- Create a public MCS-style threshold table with SNR to spectral-efficiency mappings.
+- Simulate SNR variation from elevation and rain fade.
+- Compare fixed coding, adaptive coding, and scheduler-aware adaptation.
+- Plot throughput, outage, selected MCS, and queue backlog over time.
+- Explain why a scheduler must optimize user experience, not just instantaneous throughput.
+
+**Python skills used:** NumPy, matplotlib animation, lookup tables, event simulation.
 
 ---
 
-## Protocol Reference Table
+## Technology Reference
 
-| Protocol | Spec | Layer | Problem It Solves | New/Legacy |
-|---|---|---|---|---|
-| DVB-S2 | EN 302 307-1 | Physical (forward) | Efficient satellite broadcast modulation | `[BOTH]` |
-| DVB-S2X | EN 302 307-2 | Physical (forward) | Extended MODCODs, beam hopping | `[NEW SPACE]` |
-| DVB-RCS2 | EN 301 545-2 | MAC/Physical (return) | Multi-user return channel access | `[BOTH]` |
-| GSE | TS 102 606 | Adaptation | IP encapsulation into DVB-S2 | `[BOTH]` |
-| RLE | EN 301 545-2 | Adaptation | IP encapsulation for return link | `[BOTH]` |
-| TRANSEC | EN 301 545-2 | Security | Over-the-air encryption | `[BOTH]` |
-| PEP / TCP acceleration | RFC 3135 | Transport | Mitigate TCP over high-latency satellite | `[LEGACY]` evolving |
-| ROHC | RFC 5795 | Adaptation | IP header compression | `[BOTH]` |
-
-## Companies
-
-| Company | Role | New/Legacy |
+| Technology | Problem It Solves | Starlink Relevance |
 |---|---|---|
-| **ST Engineering iDirect** | VSAT platform (Dialog), DVB-S2X hubs | `[BOTH]` |
-| **Hughes (EchoStar)** | Jupiter system, VSAT platforms | `[LEGACY]` |
-| **Viasat** | ViaSat-3 ground system, VSAT | `[BOTH]` |
-| **Newtec (ST Engineering)** | DVB-S2X modems and hubs | `[BOTH]` |
-| **Gilat Satellite Networks** | VSAT platforms, multi-orbit | `[BOTH]` |
-| **UHP Networks** | Software-defined VSAT | `[NEW SPACE]` |
-| **SES** | O3b mPOWER (MEO), Astra (GEO) | `[BOTH]` |
+| MCS/ACM | Adapts rate to channel quality | Broadband access capacity |
+| LDPC/FEC | Corrects errors without retransmission | High-throughput satellite links |
+| Beam scheduling | Allocates shared wireless resources | User experience and congestion |
+| Proportional fairness | Balances throughput and fairness | Practical scheduler baseline |
+| DVB-S2X/RCS2 | Public comparison standards | Learning material, not assumed Starlink stack |
 
-## Books & Resources
+## Where This Tech Is Used
+
+| Application | Notes |
+|---|---|
+| Starlink-like broadband access | Beam/resource scheduling model |
+| Network operations | Congestion, QoS, fairness, and capacity planning |
+| Direct to Cell | Mobile traffic competes for satellite backhaul |
+| Traffic engineering | Access capacity constrains topology routing |
+
+## Books and Resources
 
 | Resource | Notes |
 |---|---|
-| *Satellite Communications and Networking* (Höyhtyä, 2025) | Modern DVB-S2/RCS2 coverage |
-| ETSI EN 302 307-1/2 | DVB-S2/S2X specifications (free from ETSI) |
-| ETSI TR 101 545-4 | DVB-RCS2 implementation guidelines |
-| *Digital Video Broadcasting* (DVB Project docs) | https://www.dvb.org |
+| Proakis or Sklar, digital communications | MCS/FEC/noise fundamentals |
+| ETSI DVB-S2X/RCS2 | Public reference for MODCOD/ACM ideas |
+| Scheduler literature | Proportional fairness and QoS algorithms |
+| Starlink public materials | Architectural context only |

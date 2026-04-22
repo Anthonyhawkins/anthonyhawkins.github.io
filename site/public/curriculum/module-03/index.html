@@ -1,20 +1,450 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="My journey into satellite networking, space protocols, and the future of space communications."><title>Module 03: Ground Segment Architecture | Escape Velocity</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel=stylesheet><link rel=stylesheet href="https://anthony-hawkins.github.io/space-networking/css/orbital.css?v=1776219886"></head><body><div class=starfield id=starfield></div><header class=site-header><nav class=nav-container><a href=https://anthony-hawkins.github.io/space-networking/ class=nav-logo><span class=logo-icon>◈</span>
-<span class=logo-text>Escape Velocity</span></a><ul class=nav-links><li><a href=/space-networking/>Home</a></li><li><a href=/space-networking/blog/>Journal</a></li><li><a href=/space-networking/skill-tree/>Skill Tree</a></li><li><a href=/space-networking/curriculum/>Curriculum</a></li><li><a href=/space-networking/about/>About</a></li></ul><button class=nav-toggle id=navToggle aria-label="Toggle navigation">
-<span></span><span></span><span></span></button></nav></header><main class=site-main><div class="docs-layout container"><aside class=docs-sidebar><div class=sidebar-header><h3 class=sidebar-title>Curriculum</h3></div><nav class=sidebar-nav><ul class=sidebar-list><li><a href=https://anthony-hawkins.github.io/space-networking/curriculum/ class=sidebar-link><span class=sidebar-icon>⬡</span> Overview</a></li><li><a href=/space-networking/curriculum/learning-path/ class=sidebar-link><span class=sidebar-number>00</span>
-<span class=sidebar-text>Learning Path</span></a></li><li><a href=/space-networking/curriculum/module-01/ class=sidebar-link><span class=sidebar-number>01</span>
-<span class=sidebar-text>Module 01: CCSDS Protocol Stack</span></a></li><li><a href=/space-networking/curriculum/module-02/ class=sidebar-link><span class=sidebar-number>02</span>
-<span class=sidebar-text>Module 02: Foundations of Space Communications</span></a></li><li><a href=/space-networking/curriculum/module-03/ class="sidebar-link active"><span class=sidebar-number>03</span>
-<span class=sidebar-text>Module 03: Ground Segment Architecture</span></a></li><li><a href=/space-networking/curriculum/module-04/ class=sidebar-link><span class=sidebar-number>04</span>
-<span class=sidebar-text>Module 04: Delay-Tolerant Networking</span></a></li><li><a href=/space-networking/curriculum/module-05/ class=sidebar-link><span class=sidebar-number>05</span>
-<span class=sidebar-text>Module 05: Satellite Link Engineering</span></a></li><li><a href=/space-networking/curriculum/module-06/ class=sidebar-link><span class=sidebar-number>06</span>
-<span class=sidebar-text>Module 06: DVB Standards & Satellite Broadband</span></a></li><li><a href=/space-networking/curriculum/module-07/ class=sidebar-link><span class=sidebar-number>07</span>
-<span class=sidebar-text>Module 07: 5G Non-Terrestrial Networks (NTN)</span></a></li><li><a href=/space-networking/curriculum/module-08/ class=sidebar-link><span class=sidebar-number>08</span>
-<span class=sidebar-text>Module 08: LEO Constellations & Routing</span></a></li><li><a href=/space-networking/curriculum/module-09/ class=sidebar-link><span class=sidebar-number>09</span>
-<span class=sidebar-text>Module 09: Optical Inter-Satellite Links (OISL)</span></a></li><li><a href=/space-networking/curriculum/module-10/ class=sidebar-link><span class=sidebar-number>10</span>
-<span class=sidebar-text>Module 10: SDN & Autonomous Network Management</span></a></li><li><a href=/space-networking/curriculum/module-11/ class=sidebar-link><span class=sidebar-number>11</span>
-<span class=sidebar-text>Module 11: Security in Space Networks</span></a></li><li><a href=/space-networking/curriculum/module-12/ class=sidebar-link><span class=sidebar-number>12</span>
-<span class=sidebar-text>Module 12: Capstone Projects</span></a></li></ul></nav></aside><div class=docs-content><article class=module-single><header class="module-header docs-header"><div class=module-header-meta style=margin-bottom:1rem;display:flex;gap:.75rem;flex-wrap:wrap><span class=module-number-lg style=color:#60a5fa;font-weight:600;letter-spacing:.05em>Module 03</span>
-<span class=math-badge style="background:rgba(245,158,11,.1);color:#f59e0b;padding:.2rem .6rem;border-radius:4px;font-size:.75rem">Requires:</span></div><h1 class=docs-title>Module 03: Ground Segment Architecture</h1></header><div class="module-body prose docs-body"><p><strong>Phase:</strong> 1 — Foundation
-<strong>Builds on:</strong> Modules 01, 02</p><hr><h2 id=-math-youll-learn>🔢 Math You&rsquo;ll Learn</h2><h3 id=trigonometry-law-of-cosines-elevation-angles--slant-range>Trigonometry: Law of Cosines, Elevation Angles & Slant Range</h3><p>This is where trig becomes immediately practical — you&rsquo;ll compute whether a ground station can see a satellite and how far away it is.</p><ul><li><strong>Law of sines / cosines</strong> — computing slant range (distance from ground station to satellite)<ul><li><em>Space application:</em> slant range = f(Earth radius, satellite altitude, elevation angle)</li></ul></li><li><strong>Inverse trig: arctan, arcsin</strong> — computing elevation angle from geometry<ul><li><em>Space application:</em> minimum elevation angle determines when a satellite is &ldquo;visible&rdquo; (typically >5°)</li></ul></li><li><strong>Polar coordinates & vectors intro</strong> — antenna radiation patterns are plotted in polar coordinates</li><li><strong>Angular velocity, arc length, radians</strong> — satellite angular rate as seen from ground</li></ul><p><strong>🔓 After this:</strong> You can compute ground station visibility, slant range, and antenna beam geometry.</p><p><strong>Resources:</strong></p><ul><li>Khan Academy — Trigonometry (free)</li><li>Textbook: <em>Algebra and Trigonometry</em> — Stewart, Redlin, Watson (trig chapters)</li></ul><hr><h2 id=-what-youll-learn>🛰️ What You&rsquo;ll Learn</h2><p>The ground segment is where satellites meet the internet. You&rsquo;ll learn how ground stations, gateways, network operations centers, and terrestrial POPs work together to complete the end-to-end data path. <strong>Your edge protocol and infrastructure experience maps directly here.</strong></p><h3 id=ground-station-architecture>Ground Station Architecture</h3><ul><li>Antenna systems: parabolic, phased array, ground-based ESAs</li><li>Autotracking mounts for LEO</li><li>RF front-end: LNA, downconverter, digitizer</li><li>Baseband processing: demodulation, frame sync, decoding</li><li>Ground station networks: KSAT, SSC, Atlas Space Operations, AWS Ground Station, Azure Orbital</li></ul><h3 id=gateway-design-for-constellations>Gateway Design for Constellations</h3><ul><li>Gateway vs. ground station distinction</li><li>Gateway architecture for LEO broadband (Starlink, Kuiper model)</li><li>Fiber connectivity: gateway ↔ POP ↔ IXP</li><li>Redundancy and diversity: multiple gateways per coverage area</li><li>Gateway handover: managing traffic continuity as satellites move</li></ul><h3 id=network-operations>Network Operations</h3><ul><li>Mission operations center (MOC) / Network operations center (NOC)</li><li>Constellation management: ephemeris updates, contact scheduling</li><li>SLE (Space Link Extension): cross-support between agencies/providers</li><li>Ground-based DTN nodes and convergence layers</li><li>Cloud-based ground stations: AWS Ground Station, Azure Orbital — virtualized baseband processing</li></ul><h3 id=terrestrial-integration>Terrestrial Integration</h3><ul><li>POP architecture: where satellite traffic meets BGP peering</li><li>Traffic engineering: routing user traffic to nearest available gateway</li><li>Latency optimization: POP placement strategy</li><li>Content delivery over satellite: CDN integration</li><li><strong>This is essentially your current job but with satellite uplinks</strong> — peering, traffic engineering, edge optimization</li></ul><hr><h2 id=-c--python-skills>💻 C++ & Python Skills</h2><p><strong>C++ focus:</strong> OOP (classes, inheritance), STL containers (vector, map), iterators, algorithms, lambdas
-<strong>Python focus:</strong> Skyfield for satellite propagation, Cartopy/matplotlib for map visualization</p><hr><h2 id=projects>Projects</h2><h3 id=project-1-elevation-angle--slant-range-calculator-c>Project 1: Elevation Angle & Slant Range Calculator (C++)</h3><p>Build a CLI tool that computes satellite visibility geometry.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Given satellite altitude and ground station latitude, compute: elevation angle, slant range, and free-space path loss</li><li>Sweep across elevation angles (5°–90°) and output a table of slant range vs. elevation</li><li>Support multiple orbit types (LEO 550km, MEO 8000km, GEO 35786km)</li><li>Use classes for <code>GroundStation</code> and <code>Satellite</code> with proper encapsulation</li></ul><p><strong>C++ skills used:</strong> Classes, constructors, STL containers, algorithms, formatted output</p><p><strong>🔧 Toolkit:</strong> Add <code>GroundStation</code> class to the Space Network Toolkit</p><h3 id=project-2-ground-station-contact-scheduler-python>Project 2: Ground Station Contact Scheduler (Python)</h3><p>Build a contact schedule for a satellite pass over a global ground station network.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Load TLEs for a LEO satellite using Skyfield</li><li>Define 3–5 ground station locations (lat/lon)</li><li>Compute contact windows (start/end times when elevation > 5°) over a 24-hour period</li><li>Visualize passes on a world map with Cartopy or matplotlib basemap</li><li>Output a schedule table sorted by time</li></ul><p><strong>Python skills used:</strong> Skyfield, datetime, matplotlib/Cartopy, tabular output</p><hr><h2 id=technology-reference>Technology Reference</h2><table><thead><tr><th>Technology</th><th>Problem It Solves</th><th>New/Legacy</th></tr></thead><tbody><tr><td>SLE (Space Link Extension)</td><td>Cross-support between agencies</td><td><code>[LEGACY]</code> evolving</td></tr><tr><td>CCSDS Cross Support</td><td>Standardized ground station services</td><td><code>[BOTH]</code></td></tr><tr><td>AWS Ground Station</td><td>Cloud-managed satellite contacts</td><td><code>[NEW SPACE]</code></td></tr><tr><td>Azure Orbital</td><td>Cloud-managed satellite contacts</td><td><code>[NEW SPACE]</code></td></tr><tr><td>GSaaS (Ground Station as a Service)</td><td>Eliminates need to build own ground stations</td><td><code>[NEW SPACE]</code></td></tr></tbody></table><h2 id=companies>Companies</h2><table><thead><tr><th>Company</th><th>Role</th><th>New/Legacy</th></tr></thead><tbody><tr><td><strong>KSAT</strong> (Kongsberg)</td><td>Global ground station network (25+ sites)</td><td><code>[BOTH]</code></td></tr><tr><td><strong>SSC</strong> (Swedish Space Corp)</td><td>Ground station network, Esrange</td><td><code>[BOTH]</code></td></tr><tr><td><strong>Atlas Space Operations</strong></td><td>Cloud ground station platform</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>AWS Ground Station</strong></td><td>On-demand satellite contact scheduling</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>Microsoft Azure Orbital</strong></td><td>Cloud ground segment</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>Leaf Space</strong></td><td>GSaaS for LEO satellites</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>RBC Signals</strong></td><td>Distributed ground station sharing</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>Viasat / Hughes</strong></td><td>Gateway operations for GEO broadband</td><td><code>[LEGACY]</code></td></tr></tbody></table><h2 id=books--resources>Books & Resources</h2><table><thead><tr><th>Resource</th><th>Notes</th></tr></thead><tbody><tr><td><em>Satellite Communications Systems</em> (Maral et al.)</td><td>Ground segment chapters</td></tr><tr><td>AWS Ground Station docs</td><td><a href=https://docs.aws.amazon.com/ground-station/>https://docs.aws.amazon.com/ground-station/</a></td></tr><tr><td>CCSDS SLE specifications</td><td>Cross-support standards</td></tr></tbody></table></div><footer class="module-footer docs-footer"><div class=docs-nav style="display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)"><a href=/space-networking/curriculum/module-04/ class="docs-nav-link prev" style="text-decoration:none;color:var(--text-secondary);transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>← Previous</div><div class=nav-title style=color:#fff;font-weight:500>Module 04: Delay-Tolerant Networking</div></a><a href=/space-networking/curriculum/module-02/ class="docs-nav-link next" style="text-decoration:none;color:var(--text-secondary);text-align:right;transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>Next →</div><div class=nav-title style=color:#fff;font-weight:500>Module 02: Foundations of Space Communications</div></a></div></footer></article></div></div></main><footer class=site-footer><div class=footer-container><div class=footer-brand><span class=logo-icon>◈</span>
-<span>Escape Velocity</span></div><p class=footer-tagline></p><div class=footer-links><a href=https://github.com/anthonyhawkins target=_blank rel=noopener>GitHub</a></div><p class=footer-copy>Built with Hugo. Deployed to GitHub Pages.</p></div></footer><script src=https://anthony-hawkins.github.io/space-networking/js/orbital.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="My journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1776821511" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="http://localhost:1313/space-networking/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Path</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Starlink System Model, Public Data, and RF Units</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: Starlink RF Foundations and Phased-Array Access Links</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Variable Links, Handover Resilience, and Transport Behavior</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Starlink Security, Resilience, and Operational Reliability</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Starlink-Focused Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 03</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Phase:</strong> 1 - Foundation
+<strong>Builds on:</strong> Modules 01 and 02</p>
+<hr>
+<h2 id="math-youll-learn">Math You&rsquo;ll Learn</h2>
+<h3 id="trigonometry-law-of-cosines-elevation-angles-slant-range-and-latency-geometry">Trigonometry: Law of Cosines, Elevation Angles, Slant Range, and Latency Geometry</h3>
+<p>This is where trig becomes operational: which gateways can see which satellites, what delay a path adds, and when a gateway/POP choice is better or worse.</p>
+<ul>
+<li><strong>Law of sines and cosines</strong> - compute slant range from Earth radius, satellite altitude, and elevation angle.
+<ul>
+<li><em>Starlink application:</em> determine whether a satellite can use a candidate gateway at a given time.</li>
+</ul>
+</li>
+<li><strong>Inverse trig</strong> - compute elevation and azimuth from geometry.
+<ul>
+<li><em>Starlink application:</em> gateway visibility and antenna pointing.</li>
+</ul>
+</li>
+<li><strong>Radians, angular velocity, and arc length</strong> - understand how fast geometry changes.
+<ul>
+<li><em>Starlink application:</em> estimate pass duration and gateway handover timing.</li>
+</ul>
+</li>
+<li><strong>Latency decomposition</strong> - add terminal-to-satellite, satellite-to-gateway, gateway-to-POP, and POP-to-destination components.</li>
+</ul>
+<p><strong>After this:</strong> You can model gateway visibility, POP egress latency, and the terrestrial networking side of Starlink service.</p>
+<p><strong>Resources:</strong></p>
+<ul>
+<li>Khan Academy - Trigonometry</li>
+<li>Public Starlink gateway/POP research and FCC gateway filings</li>
+<li>Internet routing references for BGP, peering, and transit</li>
+</ul>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>The ground segment is where Starlink becomes the internet. This module focuses on gateways, POPs, optical transport, subscriber services, and routing protocols rather than generic ground-station-as-a-service models.</p>
+<h3 id="gateway-and-pop-architecture">Gateway and POP Architecture</h3>
+<ul>
+<li>Gateway earth stations vs user terminals vs POPs.</li>
+<li>Satellite feeder links, gateway antennas, RF/baseband, and terrestrial handoff.</li>
+<li>Colocation facilities, long-haul fiber, WDM/DWDM, circuit turn-up, and capacity planning.</li>
+<li>POP egress, IXPs, private peering, transit, and regional latency.</li>
+<li>Gateway diversity for weather, capacity, and failure resilience.</li>
+</ul>
+<h3 id="service-provider-networking">Service-Provider Networking</h3>
+<ul>
+<li>BGP peering and transit policy.</li>
+<li>Internal routing: IS-IS/OSPF, MPLS, Segment Routing, ECMP.</li>
+<li>IPv4/IPv6 addressing, CGNAT, IPv6 prefix delegation.</li>
+<li>DNS, DHCP, NTP, RADIUS/AAA, QoS, and subscriber management.</li>
+<li>Route selection when satellite, gateway, POP, and terrestrial paths all matter.</li>
+</ul>
+<h3 id="operations">Operations</h3>
+<ul>
+<li>Inventory and configuration management.</li>
+<li>Telemetry, alerting, link utilization, latency, packet loss, and route churn.</li>
+<li>Maintenance windows, safe rollout, rollback, and incident response.</li>
+<li>Where software engineering and gRPC/API design fit into network operations.</li>
+</ul>
+<hr>
+<h2 id="c-and-python-skills">C++ and Python Skills</h2>
+<p><strong>C++ focus:</strong> OOP, STL containers (<code>vector</code>, <code>map</code>, <code>unordered_map</code>), algorithms, lambdas, clean data modeling.</p>
+<p><strong>Python focus:</strong> Skyfield for satellite propagation, NetworkX for path models, matplotlib/Plotly for maps.</p>
+<hr>
+<h2 id="projects">Projects</h2>
+<h3 id="project-1-gateway-visibility-and-pop-path-calculator-c">Project 1: Gateway Visibility and POP Path Calculator (C++)</h3>
+<p>Build a gateway/POP path model for Starlink-like service.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Define <code>Gateway</code>, <code>Pop</code>, <code>Satellite</code>, and <code>UserTerminal</code> classes.</li>
+<li>Compute whether a gateway can see a satellite above an elevation mask.</li>
+<li>Estimate terminal-satellite-gateway delay and gateway-POP terrestrial delay.</li>
+<li>Rank candidate gateway/POP egress choices by latency and availability.</li>
+<li>Output route candidates as JSON for later visualization.</li>
+</ul>
+<p><strong>C++ skills used:</strong> classes, STL containers, algorithms, JSON serialization.</p>
+<p><strong>Toolkit:</strong> Add <code>GatewayPopModel</code>.</p>
+<h3 id="project-2-gatewaypop-route-planner-python">Project 2: Gateway/POP Route Planner (Python)</h3>
+<p>Visualize ground-network choices.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Place a set of gateways, POPs, and user locations on a map.</li>
+<li>Load TLEs or simplified shell positions.</li>
+<li>Compute gateway visibility windows over 24 hours.</li>
+<li>Select the lowest-latency egress for several user/destination pairs.</li>
+<li>Plot route choices and show how weather or gateway failure changes egress.</li>
+</ul>
+<p><strong>Python skills used:</strong> Skyfield, NetworkX, matplotlib/Plotly, tabular output.</p>
+<hr>
+<h2 id="technology-reference">Technology Reference</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Technology</th>
+          <th>Problem It Solves</th>
+          <th>Starlink Relevance</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Gateway</td>
+          <td>Satellite-to-ground feeder link</td>
+          <td>Connects space segment to terrestrial network</td>
+      </tr>
+      <tr>
+          <td>POP</td>
+          <td>Internet egress and peering</td>
+          <td>Determines terrestrial path and latency</td>
+      </tr>
+      <tr>
+          <td>BGP</td>
+          <td>Interdomain routing and peering</td>
+          <td>Public internet connectivity</td>
+      </tr>
+      <tr>
+          <td>IS-IS/OSPF</td>
+          <td>Internal routing</td>
+          <td>Provider backbone control plane</td>
+      </tr>
+      <tr>
+          <td>MPLS/SR</td>
+          <td>Traffic engineering and fast reroute</td>
+          <td>Network-control foundation</td>
+      </tr>
+      <tr>
+          <td>RADIUS/AAA</td>
+          <td>Subscriber authentication/accounting</td>
+          <td>ISP operations</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="where-this-tech-is-used">Where This Tech Is Used</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Application</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Starlink ground network</td>
+          <td>Gateways, POPs, transport, and peering</td>
+      </tr>
+      <tr>
+          <td>ISP network engineering</td>
+          <td>BGP, MPLS/SR, routing policy, telemetry</td>
+      </tr>
+      <tr>
+          <td>Topology service design</td>
+          <td>Gateway and POP state become path inputs</td>
+      </tr>
+      <tr>
+          <td>Operational automation</td>
+          <td>Inventory, config, safe deployment, rollback</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books-and-resources">Books and Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Public Starlink job descriptions</td>
+          <td>Protocols and operational skills SpaceX asks for</td>
+      </tr>
+      <tr>
+          <td>Halabi, <em>Internet Routing Architectures</em></td>
+          <td>BGP policy and peering</td>
+      </tr>
+      <tr>
+          <td>Davie/Farrel, <em>MPLS in the SDN Era</em></td>
+          <td>MPLS/SR and TE concepts</td>
+      </tr>
+      <tr>
+          <td>Stevens, <em>TCP/IP Illustrated</em></td>
+          <td>Network protocol refresh</td>
+      </tr>
+  </tbody>
+</table>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    
+                    
+                    
+                    
+                    <a href="/space-networking/curriculum/module-02/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 02: Starlink RF Foundations and Phased-Array Access Links</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-04/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 04: Variable Links, Handover Resilience, and Transport Behavior</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline"></p>
+      <div class="footer-links">
+        <a href="https://github.com/anthonyhawkins" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

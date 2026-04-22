@@ -1,5 +1,5 @@
 +++
 title = "Skill Tree"
-description = "The complete unlock map for space networking mastery."
+description = "The Starlink Network and Topology unlock map."
 layout = "skill-tree"
 +++

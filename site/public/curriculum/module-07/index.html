@@ -1,20 +1,439 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="My journey into satellite networking, space protocols, and the future of space communications."><title>Module 07: 5G Non-Terrestrial Networks (NTN) | Escape Velocity</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel=stylesheet><link rel=stylesheet href="https://anthony-hawkins.github.io/space-networking/css/orbital.css?v=1776219886"></head><body><div class=starfield id=starfield></div><header class=site-header><nav class=nav-container><a href=https://anthony-hawkins.github.io/space-networking/ class=nav-logo><span class=logo-icon>◈</span>
-<span class=logo-text>Escape Velocity</span></a><ul class=nav-links><li><a href=/space-networking/>Home</a></li><li><a href=/space-networking/blog/>Journal</a></li><li><a href=/space-networking/skill-tree/>Skill Tree</a></li><li><a href=/space-networking/curriculum/>Curriculum</a></li><li><a href=/space-networking/about/>About</a></li></ul><button class=nav-toggle id=navToggle aria-label="Toggle navigation">
-<span></span><span></span><span></span></button></nav></header><main class=site-main><div class="docs-layout container"><aside class=docs-sidebar><div class=sidebar-header><h3 class=sidebar-title>Curriculum</h3></div><nav class=sidebar-nav><ul class=sidebar-list><li><a href=https://anthony-hawkins.github.io/space-networking/curriculum/ class=sidebar-link><span class=sidebar-icon>⬡</span> Overview</a></li><li><a href=/space-networking/curriculum/learning-path/ class=sidebar-link><span class=sidebar-number>00</span>
-<span class=sidebar-text>Learning Path</span></a></li><li><a href=/space-networking/curriculum/module-01/ class=sidebar-link><span class=sidebar-number>01</span>
-<span class=sidebar-text>Module 01: CCSDS Protocol Stack</span></a></li><li><a href=/space-networking/curriculum/module-02/ class=sidebar-link><span class=sidebar-number>02</span>
-<span class=sidebar-text>Module 02: Foundations of Space Communications</span></a></li><li><a href=/space-networking/curriculum/module-03/ class=sidebar-link><span class=sidebar-number>03</span>
-<span class=sidebar-text>Module 03: Ground Segment Architecture</span></a></li><li><a href=/space-networking/curriculum/module-04/ class=sidebar-link><span class=sidebar-number>04</span>
-<span class=sidebar-text>Module 04: Delay-Tolerant Networking</span></a></li><li><a href=/space-networking/curriculum/module-05/ class=sidebar-link><span class=sidebar-number>05</span>
-<span class=sidebar-text>Module 05: Satellite Link Engineering</span></a></li><li><a href=/space-networking/curriculum/module-06/ class=sidebar-link><span class=sidebar-number>06</span>
-<span class=sidebar-text>Module 06: DVB Standards & Satellite Broadband</span></a></li><li><a href=/space-networking/curriculum/module-07/ class="sidebar-link active"><span class=sidebar-number>07</span>
-<span class=sidebar-text>Module 07: 5G Non-Terrestrial Networks (NTN)</span></a></li><li><a href=/space-networking/curriculum/module-08/ class=sidebar-link><span class=sidebar-number>08</span>
-<span class=sidebar-text>Module 08: LEO Constellations & Routing</span></a></li><li><a href=/space-networking/curriculum/module-09/ class=sidebar-link><span class=sidebar-number>09</span>
-<span class=sidebar-text>Module 09: Optical Inter-Satellite Links (OISL)</span></a></li><li><a href=/space-networking/curriculum/module-10/ class=sidebar-link><span class=sidebar-number>10</span>
-<span class=sidebar-text>Module 10: SDN & Autonomous Network Management</span></a></li><li><a href=/space-networking/curriculum/module-11/ class=sidebar-link><span class=sidebar-number>11</span>
-<span class=sidebar-text>Module 11: Security in Space Networks</span></a></li><li><a href=/space-networking/curriculum/module-12/ class=sidebar-link><span class=sidebar-number>12</span>
-<span class=sidebar-text>Module 12: Capstone Projects</span></a></li></ul></nav></aside><div class=docs-content><article class=module-single><header class="module-header docs-header"><div class=module-header-meta style=margin-bottom:1rem;display:flex;gap:.75rem;flex-wrap:wrap><span class=module-number-lg style=color:#60a5fa;font-weight:600;letter-spacing:.05em>Module 07</span>
-<span class=math-badge style="background:rgba(245,158,11,.1);color:#f59e0b;padding:.2rem .6rem;border-radius:4px;font-size:.75rem">Requires:</span></div><h1 class=docs-title>Module 07: 5G Non-Terrestrial Networks (NTN)</h1></header><div class="module-body prose docs-body"><p><strong>Phase:</strong> 2 — Acceleration
-<strong>Builds on:</strong> Modules 05, 06</p><hr><h2 id=-math-youll-learn>🔢 Math You&rsquo;ll Learn</h2><h3 id=calculus-i-completion--calculus-ii-introduction>Calculus I Completion + Calculus II Introduction</h3><p>Finishing single-variable calculus and starting the tools for signal analysis.</p><ul><li><strong>Integrals — fundamental theorem of calculus</strong> — accumulating quantities over time<ul><li><em>Space application:</em> total signal energy = ∫ power(t) dt over a satellite pass</li><li><em>Space application:</em> total data transferred = ∫ data_rate(t) dt during a contact window</li></ul></li><li><strong>Integration techniques — substitution, parts</strong></li><li><strong>Applications of integrals — area, average value</strong><ul><li><em>Space application:</em> average data rate over a variable-capacity link</li></ul></li><li><strong>Calculus II intro: sequences & series</strong> — infinite sums and convergence<ul><li><em>Space application:</em> error correction coding theory relies on series expansions</li></ul></li></ul><p><strong>🔓 After this:</strong> You can compute signal energy budgets, total data transfer over variable links, and begin understanding spectral analysis.</p><p><strong>Resources:</strong></p><ul><li><em>Calculus: Early Transcendentals</em> — Stewart (Chapters 5–7)</li><li>Khan Academy — Calculus 1 completion + Calculus 2 intro (free)</li></ul><hr><h2 id=-what-youll-learn>🛰️ What You&rsquo;ll Learn</h2><p>3GPP is integrating satellites directly into the 5G (and 6G) standard. This means satellite connectivity that&rsquo;s native to your phone — no special terminal needed. You&rsquo;ll learn the NTN architecture, protocol adaptations, and how this converges the telecom and space industries.</p><h3 id=the-problem>The Problem</h3><p>Terrestrial cellular covers ~20% of Earth&rsquo;s land surface and ~5% of the total surface (including ocean). NTN aims to provide:</p><ul><li><strong>Ubiquitous coverage:</strong> Phone works everywhere, even at sea or in remote areas</li><li><strong>Direct-to-device (D2D):</strong> Satellite connects to standard smartphones</li><li><strong>Network resilience:</strong> Satellite backhaul when terrestrial infrastructure fails</li><li><strong>IoT everywhere:</strong> Sensor data from any location on Earth</li></ul><h3 id=ntn-architecture>NTN Architecture</h3><ul><li>Transparent (bent-pipe) vs. regenerative satellite payloads</li><li>gNB (5G base station) placement: on-ground vs. on-satellite</li><li>Feeder link + service link architecture</li><li>LEO vs. GEO NTN: trade-offs</li><li>Integration with terrestrial 5G core (AMF, UPF, SMF)</li></ul><h3 id=protocol-adaptations-release-17>Protocol Adaptations (Release 17)</h3><ul><li>Timing advance: compensating for satellite propagation delay</li><li>HARQ (Hybrid ARQ): disabling/adapting for long RTT</li><li>Random access: PRACH adaptations for large cell sizes and delay</li><li>Doppler pre-compensation: UE and gNB responsibilities</li><li>GNSS dependency: why NTN UEs need GPS</li></ul><h3 id=release-18-enhancements>Release 18+ Enhancements</h3><ul><li>Regenerative payload support (on-board gNB)</li><li>Enhanced mobility: NTN-to-TN and NTN-to-NTN handover</li><li>Network slicing for NTN: different QoS for different services</li><li>Satellite backhaul for terrestrial cells (IAB over NTN)</li></ul><h3 id=industry--convergence>Industry & Convergence</h3><ul><li>Direct-to-cell services: T-Mobile/SpaceX, AST SpaceMobile, Lynk Global</li><li>IoT via NTN: Skylo, Sateliot, EchoStar (S-band)</li><li>The path to 6G: fully integrated terrestrial-satellite-aerial networks</li></ul><hr><h2 id=-c--python-skills>💻 C++ & Python Skills</h2><p><strong>C++ focus:</strong> <code>std::thread</code>, <code>std::mutex</code>, condition variables, basic concurrency patterns
-<strong>Python focus:</strong> Skyfield, NumPy for orbital computations, tabular output</p><p>This is the first module where you&rsquo;ll write <strong>concurrent C++ code</strong>.</p><hr><h2 id=projects>Projects</h2><h3 id=project-1-ntn-tn-handover-simulator-c>Project 1: NTN-TN Handover Simulator (C++)</h3><p>Simulate a UE (user equipment) handing over between satellite and terrestrial base stations.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Model a UE, an NTN gNB (satellite), and a TN gNB (terrestrial) as separate threads</li><li>Implement the handover signaling sequence as a state machine (connected-NTN → measurement → handover-prep → handover-exec → connected-TN)</li><li>Use <code>std::mutex</code> and condition variables for inter-thread signaling</li><li>Simulate variable signal strength (the satellite moves, signal fades; terrestrial signal strengthens)</li><li>Log the handover timeline and state transitions</li></ul><p><strong>C++ skills used:</strong> <code>std::thread</code>, <code>std::mutex</code>, <code>std::condition_variable</code>, state machines, concurrent programming</p><h3 id=project-2-ntn-delay-budget--doppler-analyzer-python>Project 2: NTN Delay Budget & Doppler Analyzer (Python)</h3><p>Compute and visualize the timing challenges of satellite-based 5G.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Compute timing advance and HARQ round-trip for LEO (600km), MEO (8000km), and GEO (35786km)</li><li>Show why standard 5G HARQ (expecting reply in ~4ms) breaks for satellite</li><li>For a LEO satellite at 550km, compute max Doppler at S-band (2 GHz) and Ka-band (20 GHz)</li><li>Determine the pre-compensation accuracy needed</li><li>Plot Doppler curves over a full overhead pass</li></ul><p><strong>Python skills used:</strong> Skyfield, NumPy, matplotlib, tabular comparison</p><hr><h2 id=protocol-reference-table>Protocol Reference Table</h2><table><thead><tr><th>Protocol/Standard</th><th>Spec</th><th>Problem It Solves</th><th>New/Legacy</th></tr></thead><tbody><tr><td>NR NTN</td><td>3GPP TS 38.300 (Rel-17)</td><td>5G NR over satellite</td><td><code>[NEW SPACE]</code></td></tr><tr><td>NB-IoT/eMTC NTN</td><td>3GPP TS 36.300 (Rel-17)</td><td>IoT over satellite</td><td><code>[NEW SPACE]</code></td></tr><tr><td>NTN Rel-18 enhancements</td><td>3GPP TS 38.300 (Rel-18)</td><td>Regenerative, enhanced mobility</td><td><code>[NEW SPACE]</code></td></tr><tr><td>GNSS timing</td><td>3GPP TS 38.133</td><td>UE timing/frequency pre-compensation</td><td><code>[NEW SPACE]</code></td></tr></tbody></table><h2 id=companies>Companies</h2><table><thead><tr><th>Company</th><th>Product/Focus</th><th>New/Legacy</th></tr></thead><tbody><tr><td><strong>AST SpaceMobile</strong></td><td>Direct-to-smartphone LEO constellation</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>SpaceX / T-Mobile</strong></td><td>Starlink direct-to-cell</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>Lynk Global</strong></td><td>Direct-to-phone satellite cells</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>Skylo</strong></td><td>NB-IoT NTN for maritime, logistics</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>Sateliot</strong></td><td>5G IoT LEO constellation (NB-IoT)</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>Qualcomm</strong></td><td>Snapdragon NTN modem (X75, X80)</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>MediaTek</strong></td><td>NTN-capable chipsets</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>Ericsson / Nokia</strong></td><td>NTN-capable RAN software</td><td><code>[BOTH]</code></td></tr><tr><td><strong>Thales Alenia Space</strong></td><td>Regenerative NTN payloads</td><td><code>[BOTH]</code></td></tr></tbody></table><h2 id=books--resources>Books & Resources</h2><table><thead><tr><th>Resource</th><th>Notes</th></tr></thead><tbody><tr><td><em>Satellite Comms and Networking</em> (Höyhtyä, 2025)</td><td>Best modern NTN coverage</td></tr><tr><td>3GPP TR 38.811</td><td>Study on NTN for NR (foundational document)</td></tr><tr><td>3GPP TR 38.821</td><td>Solutions for NR to support NTN</td></tr><tr><td>Qualcomm NTN whitepapers</td><td>Free technical overviews</td></tr></tbody></table></div><footer class="module-footer docs-footer"><div class=docs-nav style="display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)"><a href=/space-networking/curriculum/module-08/ class="docs-nav-link prev" style="text-decoration:none;color:var(--text-secondary);transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>← Previous</div><div class=nav-title style=color:#fff;font-weight:500>Module 08: LEO Constellations & Routing</div></a><a href=/space-networking/curriculum/module-06/ class="docs-nav-link next" style="text-decoration:none;color:var(--text-secondary);text-align:right;transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>Next →</div><div class=nav-title style=color:#fff;font-weight:500>Module 06: DVB Standards & Satellite Broadband</div></a></div></footer></article></div></div></main><footer class=site-footer><div class=footer-container><div class=footer-brand><span class=logo-icon>◈</span>
-<span>Escape Velocity</span></div><p class=footer-tagline></p><div class=footer-links><a href=https://github.com/anthonyhawkins target=_blank rel=noopener>GitHub</a></div><p class=footer-copy>Built with Hugo. Deployed to GitHub Pages.</p></div></footer><script src=https://anthony-hawkins.github.io/space-networking/js/orbital.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="My journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1776821511" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="http://localhost:1313/space-networking/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Path</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Starlink System Model, Public Data, and RF Units</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: Starlink RF Foundations and Phased-Array Access Links</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Variable Links, Handover Resilience, and Transport Behavior</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Starlink Security, Resilience, and Operational Reliability</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Starlink-Focused Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 07</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Phase:</strong> 2 - Acceleration
+<strong>Builds on:</strong> Modules 04, 05, and 06</p>
+<hr>
+<h2 id="math-youll-learn">Math You&rsquo;ll Learn</h2>
+<h3 id="calculus-i-completion--calculus-ii-introduction">Calculus I Completion + Calculus II Introduction</h3>
+<p>You will finish single-variable calculus and start the math needed for accumulated capacity and signal analysis.</p>
+<ul>
+<li><strong>Integrals and the Fundamental Theorem of Calculus</strong> - accumulated quantities over time.
+<ul>
+<li><em>Starlink application:</em> total data transferred during a satellite visibility window equals the integral of rate over time.</li>
+</ul>
+</li>
+<li><strong>Average value of a function</strong> - average cell capacity during a pass.</li>
+<li><strong>Integration techniques</strong> - approximate area under variable-rate curves.</li>
+<li><strong>Sequences and series intro</strong> - coding and signal-analysis preparation.</li>
+<li><strong>Doppler/timing budget analysis</strong> - rate and accumulated error over time.</li>
+</ul>
+<p><strong>After this:</strong> You can estimate Direct to Cell contact windows, total data delivered, timing constraints, and backhaul requirements.</p>
+<p><strong>Resources:</strong></p>
+<ul>
+<li>Stewart, <em>Calculus: Early Transcendentals</em>, Chapters 5-7</li>
+<li>Starlink Direct to Cell - <a href="https://www.starlink.com/business/direct-to-cell">https://www.starlink.com/business/direct-to-cell</a></li>
+<li>LTE/EPC architecture references</li>
+</ul>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>This module narrows broad 5G NTN study into Starlink Direct to Cell as publicly described: standard LTE phones, onboard satellite eNodeB, roaming-style integration with mobile operators, and laser backhaul.</p>
+<h3 id="direct-to-cell-public-architecture">Direct to Cell Public Architecture</h3>
+<ul>
+<li>Existing LTE phones with no special hardware.</li>
+<li>Satellite payload functioning as an eNodeB from the phone&rsquo;s perspective.</li>
+<li>Roaming-like integration with partner mobile operators.</li>
+<li>Laser backhaul from satellite to the Starlink network.</li>
+<li>Service evolution: text, IoT, voice, data as public roadmap categories.</li>
+</ul>
+<h3 id="lteepc-concepts">LTE/EPC Concepts</h3>
+<ul>
+<li>UE, eNodeB, EPC, MME, SGW, PGW, HSS, PCRF.</li>
+<li>Attach, authentication, bearer setup, paging, and data transfer.</li>
+<li>S1AP concepts, GTP-U tunneling, Diameter/S6a, DNS, and IPsec tunnels.</li>
+<li>Roaming interfaces and trust boundaries.</li>
+<li>IoT device classes and low-data-rate service design.</li>
+</ul>
+<h3 id="satellite-constraints">Satellite Constraints</h3>
+<ul>
+<li>Doppler and timing advance for cellular bands.</li>
+<li>Link budget and antenna constraints for phones.</li>
+<li>Beam footprint, paging area, and mobility/handover.</li>
+<li>Backhaul path from phone to satellite to laser mesh/gateway to partner mobile core.</li>
+<li>Security and lawful-intercept awareness as operational constraints.</li>
+</ul>
+<hr>
+<h2 id="c-and-python-skills">C++ and Python Skills</h2>
+<p><strong>C++ focus:</strong> <code>std::thread</code>, <code>std::mutex</code>, condition variables, concurrent state machines.</p>
+<p><strong>Python focus:</strong> Skyfield, NumPy, timing/capacity analysis, tabular output.</p>
+<hr>
+<h2 id="projects">Projects</h2>
+<h3 id="project-1-satellite-enodeb-roaming-state-simulator-c">Project 1: Satellite eNodeB Roaming State Simulator (C++)</h3>
+<p>Build a simplified Direct to Cell control-flow simulator.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Model UE, satellite eNodeB, backhaul link, and partner core as interacting components.</li>
+<li>Simulate attach, authentication, bearer setup, data transfer, and detach.</li>
+<li>Add variable satellite backhaul latency and short degraded periods.</li>
+<li>Log control-plane events, bearer state, and data-plane availability.</li>
+<li>Use threads or an event-loop style to model concurrent actors.</li>
+</ul>
+<p><strong>C++ skills used:</strong> threads, mutexes, condition variables, state machines, structured logs.</p>
+<p><strong>Toolkit:</strong> Add <code>DirectToCellModel</code>.</p>
+<h3 id="project-2-direct-to-cell-doppler-and-capacity-analyzer-python">Project 2: Direct-to-Cell Doppler and Capacity Analyzer (Python)</h3>
+<p>Analyze feasibility constraints.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Compute visibility windows for a satellite over a user location.</li>
+<li>Estimate Doppler and timing-advance ranges for LTE-band service.</li>
+<li>Integrate rate over a pass to estimate total bytes transferred.</li>
+<li>Compare IoT, text, voice, and low-rate data demand profiles.</li>
+<li>Plot contact duration, Doppler, rate, and accumulated data.</li>
+</ul>
+<p><strong>Python skills used:</strong> Skyfield, NumPy, matplotlib, numerical integration.</p>
+<hr>
+<h2 id="technology-reference">Technology Reference</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Technology</th>
+          <th>Problem It Solves</th>
+          <th>Starlink Relevance</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>LTE eNodeB</td>
+          <td>Radio access node for LTE phones</td>
+          <td>Public Starlink Direct to Cell model</td>
+      </tr>
+      <tr>
+          <td>EPC</td>
+          <td>Mobile core network</td>
+          <td>Partner operator integration</td>
+      </tr>
+      <tr>
+          <td>GTP-U</td>
+          <td>User-plane tunneling</td>
+          <td>Mobile data transport</td>
+      </tr>
+      <tr>
+          <td>S1AP/Diameter</td>
+          <td>Control-plane/authentication concepts</td>
+          <td>Attach and roaming model</td>
+      </tr>
+      <tr>
+          <td>Laser backhaul</td>
+          <td>Satellite network transport</td>
+          <td>Direct to Cell traffic path</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="where-this-tech-is-used">Where This Tech Is Used</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Application</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Starlink Direct to Cell</td>
+          <td>Public LTE-phone satellite service</td>
+      </tr>
+      <tr>
+          <td>Mobile operator roaming</td>
+          <td>Partner integration model</td>
+      </tr>
+      <tr>
+          <td>IoT and emergency messaging</td>
+          <td>Low-rate service examples</td>
+      </tr>
+      <tr>
+          <td>Topology control</td>
+          <td>Backhaul path selection and capacity planning</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books-and-resources">Books and Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Starlink Direct to Cell</td>
+          <td>Public architecture</td>
+      </tr>
+      <tr>
+          <td>LTE/EPC architecture references</td>
+          <td>UE/eNodeB/core mental model</td>
+      </tr>
+      <tr>
+          <td>3GPP NTN references</td>
+          <td>Background only; keep Starlink LTE focus</td>
+      </tr>
+      <tr>
+          <td>Digital communications texts</td>
+          <td>Doppler and link constraints</td>
+      </tr>
+  </tbody>
+</table>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    
+                    
+                    
+                    
+                    <a href="/space-networking/curriculum/module-06/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-08/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline"></p>
+      <div class="footer-links">
+        <a href="https://github.com/anthonyhawkins" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

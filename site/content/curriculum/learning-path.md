@@ -4,146 +4,154 @@ module_number: 00
 weight: 00
 ---
 
-# Learning Path — Skill Tree & Roadmap
+# Learning Path - Starlink Network and Topology Roadmap
 
-Your starting point: **Algebra 1 (through quadratics)**, senior-level networking expertise, new to C++.
+Your starting point: **Algebra 1 through quadratics**, senior-level networking expertise, and new-to-intermediate C++.
 
-Each module teaches the math you need, then applies it to a space networking topic with hands-on C++ and Python projects. Start at Module 01 and work forward.
+Each module teaches the math first, then applies it to a Starlink-relevant networking topic with C++ and Python projects. The sequence intentionally moves from simpler RF/link geometry to dynamic graphs, optical mesh scheduling, traffic engineering, and production operations.
 
 ---
 
-## The Skill Tree
+## Skill Tree
 
+```text
+YOUR STARTING SKILLS                    WHAT THEY UNLOCK
+---------------------                   ----------------
+Algebra 1                -------------> dB math, path loss, link ratios
+TCP/IP / gRPC expertise  -------------> Starlink ground network, BGP/IS-IS,
+                                         Segment Routing, topology services
+Software engineering     -------------> C++ toolkit, Python analysis,
+                                         automation and digital twin projects
+
+
+MATH UNLOCKS                            STARLINK NETWORKING UNLOCKS
+------------                            ---------------------------
+Algebra 2 + Trig        -------------> Ku/Ka/E-band links, phased-array
+(Modules 01-03)                         beams, gateway visibility, POP paths
+
+Pre-Calculus            -------------> Time-varying link quality, handover
+(Modules 04-05)                         state, Doppler intuition, rain fade
+
+Calculus I              -------------> Link-margin sensitivity, scheduler
+(Modules 05-07)                         optimization, MCS and capacity curves
+
+Calculus II             -------------> Total data over passes, spectral
+(Modules 07-08)                         efficiency, shell/routing analysis
+
+Calculus III            -------------> State vectors, line-of-sight geometry,
+(Modules 08-09)                         constellation topology snapshots
+
+Linear Algebra          -------------> ECI/ECEF/body-frame transforms,
+(Modules 09-10)                         laser pointing, topology control
+
+Probability & Stats     -------------> Availability, jamming/interference,
+(Module 11)                             telemetry anomaly detection
+
+Graph Theory            -------------> Time-expanded graphs, k-shortest path,
+(Module 12)                             min-cost flow, laser/gateway scheduling
 ```
-YOUR STARTING SKILLS                    WHAT THEY UNLOCK (Module 01)
-─────────────────────                   ────────────────────────────
-Algebra 1 (quadratics)  ──────────────► dB arithmetic, basic link math
-TCP/IP / gRPC expertise ──────────────► CCSDS protocol stack, DTN concepts,
-                                         protocol state machines, SDN, security
-Software engineering    ──────────────► C++ fundamentals, build systems
-
-
-MATH UNLOCKS                            SPACE NETWORKING UNLOCKS
-────────────                            ────────────────────────
-Algebra 2 + Trig        ──────────────► Link budgets, elevation angles,
-(Modules 01–03)                          antenna beam geometry, Doppler (basic)
-
-Pre-Calculus             ──────────────► Frequency analysis concepts,
-(Modules 04–05)                          signal power, modulation intuition,
-                                         Kepler orbits (ellipses!)
-
-Calculus I               ──────────────► Doppler rate-of-change, orbital velocity,
-(Modules 05–07)                          signal energy over a pass, optimization
-
-Calculus II              ──────────────► Fourier basics, spectral efficiency,
-(Modules 07–08)                          coding theory
-
-Calculus III             ──────────────► Orbital mechanics vectors, satellite
-(Modules 08–09)                          position/velocity, constellation geometry
-
-Linear Algebra           ──────────────► Coordinate frame transforms (ECI↔ECEF),
-(Modules 09–10)                          rotation matrices, antenna patterns
-
-Probability & Stats      ──────────────► BER curves, noise analysis, rain fade
-(Module 11)                              availability, channel modeling
-
-Graph Theory             ──────────────► Contact Graph Routing, Dijkstra,
-(Module 12)                              traffic engineering optimization
-```
 
 ---
 
-## Phase 1: Foundation (Modules 01–03)
+## Phase 1: Foundation (Modules 01-03)
 
-> **Math:** Algebra 2 → Trigonometry
-> **C++:** Language fundamentals → OOP
-> **Space:** Protocol concepts + industry landscape
+> **Math:** Algebra 2 to Trigonometry
+> **C++:** Language fundamentals to OOP
+> **Space/Network:** Starlink public system model, RF access links, gateways, POPs, and ISP routing
 
-| Module | Math | C++ | Space Topic |
-|--------|------|-----|-------------|
-| 01 — CCSDS Protocol Stack | Algebra 2: logs, exponentials, dB | Variables, types, binary I/O, bitwise | Protocol architecture, Space Packets, data link |
-| 02 — Foundations of Space Comms | Algebra 2 + Trig intro | Control flow, classes, enums | Space environment, frequency bands, delays |
-| 03 — Ground Segment Architecture | Trig: law of cosines, elevation angles | OOP, containers, algorithms | Ground stations, gateways, POPs, cloud GS |
+| Module | Math | C++ | Starlink Topic |
+|---|---|---|---|
+| 01 - Starlink System Model | Algebra 2: logs, exponentials, dB | Variables, types, binary/text parsing | Public Starlink architecture, ephemeris, FCC data, RF units |
+| 02 - RF Foundations and Phased Arrays | Algebra 2 + Trig intro | Control flow, classes, enums | Ku/Ka/E links, phased-array beam geometry, delay/path loss |
+| 03 - Ground Network and Peering | Trig: law of cosines, elevation, slant range | OOP, containers, algorithms | Gateways, POPs, BGP, IS-IS/MPLS/SR, subscriber services |
 
-### Phase 1 Integrated Project: **CCSDS Protocol Toolkit (C++)**
-- Parses CCSDS Space Packet headers (binary/bitwise)
-- Computes free-space path loss for different bands (logarithms + trig)
-- Calculates ground station elevation angle for a given satellite altitude (trig)
+### Phase 1 Integrated Project: **Starlink Access and Ground Model**
 
----
-
-## Phase 2: Acceleration (Modules 04–07)
-
-> **Math:** Pre-Calculus → Calculus I → Calculus II intro
-> **C++:** Networking + systems programming + first concurrency
-> **Space:** DTN implementation + link engineering + broadband standards
-
-| Module | Math | C++ | Space Topic |
-|--------|------|-----|-------------|
-| 04 — Delay-Tolerant Networking | Trig completion + Pre-Calc intro | Sockets, UDP, CBOR serialization | Bundle Protocol, LTP, store-and-forward |
-| 05 — Satellite Link Engineering | Pre-Calc + Calc I intro | JSON config, CMake, gtest | Link budgets, FSPL, rain fade, antennas |
-| 06 — DVB Standards & Broadband | Calc I: derivatives, optimization | Templates, state machines, patterns | DVB-S2/RCS2, MODCOD, ACM, PEPs |
-| 07 — 5G NTN Integration | Calc I completion + Calc II intro | `std::thread`, mutex, concurrency | NTN architecture, HARQ, handover |
-
-### Phase 2 Integrated Project: **DTN Node Prototype (C++)**
-- BPv7 bundle creation and CBOR serialization
-- LTP over UDP with checkpoint/retransmission
-- Store-and-forward when link unavailable
+- Parse public orbital/frequency data into reusable C++ structures.
+- Compute delay, slant range, FSPL, and phased-array scan loss.
+- Select gateway/POP egress based on visibility and latency.
 
 ---
 
-## Phase 3: Depth (Modules 08–10)
+## Phase 2: Acceleration (Modules 04-07)
 
-> **Math:** Calculus II → Calculus III → Linear Algebra
-> **C++:** Eigen, async, system design
-> **Space:** Constellation routing, optical links, SDN orchestration
+> **Math:** Pre-Calculus to Calculus II intro
+> **C++:** Networking, state machines, scheduling, first concurrency
+> **Space/Network:** Variable links, link budgets, broadband access scheduling, Direct to Cell
 
-| Module | Math | C++ | Space Topic |
-|--------|------|-----|-------------|
-| 08 — LEO Constellations & Routing | Calc II + Calc III (3D vectors) | Eigen, Boost.Graph, `std::async` | Walker constellations, ISL routing, handover |
-| 09 — Optical Inter-Satellite Links | Calc III + Linear Algebra | pybind11, performance-critical | Laser links, ATP, OISL mesh topology |
-| 10 — SDN & Network Management | Linear Algebra + Optimization | REST API, gRPC, system design | Programmable networks, TS-SDN, traffic eng. |
+| Module | Math | C++ | Starlink Topic |
+|---|---|---|---|
+| 04 - Variable Links and Handover | Trig completion + Pre-Calc intro | State machines, sockets, link emulation | TCP/QUIC over dynamic LEO links, handover resilience |
+| 05 - Starlink Link Engineering | Pre-Calc + Calc I intro | JSON config, CMake, gtest | Ku/Ka/E link budgets, rain fade, scan loss, interference |
+| 06 - Broadband PHY/MAC Scheduling | Calc I: derivatives, optimization | Templates, strategy pattern, schedulers | MCS/ACM, beam scheduling, resource allocation, QoS |
+| 07 - Direct to Cell and LTE Backhaul | Calc I completion + Calc II intro | `std::thread`, mutex, concurrency | LTE phones, onboard eNodeB, roaming, laser backhaul |
 
-### Phase 3 Integrated Project: **LEO Constellation Simulator (C++ + Python)**
-- C++ engine: propagate orbits, compute ISL topology, run Dijkstra routing
-- Python layer: visualize constellation on a globe, plot latency heatmaps
+### Phase 2 Integrated Project: **Variable-Capacity Access Network Simulator**
 
----
-
-## Phase 4: Mastery (Modules 11–12)
-
-> **Math:** Probability & Statistics → Graph Theory
-> **C++:** Production-quality, crypto, distributed systems
-> **Space:** Security, full system integration, capstone
-
-| Module | Math | C++ | Space Topic |
-|--------|------|-----|-------------|
-| 11 — Security in Space Networks | Probability & Statistics | OpenSSL, concurrent crypto | SDLS, BPSec, jamming, QKD |
-| 12 — Capstone Projects | Graph Theory & Optimization | Full production stack | Choose 2 portfolio-grade projects |
-
-### Phase 4 Integrated Project: **Capstone (choose 2)**
-- DTN Bundle Protocol implementation
-- LEO Constellation Network Simulator
-- Ground Station Network Orchestrator
-- Satellite-Friendly Transport Protocol
-- Space Network Security Testbed
+- Model terminal handover and degraded link states.
+- Run Starlink-style link budgets for user and gateway links.
+- Allocate beam resources across terminals with different demand and QoS.
+- Simulate Direct to Cell attach and data flow over variable satellite backhaul.
 
 ---
 
-## Long-Running Project: Space Network Toolkit
+## Phase 3: Depth (Modules 08-10)
 
-A C++ library that grows across modules:
+> **Math:** Calculus II to Linear Algebra and Optimization
+> **C++:** Eigen, Boost.Graph, async, APIs, system design
+> **Space/Network:** Constellation routing, optical laser mesh, topology control, traffic engineering
 
-```
-Module  Addition                              Builds On
-──────────────────────────────────────────────────────────
-01      PacketParser (CCSDS Space Packets)     —
-03      GroundStation (elevation, visibility)  —
-04      BundleProtocol (BPv7 bundles, CBOR)   PacketParser
-05      LinkBudget (FSPL, atmospheric loss)    —
-08      ConstellationEngine (orbits, topology) GroundStation
-09      ISLTopology (optical links, mesh)      ConstellationEngine
-10      SDNController (forwarding, REST API)   ConstellationEngine + ISLTopology
+| Module | Math | C++ | Starlink Topic |
+|---|---|---|---|
+| 08 - Constellations and Routing | Calc II + Calc III vectors | Eigen, Boost.Graph, `std::async` | Shells, topology snapshots, shortest path, route churn |
+| 09 - Optical ISLs and Laser Mesh | Calc III + Linear Algebra | pybind11, Eigen transforms, performance | OISL assignment, laser pointing, link scheduling, failure behavior |
+| 10 - Network Control and TE | Linear Algebra + Optimization | REST/gRPC APIs, async orchestration | Segment Routing, BGP/IS-IS/MPLS, TE, topology controller |
+
+### Phase 3 Integrated Project: **Starlink Topology Controller**
+
+- Propagate satellites and compute topology snapshots.
+- Assign constrained optical links and model failures.
+- Generate paths or Segment Routing policies between ground endpoints.
+- Optimize traffic allocation across satellite, gateway, POP, and peering links.
+
+---
+
+## Phase 4: Mastery (Modules 11-12)
+
+> **Math:** Probability & Statistics to Graph Theory and Optimization
+> **C++:** Production-quality services, policy checks, simulation integration
+> **Space/Network:** Security, resilience, reliability, full portfolio capstones
+
+| Module | Math | C++ | Starlink Topic |
+|---|---|---|---|
+| 11 - Security and Resilience | Probability & Statistics | Policy engine, concurrent analysis | RPKI/BGP safety, DDoS, jamming, anomaly detection, availability |
+| 12 - Capstone Projects | Graph Theory & Optimization | Full production stack | Choose 2 Starlink-facing portfolio projects |
+
+### Phase 4 Integrated Project: **Starlink Network Digital Twin**
+
+- Model satellites, laser links, gateways, POPs, peering, failures, and telemetry.
+- Validate route and policy changes before deployment.
+- Demonstrate service impact, recovery, and traffic-engineering decisions.
+
+---
+
+## Long-Running Project: Starlink Network Toolkit
+
+```text
+Module  Addition                         Builds On
+------  -------------------------------  ------------------------------
+01      PublicDataParser                 -
+02      AccessLinkModel                  PublicDataParser
+03      GatewayPopModel                  AccessLinkModel
+04      HandoverStateMachine             AccessLinkModel
+05      StarlinkLinkBudget               AccessLinkModel + GatewayPopModel
+06      BeamScheduler                    StarlinkLinkBudget
+07      DirectToCellModel                HandoverStateMachine
+08      ConstellationEngine              GatewayPopModel
+09      LaserMeshScheduler               ConstellationEngine
+10      TopologyController               ConstellationEngine + LaserMeshScheduler
+11      ReliabilitySecurityAnalyzer      TopologyController
+12      DigitalTwin                      All prior modules
 ```
 
 ---
@@ -151,43 +159,9 @@ Module  Addition                              Builds On
 ## Daily Schedule Template
 
 | Block | Duration | Focus |
-|-------|----------|-------|
-| Morning | ~45 min | 🔢 Math — structured lessons + problem sets |
-| Midday | ~30 min | 💻 C++ — language learning + small exercises |
-| Evening | ~45 min | 🛰️ Space — reading + project work (using current math + C++) |
+|---|---:|---|
+| Morning | ~45 min | Math lessons and problem sets |
+| Midday | ~30 min | C++ implementation and small tests |
+| Evening | ~45 min | Starlink/network reading and project work |
 
-Weekends: project work, reading CCSDS specs, watching 3Blue1Brown
-
----
-
-## Math Resources
-
-| Topic | Primary Resource | Visual Supplement |
-|-------|-----------------|-------------------|
-| Algebra 2 | Khan Academy (free) | 3Blue1Brown — *Essence of Calculus* (watch early for context) |
-| Trigonometry | Khan Academy (free) | — |
-| Pre-Calculus | Khan Academy (free) | — |
-| Calculus I–II | *Calculus: Early Transcendentals* (Stewart) | 3Blue1Brown — *Essence of Calculus* |
-| Calculus III | Stewart + *Orbital Mechanics* (Curtis) | 3Blue1Brown — *Essence of Linear Algebra* |
-| Linear Algebra | *Intro to Linear Algebra* (Strang) + MIT OCW 18.06 | 3Blue1Brown — *Essence of Linear Algebra* |
-| Probability | Khan Academy + *Probability for Engineers* (Devore) | — |
-| Graph Theory | CLRS Ch. 22–26 + Khan Academy discrete math | — |
-
-## C++ & Python Setup (Do This Before Module 01)
-
-### C++ Toolchain
-- Compiler: `clang++` or `g++` with C++20
-- Build system: CMake
-- Libraries: Eigen (linear algebra), Boost (networking, math), nlohmann/json
-- Testing: Google Test (gtest)
-- IDE: VS Code with clangd
-
-### Python Toolchain
-- Python 3.11+
-- Libraries: NumPy, SciPy, Matplotlib, Astropy, Skyfield, NetworkX
-- Jupyter notebooks for exploration
-- pytest for testing
-
-### Setup Exercise
-1. Build a C++ project with CMake — verify by printing "Hello, Space Networking"
-2. Build a Python environment that imports NumPy and Matplotlib — verify by plotting sin(x)
+Weekends: integrate project modules, write short technical notes, and compare results against public Starlink/FCC/research data.

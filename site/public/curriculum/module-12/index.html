@@ -1,24 +1,426 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="My journey into satellite networking, space protocols, and the future of space communications."><title>Module 12: Capstone Projects | Escape Velocity</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel=stylesheet><link rel=stylesheet href="https://anthony-hawkins.github.io/space-networking/css/orbital.css?v=1776219886"></head><body><div class=starfield id=starfield></div><header class=site-header><nav class=nav-container><a href=https://anthony-hawkins.github.io/space-networking/ class=nav-logo><span class=logo-icon>◈</span>
-<span class=logo-text>Escape Velocity</span></a><ul class=nav-links><li><a href=/space-networking/>Home</a></li><li><a href=/space-networking/blog/>Journal</a></li><li><a href=/space-networking/skill-tree/>Skill Tree</a></li><li><a href=/space-networking/curriculum/>Curriculum</a></li><li><a href=/space-networking/about/>About</a></li></ul><button class=nav-toggle id=navToggle aria-label="Toggle navigation">
-<span></span><span></span><span></span></button></nav></header><main class=site-main><div class="docs-layout container"><aside class=docs-sidebar><div class=sidebar-header><h3 class=sidebar-title>Curriculum</h3></div><nav class=sidebar-nav><ul class=sidebar-list><li><a href=https://anthony-hawkins.github.io/space-networking/curriculum/ class=sidebar-link><span class=sidebar-icon>⬡</span> Overview</a></li><li><a href=/space-networking/curriculum/learning-path/ class=sidebar-link><span class=sidebar-number>00</span>
-<span class=sidebar-text>Learning Path</span></a></li><li><a href=/space-networking/curriculum/module-01/ class=sidebar-link><span class=sidebar-number>01</span>
-<span class=sidebar-text>Module 01: CCSDS Protocol Stack</span></a></li><li><a href=/space-networking/curriculum/module-02/ class=sidebar-link><span class=sidebar-number>02</span>
-<span class=sidebar-text>Module 02: Foundations of Space Communications</span></a></li><li><a href=/space-networking/curriculum/module-03/ class=sidebar-link><span class=sidebar-number>03</span>
-<span class=sidebar-text>Module 03: Ground Segment Architecture</span></a></li><li><a href=/space-networking/curriculum/module-04/ class=sidebar-link><span class=sidebar-number>04</span>
-<span class=sidebar-text>Module 04: Delay-Tolerant Networking</span></a></li><li><a href=/space-networking/curriculum/module-05/ class=sidebar-link><span class=sidebar-number>05</span>
-<span class=sidebar-text>Module 05: Satellite Link Engineering</span></a></li><li><a href=/space-networking/curriculum/module-06/ class=sidebar-link><span class=sidebar-number>06</span>
-<span class=sidebar-text>Module 06: DVB Standards & Satellite Broadband</span></a></li><li><a href=/space-networking/curriculum/module-07/ class=sidebar-link><span class=sidebar-number>07</span>
-<span class=sidebar-text>Module 07: 5G Non-Terrestrial Networks (NTN)</span></a></li><li><a href=/space-networking/curriculum/module-08/ class=sidebar-link><span class=sidebar-number>08</span>
-<span class=sidebar-text>Module 08: LEO Constellations & Routing</span></a></li><li><a href=/space-networking/curriculum/module-09/ class=sidebar-link><span class=sidebar-number>09</span>
-<span class=sidebar-text>Module 09: Optical Inter-Satellite Links (OISL)</span></a></li><li><a href=/space-networking/curriculum/module-10/ class=sidebar-link><span class=sidebar-number>10</span>
-<span class=sidebar-text>Module 10: SDN & Autonomous Network Management</span></a></li><li><a href=/space-networking/curriculum/module-11/ class=sidebar-link><span class=sidebar-number>11</span>
-<span class=sidebar-text>Module 11: Security in Space Networks</span></a></li><li><a href=/space-networking/curriculum/module-12/ class="sidebar-link active"><span class=sidebar-number>12</span>
-<span class=sidebar-text>Module 12: Capstone Projects</span></a></li></ul></nav></aside><div class=docs-content><article class=module-single><header class="module-header docs-header"><div class=module-header-meta style=margin-bottom:1rem;display:flex;gap:.75rem;flex-wrap:wrap><span class=module-number-lg style=color:#60a5fa;font-weight:600;letter-spacing:.05em>Module 12</span>
-<span class=math-badge style="background:rgba(245,158,11,.1);color:#f59e0b;padding:.2rem .6rem;border-radius:4px;font-size:.75rem">Requires:</span></div><h1 class=docs-title>Module 12: Capstone Projects</h1></header><div class="module-body prose docs-body"><p><strong>Phase:</strong> 4 — Mastery
-<strong>Builds on:</strong> All previous modules</p><hr><h2 id=-math-youll-learn>🔢 Math You&rsquo;ll Learn</h2><h3 id=graph-theory--optimization>Graph Theory & Optimization</h3><p>The final math module — algorithms for routing, scheduling, and optimization.</p><ul><li><strong>Graph fundamentals</strong> — nodes, edges, weighted, directed</li><li><strong>Shortest path — Dijkstra, Bellman-Ford</strong> — optimal routing through networks<ul><li><em>Space application:</em> satellite routing, ISL path selection</li></ul></li><li><strong>Time-expanded graphs</strong> — modeling networks that change over time<ul><li><em>Space application:</em> Contact Graph Routing (CGR) — the core DTN routing algorithm</li></ul></li><li><strong>Linear programming (LP) and Integer LP</strong> — optimization under constraints<ul><li><em>Space application:</em> traffic engineering, ground station contact scheduling</li><li><em>Space application:</em> resource allocation under limited capacity</li></ul></li></ul><p><strong>🔓 After this:</strong> You can implement CGR, optimize traffic engineering, and design full-system scheduling algorithms.</p><p><strong>Resources:</strong></p><ul><li><em>Introduction to Algorithms</em> (CLRS) — Chapters 22–26</li><li><em>Discrete Mathematics and Its Applications</em> — Rosen</li></ul><hr><h2 id=-overview>🛰️ Overview</h2><p>Choose <strong>2 of the following 5</strong> capstone projects. Each synthesizes multiple modules and produces portfolio-grade work that demonstrates your space networking expertise.</p><hr><h2 id=project-a-dtn-bundle-protocol-implementation>Project A: DTN Bundle Protocol Implementation</h2><p><strong>Modules Used:</strong> 01, 04, 11
-<strong>Language:</strong> C++</p><h3 id=deliverable>Deliverable</h3><p>A complete, working BPv7 (RFC 9171) node implementation in C++ that can:</p><ul><li>Create, serialize (CBOR), and parse bundles (extended from Module 04 toolkit)</li><li>Store bundles persistently (SQLite or filesystem)</li><li>Forward bundles over simulated disrupted links using LTP or TCPCL</li><li>Support BPSec integrity and confidentiality blocks (from Module 11)</li><li>Implement CGR for multi-hop routing using your new Graph Theory knowledge</li></ul><h3 id=why-it-matters>Why It Matters</h3><p>This directly demonstrates the highest-value skill in space networking. NASA, ESA, and defense contractors all need DTN engineers.</p><h3 id=stretch-goals>Stretch Goals</h3><ul><li>Interop with ION-DTN (also written in C)</li><li>Performance benchmarks vs. TCP over disrupted link</li><li>Python dashboard showing bundle flow and node status</li></ul><hr><h2 id=project-b-leo-constellation-network-simulator>Project B: LEO Constellation Network Simulator</h2><p><strong>Modules Used:</strong> 03, 08, 09, 10
-<strong>Language:</strong> C++ (routing engine) + Python (visualization)</p><h3 id=deliverable-1>Deliverable</h3><p>A simulator that:</p><ul><li>Generates a configurable Walker constellation (extended from Module 08 toolkit)</li><li>Computes ISL topology with optical link constraints (from Module 09)</li><li>Routes traffic using shortest-path or CGR (C++ engine with Boost.Graph)</li><li>Compares satellite-routed latency vs. great-circle fiber for city pairs worldwide</li><li>Includes SDN controller for dynamic route management (from Module 10)</li><li>Visualizes in 3D with Plotly or on a map with Cartopy</li></ul><h3 id=why-it-matters-1>Why It Matters</h3><p>Constellation operators (SpaceX, Amazon, Telesat) need people who understand the networking layer — not just RF or orbital mechanics.</p><h3 id=stretch-goals-1>Stretch Goals</h3><ul><li>Gateway handover and ground segment simulation</li><li>Capacity simulation: apply traffic demand and show congestion</li><li>Multi-orbit networking (LEO + MEO)</li></ul><hr><h2 id=project-c-ground-station-network-orchestrator>Project C: Ground Station Network Orchestrator</h2><p><strong>Modules Used:</strong> 03, 10
-<strong>Language:</strong> C++ (core engine) + Python (scheduling optimization)</p><h3 id=deliverable-2>Deliverable</h3><p>A microservice system that:</p><ul><li>Ingests satellite ephemeris data (TLEs) and computes passes (extending Module 03)</li><li>Computes contact schedules for a global ground station network</li><li>Allocates contacts based on priority, data volume, and antenna availability</li><li>Exposes a gRPC API (C++ with grpc++) for scheduling and status queries</li><li>Python dashboard for monitoring contact status and utilization</li></ul><h3 id=why-it-matters-2>Why It Matters</h3><p><strong>This project directly leverages your gRPC expertise</strong> while demonstrating space domain knowledge. Ground segment orchestration is a hot area — AWS Ground Station, Azure Orbital, and Atlas Space Operations all need this.</p><h3 id=stretch-goals-2>Stretch Goals</h3><ul><li>Weather-aware scheduling (avoid rain-impacted Ka-band contacts)</li><li>Multi-constellation support</li><li>Cost optimizer for GSaaS pricing models</li></ul><hr><h2 id=project-d-satellite-friendly-transport-protocol>Project D: Satellite-Friendly Transport Protocol</h2><p><strong>Modules Used:</strong> 04, 05, 06
-<strong>Language:</strong> C++</p><h3 id=deliverable-3>Deliverable</h3><p>A transport protocol optimized for satellite links:</p><ul><li>Custom congestion control algorithm for high-latency, variable-capacity links</li><li>Both reliable and unreliable delivery modes</li><li>Graceful link disruption handling (reconnect, resume)</li><li>Benchmarks against TCP and LTP over simulated satellite conditions (Python test harness)</li><li>Results published as a technical blog post</li></ul><h3 id=why-it-matters-3>Why It Matters</h3><p><strong>This is the most direct application of your TCP expertise.</strong> You&rsquo;re designing next-gen satellite transport — the kind of work SpaceX&rsquo;s network team does.</p><h3 id=stretch-goals-3>Stretch Goals</h3><ul><li>Implement as a QUIC extension</li><li>Multipath support (ground link + ISL)</li><li>Integration with your BPv7 as a convergence layer</li></ul><hr><h2 id=project-e-space-network-security-testbed>Project E: Space Network Security Testbed</h2><p><strong>Modules Used:</strong> 01, 04, 11
-<strong>Language:</strong> C++ (crypto) + Python (analysis)</p><h3 id=deliverable-4>Deliverable</h3><p>A security testbed that:</p><ul><li>Implements SDLS encryption for TM/TC frames in C++ (extending Module 11 work)</li><li>Implements BPSec for DTN bundles</li><li>Simulates attacks in Python: replay, injection, jamming (at protocol level)</li><li>Demonstrates detection and mitigation of each attack</li><li>Produces a security analysis report with visualizations</li></ul><h3 id=why-it-matters-4>Why It Matters</h3><p>Space systems security is a critical growth area, especially for defense-adjacent roles (SDA, L3Harris, Northrop).</p><h3 id=stretch-goals-4>Stretch Goals</h3><ul><li>Key management subsystem for a 100-satellite constellation</li><li>Anomaly detection using ML (scikit-learn) on telemetry patterns</li><li>NIST SP 800-53 compliance mapping</li></ul><hr><h2 id=presentation--portfolio>Presentation & Portfolio</h2><p>For each completed capstone:</p><ol><li><strong>GitHub Repository:</strong> Clean C++/Python code with README, architecture diagram, CMakeLists.txt / pyproject.toml, build instructions</li><li><strong>Technical Blog Post:</strong> 1500–3000 words explaining the problem, your design decisions, and results</li><li><strong>Demo Video:</strong> 3–5 minute screen recording showing the system in action</li><li><strong>Benchmark/Analysis:</strong> Quantitative results with charts (latency, throughput, reliability)</li></ol><p>These artifacts become the centerpiece of your job applications.</p></div><footer class="module-footer docs-footer"><div class=docs-nav style="display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)"><a href=/space-networking/curriculum/learning-path/ class="docs-nav-link prev" style="text-decoration:none;color:var(--text-secondary);transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>← Previous</div><div class=nav-title style=color:#fff;font-weight:500>Learning Path</div></a><a href=/space-networking/curriculum/module-11/ class="docs-nav-link next" style="text-decoration:none;color:var(--text-secondary);text-align:right;transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>Next →</div><div class=nav-title style=color:#fff;font-weight:500>Module 11: Security in Space Networks</div></a></div></footer></article></div></div></main><footer class=site-footer><div class=footer-container><div class=footer-brand><span class=logo-icon>◈</span>
-<span>Escape Velocity</span></div><p class=footer-tagline></p><div class=footer-links><a href=https://github.com/anthonyhawkins target=_blank rel=noopener>GitHub</a></div><p class=footer-copy>Built with Hugo. Deployed to GitHub Pages.</p></div></footer><script src=https://anthony-hawkins.github.io/space-networking/js/orbital.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="My journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 12: Starlink-Focused Capstone Projects | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1776821511" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="http://localhost:1313/space-networking/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Path</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Starlink System Model, Public Data, and RF Units</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: Starlink RF Foundations and Phased-Array Access Links</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Variable Links, Handover Resilience, and Transport Behavior</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Starlink Security, Resilience, and Operational Reliability</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Starlink-Focused Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 12</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 12: Starlink-Focused Capstone Projects</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Phase:</strong> 4 - Mastery
+<strong>Builds on:</strong> All previous modules</p>
+<hr>
+<h2 id="math-youll-learn">Math You&rsquo;ll Learn</h2>
+<h3 id="graph-theory-and-optimization">Graph Theory and Optimization</h3>
+<p>The final math module turns the moving Starlink-inspired network into graphs, flows, assignments, schedules, and online decisions.</p>
+<ul>
+<li><strong>Graph fundamentals</strong> - nodes, edges, directed/undirected, weighted, capacities.</li>
+<li><strong>Shortest paths</strong> - Dijkstra, Bellman-Ford, A*, k-shortest paths.
+<ul>
+<li><em>Starlink application:</em> satellite/gateway/POP routing across topology snapshots.</li>
+</ul>
+</li>
+<li><strong>Time-expanded graphs</strong> - represent a moving network through time.
+<ul>
+<li><em>Starlink application:</em> scheduled topology and route planning.</li>
+</ul>
+</li>
+<li><strong>Flows and cuts</strong> - max flow, min cut, min-cost flow.
+<ul>
+<li><em>Starlink application:</em> gateway/POP capacity and traffic-engineering constraints.</li>
+</ul>
+</li>
+<li><strong>Integer and linear programming</strong> - optimize under discrete constraints.
+<ul>
+<li><em>Starlink application:</em> limited laser terminals, gateway assignment, maintenance windows.</li>
+</ul>
+</li>
+<li><strong>Online algorithms</strong> - update decisions as demand, failures, and topology change.</li>
+</ul>
+<p><strong>After this:</strong> You can build portfolio-grade Starlink-facing systems that combine RF, topology, routing, automation, and resilience.</p>
+<p><strong>Resources:</strong></p>
+<ul>
+<li>CLRS Chapters 22-26 and flow chapters</li>
+<li>Rosen, <em>Discrete Mathematics and Its Applications</em></li>
+<li>Hypatia and LEO routing papers for validation ideas</li>
+</ul>
+<hr>
+<h2 id="overview">Overview</h2>
+<p>Choose <strong>2 of the following 5</strong> capstone projects. Each project should produce a clean GitHub repository, technical blog post, quantitative results, and a short demo.</p>
+<hr>
+<h2 id="project-a-starlink-inspired-leo-topology-and-routing-simulator">Project A: Starlink-Inspired LEO Topology and Routing Simulator</h2>
+<p><strong>Modules Used:</strong> 03, 08, 09, 10
+<strong>Language:</strong> C++ routing engine + Python visualization</p>
+<h3 id="deliverable">Deliverable</h3>
+<p>A simulator that:</p>
+<ul>
+<li>Ingests public TLE/ephemeris data or generates Starlink-inspired shell models.</li>
+<li>Computes satellite, gateway, POP, and destination visibility/connectivity.</li>
+<li>Assigns limited optical inter-satellite links.</li>
+<li>Routes traffic between global endpoints.</li>
+<li>Compares latency against terrestrial great-circle/fiber estimates.</li>
+<li>Simulates satellite, laser-link, gateway, and POP failures.</li>
+</ul>
+<h3 id="key-algorithms">Key Algorithms</h3>
+<ul>
+<li>Snapshot Dijkstra/A*</li>
+<li>k-shortest paths</li>
+<li>constrained shortest path</li>
+<li>route-churn minimization</li>
+<li>failure-aware rerouting</li>
+</ul>
+<h3 id="why-it-matters">Why It Matters</h3>
+<p>This is the most direct portfolio signal for a Starlink Network and Topology role: moving graph, routing, gateways, laser links, and latency analysis.</p>
+<hr>
+<h2 id="project-b-gateway-pop-and-peering-optimizer">Project B: Gateway, POP, and Peering Optimizer</h2>
+<p><strong>Modules Used:</strong> 03, 05, 10, 11
+<strong>Language:</strong> C++ service + Python optimization</p>
+<h3 id="deliverable-1">Deliverable</h3>
+<p>A planner that:</p>
+<ul>
+<li>Selects gateway and POP egress based on visibility, link margin, weather, circuit capacity, latency, and BGP policy.</li>
+<li>Models gateway diversity and rain-fade outages.</li>
+<li>Applies peering/transit policy constraints.</li>
+<li>Produces route recommendations with reason codes.</li>
+<li>Shows service impact when a gateway or POP fails.</li>
+</ul>
+<h3 id="key-algorithms-1">Key Algorithms</h3>
+<ul>
+<li>min-cost flow</li>
+<li>max-link-utilization minimization</li>
+<li>gateway diversity optimization</li>
+<li>policy-constrained routing</li>
+<li>failure-impact analysis</li>
+</ul>
+<h3 id="why-it-matters-1">Why It Matters</h3>
+<p>This project connects orbital visibility to the ISP network. It demonstrates the exact bridge between Starlink satellites, gateways, POPs, and internet routing.</p>
+<hr>
+<h2 id="project-c-direct-to-cell-lte-backhaul-simulator">Project C: Direct-to-Cell LTE Backhaul Simulator</h2>
+<p><strong>Modules Used:</strong> 04, 07, 10, 11
+<strong>Language:</strong> C++ simulator + Python analysis</p>
+<h3 id="deliverable-2">Deliverable</h3>
+<p>A roaming-style LTE simulator where:</p>
+<ul>
+<li>Phones attach to a satellite eNodeB.</li>
+<li>Control-plane events model authentication and bearer setup.</li>
+<li>User traffic crosses variable satellite/laser backhaul.</li>
+<li>Traffic lands in a partner mobile-core network model.</li>
+<li>Failures and latency spikes show user-visible impact.</li>
+</ul>
+<h3 id="key-protocol-concepts">Key Protocol Concepts</h3>
+<ul>
+<li>LTE attach and bearer setup model</li>
+<li>GTP-U user-plane tunneling</li>
+<li>S1AP concepts</li>
+<li>Diameter/AAA concepts</li>
+<li>IPsec tunnel awareness</li>
+</ul>
+<h3 id="why-it-matters-2">Why It Matters</h3>
+<p>Direct to Cell is one of the most visible Starlink network expansions. This project shows that you can connect mobile-core knowledge to satellite topology and backhaul constraints.</p>
+<hr>
+<h2 id="project-d-optical-mesh-link-scheduler">Project D: Optical Mesh Link Scheduler</h2>
+<p><strong>Modules Used:</strong> 08, 09, 12
+<strong>Language:</strong> C++ core + Python visualization</p>
+<h3 id="deliverable-3">Deliverable</h3>
+<p>An OISL scheduler that:</p>
+<ul>
+<li>Assigns a limited number of laser links per satellite.</li>
+<li>Optimizes latency, capacity, link stability, and failure resilience.</li>
+<li>Compares fixed-grid, shortcut, and adaptive assignments.</li>
+<li>Penalizes excessive link churn.</li>
+<li>Exports topology snapshots to the routing simulator.</li>
+</ul>
+<h3 id="key-algorithms-2">Key Algorithms</h3>
+<ul>
+<li>graph matching</li>
+<li>local search</li>
+<li>simulated annealing</li>
+<li>link-churn penalty optimization</li>
+<li>topology diameter minimization</li>
+</ul>
+<h3 id="why-it-matters-3">Why It Matters</h3>
+<p>Laser-link topology is central to global LEO broadband. This project isolates the hardest graph-assignment piece and makes it measurable.</p>
+<hr>
+<h2 id="project-e-starlink-network-operations-digital-twin">Project E: Starlink Network Operations Digital Twin</h2>
+<p><strong>Modules Used:</strong> 03, 08, 10, 11
+<strong>Language:</strong> C++ or Python backend + browser/Python dashboard</p>
+<h3 id="deliverable-4">Deliverable</h3>
+<p>A digital twin that models:</p>
+<ul>
+<li>Satellites, gateways, POPs, peering edges, laser links, and user regions.</li>
+<li>Telemetry streams: latency, loss, utilization, route churn, link margin, alarms.</li>
+<li>Route changes, config rollouts, rollback, and blast radius.</li>
+<li>Incidents: gateway outage, route leak, laser-link degradation, jamming, traffic surge.</li>
+<li>Operator workflows for detection, diagnosis, and remediation.</li>
+</ul>
+<h3 id="key-systems-skills">Key Systems Skills</h3>
+<ul>
+<li>gRPC/Protobuf or REST API</li>
+<li>time-series telemetry</li>
+<li>route-policy validation</li>
+<li>incident simulation</li>
+<li>config rollout and rollback model</li>
+</ul>
+<h3 id="why-it-matters-4">Why It Matters</h3>
+<p>This project demonstrates production judgment: not just algorithms, but how a large network is monitored, changed, and recovered safely.</p>
+<hr>
+<h2 id="presentation-and-portfolio-requirements">Presentation and Portfolio Requirements</h2>
+<p>For each completed capstone:</p>
+<ol>
+<li><strong>Repository:</strong> Clean C++/Python code, README, build instructions, architecture diagram, and test plan.</li>
+<li><strong>Technical write-up:</strong> 1500-3000 words explaining the problem, assumptions, algorithms, and results.</li>
+<li><strong>Demo:</strong> 3-5 minute screen recording or reproducible notebook walkthrough.</li>
+<li><strong>Quantitative results:</strong> Charts for latency, throughput, route churn, utilization, availability, or recovery time.</li>
+<li><strong>Source discipline:</strong> Clearly mark public data, inferred assumptions, and intentionally simplified models.</li>
+</ol>
+<p>These artifacts become the center of the SpaceX/Starlink application portfolio.</p>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    
+                    
+                    
+                    
+                    <a href="/space-networking/curriculum/module-11/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 11: Starlink Security, Resilience, and Operational Reliability</div>
+                    </a>
+                    
+
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline"></p>
+      <div class="footer-links">
+        <a href="https://github.com/anthonyhawkins" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

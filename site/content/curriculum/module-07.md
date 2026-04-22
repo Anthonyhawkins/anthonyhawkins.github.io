@@ -1,143 +1,134 @@
 ---
-title: "Module 07: 5G Non-Terrestrial Networks (NTN)"
-module_number: 07
-weight: 07
+title: "Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul"
+module_number: 7
+weight: 7
 ---
 
 
-**Phase:** 2 — Acceleration
-**Builds on:** Modules 05, 06
+**Phase:** 2 - Acceleration
+**Builds on:** Modules 04, 05, and 06
 
 ---
 
-## 🔢 Math You'll Learn
+## Math You'll Learn
 
 ### Calculus I Completion + Calculus II Introduction
 
-Finishing single-variable calculus and starting the tools for signal analysis.
+You will finish single-variable calculus and start the math needed for accumulated capacity and signal analysis.
 
-- **Integrals — fundamental theorem of calculus** — accumulating quantities over time
-  - *Space application:* total signal energy = ∫ power(t) dt over a satellite pass
-  - *Space application:* total data transferred = ∫ data_rate(t) dt during a contact window
-- **Integration techniques — substitution, parts**
-- **Applications of integrals — area, average value**
-  - *Space application:* average data rate over a variable-capacity link
-- **Calculus II intro: sequences & series** — infinite sums and convergence
-  - *Space application:* error correction coding theory relies on series expansions
+- **Integrals and the Fundamental Theorem of Calculus** - accumulated quantities over time.
+  - *Starlink application:* total data transferred during a satellite visibility window equals the integral of rate over time.
+- **Average value of a function** - average cell capacity during a pass.
+- **Integration techniques** - approximate area under variable-rate curves.
+- **Sequences and series intro** - coding and signal-analysis preparation.
+- **Doppler/timing budget analysis** - rate and accumulated error over time.
 
-**🔓 After this:** You can compute signal energy budgets, total data transfer over variable links, and begin understanding spectral analysis.
+**After this:** You can estimate Direct to Cell contact windows, total data delivered, timing constraints, and backhaul requirements.
 
 **Resources:**
-- *Calculus: Early Transcendentals* — Stewart (Chapters 5–7)
-- Khan Academy — Calculus 1 completion + Calculus 2 intro (free)
+
+- Stewart, *Calculus: Early Transcendentals*, Chapters 5-7
+- Starlink Direct to Cell - https://www.starlink.com/business/direct-to-cell
+- LTE/EPC architecture references
 
 ---
 
-## 🛰️ What You'll Learn
+## What You'll Learn
 
-3GPP is integrating satellites directly into the 5G (and 6G) standard. This means satellite connectivity that's native to your phone — no special terminal needed. You'll learn the NTN architecture, protocol adaptations, and how this converges the telecom and space industries.
+This module narrows broad 5G NTN study into Starlink Direct to Cell as publicly described: standard LTE phones, onboard satellite eNodeB, roaming-style integration with mobile operators, and laser backhaul.
 
-### The Problem
-Terrestrial cellular covers ~20% of Earth's land surface and ~5% of the total surface (including ocean). NTN aims to provide:
-- **Ubiquitous coverage:** Phone works everywhere, even at sea or in remote areas
-- **Direct-to-device (D2D):** Satellite connects to standard smartphones
-- **Network resilience:** Satellite backhaul when terrestrial infrastructure fails
-- **IoT everywhere:** Sensor data from any location on Earth
+### Direct to Cell Public Architecture
 
-### NTN Architecture
-- Transparent (bent-pipe) vs. regenerative satellite payloads
-- gNB (5G base station) placement: on-ground vs. on-satellite
-- Feeder link + service link architecture
-- LEO vs. GEO NTN: trade-offs
-- Integration with terrestrial 5G core (AMF, UPF, SMF)
+- Existing LTE phones with no special hardware.
+- Satellite payload functioning as an eNodeB from the phone's perspective.
+- Roaming-like integration with partner mobile operators.
+- Laser backhaul from satellite to the Starlink network.
+- Service evolution: text, IoT, voice, data as public roadmap categories.
 
-### Protocol Adaptations (Release 17)
-- Timing advance: compensating for satellite propagation delay
-- HARQ (Hybrid ARQ): disabling/adapting for long RTT
-- Random access: PRACH adaptations for large cell sizes and delay
-- Doppler pre-compensation: UE and gNB responsibilities
-- GNSS dependency: why NTN UEs need GPS
+### LTE/EPC Concepts
 
-### Release 18+ Enhancements
-- Regenerative payload support (on-board gNB)
-- Enhanced mobility: NTN-to-TN and NTN-to-NTN handover
-- Network slicing for NTN: different QoS for different services
-- Satellite backhaul for terrestrial cells (IAB over NTN)
+- UE, eNodeB, EPC, MME, SGW, PGW, HSS, PCRF.
+- Attach, authentication, bearer setup, paging, and data transfer.
+- S1AP concepts, GTP-U tunneling, Diameter/S6a, DNS, and IPsec tunnels.
+- Roaming interfaces and trust boundaries.
+- IoT device classes and low-data-rate service design.
 
-### Industry & Convergence
-- Direct-to-cell services: T-Mobile/SpaceX, AST SpaceMobile, Lynk Global
-- IoT via NTN: Skylo, Sateliot, EchoStar (S-band)
-- The path to 6G: fully integrated terrestrial-satellite-aerial networks
+### Satellite Constraints
+
+- Doppler and timing advance for cellular bands.
+- Link budget and antenna constraints for phones.
+- Beam footprint, paging area, and mobility/handover.
+- Backhaul path from phone to satellite to laser mesh/gateway to partner mobile core.
+- Security and lawful-intercept awareness as operational constraints.
 
 ---
 
-## 💻 C++ & Python Skills
+## C++ and Python Skills
 
-**C++ focus:** `std::thread`, `std::mutex`, condition variables, basic concurrency patterns
-**Python focus:** Skyfield, NumPy for orbital computations, tabular output
+**C++ focus:** `std::thread`, `std::mutex`, condition variables, concurrent state machines.
 
-This is the first module where you'll write **concurrent C++ code**.
+**Python focus:** Skyfield, NumPy, timing/capacity analysis, tabular output.
 
 ---
 
 ## Projects
 
-### Project 1: NTN-TN Handover Simulator (C++)
+### Project 1: Satellite eNodeB Roaming State Simulator (C++)
 
-Simulate a UE (user equipment) handing over between satellite and terrestrial base stations.
-
-**What you'll build:**
-- Model a UE, an NTN gNB (satellite), and a TN gNB (terrestrial) as separate threads
-- Implement the handover signaling sequence as a state machine (connected-NTN → measurement → handover-prep → handover-exec → connected-TN)
-- Use `std::mutex` and condition variables for inter-thread signaling
-- Simulate variable signal strength (the satellite moves, signal fades; terrestrial signal strengthens)
-- Log the handover timeline and state transitions
-
-**C++ skills used:** `std::thread`, `std::mutex`, `std::condition_variable`, state machines, concurrent programming
-
-### Project 2: NTN Delay Budget & Doppler Analyzer (Python)
-
-Compute and visualize the timing challenges of satellite-based 5G.
+Build a simplified Direct to Cell control-flow simulator.
 
 **What you'll build:**
-- Compute timing advance and HARQ round-trip for LEO (600km), MEO (8000km), and GEO (35786km)
-- Show why standard 5G HARQ (expecting reply in ~4ms) breaks for satellite
-- For a LEO satellite at 550km, compute max Doppler at S-band (2 GHz) and Ka-band (20 GHz)
-- Determine the pre-compensation accuracy needed
-- Plot Doppler curves over a full overhead pass
 
-**Python skills used:** Skyfield, NumPy, matplotlib, tabular comparison
+- Model UE, satellite eNodeB, backhaul link, and partner core as interacting components.
+- Simulate attach, authentication, bearer setup, data transfer, and detach.
+- Add variable satellite backhaul latency and short degraded periods.
+- Log control-plane events, bearer state, and data-plane availability.
+- Use threads or an event-loop style to model concurrent actors.
+
+**C++ skills used:** threads, mutexes, condition variables, state machines, structured logs.
+
+**Toolkit:** Add `DirectToCellModel`.
+
+### Project 2: Direct-to-Cell Doppler and Capacity Analyzer (Python)
+
+Analyze feasibility constraints.
+
+**What you'll build:**
+
+- Compute visibility windows for a satellite over a user location.
+- Estimate Doppler and timing-advance ranges for LTE-band service.
+- Integrate rate over a pass to estimate total bytes transferred.
+- Compare IoT, text, voice, and low-rate data demand profiles.
+- Plot contact duration, Doppler, rate, and accumulated data.
+
+**Python skills used:** Skyfield, NumPy, matplotlib, numerical integration.
 
 ---
 
-## Protocol Reference Table
+## Technology Reference
 
-| Protocol/Standard | Spec | Problem It Solves | New/Legacy |
-|---|---|---|---|
-| NR NTN | 3GPP TS 38.300 (Rel-17) | 5G NR over satellite | `[NEW SPACE]` |
-| NB-IoT/eMTC NTN | 3GPP TS 36.300 (Rel-17) | IoT over satellite | `[NEW SPACE]` |
-| NTN Rel-18 enhancements | 3GPP TS 38.300 (Rel-18) | Regenerative, enhanced mobility | `[NEW SPACE]` |
-| GNSS timing | 3GPP TS 38.133 | UE timing/frequency pre-compensation | `[NEW SPACE]` |
-
-## Companies
-
-| Company | Product/Focus | New/Legacy |
+| Technology | Problem It Solves | Starlink Relevance |
 |---|---|---|
-| **AST SpaceMobile** | Direct-to-smartphone LEO constellation | `[NEW SPACE]` |
-| **SpaceX / T-Mobile** | Starlink direct-to-cell | `[NEW SPACE]` |
-| **Lynk Global** | Direct-to-phone satellite cells | `[NEW SPACE]` |
-| **Skylo** | NB-IoT NTN for maritime, logistics | `[NEW SPACE]` |
-| **Sateliot** | 5G IoT LEO constellation (NB-IoT) | `[NEW SPACE]` |
-| **Qualcomm** | Snapdragon NTN modem (X75, X80) | `[NEW SPACE]` |
-| **MediaTek** | NTN-capable chipsets | `[NEW SPACE]` |
-| **Ericsson / Nokia** | NTN-capable RAN software | `[BOTH]` |
-| **Thales Alenia Space** | Regenerative NTN payloads | `[BOTH]` |
+| LTE eNodeB | Radio access node for LTE phones | Public Starlink Direct to Cell model |
+| EPC | Mobile core network | Partner operator integration |
+| GTP-U | User-plane tunneling | Mobile data transport |
+| S1AP/Diameter | Control-plane/authentication concepts | Attach and roaming model |
+| Laser backhaul | Satellite network transport | Direct to Cell traffic path |
 
-## Books & Resources
+## Where This Tech Is Used
+
+| Application | Notes |
+|---|---|
+| Starlink Direct to Cell | Public LTE-phone satellite service |
+| Mobile operator roaming | Partner integration model |
+| IoT and emergency messaging | Low-rate service examples |
+| Topology control | Backhaul path selection and capacity planning |
+
+## Books and Resources
 
 | Resource | Notes |
 |---|---|
-| *Satellite Comms and Networking* (Höyhtyä, 2025) | Best modern NTN coverage |
-| 3GPP TR 38.811 | Study on NTN for NR (foundational document) |
-| 3GPP TR 38.821 | Solutions for NR to support NTN |
-| Qualcomm NTN whitepapers | Free technical overviews |
+| Starlink Direct to Cell | Public architecture |
+| LTE/EPC architecture references | UE/eNodeB/core mental model |
+| 3GPP NTN references | Background only; keep Starlink LTE focus |
+| Digital communications texts | Doppler and link constraints |

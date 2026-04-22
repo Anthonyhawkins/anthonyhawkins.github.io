@@ -1,133 +1,136 @@
 ---
-title: "Module 01: CCSDS Protocol Stack"
-module_number: 01
-weight: 01
+title: "Module 01: Starlink System Model, Public Data, and RF Units"
+module_number: 1
+weight: 1
 ---
 
 
-**Phase:** 1 — Foundation
-**Builds on:** None — this is your starting point
+**Phase:** 1 - Foundation
+**Builds on:** None - this is your starting point
 
 ---
 
-## 🔢 Math You'll Learn
+## Math You'll Learn
 
-### Algebra 2: Logarithms, Exponentials & dB Arithmetic
+### Algebra 2: Logarithms, Exponentials, Ratios, and dB Arithmetic
 
-This is the most immediately useful math for space communications. Every link budget, every power measurement, and every gain calculation uses decibels.
+Starlink is an RF network and an ISP. You need dB math immediately because link budgets, antenna gain, path loss, EIRP, G/T, and noise density all use logarithmic units.
 
-- **Exponentials & logarithms** — signal power decays exponentially with distance; logarithms compress this into manageable numbers
-  - *Space application:* dB = 10·log₁₀(P₂/P₁) — every link budget uses this
-  - *Space application:* adding dB values = multiplying linear powers — the language of RF engineering
-- **Polynomials & rational expressions** — polynomial curve fitting for antenna gain patterns
-- **Logarithm properties & equations** — converting between dB, dBW, dBm; combining gains and losses
+- **Exponentials and logarithms** - signal power changes across huge ratios, and logarithms make those ratios usable.
+  - *Starlink application:* dB = 10 log10(P2/P1), used for every gain/loss term in an access or gateway link.
+  - *Starlink application:* adding dB values is multiplying linear powers, which is how link budgets become readable.
+- **Unit conversions and ratios** - W, mW, dBW, dBm, Hz, MHz, GHz, bps, Mbps, Gbps.
+  - *Starlink application:* convert public frequency bands and bandwidths from FCC filings into engineering units.
+- **Scientific notation and estimation** - approximate delay, range, and free-space path-loss ratios.
+  - *Starlink application:* compare LEO propagation at roughly 550 km with GEO at 35,786 km.
+- **Basic tabular data handling** - read and validate numeric fields from public data files.
+  - *Starlink application:* parse TLE/OEM-style orbital data and FCC frequency tables.
 
-**🔓 After this:** You can compute link budgets in dB, understand EIRP, path loss, and G/T.
+**After this:** You can read public Starlink/FCC technical data, convert RF units, estimate delay/path loss, and avoid treating proprietary Starlink internals as known facts.
 
 **Resources:**
-- Khan Academy — Algebra 2 (free, self-paced)
-- Textbook: *Algebra and Trigonometry* — Stewart, Redlin, Watson
-- 3Blue1Brown — *Essence of Calculus* (watch early for context, even though you won't use calculus yet)
+
+- Khan Academy - Algebra 2: logarithms and exponentials
+- Starlink Technology - https://www.starlink.com/technology
+- Starlink Satellite Operators - https://www.starlink.com/satellite-operators
+- FCC Starlink Gen2 Order - https://docs.fcc.gov/public/attachments/FCC-22-91A1.pdf
 
 ---
 
-## 🛰️ What You'll Learn
+## What You'll Learn
 
-The CCSDS protocol stack is to space what the TCP/IP stack is to the internet. You'll learn its layered architecture — from Space Packets down to physical-layer framing — and understand which missions use which protocols and why.
+The first module changes the entry point from a generic CCSDS protocol stack to a public Starlink system model. CCSDS still matters as background, especially for ephemeris and space interoperability, but it is not the center of Starlink's broadband network.
 
-### Architecture Overview
-- CCSDS layered reference model vs. OSI vs. TCP/IP
-- The three link types: Space Link (long-range), Proximity Link (short-range), Ground-Ground
-- Transfer frames vs. packets: why space uses both
-- Read: CCSDS 130.0-G-4 — *Overview of Space Communications Protocols*
+### Starlink as a Networked System
 
-### Data Link Layer Protocols
-- **TM Space Data Link Protocol (CCSDS 132.0):** Telemetry frames, virtual channels, idle data insertion
-- **TC Space Data Link Protocol (CCSDS 232.0):** Telecommand frames, COP-1 (reliable delivery), FARM/FOP state machines
-- **AOS Space Data Link Protocol (CCSDS 732.0):** Advanced Orbiting Systems — multiplexing, bitstream services
-- **Unified Space Data Link Protocol (USLP, CCSDS 732.1):** The modern replacement unifying TM, TC, and AOS
-- **Proximity-1 (CCSDS 211.x):** Short-range orbiter-to-lander/rover links (used on Mars missions)
+- Satellites, user terminals, gateways, POPs, backbone links, and operations systems.
+- Starlink as a vertically integrated ISP: access network, space segment, ground segment, backbone, peering, telemetry, and automation.
+- What is public vs proprietary: frequency bands, orbital parameters, regulatory constraints, some architecture claims, public ephemeris data, and high-level Direct to Cell claims are public; internal PHY/MAC/routing/control-plane implementation is not.
+- How to build defensible simulations from public constraints instead of inventing internal details.
 
-### Application Layer
-- **Space Packet Protocol (CCSDS 133.0):** The primary application data unit — analogous to IP datagrams
-- **CCSDS File Delivery Protocol (CFDP, CCSDS 727.0):** Reliable file transfer for space — analogous to FTP but designed for disruption
-- **Asynchronous Message Service (AMS):** Publish-subscribe messaging for space
+### Public Data Sources
 
-### Sync, Coding & Security
-- **TM/TC Synchronization and Channel Coding:** Frame synchronization markers, randomization, Reed-Solomon, turbo, LDPC
-- **Space Data Link Security (SDLS, CCSDS 355.0):** Authentication and encryption at the data link layer — your TLS/mTLS experience maps here
-- **Space Link Extension (SLE):** How ground stations from different agencies interoperate — cross-support services
+- TLEs and ephemerides: satellite identifier, epoch, position/velocity concepts, covariance and maneuver metadata where available.
+- CCSDS OEM as a useful public ephemeris format.
+- FCC filings and orders: frequency bands, orbital shells, power constraints, interference constraints, and gateway authorizations.
+- CelesTrak and Space-Track as supporting data sources for public orbital data.
+
+### RF and Link Vocabulary
+
+- Frequency, wavelength, bandwidth, noise density, EIRP, G/T, FSPL, link margin.
+- Ku service links, Ka/E-band feeder links, and TT&C as separate link categories.
+- Why LEO latency is lower than GEO but topology changes constantly.
+- Why public data is enough to build useful models for interview preparation and portfolio projects.
 
 ---
 
-## 💻 C++ & Python Skills
+## C++ and Python Skills
 
-**C++ focus:** Variables, types, control flow, functions, arrays, pointers, binary I/O, bitwise operations
-**Python focus:** Basic scripting, matplotlib for visualization
+**C++ focus:** variables, types, functions, structs, file I/O, command-line arguments, parsing text/binary records, unit tests for conversion functions.
 
-This is your first C++ module — you'll learn the language fundamentals by building practical tools that parse binary protocol data.
+**Python focus:** basic scripting, CSV/JSON parsing, NumPy arrays, matplotlib plots.
 
 ---
 
 ## Projects
 
-### Project 1: CCSDS Space Packet Parser (C++)
+### Project 1: Starlink Public Data Parser (C++)
 
-Build a CLI tool that parses CCSDS Space Packet primary headers from binary data.
-
-**What you'll build:**
-- Parse the 6-byte primary header: version, type, secondary header flag, APID, sequence flags, sequence count, data length
-- Use `std::span` and bitwise ops for field extraction
-- Read binary files from stdin or file argument
-- Output parsed fields in a human-readable table
-
-**C++ skills used:** Binary I/O, bitwise operators, `std::span`, command-line arguments, `struct`
-
-**🔧 Toolkit:** This starts the **Space Network Toolkit** — save the parser as a reusable library (`PacketParser`)
-
-### Project 2: dB Conversion Toolkit (Python)
-
-Build a Python tool for RF power calculations.
+Build a CLI/library that ingests public Starlink-relevant records and normalizes them into typed structures.
 
 **What you'll build:**
-- Convert between linear power (Watts, milliwatts) and dB scales (dB, dBW, dBm)
-- Compute EIRP given transmit power and antenna gain
-- Chain gains and losses in a simple link budget
-- Visualize the CCSDS protocol stack layers as a diagram with matplotlib
 
-**Python skills used:** Functions, f-strings, matplotlib, basic NumPy
+- Parse TLE records into satellite ID, epoch, inclination, RAAN, eccentricity, mean motion, and related fields.
+- Parse a simplified OEM-style ephemeris record into timestamp, position, velocity, and optional covariance fields.
+- Parse a small FCC frequency table into service-link, feeder-link, and TT&C bands.
+- Validate units and reject malformed records with useful error messages.
+- Output normalized JSON for later modules.
+
+**C++ skills used:** file I/O, structs/classes, string parsing, error handling, command-line arguments, unit tests.
+
+**Toolkit:** Start the **Starlink Network Toolkit** with `PublicDataParser`.
+
+### Project 2: Starlink RF Unit Toolkit (Python)
+
+Build a small RF calculator and visualizer.
+
+**What you'll build:**
+
+- Convert W, mW, dBW, dBm, dB, MHz, GHz, and wavelength.
+- Compute EIRP and chain simple gain/loss terms.
+- Estimate one-way propagation delay for LEO, MEO, and GEO altitudes.
+- Plot path-loss ratio comparisons for Ku, Ka, and E-band examples.
+- Write a short note identifying which values came from public sources and which are assumptions.
+
+**Python skills used:** functions, dictionaries, CSV/JSON, NumPy, matplotlib.
 
 ---
 
-## Protocol Reference Table
+## Technology Reference
 
-| Protocol | CCSDS Doc | Layer | Problem It Solves | New/Legacy | Who Uses It |
-|---|---|---|---|---|---|
-| Space Packet Protocol | 133.0-B | Application | Standard data unit format across agencies | `[BOTH]` | All CCSDS-compliant missions |
-| TM Data Link | 132.0-B | Data Link | Multiplexed telemetry downlink | `[LEGACY]` | ISS, most Earth orbiters |
-| TC Data Link | 232.0-B | Data Link | Reliable commanding with COP-1 | `[LEGACY]` | Most missions |
-| AOS Data Link | 732.0-B | Data Link | High-rate, multi-service downlink | `[LEGACY]` | ISS, high-rate science missions |
-| USLP | 732.1-B | Data Link | Unified modern replacement for TM/TC/AOS | `[NEW SPACE]` | Next-gen missions, Lunar Gateway |
-| Proximity-1 | 211.x-B | Physical + Data Link | Short-range links (orbiter↔lander) | `[BOTH]` | Mars rovers (Curiosity, Perseverance) |
-| CFDP | 727.0-B | Application | Reliable file delivery over disrupted links | `[BOTH]` | Deep space missions, ISS |
-| SDLS | 355.0-B | Data Link | Link-layer encryption and authentication | `[NEW SPACE]` | Classified & sensitive missions |
-| SLE | 911.x-B | Cross-support | Ground station interoperability | `[LEGACY]` | DSN, ESTRACK, JAXA |
+| Concept | Problem It Solves | Starlink Relevance |
+|---|---|---|
+| TLE | Compact public orbital elements | Public satellite tracking and first-pass propagation |
+| CCSDS OEM | Precise ephemeris exchange format | Useful for operator data exchange and high-fidelity simulations |
+| FCC filings | Public regulatory constraints | Frequencies, shells, power/interference limits |
+| dBW/dBm/dB | RF unit system | Link budgets and antenna calculations |
+| EIRP and G/T | Transmit and receive figures of merit | Access/gateway link analysis |
 
 ## Where This Tech Is Used
 
-| Application | Companies/Agencies | Notes |
-|---|---|---|
-| Deep space exploration | NASA/JPL, ESA, JAXA | CCSDS is mandatory for interoperability |
-| ISS operations | NASA, ESA, JAXA, CSA | Uses TM, TC, AOS, CFDP |
-| Mars surface operations | NASA/JPL | Proximity-1 for MRO↔rover relay |
-| Lunar Gateway | NASA, ESA | Will use USLP and CFDP |
-| CubeSat/SmallSat missions | Universities, startups | Increasingly adopting CCSDS for interop |
-| Commercial ground station networks | KSAT, SSC, AWS Ground Station | SLE for cross-support |
-
-## Books & Resources
-
-| Resource | Chapters/Sections |
+| Area | Use |
 |---|---|
-| CCSDS 130.0-G-4 (Green Book) | Entire document — the "map" |
-| CCSDS Blue Books (individual protocol specs) | Reference as needed per protocol |
-| *Satellite Communications Systems* (Maral et al.) | Ch. on data handling & protocols |
+| Starlink network modeling | Build public, reproducible assumptions for simulations |
+| Ground-network planning | Connect orbital visibility to gateway/POP decisions |
+| Link engineering | Convert public RF constraints into link-budget inputs |
+| Interview prep | Explain what is public, what is inferred, and what is proprietary |
+
+## Books and Resources
+
+| Resource | Notes |
+|---|---|
+| Starlink Technology | Public architecture and hardware claims |
+| Starlink Satellite Operators | Public ephemeris and space-safety workflow |
+| FCC Gen2 Starlink Order | Public orbital/frequency constraints |
+| Pratt, *Satellite Communications* | Intro RF and link terminology |
+| CCSDS OEM documentation | Ephemeris format background |

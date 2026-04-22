@@ -1,135 +1,135 @@
 ---
-title: "Module 03: Ground Segment Architecture"
-module_number: 03
-weight: 03
+title: "Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering"
+module_number: 3
+weight: 3
 ---
 
 
-**Phase:** 1 — Foundation
-**Builds on:** Modules 01, 02
+**Phase:** 1 - Foundation
+**Builds on:** Modules 01 and 02
 
 ---
 
-## 🔢 Math You'll Learn
+## Math You'll Learn
 
-### Trigonometry: Law of Cosines, Elevation Angles & Slant Range
+### Trigonometry: Law of Cosines, Elevation Angles, Slant Range, and Latency Geometry
 
-This is where trig becomes immediately practical — you'll compute whether a ground station can see a satellite and how far away it is.
+This is where trig becomes operational: which gateways can see which satellites, what delay a path adds, and when a gateway/POP choice is better or worse.
 
-- **Law of sines / cosines** — computing slant range (distance from ground station to satellite)
-  - *Space application:* slant range = f(Earth radius, satellite altitude, elevation angle)
-- **Inverse trig: arctan, arcsin** — computing elevation angle from geometry
-  - *Space application:* minimum elevation angle determines when a satellite is "visible" (typically >5°)
-- **Polar coordinates & vectors intro** — antenna radiation patterns are plotted in polar coordinates
-- **Angular velocity, arc length, radians** — satellite angular rate as seen from ground
+- **Law of sines and cosines** - compute slant range from Earth radius, satellite altitude, and elevation angle.
+  - *Starlink application:* determine whether a satellite can use a candidate gateway at a given time.
+- **Inverse trig** - compute elevation and azimuth from geometry.
+  - *Starlink application:* gateway visibility and antenna pointing.
+- **Radians, angular velocity, and arc length** - understand how fast geometry changes.
+  - *Starlink application:* estimate pass duration and gateway handover timing.
+- **Latency decomposition** - add terminal-to-satellite, satellite-to-gateway, gateway-to-POP, and POP-to-destination components.
 
-**🔓 After this:** You can compute ground station visibility, slant range, and antenna beam geometry.
+**After this:** You can model gateway visibility, POP egress latency, and the terrestrial networking side of Starlink service.
 
 **Resources:**
-- Khan Academy — Trigonometry (free)
-- Textbook: *Algebra and Trigonometry* — Stewart, Redlin, Watson (trig chapters)
+
+- Khan Academy - Trigonometry
+- Public Starlink gateway/POP research and FCC gateway filings
+- Internet routing references for BGP, peering, and transit
 
 ---
 
-## 🛰️ What You'll Learn
+## What You'll Learn
 
-The ground segment is where satellites meet the internet. You'll learn how ground stations, gateways, network operations centers, and terrestrial POPs work together to complete the end-to-end data path. **Your edge protocol and infrastructure experience maps directly here.**
+The ground segment is where Starlink becomes the internet. This module focuses on gateways, POPs, optical transport, subscriber services, and routing protocols rather than generic ground-station-as-a-service models.
 
-### Ground Station Architecture
-- Antenna systems: parabolic, phased array, ground-based ESAs
-- Autotracking mounts for LEO
-- RF front-end: LNA, downconverter, digitizer
-- Baseband processing: demodulation, frame sync, decoding
-- Ground station networks: KSAT, SSC, Atlas Space Operations, AWS Ground Station, Azure Orbital
+### Gateway and POP Architecture
 
-### Gateway Design for Constellations
-- Gateway vs. ground station distinction
-- Gateway architecture for LEO broadband (Starlink, Kuiper model)
-- Fiber connectivity: gateway ↔ POP ↔ IXP
-- Redundancy and diversity: multiple gateways per coverage area
-- Gateway handover: managing traffic continuity as satellites move
+- Gateway earth stations vs user terminals vs POPs.
+- Satellite feeder links, gateway antennas, RF/baseband, and terrestrial handoff.
+- Colocation facilities, long-haul fiber, WDM/DWDM, circuit turn-up, and capacity planning.
+- POP egress, IXPs, private peering, transit, and regional latency.
+- Gateway diversity for weather, capacity, and failure resilience.
 
-### Network Operations
-- Mission operations center (MOC) / Network operations center (NOC)
-- Constellation management: ephemeris updates, contact scheduling
-- SLE (Space Link Extension): cross-support between agencies/providers
-- Ground-based DTN nodes and convergence layers
-- Cloud-based ground stations: AWS Ground Station, Azure Orbital — virtualized baseband processing
+### Service-Provider Networking
 
-### Terrestrial Integration
-- POP architecture: where satellite traffic meets BGP peering
-- Traffic engineering: routing user traffic to nearest available gateway
-- Latency optimization: POP placement strategy
-- Content delivery over satellite: CDN integration
-- **This is essentially your current job but with satellite uplinks** — peering, traffic engineering, edge optimization
+- BGP peering and transit policy.
+- Internal routing: IS-IS/OSPF, MPLS, Segment Routing, ECMP.
+- IPv4/IPv6 addressing, CGNAT, IPv6 prefix delegation.
+- DNS, DHCP, NTP, RADIUS/AAA, QoS, and subscriber management.
+- Route selection when satellite, gateway, POP, and terrestrial paths all matter.
+
+### Operations
+
+- Inventory and configuration management.
+- Telemetry, alerting, link utilization, latency, packet loss, and route churn.
+- Maintenance windows, safe rollout, rollback, and incident response.
+- Where software engineering and gRPC/API design fit into network operations.
 
 ---
 
-## 💻 C++ & Python Skills
+## C++ and Python Skills
 
-**C++ focus:** OOP (classes, inheritance), STL containers (vector, map), iterators, algorithms, lambdas
-**Python focus:** Skyfield for satellite propagation, Cartopy/matplotlib for map visualization
+**C++ focus:** OOP, STL containers (`vector`, `map`, `unordered_map`), algorithms, lambdas, clean data modeling.
+
+**Python focus:** Skyfield for satellite propagation, NetworkX for path models, matplotlib/Plotly for maps.
 
 ---
 
 ## Projects
 
-### Project 1: Elevation Angle & Slant Range Calculator (C++)
+### Project 1: Gateway Visibility and POP Path Calculator (C++)
 
-Build a CLI tool that computes satellite visibility geometry.
-
-**What you'll build:**
-- Given satellite altitude and ground station latitude, compute: elevation angle, slant range, and free-space path loss
-- Sweep across elevation angles (5°–90°) and output a table of slant range vs. elevation
-- Support multiple orbit types (LEO 550km, MEO 8000km, GEO 35786km)
-- Use classes for `GroundStation` and `Satellite` with proper encapsulation
-
-**C++ skills used:** Classes, constructors, STL containers, algorithms, formatted output
-
-**🔧 Toolkit:** Add `GroundStation` class to the Space Network Toolkit
-
-### Project 2: Ground Station Contact Scheduler (Python)
-
-Build a contact schedule for a satellite pass over a global ground station network.
+Build a gateway/POP path model for Starlink-like service.
 
 **What you'll build:**
-- Load TLEs for a LEO satellite using Skyfield
-- Define 3–5 ground station locations (lat/lon)
-- Compute contact windows (start/end times when elevation > 5°) over a 24-hour period
-- Visualize passes on a world map with Cartopy or matplotlib basemap
-- Output a schedule table sorted by time
 
-**Python skills used:** Skyfield, datetime, matplotlib/Cartopy, tabular output
+- Define `Gateway`, `Pop`, `Satellite`, and `UserTerminal` classes.
+- Compute whether a gateway can see a satellite above an elevation mask.
+- Estimate terminal-satellite-gateway delay and gateway-POP terrestrial delay.
+- Rank candidate gateway/POP egress choices by latency and availability.
+- Output route candidates as JSON for later visualization.
+
+**C++ skills used:** classes, STL containers, algorithms, JSON serialization.
+
+**Toolkit:** Add `GatewayPopModel`.
+
+### Project 2: Gateway/POP Route Planner (Python)
+
+Visualize ground-network choices.
+
+**What you'll build:**
+
+- Place a set of gateways, POPs, and user locations on a map.
+- Load TLEs or simplified shell positions.
+- Compute gateway visibility windows over 24 hours.
+- Select the lowest-latency egress for several user/destination pairs.
+- Plot route choices and show how weather or gateway failure changes egress.
+
+**Python skills used:** Skyfield, NetworkX, matplotlib/Plotly, tabular output.
 
 ---
 
 ## Technology Reference
 
-| Technology | Problem It Solves | New/Legacy |
+| Technology | Problem It Solves | Starlink Relevance |
 |---|---|---|
-| SLE (Space Link Extension) | Cross-support between agencies | `[LEGACY]` evolving |
-| CCSDS Cross Support | Standardized ground station services | `[BOTH]` |
-| AWS Ground Station | Cloud-managed satellite contacts | `[NEW SPACE]` |
-| Azure Orbital | Cloud-managed satellite contacts | `[NEW SPACE]` |
-| GSaaS (Ground Station as a Service) | Eliminates need to build own ground stations | `[NEW SPACE]` |
+| Gateway | Satellite-to-ground feeder link | Connects space segment to terrestrial network |
+| POP | Internet egress and peering | Determines terrestrial path and latency |
+| BGP | Interdomain routing and peering | Public internet connectivity |
+| IS-IS/OSPF | Internal routing | Provider backbone control plane |
+| MPLS/SR | Traffic engineering and fast reroute | Network-control foundation |
+| RADIUS/AAA | Subscriber authentication/accounting | ISP operations |
 
-## Companies
+## Where This Tech Is Used
 
-| Company | Role | New/Legacy |
-|---|---|---|
-| **KSAT** (Kongsberg) | Global ground station network (25+ sites) | `[BOTH]` |
-| **SSC** (Swedish Space Corp) | Ground station network, Esrange | `[BOTH]` |
-| **Atlas Space Operations** | Cloud ground station platform | `[NEW SPACE]` |
-| **AWS Ground Station** | On-demand satellite contact scheduling | `[NEW SPACE]` |
-| **Microsoft Azure Orbital** | Cloud ground segment | `[NEW SPACE]` |
-| **Leaf Space** | GSaaS for LEO satellites | `[NEW SPACE]` |
-| **RBC Signals** | Distributed ground station sharing | `[NEW SPACE]` |
-| **Viasat / Hughes** | Gateway operations for GEO broadband | `[LEGACY]` |
+| Application | Notes |
+|---|---|
+| Starlink ground network | Gateways, POPs, transport, and peering |
+| ISP network engineering | BGP, MPLS/SR, routing policy, telemetry |
+| Topology service design | Gateway and POP state become path inputs |
+| Operational automation | Inventory, config, safe deployment, rollback |
 
-## Books & Resources
+## Books and Resources
 
 | Resource | Notes |
 |---|---|
-| *Satellite Communications Systems* (Maral et al.) | Ground segment chapters |
-| AWS Ground Station docs | https://docs.aws.amazon.com/ground-station/ |
-| CCSDS SLE specifications | Cross-support standards |
+| Public Starlink job descriptions | Protocols and operational skills SpaceX asks for |
+| Halabi, *Internet Routing Architectures* | BGP policy and peering |
+| Davie/Farrel, *MPLS in the SDN Era* | MPLS/SR and TE concepts |
+| Stevens, *TCP/IP Illustrated* | Network protocol refresh |

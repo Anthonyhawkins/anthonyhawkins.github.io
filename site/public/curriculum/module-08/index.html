@@ -1,20 +1,443 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="My journey into satellite networking, space protocols, and the future of space communications."><title>Module 08: LEO Constellations & Routing | Escape Velocity</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel=stylesheet><link rel=stylesheet href="https://anthony-hawkins.github.io/space-networking/css/orbital.css?v=1776219886"></head><body><div class=starfield id=starfield></div><header class=site-header><nav class=nav-container><a href=https://anthony-hawkins.github.io/space-networking/ class=nav-logo><span class=logo-icon>◈</span>
-<span class=logo-text>Escape Velocity</span></a><ul class=nav-links><li><a href=/space-networking/>Home</a></li><li><a href=/space-networking/blog/>Journal</a></li><li><a href=/space-networking/skill-tree/>Skill Tree</a></li><li><a href=/space-networking/curriculum/>Curriculum</a></li><li><a href=/space-networking/about/>About</a></li></ul><button class=nav-toggle id=navToggle aria-label="Toggle navigation">
-<span></span><span></span><span></span></button></nav></header><main class=site-main><div class="docs-layout container"><aside class=docs-sidebar><div class=sidebar-header><h3 class=sidebar-title>Curriculum</h3></div><nav class=sidebar-nav><ul class=sidebar-list><li><a href=https://anthony-hawkins.github.io/space-networking/curriculum/ class=sidebar-link><span class=sidebar-icon>⬡</span> Overview</a></li><li><a href=/space-networking/curriculum/learning-path/ class=sidebar-link><span class=sidebar-number>00</span>
-<span class=sidebar-text>Learning Path</span></a></li><li><a href=/space-networking/curriculum/module-01/ class=sidebar-link><span class=sidebar-number>01</span>
-<span class=sidebar-text>Module 01: CCSDS Protocol Stack</span></a></li><li><a href=/space-networking/curriculum/module-02/ class=sidebar-link><span class=sidebar-number>02</span>
-<span class=sidebar-text>Module 02: Foundations of Space Communications</span></a></li><li><a href=/space-networking/curriculum/module-03/ class=sidebar-link><span class=sidebar-number>03</span>
-<span class=sidebar-text>Module 03: Ground Segment Architecture</span></a></li><li><a href=/space-networking/curriculum/module-04/ class=sidebar-link><span class=sidebar-number>04</span>
-<span class=sidebar-text>Module 04: Delay-Tolerant Networking</span></a></li><li><a href=/space-networking/curriculum/module-05/ class=sidebar-link><span class=sidebar-number>05</span>
-<span class=sidebar-text>Module 05: Satellite Link Engineering</span></a></li><li><a href=/space-networking/curriculum/module-06/ class=sidebar-link><span class=sidebar-number>06</span>
-<span class=sidebar-text>Module 06: DVB Standards & Satellite Broadband</span></a></li><li><a href=/space-networking/curriculum/module-07/ class=sidebar-link><span class=sidebar-number>07</span>
-<span class=sidebar-text>Module 07: 5G Non-Terrestrial Networks (NTN)</span></a></li><li><a href=/space-networking/curriculum/module-08/ class="sidebar-link active"><span class=sidebar-number>08</span>
-<span class=sidebar-text>Module 08: LEO Constellations & Routing</span></a></li><li><a href=/space-networking/curriculum/module-09/ class=sidebar-link><span class=sidebar-number>09</span>
-<span class=sidebar-text>Module 09: Optical Inter-Satellite Links (OISL)</span></a></li><li><a href=/space-networking/curriculum/module-10/ class=sidebar-link><span class=sidebar-number>10</span>
-<span class=sidebar-text>Module 10: SDN & Autonomous Network Management</span></a></li><li><a href=/space-networking/curriculum/module-11/ class=sidebar-link><span class=sidebar-number>11</span>
-<span class=sidebar-text>Module 11: Security in Space Networks</span></a></li><li><a href=/space-networking/curriculum/module-12/ class=sidebar-link><span class=sidebar-number>12</span>
-<span class=sidebar-text>Module 12: Capstone Projects</span></a></li></ul></nav></aside><div class=docs-content><article class=module-single><header class="module-header docs-header"><div class=module-header-meta style=margin-bottom:1rem;display:flex;gap:.75rem;flex-wrap:wrap><span class=module-number-lg style=color:#60a5fa;font-weight:600;letter-spacing:.05em>Module %!d(float64=08)</span>
-<span class=math-badge style="background:rgba(245,158,11,.1);color:#f59e0b;padding:.2rem .6rem;border-radius:4px;font-size:.75rem">Requires:</span></div><h1 class=docs-title>Module 08: LEO Constellations & Routing</h1></header><div class="module-body prose docs-body"><p><strong>Phase:</strong> 3 — Depth
-<strong>Builds on:</strong> Modules 03, 04, 05</p><hr><h2 id=-math-youll-learn>🔢 Math You&rsquo;ll Learn</h2><h3 id=calculus-ii-completion--calculus-iii-3d-vectors>Calculus II Completion + Calculus III: 3D Vectors</h3><p>The math that makes constellation engineering possible — signal decomposition and 3D orbital geometry.</p><ul><li><strong>Calculus II: Taylor/Maclaurin series</strong> — approximating complex functions</li><li><strong>Calculus II: Fourier series intro</strong> — decomposing signals into frequency components<ul><li><em>Space application:</em> understanding bandwidth, spectral efficiency, why OFDM works</li></ul></li><li><strong>Calculus III: Vectors in 3D</strong> — position, velocity, acceleration vectors<ul><li><em>Space application:</em> satellite state vector = [x, y, z, vx, vy, vz]</li></ul></li><li><strong>Calc III: Dot product & cross product</strong> — angles between vectors, perpendicular components<ul><li><em>Space application:</em> angular momentum = r × v, orbital plane normal vector</li></ul></li><li><strong>Calc III: Partial derivatives & gradients</strong> — how functions change in multiple directions<ul><li><em>Space application:</em> link quality gradient as elevation, range, and weather change simultaneously</li></ul></li></ul><p><strong>🔓 After this:</strong> You can propagate orbits, compute satellite positions in 3D, and work with constellation geometry.</p><p><strong>Resources:</strong></p><ul><li><em>Calculus: Early Transcendentals</em> — Stewart (Chapters 7–14)</li><li><em>Orbital Mechanics for Engineering Students</em> (Curtis) — applies Calc III directly</li><li>3Blue1Brown — <em>Essence of Linear Algebra</em> (watch early for context)</li><li>3Blue1Brown — <em>But what is a Fourier series?</em></li></ul><hr><h2 id=-what-youll-learn>🛰️ What You&rsquo;ll Learn</h2><p>How to design, model, and route traffic through large LEO constellations. This is where your networking skills become your superpower — constellation routing is essentially distributed systems + graph theory under extreme dynamism.</p><h3 id=the-problem>The Problem</h3><p>A single LEO satellite sees a ground station for ~5–10 minutes per pass. A constellation of thousands of satellites creates a <strong>continuously changing mesh topology</strong> where:</p><ul><li>Neighbors change every few minutes</li><li>Inter-satellite link (ISL) distances vary with orbital geometry</li><li>Ground station handover happens every ~15 seconds for a user terminal</li><li>You need end-to-end latency competitive with terrestrial fiber (~20–40ms)</li></ul><h3 id=constellation-design>Constellation Design</h3><ul><li>Walker Delta and Walker Star patterns</li><li>Orbital planes, phasing, and the &ldquo;seam&rdquo; problem (counter-rotating planes)</li><li>Constellation parameters: altitude, inclination, satellites/plane, number of planes</li><li>Coverage analysis: latitude-dependent performance</li><li>Starlink&rsquo;s shell architecture (540km, 550km, 570km shells)</li></ul><h3 id=inter-satellite-link-routing>Inter-Satellite Link Routing</h3><ul><li><strong>Static routing:</strong> Pre-computed based on orbital mechanics (deterministic topology)</li><li><strong>Shortest-path:</strong> Modified Dijkstra over time-varying topology snapshots</li><li><strong>Segment routing:</strong> Pre-computed path segments, stitched at runtime</li><li><strong>+Grid routing:</strong> Exploiting the regular grid structure of Walker constellations</li><li><strong>Bent-pipe vs. ISL:</strong> When satellites relay to each other vs. always bounce to ground</li><li>Latency optimization: ISL path vs. fiber path — when does space routing win?</li></ul><h3 id=ground-segment-integration>Ground Segment Integration</h3><ul><li>User terminal handover: beam switching, cell assignment</li><li>Gateway handover and load balancing</li><li>POP (Point of Presence) integration with terrestrial internet</li><li><strong>This is where your edge routing experience is directly applicable</strong></li></ul><h3 id=traffic-engineering--qos>Traffic Engineering & QoS</h3><ul><li>Capacity allocation across ISL topology</li><li>Traffic matrices for a global constellation</li><li>Congestion management when ISL capacity is limited</li><li>QoS differentiation: real-time (voice/video) vs. bulk transfer</li></ul><hr><h2 id=-c--python-skills>💻 C++ & Python Skills</h2><p><strong>C++ focus:</strong> Eigen library, Boost.Graph, <code>std::async</code>/<code>std::future</code>, spatial algorithms
-<strong>Python focus:</strong> Skyfield, Plotly/Cartopy for 3D visualization, NetworkX</p><p>This module introduces <strong>Eigen</strong> for linear algebra and <strong>async patterns</strong> for concurrent computation.</p><hr><h2 id=projects>Projects</h2><h3 id=project-1-constellation-topology-engine-c>Project 1: Constellation Topology Engine (C++)</h3><p>Build a C++ engine that computes satellite positions and inter-satellite link topology for a Walker constellation.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Generate Walker Delta constellation parameters (altitude, inclination, planes, sats/plane)</li><li>Propagate satellite positions using simplified circular orbit model (Eigen vectors)</li><li>Compute ISL links: determine which satellites can see each other (line-of-sight, max distance)</li><li>Build a graph of the constellation topology at each timestep using Boost.Graph</li><li>Run Dijkstra to find lowest-latency path between two ground points through the constellation</li><li>Use <code>std::async</code> to parallelize orbit propagation across satellites</li></ul><p><strong>C++ skills used:</strong> Eigen, Boost.Graph, <code>std::async</code>, <code>std::future</code>, spatial geometry, CMake with external libraries</p><p><strong>🔧 Toolkit:</strong> Add <code>ConstellationEngine</code> to the Space Network Toolkit</p><h3 id=project-2-constellation-visualizer--latency-comparator-python>Project 2: Constellation Visualizer & Latency Comparator (Python)</h3><p>Visualize and benchmark your constellation.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Visualize the constellation on a 3D globe (Plotly) or 2D map (Cartopy)</li><li>For 10 city pairs (NYC↔London, LA↔Tokyo, etc.), compute: (a) great-circle fiber latency, (b) satellite ISL latency</li><li>Plot comparative bar charts showing where satellite routing beats fiber</li><li>Animate the constellation topology over one orbital period</li></ul><p><strong>Python skills used:</strong> Skyfield, Plotly or Cartopy, NetworkX, matplotlib animation</p><hr><h2 id=protocol-reference-table>Protocol Reference Table</h2><table><thead><tr><th>Protocol/Concept</th><th>Spec/Source</th><th>Problem It Solves</th><th>New/Legacy</th></tr></thead><tbody><tr><td>CGR (Contact Graph Routing)</td><td>CCSDS / ION</td><td>Time-variant routing with scheduled contacts</td><td><code>[NEW SPACE]</code></td></tr><tr><td>Segment Routing (SRv6 in space)</td><td>Research</td><td>Source-routing for deterministic path control</td><td><code>[NEW SPACE]</code></td></tr><tr><td>OSPF/IS-IS adaptations</td><td>Research</td><td>Traditional IGP adapted for dynamic satellite topology</td><td><code>[NEW SPACE]</code></td></tr><tr><td>BGP (ground peering)</td><td>RFC 4271</td><td>Peering at satellite ground gateways</td><td><code>[BOTH]</code></td></tr></tbody></table><h2 id=where-this-tech-is-used>Where This Tech Is Used</h2><table><thead><tr><th>System</th><th>Company</th><th>Satellites</th><th>ISLs</th><th>Notes</th></tr></thead><tbody><tr><td>Starlink</td><td>SpaceX</td><td>~6,000+</td><td>Laser (4 per sat)</td><td>Largest operational LEO constellation</td></tr><tr><td>Kuiper</td><td>Amazon</td><td>3,236 planned</td><td>Laser</td><td>Launching 2026+</td></tr><tr><td>OneWeb (Eutelsat)</td><td>Eutelsat</td><td>~648</td><td>No ISLs (bent-pipe)</td><td>GW-reliant architecture</td></tr><tr><td>Lightspeed</td><td>Telesat</td><td>188 planned</td><td>Laser</td><td>Enterprise/gov focus</td></tr><tr><td>SDA Transport Layer</td><td>US DoD / SDA</td><td>~300+</td><td>Laser</td><td>Military PWSA mesh</td></tr></tbody></table><h2 id=books--resources>Books & Resources</h2><table><thead><tr><th>Resource</th><th>Notes</th></tr></thead><tbody><tr><td><em>Satellite Communications Systems</em> (Maral et al.)</td><td>Constellation design chapters</td></tr><tr><td><em>Delay-Tolerant Satellite Networks</em> (Fraire, Burleigh)</td><td>CGR algorithms and analysis</td></tr><tr><td>Handley 2018 — &ldquo;Delay is Not an Option&rdquo;</td><td>Foundational analysis of Starlink routing</td></tr><tr><td>Bhattacherjee et al. — &ldquo;Network Topology Design at 27000 km/h&rdquo;</td><td>Grid routing for LEO constellations</td></tr><tr><td>Hypatia simulator</td><td><a href=https://github.com/snkas/hypatia>https://github.com/snkas/hypatia</a></td></tr></tbody></table></div><footer class="module-footer docs-footer"><div class=docs-nav style="display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)"><a href=/space-networking/curriculum/module-09/ class="docs-nav-link prev" style="text-decoration:none;color:var(--text-secondary);transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>← Previous</div><div class=nav-title style=color:#fff;font-weight:500>Module 09: Optical Inter-Satellite Links (OISL)</div></a><a href=/space-networking/curriculum/module-07/ class="docs-nav-link next" style="text-decoration:none;color:var(--text-secondary);text-align:right;transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>Next →</div><div class=nav-title style=color:#fff;font-weight:500>Module 07: 5G Non-Terrestrial Networks (NTN)</div></a></div></footer></article></div></div></main><footer class=site-footer><div class=footer-container><div class=footer-brand><span class=logo-icon>◈</span>
-<span>Escape Velocity</span></div><p class=footer-tagline></p><div class=footer-links><a href=https://github.com/anthonyhawkins target=_blank rel=noopener>GitHub</a></div><p class=footer-copy>Built with Hugo. Deployed to GitHub Pages.</p></div></footer><script src=https://anthony-hawkins.github.io/space-networking/js/orbital.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="My journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 08: Starlink LEO Constellations, Shells, Routing, and Latency | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1776821511" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="http://localhost:1313/space-networking/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Path</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Starlink System Model, Public Data, and RF Units</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: Starlink RF Foundations and Phased-Array Access Links</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Variable Links, Handover Resilience, and Transport Behavior</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Starlink Security, Resilience, and Operational Reliability</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Starlink-Focused Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 08</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Phase:</strong> 3 - Depth
+<strong>Builds on:</strong> Modules 03, 04, 05, and 07</p>
+<hr>
+<h2 id="math-youll-learn">Math You&rsquo;ll Learn</h2>
+<h3 id="calculus-ii-completion--calculus-iii-3d-vectors">Calculus II Completion + Calculus III: 3D Vectors</h3>
+<p>This is the math that makes constellation routing possible: state vectors, line-of-sight, topology snapshots, and gradients across several changing dimensions.</p>
+<ul>
+<li><strong>Taylor/Maclaurin series</strong> - approximating complex functions.</li>
+<li><strong>Fourier series intro</strong> - signal and bandwidth intuition.</li>
+<li><strong>3D vectors</strong> - position, velocity, and acceleration.
+<ul>
+<li><em>Starlink application:</em> satellite state vector = [x, y, z, vx, vy, vz].</li>
+</ul>
+</li>
+<li><strong>Dot product and cross product</strong> - angles, visibility, orbital planes, and relative geometry.</li>
+<li><strong>Partial derivatives and gradients</strong> - link quality changes with range, elevation, weather, gateway state, and load.</li>
+</ul>
+<p><strong>After this:</strong> You can compute LEO satellite positions, build topology snapshots, and run routing algorithms over a changing constellation graph.</p>
+<p><strong>Resources:</strong></p>
+<ul>
+<li>Stewart, <em>Calculus: Early Transcendentals</em>, Chapters 7-14</li>
+<li>Curtis, <em>Orbital Mechanics for Engineering Students</em></li>
+<li>Handley, &ldquo;Delay is Not an Option&rdquo;</li>
+<li>Bhattacherjee/Singla, &ldquo;Network Topology Design at 27,000 km/hour&rdquo;</li>
+<li>Hypatia LEO simulator</li>
+</ul>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>This is the first core topology module. The goal is to model a Starlink-inspired constellation using public shell/orbital data where possible, then route traffic across satellites, gateways, POPs, and terrestrial destinations.</p>
+<h3 id="constellation-design">Constellation Design</h3>
+<ul>
+<li>Starlink shell architecture: altitude, inclination, planes, satellites per plane, and phasing.</li>
+<li>Walker Delta/Star patterns as useful simplifications.</li>
+<li>Public Starlink shell data vs simplified models.</li>
+<li>Coverage analysis, latitude effects, and elevation masks.</li>
+<li>Partial deployment, satellite churn, deorbit/replacement, and operational topology changes.</li>
+</ul>
+<h3 id="routing-and-latency">Routing and Latency</h3>
+<ul>
+<li>Time-varying topology snapshots from deterministic orbital motion.</li>
+<li>Shortest path, A*, k-shortest paths, ECMP, and constrained shortest path.</li>
+<li>Route churn minimization: avoid changing paths too often when a slightly worse path is stable.</li>
+<li>Gateway selection and POP egress as part of routing.</li>
+<li>Latency vs terrestrial fiber: when LEO can beat fiber and when it cannot.</li>
+<li>Failure-aware rerouting around satellites, gateways, POPs, and links.</li>
+</ul>
+<h3 id="public-research-patterns">Public Research Patterns</h3>
+<ul>
+<li>+Grid routing and structure-aware paths.</li>
+<li>Motif-based and long-short-link topology ideas.</li>
+<li>Time-expanded graphs as a bridge to Module 12.</li>
+<li>How to validate against public simulators without copying assumptions blindly.</li>
+</ul>
+<hr>
+<h2 id="c-and-python-skills">C++ and Python Skills</h2>
+<p><strong>C++ focus:</strong> Eigen, Boost.Graph, <code>std::async</code>, spatial algorithms, deterministic simulation.</p>
+<p><strong>Python focus:</strong> Skyfield, NetworkX, Plotly/Cartopy, latency heatmaps, animation.</p>
+<hr>
+<h2 id="projects">Projects</h2>
+<h3 id="project-1-starlink-inspired-constellation-topology-engine-c">Project 1: Starlink-Inspired Constellation Topology Engine (C++)</h3>
+<p>Build the first full topology engine.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Generate shell-based LEO topologies from altitude, inclination, planes, and satellites per plane.</li>
+<li>Optionally ingest public TLE/ephemeris data.</li>
+<li>Compute satellite positions and line-of-sight relationships.</li>
+<li>Add ground nodes: users, gateways, POPs, and destinations.</li>
+<li>Build graph snapshots at time intervals.</li>
+<li>Run Dijkstra/A* and k-shortest paths between ground endpoints.</li>
+<li>Track latency, hop count, gateway egress, and route churn.</li>
+</ul>
+<p><strong>C++ skills used:</strong> Eigen, Boost.Graph, async computation, JSON output, CMake.</p>
+<p><strong>Toolkit:</strong> Add <code>ConstellationEngine</code>.</p>
+<h3 id="project-2-latency-and-path-comparator-python">Project 2: Latency and Path Comparator (Python)</h3>
+<p>Compare LEO routing against terrestrial paths.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Visualize constellation snapshots on a globe or map.</li>
+<li>Select city pairs and compare satellite-path latency vs great-circle fiber estimates.</li>
+<li>Plot latency, hop count, gateway egress, and route stability over time.</li>
+<li>Simulate failed satellites/gateways and show path recovery.</li>
+<li>Write a short report on which pairs benefit from space routing and why.</li>
+</ul>
+<p><strong>Python skills used:</strong> Skyfield, NetworkX, Plotly/Cartopy, matplotlib.</p>
+<hr>
+<h2 id="technology-reference">Technology Reference</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Protocol/Concept</th>
+          <th>Problem It Solves</th>
+          <th>Starlink Relevance</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Topology snapshot</td>
+          <td>Freezes moving graph for routing</td>
+          <td>Practical simulation unit</td>
+      </tr>
+      <tr>
+          <td>Dijkstra/A*</td>
+          <td>Lowest-cost path</td>
+          <td>Baseline routing</td>
+      </tr>
+      <tr>
+          <td>k-shortest paths</td>
+          <td>Path diversity</td>
+          <td>Failure and TE inputs</td>
+      </tr>
+      <tr>
+          <td>Constrained shortest path</td>
+          <td>Policy/capacity-aware routes</td>
+          <td>Gateway/POP/link constraints</td>
+      </tr>
+      <tr>
+          <td>Route churn minimization</td>
+          <td>Operational stability</td>
+          <td>Avoids excessive path changes</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="where-this-tech-is-used">Where This Tech Is Used</h2>
+<table>
+  <thead>
+      <tr>
+          <th>System</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Starlink</td>
+          <td>Large LEO constellation with public shell data and laser mesh</td>
+      </tr>
+      <tr>
+          <td>Kuiper/Telesat/SDA</td>
+          <td>Similar LEO topology problems with different parameters</td>
+      </tr>
+      <tr>
+          <td>ISP traffic engineering</td>
+          <td>Ground egress and policy constraints</td>
+      </tr>
+      <tr>
+          <td>Research simulators</td>
+          <td>Hypatia and related LEO networking work</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books-and-resources">Books and Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Handley, &ldquo;Delay is Not an Option&rdquo;</td>
+          <td>Starlink-like low-latency routing analysis</td>
+      </tr>
+      <tr>
+          <td>Bhattacherjee/Singla paper</td>
+          <td>LEO topology design at orbital speed</td>
+      </tr>
+      <tr>
+          <td>Hypatia</td>
+          <td>Open LEO network simulator</td>
+      </tr>
+      <tr>
+          <td>Curtis, <em>Orbital Mechanics</em></td>
+          <td>State vectors and geometry</td>
+      </tr>
+  </tbody>
+</table>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    
+                    
+                    
+                    
+                    <a href="/space-networking/curriculum/module-07/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-09/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline"></p>
+      <div class="footer-links">
+        <a href="https://github.com/anthonyhawkins" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

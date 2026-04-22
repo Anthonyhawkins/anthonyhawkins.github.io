@@ -1,20 +1,438 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="My journey into satellite networking, space protocols, and the future of space communications."><title>Module 11: Security in Space Networks | Escape Velocity</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel=stylesheet><link rel=stylesheet href="https://anthony-hawkins.github.io/space-networking/css/orbital.css?v=1776219886"></head><body><div class=starfield id=starfield></div><header class=site-header><nav class=nav-container><a href=https://anthony-hawkins.github.io/space-networking/ class=nav-logo><span class=logo-icon>◈</span>
-<span class=logo-text>Escape Velocity</span></a><ul class=nav-links><li><a href=/space-networking/>Home</a></li><li><a href=/space-networking/blog/>Journal</a></li><li><a href=/space-networking/skill-tree/>Skill Tree</a></li><li><a href=/space-networking/curriculum/>Curriculum</a></li><li><a href=/space-networking/about/>About</a></li></ul><button class=nav-toggle id=navToggle aria-label="Toggle navigation">
-<span></span><span></span><span></span></button></nav></header><main class=site-main><div class="docs-layout container"><aside class=docs-sidebar><div class=sidebar-header><h3 class=sidebar-title>Curriculum</h3></div><nav class=sidebar-nav><ul class=sidebar-list><li><a href=https://anthony-hawkins.github.io/space-networking/curriculum/ class=sidebar-link><span class=sidebar-icon>⬡</span> Overview</a></li><li><a href=/space-networking/curriculum/learning-path/ class=sidebar-link><span class=sidebar-number>00</span>
-<span class=sidebar-text>Learning Path</span></a></li><li><a href=/space-networking/curriculum/module-01/ class=sidebar-link><span class=sidebar-number>01</span>
-<span class=sidebar-text>Module 01: CCSDS Protocol Stack</span></a></li><li><a href=/space-networking/curriculum/module-02/ class=sidebar-link><span class=sidebar-number>02</span>
-<span class=sidebar-text>Module 02: Foundations of Space Communications</span></a></li><li><a href=/space-networking/curriculum/module-03/ class=sidebar-link><span class=sidebar-number>03</span>
-<span class=sidebar-text>Module 03: Ground Segment Architecture</span></a></li><li><a href=/space-networking/curriculum/module-04/ class=sidebar-link><span class=sidebar-number>04</span>
-<span class=sidebar-text>Module 04: Delay-Tolerant Networking</span></a></li><li><a href=/space-networking/curriculum/module-05/ class=sidebar-link><span class=sidebar-number>05</span>
-<span class=sidebar-text>Module 05: Satellite Link Engineering</span></a></li><li><a href=/space-networking/curriculum/module-06/ class=sidebar-link><span class=sidebar-number>06</span>
-<span class=sidebar-text>Module 06: DVB Standards & Satellite Broadband</span></a></li><li><a href=/space-networking/curriculum/module-07/ class=sidebar-link><span class=sidebar-number>07</span>
-<span class=sidebar-text>Module 07: 5G Non-Terrestrial Networks (NTN)</span></a></li><li><a href=/space-networking/curriculum/module-08/ class=sidebar-link><span class=sidebar-number>08</span>
-<span class=sidebar-text>Module 08: LEO Constellations & Routing</span></a></li><li><a href=/space-networking/curriculum/module-09/ class=sidebar-link><span class=sidebar-number>09</span>
-<span class=sidebar-text>Module 09: Optical Inter-Satellite Links (OISL)</span></a></li><li><a href=/space-networking/curriculum/module-10/ class=sidebar-link><span class=sidebar-number>10</span>
-<span class=sidebar-text>Module 10: SDN & Autonomous Network Management</span></a></li><li><a href=/space-networking/curriculum/module-11/ class="sidebar-link active"><span class=sidebar-number>11</span>
-<span class=sidebar-text>Module 11: Security in Space Networks</span></a></li><li><a href=/space-networking/curriculum/module-12/ class=sidebar-link><span class=sidebar-number>12</span>
-<span class=sidebar-text>Module 12: Capstone Projects</span></a></li></ul></nav></aside><div class=docs-content><article class=module-single><header class="module-header docs-header"><div class=module-header-meta style=margin-bottom:1rem;display:flex;gap:.75rem;flex-wrap:wrap><span class=module-number-lg style=color:#60a5fa;font-weight:600;letter-spacing:.05em>Module 11</span>
-<span class=math-badge style="background:rgba(245,158,11,.1);color:#f59e0b;padding:.2rem .6rem;border-radius:4px;font-size:.75rem">Requires:</span></div><h1 class=docs-title>Module 11: Security in Space Networks</h1></header><div class="module-body prose docs-body"><p><strong>Phase:</strong> 4 — Mastery
-<strong>Builds on:</strong> Modules 01, 04, 06</p><hr><h2 id=-math-youll-learn>🔢 Math You&rsquo;ll Learn</h2><h3 id=probability--statistics>Probability & Statistics</h3><p>The math behind noise analysis, error rates, and system reliability.</p><ul><li><strong>Random variables, PDF, CDF, expectation, variance</strong> — statistical foundations</li><li><strong>Gaussian (Normal) distribution & Central Limit Theorem</strong> — the basis for noise modeling<ul><li><em>Space application:</em> thermal noise is Gaussian → this is why Eb/N₀ and BER curves work</li><li><em>Space application:</em> understanding false alarm rates in intrusion detection</li></ul></li><li><strong>Rayleigh & Rician fading</strong> — multipath models for satellite-ground links<ul><li><em>Space application:</em> channel modeling, link availability statistics</li></ul></li><li><strong>Markov chains (basics)</strong> — state-based probabilistic models<ul><li><em>Space application:</em> channel state modeling, protocol state machines, attack modeling</li></ul></li></ul><p><strong>🔓 After this:</strong> You can compute full link budgets with noise, BER, rain fade availability, and model security detection rates.</p><p><strong>Resources:</strong></p><ul><li><em>Probability and Statistics for Engineering and the Sciences</em> — Jay Devore</li><li>Khan Academy — Probability & Statistics (free)</li></ul><hr><h2 id=-what-youll-learn>🛰️ What You&rsquo;ll Learn</h2><p>Space network security has unique constraints: limited compute on spacecraft, immutable hardware (can&rsquo;t upgrade a satellite&rsquo;s crypto chip after launch), broadcast RF that anyone can receive, and potential jamming/spoofing from adversaries. Your TLS/mTLS experience provides strong foundations here.</p><h3 id=the-problem>The Problem</h3><p>Satellite links face threats that terrestrial networks don&rsquo;t:</p><ul><li><strong>Eavesdropping:</strong> RF signals cover wide areas — anyone with an antenna can listen</li><li><strong>Jamming:</strong> Deliberate interference to deny service</li><li><strong>Spoofing:</strong> Injecting false commands or telemetry</li><li><strong>Replay attacks:</strong> Recording and re-transmitting valid commands</li><li><strong>Limited on-board resources:</strong> Spacecraft processors are radiation-hardened, slow, and can&rsquo;t be upgraded</li></ul><h3 id=link-layer-security>Link-Layer Security</h3><ul><li>CCSDS Space Data Link Security (SDLS, CCSDS 355.0) — authentication and encryption at the frame level</li><li>Encryption algorithms: AES-256-GCM, AES-CTR</li><li>Key management for spacecraft: pre-loaded keys, key update procedures</li><li>Anti-replay: sequence numbers and sliding windows</li><li>Comparison to TLS: SDLS is like TLS record layer but at the data link level</li></ul><h3 id=network--application-layer-security>Network & Application Layer Security</h3><ul><li>Bundle Protocol Security (BPSec, RFC 9172) — securing DTN bundles</li><li>Block-level security: confidentiality blocks (BCB) and integrity blocks (BIB)</li><li>DTLS, TLS for ground-ground segments</li><li>TRANSEC in DVB systems</li><li>COMSEC for military/government links</li></ul><h3 id=threats-resilience--emerging-tech>Threats, Resilience & Emerging Tech</h3><ul><li>Electronic warfare: jamming and anti-jam techniques (spread spectrum, frequency hopping)</li><li>Cyber threats to ground segments</li><li>Quantum Key Distribution (QKD) over satellite</li><li>Post-quantum cryptography for long-lived spacecraft</li></ul><hr><h2 id=-c--python-skills>💻 C++ & Python Skills</h2><p><strong>C++ focus:</strong> OpenSSL or libsodium for crypto, concurrent encrypt/decrypt pipelines, memory-safe patterns
-<strong>Python focus:</strong> SciPy for BER curves, NumPy for signal simulation, matplotlib</p><hr><h2 id=projects>Projects</h2><h3 id=project-1-sdls-frame-encryptor-with-bpsec-c>Project 1: SDLS Frame Encryptor with BPSec (C++)</h3><p>Build a security layer for space data link frames and DTN bundles.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Implement AES-GCM encryption/decryption for CCSDS transfer frames (using OpenSSL or libsodium)</li><li>Add sequence-number-based anti-replay protection (sliding window)</li><li>Integrate BPSec: add BIB (integrity) and BCB (confidentiality) blocks to your Module 04 bundle library</li><li>Use concurrent pipeline: one thread encrypts while another frames — producer/consumer pattern</li><li>Benchmark encryption throughput for different frame sizes</li></ul><p><strong>C++ skills used:</strong> OpenSSL/libsodium, <code>std::thread</code>, concurrent producer/consumer, integration with toolkit modules</p><h3 id=project-2-jamming-resilience--ber-analysis-python>Project 2: Jamming Resilience & BER Analysis (Python)</h3><p>Analyze how spread spectrum provides jamming resistance.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Simulate a narrowband signal being jammed at various jammer-to-signal ratios</li><li>Implement direct-sequence spread spectrum (DSSS) with configurable spreading gain</li><li>Show how DSSS provides jamming resistance at the cost of bandwidth</li><li>Plot BER curves for BPSK under Gaussian noise: theoretical vs. simulated</li><li>Compute and plot link availability given noise statistics and required Eb/N₀</li></ul><p><strong>Python skills used:</strong> NumPy, SciPy (erfc for BER), matplotlib, Monte Carlo simulation</p><hr><h2 id=protocol-reference-table>Protocol Reference Table</h2><table><thead><tr><th>Protocol</th><th>Spec</th><th>Problem It Solves</th><th>New/Legacy</th></tr></thead><tbody><tr><td>SDLS</td><td>CCSDS 355.0</td><td>Link-layer auth + encryption for space</td><td><code>[NEW SPACE]</code></td></tr><tr><td>BPSec</td><td>RFC 9172</td><td>End-to-end DTN bundle security</td><td><code>[NEW SPACE]</code></td></tr><tr><td>DTLS 1.3</td><td>RFC 9147</td><td>Securing convergence layers</td><td><code>[BOTH]</code></td></tr><tr><td>TRANSEC (DVB)</td><td>DVB-RCS2 spec</td><td>Over-the-air encryption for VSAT</td><td><code>[BOTH]</code></td></tr><tr><td>AES-GCM / AES-CTR</td><td>NIST</td><td>Symmetric encryption for space links</td><td><code>[BOTH]</code></td></tr><tr><td>QKD</td><td>Experimental</td><td>Future-proof key exchange</td><td><code>[NEW SPACE]</code></td></tr></tbody></table><h2 id=companies>Companies</h2><table><thead><tr><th>Company</th><th>Role</th><th>New/Legacy</th></tr></thead><tbody><tr><td><strong>L3Harris</strong></td><td>Military COMSEC, protected satellite comms (AEHF)</td><td><code>[LEGACY]</code></td></tr><tr><td><strong>Northrop Grumman</strong></td><td>Protected tactical satcom, anti-jam</td><td><code>[BOTH]</code></td></tr><tr><td><strong>SEAKR Engineering</strong></td><td>Radiation-hardened crypto processors for space</td><td><code>[BOTH]</code></td></tr><tr><td><strong>Arqit</strong></td><td>Satellite-based QKD service</td><td><code>[NEW SPACE]</code></td></tr><tr><td><strong>NASA/JPL</strong></td><td>SDLS and BPSec development</td><td><code>[BOTH]</code></td></tr></tbody></table><h2 id=books--resources>Books & Resources</h2><table><thead><tr><th>Resource</th><th>Notes</th></tr></thead><tbody><tr><td>CCSDS 355.0-B (SDLS Specification)</td><td>The link-layer security standard</td></tr><tr><td>RFC 9172 (BPSec)</td><td>DTN security specification</td></tr><tr><td>CCSDS 350.x (Security Green Books)</td><td>Threat analysis and architecture guides</td></tr></tbody></table></div><footer class="module-footer docs-footer"><div class=docs-nav style="display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)"><a href=/space-networking/curriculum/module-12/ class="docs-nav-link prev" style="text-decoration:none;color:var(--text-secondary);transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>← Previous</div><div class=nav-title style=color:#fff;font-weight:500>Module 12: Capstone Projects</div></a><a href=/space-networking/curriculum/module-10/ class="docs-nav-link next" style="text-decoration:none;color:var(--text-secondary);text-align:right;transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>Next →</div><div class=nav-title style=color:#fff;font-weight:500>Module 10: SDN & Autonomous Network Management</div></a></div></footer></article></div></div></main><footer class=site-footer><div class=footer-container><div class=footer-brand><span class=logo-icon>◈</span>
-<span>Escape Velocity</span></div><p class=footer-tagline></p><div class=footer-links><a href=https://github.com/anthonyhawkins target=_blank rel=noopener>GitHub</a></div><p class=footer-copy>Built with Hugo. Deployed to GitHub Pages.</p></div></footer><script src=https://anthony-hawkins.github.io/space-networking/js/orbital.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="My journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 11: Starlink Security, Resilience, and Operational Reliability | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1776821511" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="http://localhost:1313/space-networking/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Path</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Starlink System Model, Public Data, and RF Units</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: Starlink RF Foundations and Phased-Array Access Links</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Variable Links, Handover Resilience, and Transport Behavior</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Starlink Security, Resilience, and Operational Reliability</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Starlink-Focused Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 11</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 11: Starlink Security, Resilience, and Operational Reliability</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Phase:</strong> 4 - Mastery
+<strong>Builds on:</strong> Modules 03, 05, 07, and 10</p>
+<hr>
+<h2 id="math-youll-learn">Math You&rsquo;ll Learn</h2>
+<h3 id="probability-and-statistics">Probability and Statistics</h3>
+<p>This module uses probability to reason about noise, failures, alarms, and service availability.</p>
+<ul>
+<li><strong>Random variables, PDF, CDF, expectation, variance</strong> - statistical foundations.</li>
+<li><strong>Gaussian distribution and Central Limit Theorem</strong> - noise and measurement models.
+<ul>
+<li><em>Starlink application:</em> link telemetry and anomaly thresholds.</li>
+</ul>
+</li>
+<li><strong>Rayleigh/Rician fading concepts</strong> - wireless-channel variability.</li>
+<li><strong>Markov chains basics</strong> - state transitions for link health and failure recovery.</li>
+<li><strong>False positives and false negatives</strong> - security and operations alerts.</li>
+<li><strong>Availability modeling</strong> - gateway diversity, laser mesh redundancy, and correlated failures.</li>
+</ul>
+<p><strong>After this:</strong> You can estimate reliability, detect anomalies, and evaluate security policy changes using quantitative evidence.</p>
+<p><strong>Resources:</strong></p>
+<ul>
+<li>Devore, <em>Probability and Statistics for Engineering and the Sciences</em></li>
+<li>NIST security references for operational controls</li>
+<li>RPKI/BGP security operational references</li>
+</ul>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>This module shifts from CCSDS SDLS/BPSec as the primary security topic toward Starlink-relevant ISP, ground-network, RF, and operations security. CCSDS security remains useful background for non-Starlink space systems.</p>
+<h3 id="network-and-routing-security">Network and Routing Security</h3>
+<ul>
+<li>BGP route leaks, prefix hijacks, route filtering, max-prefix, and communities.</li>
+<li>RPKI/ROA validation and route-origin security.</li>
+<li>DDoS mitigation, scrubbing, RTBH/flowspec concepts.</li>
+<li>Management-plane isolation and configuration integrity.</li>
+<li>Policy validation before rollout.</li>
+</ul>
+<h3 id="subscriber-and-ground-network-security">Subscriber and Ground-Network Security</h3>
+<ul>
+<li>AAA/RADIUS, subscriber identity, CGNAT logging, abuse workflows.</li>
+<li>Gateway/POP hardening, secrets management, access control, audit logs.</li>
+<li>Device lifecycle, provisioning, and configuration drift.</li>
+<li>Telemetry integrity and anomaly detection.</li>
+</ul>
+<h3 id="rf-space-and-direct-to-cell-threats">RF, Space, and Direct-to-Cell Threats</h3>
+<ul>
+<li>Jamming, spoofing, interference detection, and spectrum monitoring.</li>
+<li>Direct-to-cell trust boundaries: roaming, mobile-core authentication, IPsec, lawful-intercept awareness.</li>
+<li>Space-safety operational data: ephemeris sharing, maneuver status, conjunction workflows.</li>
+<li>Availability under satellite, gateway, POP, laser-link, and weather failures.</li>
+</ul>
+<hr>
+<h2 id="c-and-python-skills">C++ and Python Skills</h2>
+<p><strong>C++ focus:</strong> policy-checking services, route/config validation, concurrent analysis, safe data models.</p>
+<p><strong>Python focus:</strong> telemetry simulation, anomaly detection, Monte Carlo availability, BER/interference plots.</p>
+<hr>
+<h2 id="projects">Projects</h2>
+<h3 id="project-1-routing-security-and-policy-guard-c">Project 1: Routing Security and Policy Guard (C++)</h3>
+<p>Build a pre-deployment validator for network policy changes.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Validate proposed BGP/SR route changes against policy.</li>
+<li>Check max-prefix thresholds, route-origin status, and disallowed egress.</li>
+<li>Estimate blast radius for a proposed route or gateway change.</li>
+<li>Reject unsafe changes with precise reasons.</li>
+<li>Emit an audit log and machine-readable validation report.</li>
+</ul>
+<p><strong>C++ skills used:</strong> rule engine, data validation, structured errors, concurrency optional.</p>
+<p><strong>Toolkit:</strong> Add <code>ReliabilitySecurityAnalyzer</code>.</p>
+<h3 id="project-2-jamming-availability-and-anomaly-analysis-python">Project 2: Jamming, Availability, and Anomaly Analysis (Python)</h3>
+<p>Analyze reliability and security telemetry.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Simulate link degradation from interference or jamming.</li>
+<li>Generate telemetry streams for link margin, packet loss, latency, and route churn.</li>
+<li>Detect anomalies with threshold and statistical methods.</li>
+<li>Estimate service availability under gateway, POP, satellite, and laser-link failures.</li>
+<li>Plot false positives/false negatives for alert thresholds.</li>
+</ul>
+<p><strong>Python skills used:</strong> NumPy, SciPy, matplotlib, Monte Carlo simulation.</p>
+<hr>
+<h2 id="technology-reference">Technology Reference</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Technology</th>
+          <th>Problem It Solves</th>
+          <th>Starlink Relevance</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>RPKI/ROA</td>
+          <td>Route-origin validation</td>
+          <td>BGP safety at POPs</td>
+      </tr>
+      <tr>
+          <td>DDoS mitigation</td>
+          <td>Protect service availability</td>
+          <td>ISP operations</td>
+      </tr>
+      <tr>
+          <td>AAA/RADIUS</td>
+          <td>Subscriber auth/accounting</td>
+          <td>Access operations</td>
+      </tr>
+      <tr>
+          <td>RF monitoring</td>
+          <td>Detect jamming/interference</td>
+          <td>Wireless service resilience</td>
+      </tr>
+      <tr>
+          <td>Availability modeling</td>
+          <td>Quantifies resilience</td>
+          <td>Gateway/laser/satellite redundancy</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="where-this-tech-is-used">Where This Tech Is Used</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Application</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Starlink network operations</td>
+          <td>Routing safety and incident response</td>
+      </tr>
+      <tr>
+          <td>Ground network security</td>
+          <td>POP/gateway management and access control</td>
+      </tr>
+      <tr>
+          <td>Direct to Cell</td>
+          <td>Mobile-core trust boundaries</td>
+      </tr>
+      <tr>
+          <td>Digital twin</td>
+          <td>Failure and attack simulation</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books-and-resources">Books and Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>RPKI operational guides</td>
+          <td>Route-origin security</td>
+      </tr>
+      <tr>
+          <td>BGP security references</td>
+          <td>Leaks, hijacks, filtering</td>
+      </tr>
+      <tr>
+          <td>NIST security controls</td>
+          <td>Operational security framing</td>
+      </tr>
+      <tr>
+          <td>Devore probability text</td>
+          <td>Statistics and availability math</td>
+      </tr>
+  </tbody>
+</table>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    
+                    
+                    
+                    
+                    <a href="/space-networking/curriculum/module-10/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-12/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 12: Starlink-Focused Capstone Projects</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline"></p>
+      <div class="footer-links">
+        <a href="https://github.com/anthonyhawkins" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

@@ -1,118 +1,133 @@
 ---
-title: "Module 02: Foundations of Space Communications"
-module_number: 02
-weight: 02
+title: "Module 02: Starlink RF Foundations and Phased-Array Access Links"
+module_number: 2
+weight: 2
 ---
 
 
-**Phase:** 1 — Foundation
+**Phase:** 1 - Foundation
 **Builds on:** Module 01
 
 ---
 
-## 🔢 Math You'll Learn
+## Math You'll Learn
 
 ### Algebra 2 Completion + Trigonometry Introduction
 
-You'll finish Algebra 2 and begin trigonometry — the math that unlocks satellite geometry.
+You will finish the Algebra 2 pieces needed for RF calculations and begin trigonometry, the math used for satellite visibility, phased-array steering, and handover timing.
 
-- **Sequences & summation notation** — time-series data, telemetry streams, serial data patterns
-- **Unit circle, sin/cos/tan** — the foundation for all satellite geometry
-  - *Space application:* elevation angle = arctan(height/distance) — when can a ground station see a satellite?
-- **Inverse trig functions** — computing angles from known distances
-  - *Space application:* determining look angles for antenna pointing
+- **Sequences and summation notation** - time-series link quality, telemetry samples, and scheduler history.
+- **Unit circle, sine, cosine, tangent** - the foundation for beam direction and satellite geometry.
+  - *Starlink application:* user-terminal beam steering and satellite look angles.
+- **Inverse trig functions** - compute angles from known distances and vectors.
+  - *Starlink application:* elevation and scan angle from terminal to satellite.
+- **Frequency and wavelength relationship** - lambda = c/f.
+  - *Starlink application:* antenna size, gain, and beamwidth depend on wavelength.
 
-**🔓 After this:** You understand the basic geometry of space communication — why signals weaken, how orbits affect links, and what frequency bands are used for what.
+**After this:** You can reason about Starlink access-link geometry, why phased arrays are required for LEO broadband, and how slant range drives delay and path loss.
 
 **Resources:**
-- Khan Academy — Algebra 2 (sequences) + Trigonometry intro (free)
-- Textbook: *Algebra and Trigonometry* — Stewart, Redlin, Watson
+
+- Khan Academy - Algebra 2 sequences and Trigonometry intro
+- Pratt, *Satellite Communications*, propagation and frequency-band chapters
+- Starlink Technology - phased-array and low-latency architecture overview
 
 ---
 
-## 🛰️ What You'll Learn
+## What You'll Learn
 
-How communication works between Earth and space — the physical constraints, the space environment, and why terrestrial networking assumptions break down. This is the conceptual foundation for everything that follows.
+This module refocuses generic space communications into Starlink's access-link model: moving LEO satellites, electronically steered user terminals, Ku/Ka/E-band links, and rapid handover.
 
-### The Space Environment
-- Speed of light delay: LEO (~4–40ms), MEO (~120ms), GEO (~600ms round-trip)
-- Signal attenuation: free-space path loss, atmospheric absorption, rain fade
-- The space radiation environment and its effect on electronics (SEU, TID)
-- Why terrestrial networking assumptions break in space
+### Starlink RF Access Model
 
-### Frequency Bands & Spectrum
-- Frequency bands used in space: UHF, S, X, Ku, Ka, V, optical
-- Atmospheric absorption windows — why certain frequencies work and others don't
-- ITU Radio Regulations and frequency coordination
-- Trade-offs: bandwidth vs. rain fade vs. antenna size
+- Ku-band service links between user terminals and satellites.
+- Ka/E-band feeder links between satellites and gateways.
+- TT&C links as operational context, separate from broadband traffic.
+- Link categories: user service link, feeder/gateway link, inter-satellite link, and management/telemetry.
+- Why LEO reduces propagation delay but forces constant tracking and handover.
 
-### Communication Link Concepts
-- The communication chain: transmitter → channel → receiver
-- Modulation basics: BPSK, QPSK, 8PSK, QAM (conceptual — you'll revisit with Calc II math in Module 06)
-- Error correction concepts: why we need FEC, convolutional codes, turbo codes, LDPC
-- Multiplexing: FDMA, TDMA, CDMA (high-level trade-offs)
+### Phased-Array Antenna Concepts
 
-### Orbits Overview (Conceptual)
-- LEO vs. MEO vs. GEO vs. HEO — trade-offs for communications
-- Why orbit altitude determines delay, coverage, and link budget
-- The concept of ground track patterns and revisit time
-- *Note: Full orbital mechanics math comes in Module 08 after you learn Calc III*
+- Beam steering, beamwidth, scan loss, sidelobes, aperture, gain, and polarization.
+- Electronically steered arrays vs mechanically steered antennas.
+- Why flat-panel user terminals matter for moving LEO satellites.
+- Beam switching and preserving user sessions at the system level.
+- Publicly known behavior vs inferred scheduler/PHY behavior.
+
+### Link Concepts
+
+- FSPL vs frequency and range.
+- Modulation/coding only at the level needed now: MCS, LDPC, OFDM/OFDMA/TDMA trade-offs.
+- Spectrum coordination, interference, and FCC/ITU constraints.
+- Doppler as a preview topic; the full math arrives later.
 
 ---
 
-## 💻 C++ & Python Skills
+## C++ and Python Skills
 
-**C++ focus:** Control flow, functions, basic classes, constructors, enums
-**Python focus:** NumPy arrays, matplotlib plotting, formatted output
+**C++ focus:** control flow, functions, basic classes, constructors, enums, formatted output.
+
+**Python focus:** NumPy arrays, matplotlib plotting, simple geometric visualization.
 
 ---
 
 ## Projects
 
-### Project 1: Signal Propagation Delay Calculator (C++)
+### Project 1: Starlink Delay and Path-Loss Calculator (C++)
 
-Build a CLI tool that computes signal propagation characteristics for different orbit types.
-
-**What you'll build:**
-- Compute one-way and round-trip delay for any orbit altitude (speed of light)
-- Compute free-space path loss (FSPL) for different frequency bands (S, X, Ka) at different altitudes — uses your dB math from Module 01
-- Output a formatted comparison table: LEO vs. MEO vs. GEO at each band
-
-**C++ skills used:** Functions, classes, enums for orbit/band types, formatted output with `<iomanip>`
-
-### Project 2: Frequency Band & Atmospheric Window Plotter (Python)
-
-Build a visualization of space communication frequency bands.
+Build a CLI tool for Starlink-like LEO link estimates.
 
 **What you'll build:**
-- Plot the electromagnetic spectrum from UHF to optical with labeled space bands
-- Overlay atmospheric absorption curves (approximate) showing why Ka-band has rain issues
-- Annotate which bands each major constellation uses (Starlink: Ka/Ku, Iridium: L, etc.)
 
-**Python skills used:** matplotlib subplots, annotations, NumPy for curves
+- Represent orbit altitude, frequency band, and terminal/gateway link type with enums/classes.
+- Compute one-way delay and RTT from slant range.
+- Compute FSPL for Ku, Ka, and E-band examples.
+- Print comparison tables for low-elevation, mid-elevation, and near-overhead passes.
+- Keep assumptions configurable and documented.
+
+**C++ skills used:** functions, classes, enums, `<iomanip>`, command-line arguments.
+
+**Toolkit:** Add `AccessLinkModel` foundations.
+
+### Project 2: Phased-Array Beam Geometry Plotter (Python)
+
+Visualize how terminal look angle affects link quality.
+
+**What you'll build:**
+
+- Plot scan angle, elevation, estimated scan loss, and slant range over a satellite pass.
+- Show visible satellite intervals for a fixed user terminal.
+- Compare low vs high elevation masks.
+- Annotate where handover would likely be preferred based on geometry.
+
+**Python skills used:** NumPy, matplotlib, simple trigonometric models.
 
 ---
 
-## Protocols & Standards Introduced
+## Technology Reference
 
-| Protocol/Standard | Type | Problem It Solves | New/Legacy |
-|---|---|---|---|
-| ITU Radio Regulations | Regulatory | Frequency coordination & interference management | `[BOTH]` |
-| CCSDS 401.0 (RF & Modulation) | Physical layer | Standardized space link physical parameters | `[LEGACY]` evolving |
-| DVB-S2 (overview) | Physical layer | Efficient satellite broadcast modulation & coding | `[BOTH]` |
+| Technology | Problem It Solves | Starlink Relevance |
+|---|---|---|
+| Ku service link | User-terminal broadband access | Customer traffic path |
+| Ka/E feeder link | High-capacity gateway connection | Satellite-to-ground backhaul |
+| Electronically steered array | Tracks LEO satellites without moving dish | User-terminal and gateway antenna model |
+| MCS/ACM | Adapts data rate to link quality | Later scheduler and capacity work |
+| Spectrum coordination | Prevents harmful interference | FCC/ITU constraints and filings |
 
 ## Where This Tech Is Used
 
-| Application | Companies | Description |
-|---|---|---|
-| Direct-to-Earth observation downlink | Planet Labs, Capella Space, BlackSky | Satellites photograph Earth, downlink imagery to ground stations |
-| GEO broadcast and broadband | SES, Intelsat, Eutelsat | Traditional TV broadcast and enterprise VSAT |
-| LEO broadband | SpaceX (Starlink), Amazon (Kuiper), OneWeb | Consumer/enterprise internet via satellite constellation |
-
-## Books & Resources
-
-| Resource | Chapters/Sections |
+| Application | Notes |
 |---|---|
-| *Satellite Communications* (Pratt et al.) | Ch. 1–2 (Propagation, frequency bands) |
-| *Satellite Comms & Networking with Python* (Flux) | Ch. 1–2 (Signal basics) |
-| CCSDS 401.0-B (RF & Modulation) | Overview sections |
+| Starlink user terminals | Beam steering and handover |
+| Starlink gateways | High-capacity feeder links and diversity |
+| LEO broadband competitors | Similar RF geometry even when implementation differs |
+| Network simulation | Access-link delay and path-loss inputs |
+
+## Books and Resources
+
+| Resource | Notes |
+|---|---|
+| Starlink Technology | Public access and satellite system overview |
+| FCC Starlink filings | Frequency and interference constraints |
+| Pratt, *Satellite Communications* | Propagation and antenna fundamentals |
+| Balanis, *Antenna Theory* | Deeper antenna geometry reference |

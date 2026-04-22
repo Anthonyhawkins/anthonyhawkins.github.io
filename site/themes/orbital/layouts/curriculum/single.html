@@ -9,7 +9,7 @@
                     style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
                     <span class="module-number-lg"
                         style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module {{ printf "%02d"
-                        .Params.module_number }}</span>
+                        (int .Params.module_number) }}</span>
                     {{ if eq .Params.math_required false }}
                     <span class="unlock-badge"
                         style="background: rgba(16, 185, 129, 0.1); color: #10b981; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">🔓
@@ -36,7 +36,11 @@
             <footer class="module-footer docs-footer">
                 <div class="docs-nav"
                     style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                    {{ with .PrevInSection }}
+                    {{ $currentModule := int .Params.module_number }}
+                    {{ $modulePages := where .CurrentSection.Pages "Params.module_number" "!=" nil }}
+                    {{ $previousModule := index (where $modulePages "Params.module_number" "eq" (sub $currentModule 1)) 0 }}
+                    {{ $nextModule := index (where $modulePages "Params.module_number" "eq" (add $currentModule 1)) 0 }}
+                    {{ with $previousModule }}
                     <a href="{{ .RelPermalink }}" class="docs-nav-link prev"
                         style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
                         <div class="nav-label"
@@ -46,7 +50,7 @@
                     </a>
                     {{ end }}
 
-                    {{ with .NextInSection }}
+                    {{ with $nextModule }}
                     <a href="{{ .RelPermalink }}" class="docs-nav-link next"
                         style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
                         <div class="nav-label"

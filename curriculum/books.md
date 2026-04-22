@@ -1,125 +1,188 @@
 # Annotated Reading List
 
-## Tier 1 — Must Read (Start Here)
+This reading list supports a Starlink Network and Topology learning path. It keeps the best general satellite communications references, but prioritizes public Starlink architecture, FCC filings, service-provider networking, LEO routing research, optical mesh design, and operational automation.
 
-### Satellite Communications — Pratt, Bostian, Allnutt (3rd Ed.)
-- **Why:** The most accessible entry point. Covers RF fundamentals, link budgets, orbital mechanics, and modulation. Updated with NGSO constellations and satellite internet.
-- **Covers:** Modules 01, 04, 07
-- **Best for:** Building intuition before going deep
+## Tier 1 - Must Read First
 
-### Satellite Communications Systems — Maral, Bousquet, Sun (6th Ed.)
-- **Why:** The engineering bible. Exhaustive systems-level treatment — link design, multiple access, networking, orbit design. Dense but comprehensive.
-- **Covers:** Modules 01, 04, 05, 07, 08
-- **Best for:** Reference desk copy for the entire curriculum
+### Starlink Technology
 
-### Delay-Tolerant Satellite Networks — Fraire, Finochietto, Burleigh
-- **Why:** The only book dedicated to DTN in the satellite context. Fraire is a leading Contact Graph Routing researcher and Burleigh is the creator of ION-DTN at NASA/JPL. Covers Bundle Protocol, LTP, CGR, and real mission architectures. This is the single most aligned book for this curriculum.
-- **Covers:** Modules 03, 05
-- **Best for:** Deep DTN study — theory, implementation, and mission experience from the people who built it
+- **Source:** https://www.starlink.com/technology
+- **Why:** Public baseline for Starlink's architecture: LEO latency model, phased-array antennas, autonomous collision avoidance, optical space lasers, and high-capacity satellite hardware.
+- **Covers:** Modules 01, 02, 08, 09
+- **Best for:** Anchoring the curriculum in what Starlink publicly claims.
 
-### Delay-Tolerant Networking (RFC 9171 / BPv7 + RFC 4838)
-- **Authors:** IETF DTN Working Group
-- **Why:** Primary source. Free. You must read the actual specs, not just summaries.
-- **Covers:** Module 03
-- **Link:** https://datatracker.ietf.org/doc/rfc9171/
+### Starlink Satellite Operators
 
----
+- **Source:** https://www.starlink.com/satellite-operators
+- **Why:** Public description of Starlink space-safety data sharing, ephemerides, maneuver status, conjunction coordination, and operator workflows.
+- **Covers:** Modules 01, 08, 11
+- **Best for:** Understanding public ephemeris and operational safety data.
 
-## Tier 2 — Deep Dives
+### Starlink Direct to Cell
 
-### Satellite Communications and Networking (2025)
-- **Author:** Marko Höyhtyä
-- **Why:** Modern coverage of 5G NTN, cybersecurity, integrated satellite-terrestrial networks. Fills the gap between classic satcom books and current industry trends.
-- **Covers:** Modules 08, 09, 11
+- **Source:** https://www.starlink.com/business/direct-to-cell
+- **Why:** Public description of Starlink Direct to Cell: existing LTE phones, no special hardware, onboard eNodeB, roaming-style integration, and laser backhaul.
+- **Covers:** Module 07
+- **Best for:** Grounding Direct to Cell study in the specific architecture SpaceX describes publicly.
 
-### Satellite Communications and Networking: Engineering Solutions With Python (2025)
-- **Author:** Jamie Flux
-- **Why:** Hands-on. Orbit modeling, signal modulation, protocol design in Python. Aligns with your code-first learning style.
-- **Covers:** Modules 01, 04, 05
+### FCC Starlink Gen2 Order and Authorizations
 
-### Satellite Communications Systems Engineering
-- **Author:** Louis J. Ippolito Jr.
-- **Why:** Specializes in link design and atmospheric physics — essential for understanding why links fail and how to engineer around it.
+- **Source:** https://docs.fcc.gov/public/attachments/FCC-22-91A1.pdf
+- **Source:** https://docs.fcc.gov/public/attachments/DA-24-222A1.pdf
+- **Why:** Primary public regulatory documents for orbital shells, operating constraints, Ku/Ka/E-band authorizations, interference analysis, and deployment conditions.
+- **Covers:** Modules 01, 02, 05, 08, 09, 11
+- **Best for:** Publicly defensible system parameters.
+
+### Public SpaceX/Starlink Network Job Descriptions
+
+- **Examples:** Starlink ground network and network engineer role mirrors, SpaceX careers pages when available.
+- **Why:** They repeatedly surface service-provider technologies: BGP, IS-IS, OSPF, MPLS, Segment Routing, C/C++/Python, Linux, telemetry, automation, POPs, gateways, and optical transport.
+- **Covers:** Modules 03, 10, 11, 12
+- **Best for:** Aligning study priorities with the role.
+
+## Tier 2 - LEO Routing and Topology
+
+### "Delay is Not an Option: Low Latency Routing in Space" - Mark Handley
+
+- **Source:** https://discovery.ucl.ac.uk/10062262/
+- **Why:** Foundational public analysis of Starlink-like low-latency routing and when LEO paths can beat terrestrial fiber.
+- **Covers:** Modules 08, 09, 10, 12
+- **Best for:** Building intuition for routing, latency, and topology constraints.
+
+### "Network Topology Design at 27,000 km/hour"
+
+- **Authors:** Debopam Bhattacherjee, Ankit Singla
+- **Why:** Key paper on topology design for moving LEO networks, including structure-aware routing approaches.
+- **Covers:** Modules 08, 09, 12
+- **Best for:** Understanding graph structure and route churn in satellite constellations.
+
+### Hypatia LEO Satellite Network Simulator
+
+- **Source:** https://github.com/snkas/hypatia
+- **Why:** Open-source simulator for LEO network research with examples useful for Starlink-like latency and routing analysis.
+- **Covers:** Modules 08, 10, 12
+- **Best for:** Reference implementation patterns and validation ideas.
+
+## Tier 3 - Service-Provider Networking
+
+### Internet Routing Architectures - Halabi
+
+- **Why:** Deep BGP mental model: route policy, transit, peering, filtering, traffic engineering.
+- **Covers:** Modules 03, 10, 11
+- **Best for:** POP, gateway egress, and peering design.
+
+### MPLS in the SDN Era - Davie, Farrel
+
+- **Why:** MPLS and Segment Routing concepts that map to provider-scale traffic engineering.
+- **Covers:** Module 10
+- **Best for:** Understanding SR policy, TE tunnels, and control-plane/data-plane separation.
+
+### TCP/IP Illustrated, Vol. 1 - Stevens
+
+- **Why:** Revisit transport, congestion control, ICMP, routing, DNS, and operational behavior through the lens of variable satellite links.
+- **Covers:** Modules 03, 04, 10
+- **Best for:** Bringing existing network experience into the Starlink context.
+
+### QUIC RFC 9000 and BBR/CUBIC References
+
+- **Why:** Starlink users run normal internet applications over changing wireless and satellite paths. QUIC migration, NAT rebinding, congestion control, and bufferbloat matter.
 - **Covers:** Module 04
+- **Best for:** Transport behavior over dynamic LEO service.
 
-### Space Mission Analysis and Design (SMAD)
-- **Authors:** Wiley Larson, James Wertz
-- **Why:** The systems engineering bible. Broader than comms — covers entire spacecraft and mission design. Essential context for understanding constraints.
-- **Covers:** Modules 01, 05
+## Tier 4 - Satellite Communications Fundamentals
 
-### Orbital Mechanics for Engineering Students
-- **Author:** Howard Curtis
-- **Why:** Standard text for orbit math. Necessary for constellation design and contact geometry.
-- **Covers:** Modules 00, 01, 05
+### Satellite Communications - Pratt, Bostian, Allnutt
 
----
+- **Why:** Accessible RF and satcom foundation: propagation, link budgets, frequency bands, modulation, and satellite-internet context.
+- **Covers:** Modules 01, 02, 05, 06
+- **Best for:** First full satcom textbook.
 
-## Tier 2.5 — Math & Programming Foundations
+### Satellite Communications Systems - Maral, Bousquet, Sun
 
-### Calculus: Early Transcendentals — James Stewart
-- **Why:** The standard calculus textbook. Covers single and multivariable calculus needed for orbital mechanics, signal theory, and link budget analysis.
-- **Covers:** Module 00 (Weeks 1–8)
+- **Why:** Dense systems-level reference for link design, multiple access, payloads, and networks.
+- **Covers:** Modules 02, 05, 06, 08
+- **Best for:** Reference desk copy.
 
-### Introduction to Linear Algebra — Gilbert Strang
-- **Why:** The definitive linear algebra text. Rotation matrices, coordinate transforms, and least squares are used throughout.
-- **Covers:** Module 00 (Week 5)
-- **Supplement:** MIT OCW 18.06 lectures (free, by Strang himself)
+### Satellite Communications Systems Engineering - Ippolito
 
-### Introduction to Algorithms (CLRS) — Cormen, Leiserson, Rivest, Stein
-- **Why:** Graph algorithms (Dijkstra, Bellman-Ford) are the foundation of satellite routing and CGR. Chapters 22–26.
-- **Covers:** Module 00 (Week 7), Module 05
+- **Why:** Strong link engineering and propagation treatment, especially atmospheric effects.
+- **Covers:** Module 05
+- **Best for:** Rain fade, Ka/E-band analysis, and link availability.
 
-### A Tour of C++ (3rd Ed.) — Bjarne Stroustrup
-- **Why:** Fast C++ onboarding by the language creator. Covers modern C++20 features you'll use for protocol and systems programming.
-- **Covers:** All C++ exercises
+### Orbital Mechanics for Engineering Students - Curtis
 
-### Effective Modern C++ — Scott Meyers
-- **Why:** Best practices for C++11/14/17. Essential for writing correct, performant protocol implementations.
-- **Covers:** All C++ exercises (reference as you go)
+- **Why:** Practical orbital mechanics for state vectors, orbits, and geometry.
+- **Covers:** Modules 08, 09
+- **Best for:** Moving from TLE use to understanding the math behind constellation geometry.
 
----
+## Tier 5 - Broadband PHY/MAC and Direct to Cell
 
-## Tier 3 — Standards & Specifications (Free)
+### Digital Communications - Proakis or Sklar
 
-### CCSDS Blue Books (Recommended Standards)
-- **Source:** https://public.ccsds.org/publications/
-- **Start with:** CCSDS 130.0-G-4 — *Overview of Space Communications Protocols* (the "map" of the entire protocol stack)
-- **Covers:** Module 02
+- **Why:** Modulation, coding, spectral efficiency, noise, and BER fundamentals.
+- **Covers:** Modules 05, 06, 11
+- **Best for:** Understanding MCS/ACM and link adaptation at a principled level.
 
-### CCSDS Green Books (Informational Reports)
-- **Source:** Same as above
-- **Start with:** DTN Green Book, Contact Graph Routing Green Book
-- **Covers:** Modules 02, 03, 05
+### 3GPP LTE/EPC References
 
-### DVB-S2 / DVB-S2X / DVB-RCS2 Standards
-- **Source:** ETSI (https://www.etsi.org)
-- **Key docs:** EN 302 307-1 (DVB-S2), EN 302 307-2 (S2X), EN 301 545-2 (RCS2)
-- **Covers:** Module 08
+- **Start with:** LTE architecture overviews, S1AP, GTP-U, Diameter/S6a, roaming interfaces, and eNodeB/EPC architecture.
+- **Why:** Starlink Direct to Cell publicly describes LTE phones and onboard eNodeB behavior.
+- **Covers:** Module 07
+- **Best for:** Modeling Direct to Cell without drifting into generic 5G NTN.
 
-### 3GPP NTN Specifications
-- **Source:** https://www.3gpp.org
-- **Key specs:** TR 38.811 (NTN study), TS 38.101 (NR spectrum), TR 23.737 (architecture)
-- **Covers:** Module 09
+### DVB-S2X / DVB-RCS2 Standards
 
----
+- **Source:** ETSI EN 302 307-1/2 and EN 301 545-2
+- **Why:** Not presumed to be Starlink's implementation, but useful comparison for MCS/MODCOD, LDPC, ACM, and return-link scheduling.
+- **Covers:** Module 06
+- **Best for:** Learning broadband satellite PHY/MAC concepts through public standards.
 
-## Tier 4 — Supplementary
+## Tier 6 - Math and Programming Foundations
 
-### TCP/IP Illustrated, Vol 1 (Stevens)
-- **Why:** You likely already own this. Re-read chapters on congestion control and flow control with space link constraints in mind.
+### Calculus: Early Transcendentals - James Stewart
 
-### Computer Networking: A Top-Down Approach (Kurose & Ross)
-- **Why:** For brushing up on networking fundamentals through the lens of delay and disruption.
+- **Why:** Single and multivariable calculus for link sensitivity, Doppler, spectral intuition, and orbital geometry.
+- **Covers:** Modules 05-09
 
-### The New Space Age (various industry reports)
-- **Sources:** McKinsey Space Economy report, Morgan Stanley Space Economy forecast, Euroconsult satellite industry surveys
-- **Why:** Market context — understand where investment is flowing and which segments are growing.
+### Introduction to Linear Algebra - Gilbert Strang
 
-### Free Video Resources
-- **3Blue1Brown** — *Essence of Calculus* and *Essence of Linear Algebra* (YouTube) — visual intuition
-- **MIT OCW 18.06** — Gilbert Strang's Linear Algebra course (full lectures, free)
-- **Khan Academy** — Calculus, Probability & Statistics (free, self-paced)
+- **Why:** Rotation matrices, coordinate transforms, least squares, and optimization foundations.
+- **Covers:** Modules 09-10
 
-## Tier 4 - Best Readings in Satellite Mega Constellations
-a comprehensive list of references that can aid a wide spectrum of researchers, from novices to experts in the field, with a focus on mega constellation satellite communications and networking.
-- The List: https://www.comsoc.org/publications/best-readings/satellite-mega-constellations
+### Introduction to Algorithms - CLRS
+
+- **Why:** Graph algorithms, shortest paths, flows, and optimization are core to topology work.
+- **Covers:** Modules 08, 10, 12
+
+### A Tour of C++ - Bjarne Stroustrup
+
+- **Why:** Fast modern C++ onboarding for systems and simulation work.
+- **Covers:** All modules
+
+### Effective Modern C++ - Scott Meyers
+
+- **Why:** Practical C++ correctness, ownership, and performance patterns.
+- **Covers:** All C++ projects
+
+## Tier 7 - Standards and Operational References
+
+### IETF RFCs
+
+- **Focus:** BGP, RPKI, Segment Routing, IPv6, QUIC, DNS, DHCP, NTP, NETCONF/gNMI where relevant.
+- **Covers:** Modules 03, 04, 10, 11
+
+### ITU-R Recommendations
+
+- **Focus:** P.618 rain attenuation, NGSO/GSO sharing, EPFD, atmospheric models.
+- **Covers:** Modules 02, 05, 11
+
+### CCSDS References
+
+- **Keep as background:** OEM ephemeris format, space data-link standards, and space interoperability concepts.
+- **Covers:** Modules 01 and optional non-Starlink context
+
+### Best Readings in Satellite Mega-Constellations
+
+- **Source:** https://www.comsoc.org/publications/best-readings/satellite-mega-constellations
+- **Why:** Broad research survey for LEO constellation networking.
+- **Covers:** Modules 08-12

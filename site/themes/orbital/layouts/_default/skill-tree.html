@@ -1,10 +1,10 @@
 {{ define "main" }}
 <div class="st-page">
-
     <header class="st-header">
         <div class="st-header-inner">
             <div class="hero-eyebrow"><span class="pulse-dot"></span><span>UNLOCK MAP</span></div>
             <h1 class="st-title">Skill <span class="gradient-text">Tree</span></h1>
+            <p class="st-subtitle">A Starlink Network and Topology progression from public data and RF basics to routing, laser mesh scheduling, traffic engineering, and digital-twin capstones.</p>
             <div class="st-legend">
                 <span class="legend-item"><span class="legend-dot ld-notstarted"></span>Not Started</span>
                 <span class="legend-item"><span class="legend-dot ld-inprogress"></span>In Progress</span>
@@ -18,1016 +18,294 @@
     {{ $nodeStates = .nodes }}
     {{ end }}
     {{ $nodeStatesJSON := $nodeStates | jsonify }}
+
     <div class="st-tree" id="skillTree">
-
-        <!-- ── TIER 0 ─────────────────────────────────────────────── -->
-        <div class="st-tier" id="tier0">
-            <div class="st-tier-label">
-                <span class="tier-num">PHASE 1</span>
-                <span class="tier-req req-now">Foundation — Algebra 2 + Trig</span>
-            </div>
-            <div class="st-row">
-                <div class="st-node" data-id="ccsds" data-tag="ccsds" data-title="CCSDS Stack"
-                    data-desc="The Consultative Committee for Space Data Systems (CCSDS) defines the standard space link protocols. Covers Space Packet Protocol, Unified Space Link Protocol (USLP), and AOS (Advanced Orbiting Systems). Every NASA, ESA, and most commercial spacecraft uses some variant of this stack."
-                    data-resources="CCSDS Blue Books (free at ccsds.org)|CCSDS 133.0-B Space Packet Protocol|Pratt & Bostian: Satellite Communications Ch.10">
-                    <div class="node-icon">📡</div>
-                    <div class="node-title">CCSDS Stack</div>
-                    <div class="node-sub">Space Packets · USLP · AOS</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="dtn" data-tag="dtn" data-title="DTN / BPv7"
-                    data-desc="Delay/Disruption-Tolerant Networking addresses the fundamental challenge of deep space links: minutes of latency, frequent disconnections, and no end-to-end path. Bundle Protocol v7 (RFC 9171) is the IETF standard. Licklider Transmission Protocol (LTP) is the convergence layer for space."
-                    data-resources="DTN RFC 9171 (BPv7)|LTP RFC 5326|'Delay-Tolerant Satellite Networks' – Fraire, Finochietto, Burleigh|ION-DTN NASA open source implementation">
-                    <div class="node-icon">🔗</div>
-                    <div class="node-title">DTN / BPv7</div>
-                    <div class="node-sub">Bundle Protocol · LTP concept</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="ground" data-tag="ground-segment" data-title="Ground Segment Architecture"
-                    data-desc="The ground segment is everything Earth-side: antenna arrays, baseband processing, mission operations centers, and the networks connecting them. Key players include KSAT (Norway), AWS Ground Station, Microsoft Azure Orbital, and the NASA DSN."
-                    data-resources="ECSS-E-ST-50C Ground Segment Standards|Wertz: Space Mission Engineering Ch.14|AWS Ground Station Docs">
-                    <div class="node-icon">🛰️</div>
-                    <div class="node-title">Ground Segment</div>
-                    <div class="node-sub">Antenna · Mission Ops · Networks</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="ntn" data-tag="5g-ntn" data-title="5G Non-Terrestrial Networks"
-                    data-desc="3GPP Releases 17+ extend 5G NR to include satellite access (NTN). This lets smartphones connect directly to LEO satellites without dedicated hardware — Starlink Direct-to-Cell and AST SpaceMobile both use this approach. Key concepts: timing advance, Doppler pre-compensation, feeder links."
-                    data-resources="3GPP TR 38.811 (NTN study)|3GPP TS 38.300 (NR Architecture)|AST SpaceMobile technical papers">
-                    <div class="node-icon">🌐</div>
-                    <div class="node-title">5G NTN</div>
-                    <div class="node-sub">Non-Terrestrial Networks · NGSO</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="security" data-tag="space-security" data-title="Space Cybersecurity"
-                    data-desc="Space systems face unique security challenges: ITAR-restricted crypto, no patch-over-the-air for deep space, high-latency key exchange. Covers COMSEC, TRANSEC, supply chain security, the Viasat KA-SAT attack (2022), and CCSDS Security Working Group standards."
-                    data-resources="CCSDS 351.0-M Space Data Link Security|NIST SP 800-53 for space|ESA Cyber Security Requirements">
-                    <div class="node-icon">🔒</div>
-                    <div class="node-title">Space Security</div>
-                    <div class="node-sub">COMSEC · Crypto · ITAR</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="cpp-basics" data-tag="cpp" data-title="C++ Fundamentals"
-                    data-desc="Modern C++ (17/20) is the dominant language for flight software, simulators, and protocol implementations. Covers types, control flow, functions, references, memory model, and the compilation pipeline. Space software uses C++ for its determinism, zero-overhead abstractions, and MISRA compliance."
-                    data-resources="Stroustrup: A Tour of C++ (3rd ed)|learncpp.com (free, excellent)|CppCon talks on YouTube">
-                    <div class="node-icon">💻</div>
-                    <div class="node-title">C++ Basics</div>
-                    <div class="node-sub">Types · Control flow · Functions</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-            </div>
-            <div class="st-project">
-                <span class="proj-label">🛠 Module 01 Project</span>
-                <strong>CCSDS Packet Parser</strong> — parse raw Space Packet headers in C++ · starts the Toolkit
-            </div>
-        </div>
-
-        <div class="st-connector">
-            <div class="connector-line"></div>
-            <div class="connector-text">complete Algebra 2 → Trigonometry</div>
-        </div>
-
-        <!-- ── TIER 1 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier1">
             <div class="st-tier-label">
-                <span class="tier-num">PHASE 2</span>
-                <span class="tier-req req-math">Acceleration — Pre-Calc → Calc I</span>
+                <span class="tier-num">PHASE 1</span>
+                <span class="tier-req req-now">Foundation - Algebra 2 + Trig</span>
             </div>
             <div class="st-row">
-                <div class="st-node" data-id="link-math" data-tag="link-budget" data-title="dB & Link Math"
-                    data-desc="The decibel is the universal currency of RF engineering. Logarithms turn multiplication into addition, making link budgets tractable. Key quantities: EIRP (transmit power × antenna gain), Free-Space Path Loss (function of distance and frequency), G/T (receive figure of merit). Every satellite link calculation starts here."
-                    data-resources="Pratt & Bostian: Satellite Communications Ch. 4-5|Roddy: Satellite Communications Ch. 12|'Understanding dB' – informal primer resources">
-                    <div class="node-icon">📊</div>
-                    <div class="node-title">dB & Link Math</div>
-                    <div class="node-sub">Logarithms · EIRP · Path Loss · G/T</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="public-data" data-tag="planning" data-title="Starlink Public Data" data-desc="Read Starlink and FCC public information, parse TLE/OEM-style orbital data, identify public vs inferred assumptions, and build the first normalized data model." data-resources="Module 01|Starlink Technology|Starlink Satellite Operators|FCC Starlink Gen2 order">
+                    <div class="node-icon">🛰️</div><div class="node-title">Public Data</div><div class="node-sub">TLE · OEM · FCC filings</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="antenna-geo" data-tag="antenna" data-title="Antenna Geometry"
-                    data-desc="Understanding how antennas point at satellites requires trig: elevation angle from observer's location, azimuth, slant range (the actual distance through atmosphere to satellite). Parabolic dish gain scales with (diameter/wavelength)². Half-power beamwidth determines pointing accuracy requirements."
-                    data-resources="Balanis: Antenna Theory Ch. 1-2|Roddy: Satellite Communications Ch. 6|ITU-R BO.1213 antenna patterns">
-                    <div class="node-icon">📐</div>
-                    <div class="node-title">Antenna Geometry</div>
-                    <div class="node-sub">Elevation · Beamwidth · Slant Range</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="rf-units" data-tag="link-budget" data-title="RF Units and dB Math" data-desc="Use logarithms, ratios, dBW, dBm, EIRP, G/T, FSPL, and propagation delay as the quantitative language of Starlink link analysis." data-resources="Module 01|Pratt satellite communications|Khan Algebra 2 logs">
+                    <div class="node-icon">📊</div><div class="node-title">RF Units</div><div class="node-sub">dB · EIRP · FSPL</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="dvb" data-tag="dvb" data-title="DVB-S2 / DVB-S2X"
-                    data-desc="Digital Video Broadcasting - Satellite 2nd gen is the dominant broadcast standard and increasingly used for broadband. DVB-S2X adds finer modcod granularity. Adaptive Coding and Modulation (ACM) dynamically changes the waveform based on link conditions — your TCP background makes this protocol analog immediately recognizable."
-                    data-resources="ETSI EN 302 307 DVB-S2 Standard|ETSI EN 302 307-2 DVB-S2X|Hughes Network Systems technical papers">
-                    <div class="node-icon">📡</div>
-                    <div class="node-title">DVB-S2 / DVB-S2X</div>
-                    <div class="node-sub">Modulation · ACM · Efficiency</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="phased-arrays" data-tag="antenna" data-title="Phased-Array Access Links" data-desc="Model Ku/Ka/E-band links, user-terminal beam steering, scan loss, elevation masks, and handover geometry." data-resources="Module 02|Starlink Technology|Antenna theory basics">
+                    <div class="node-icon">📡</div><div class="node-title">Phased Arrays</div><div class="node-sub">Beam steering · scan loss</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="coverage" data-tag="coverage" data-title="Ground Coverage"
-                    data-desc="Coverage analysis defines when a satellite is visible from a ground station. Uses spherical trig to calculate elevation masks, access windows, and contact durations. STK (Systems Tool Kit) automates this professionally; Skyfield in Python lets you compute it yourself from TLE data."
-                    data-resources="Wertz: Space Mission Engineering Ch. 9|Skyfield library docs (python)|Celestrak TLE data">
-                    <div class="node-icon">👁️</div>
-                    <div class="node-title">Ground Coverage</div>
-                    <div class="node-sub">Visibility windows · Arc length</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="gateways-pops" data-tag="ground-segment" data-title="Gateways and POPs" data-desc="Connect satellites to the internet through gateways, POPs, colocation, optical transport, and regional egress decisions." data-resources="Module 03|Public Starlink job descriptions|Gateway/POP network planning">
+                    <div class="node-icon">🌐</div><div class="node-title">Gateways + POPs</div><div class="node-sub">Feeder links · egress</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="cpp-oop" data-tag="cpp" data-title="C++ OOP & RAII"
-                    data-desc="Object-Oriented C++ for embedded and systems: classes, inheritance, vtables, RAII (Resource Acquisition Is Initialization), smart pointers (unique_ptr, shared_ptr), STL containers. Space software avoids dynamic allocation at runtime — learning RAII now builds the right habits."
-                    data-resources="Meyers: Effective Modern C++|isocpp.org C++ Core Guidelines|CppCon: Back to Basics series">
-                    <div class="node-icon">⚙️</div>
-                    <div class="node-title">C++ OOP & RAII</div>
-                    <div class="node-sub">Classes · RAII · Pointers · STL</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="isp-routing" data-tag="routing" data-title="ISP Routing Foundation" data-desc="Learn the service-provider protocols that show up in Starlink network roles: BGP, IS-IS/OSPF, MPLS, Segment Routing, ECMP, DNS, DHCP, NTP, and AAA." data-resources="Module 03|Internet Routing Architectures|MPLS and Segment Routing references">
+                    <div class="node-icon">🧭</div><div class="node-title">ISP Routing</div><div class="node-sub">BGP · IS-IS · MPLS/SR</div><div class="node-check">✓</div>
+                </div>
+                <div class="st-node" data-id="cpp-basics" data-tag="cpp" data-title="C++ Fundamentals" data-desc="Build the Starlink Network Toolkit with modern C++ basics, file parsing, unit tests, clean structs/classes, and CMake." data-resources="A Tour of C++|Effective Modern C++|learncpp.com">
+                    <div class="node-icon">💻</div><div class="node-title">C++ Basics</div><div class="node-sub">Parsing · tests · CMake</div><div class="node-check">✓</div>
                 </div>
             </div>
-            <div class="st-project">
-                <span class="proj-label">🛠 Module 05 Project</span>
-                <strong>Link Budget Calculator</strong> — complete link budget with JSON config + gtest · adds to
-                Toolkit
-            </div>
+            <div class="st-project"><span class="proj-label">Modules 01-03 Project</span><strong>Starlink Access and Ground Model</strong> - parse public data, compute access-link geometry, and choose gateway/POP egress.</div>
         </div>
 
-        <div class="st-connector">
-            <div class="connector-line"></div>
-            <div class="connector-text">complete Calculus I → start Calculus II</div>
-        </div>
+        <div class="st-connector"><div class="connector-line"></div><div class="connector-text">complete trigonometry and begin pre-calculus</div></div>
 
-        <!-- ── TIER 2 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier2">
             <div class="st-tier-label">
                 <span class="tier-num">PHASE 2</span>
-                <span class="tier-req req-math">Pre-Calculus → Calculus I</span>
+                <span class="tier-req req-math">Acceleration - Pre-Calc to Calc II Intro</span>
             </div>
             <div class="st-row">
-                <div class="st-node" data-id="kepler" data-tag="orbital-mechanics" data-title="Kepler Orbits"
-                    data-desc="The six classical orbital elements (a, e, i, Ω, ω, ν) completely describe any orbit. Eccentricity e determines shape: 0 = circle, 0-1 = ellipse, 1 = parabola. Kepler's Laws emerge from the conic section equations you now know from pre-calc. LEO (160-2000 km), MEO, GEO (35,786 km)."
-                    data-resources="Vallado: Fundamentals of Astrodynamics|Curtis: Orbital Mechanics for Engineering Students|NASA Orbital Mechanics Primer">
-                    <div class="node-icon">🪐</div>
-                    <div class="node-title">Kepler Orbits</div>
-                    <div class="node-sub">Ellipses · Eccentricity · Elements</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="variable-links" data-tag="handover" data-title="Variable LEO Links" data-desc="Model connected, degraded, handover, failed, and recovered link states as satellites move and gateway/beam choices change." data-resources="Module 04|tc netem|State-machine design">
+                    <div class="node-icon">〰️</div><div class="node-title">Variable Links</div><div class="node-sub">Handover · outages</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="ground-track" data-tag="orbital-mechanics" data-title="Ground Tracks"
-                    data-desc="A ground track is the subsatellite point's path over Earth's surface, visualized as a parametric curve on a map. Retrograde orbits (ISS inclination ~51.6°) have ground tracks that shift westward each orbit due to Earth's rotation. Repeat ground tracks require precise period matching."
-                    data-resources="Wertz: Space Mission Engineering Ch. 9|Skyfield library (compute tracks in Python)|NASA WorldWind or Cesium for visualization">
-                    <div class="node-icon">🗺️</div>
-                    <div class="node-title">Ground Tracks</div>
-                    <div class="node-sub">Parametric curves · Subsatellite point</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="transport-behavior" data-tag="transport" data-title="TCP/QUIC Over LEO" data-desc="Measure TCP and QUIC behavior under variable delay, capacity drops, jitter, short outages, path changes, and bufferbloat." data-resources="Module 04|TCP/IP Illustrated|RFC 9000 QUIC|BBR/CUBIC references">
+                    <div class="node-icon">🔌</div><div class="node-title">Transport</div><div class="node-sub">TCP · QUIC · recovery</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="sdn" data-tag="sdn" data-title="SDN for Space Networks"
-                    data-desc="Software-Defined Networking abstracts the control plane from the data plane. For space, SDN enables centralized topology management across a dynamic constellation. The ESA ACROSS project and commercial players like SES Networks are actively applying SDN to satellite ground segment management."
-                    data-resources="Kreutz et al: SDN Survey (IEEE)|ONF SDN Architecture|ESA ACROSS project documentation">
-                    <div class="node-icon">📶</div>
-                    <div class="node-title">SDN for Space</div>
-                    <div class="node-sub">OpenFlow · Centralized control planes</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="link-budget" data-tag="link-budget" data-title="Starlink Link Budgets" data-desc="Build Ku service-link and Ka/E feeder-link budgets with elevation masks, scan loss, rain attenuation, noise, and margin." data-resources="Module 05|ITU-R P.618|Ippolito link engineering">
+                    <div class="node-icon">📋</div><div class="node-title">Link Budgets</div><div class="node-sub">Ku · Ka · E-band</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="cpp-async" data-tag="cpp" data-title="C++ Concurrency"
-                    data-desc="Flight software handles simultaneous telemetry, command, and data flows. C++17 concurrency: std::thread, std::mutex, std::condition_variable, std::atomic. Boost.Asio for async I/O — the same model as Node.js event loops but with explicit control. This is the foundation for your LTP and protocol simulators."
-                    data-resources="Williams: C++ Concurrency in Action (2nd ed)|Boost.Asio documentation|CppCon: Networking TS talks">
-                    <div class="node-icon">🧵</div>
-                    <div class="node-title">C++ Concurrency</div>
-                    <div class="node-sub">Threads · Mutexes · Async I/O</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="rain-fade" data-tag="link-budget" data-title="Rain Fade and Gateway Diversity" data-desc="Use availability models to understand why gateway diversity matters for high-frequency feeder links." data-resources="Module 05|ITU-R P.618|Gateway diversity simulation">
+                    <div class="node-icon">🌧️</div><div class="node-title">Rain Fade</div><div class="node-sub">Availability · diversity</div><div class="node-check">✓</div>
+                </div>
+                <div class="st-node" data-id="beam-scheduler" data-tag="scheduler" data-title="Broadband Beam Scheduler" data-desc="Allocate beam resources across terminals with MCS/ACM, QoS, proportional fairness, demand, and queue backlog." data-resources="Module 06|Digital communications|Scheduler algorithms">
+                    <div class="node-icon">📶</div><div class="node-title">Beam Scheduler</div><div class="node-sub">MCS · ACM · QoS</div><div class="node-check">✓</div>
+                </div>
+                <div class="st-node" data-id="direct-to-cell" data-tag="direct-to-cell" data-title="Starlink Direct to Cell" data-desc="Model LTE phones, onboard satellite eNodeB behavior, roaming-style mobile-core integration, and laser backhaul constraints." data-resources="Module 07|Starlink Direct to Cell|LTE/EPC architecture">
+                    <div class="node-icon">📱</div><div class="node-title">Direct to Cell</div><div class="node-sub">LTE · eNodeB · roaming</div><div class="node-check">✓</div>
+                </div>
+                <div class="st-node" data-id="cpp-concurrency" data-tag="cpp" data-title="C++ Networking and Concurrency" data-desc="Use sockets, event loops, threads, mutexes, condition variables, and structured logs for link and Direct to Cell simulations." data-resources="Boost.Asio docs|C++ Concurrency in Action|Beej networking guide">
+                    <div class="node-icon">🧵</div><div class="node-title">C++ Concurrency</div><div class="node-sub">Sockets · threads</div><div class="node-check">✓</div>
                 </div>
             </div>
+            <div class="st-project"><span class="proj-label">Modules 04-07 Project</span><strong>Variable-Capacity Access Network Simulator</strong> - handover, link budget, scheduler, and Direct to Cell models.</div>
         </div>
 
-        <div class="st-connector">
-            <div class="connector-line"></div>
-            <div class="connector-text">complete Calculus II · III</div>
-        </div>
+        <div class="st-connector"><div class="connector-line"></div><div class="connector-text">complete calculus ii, calculus iii, and linear algebra</div></div>
 
-        <!-- ── TIER 3 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier3">
             <div class="st-tier-label">
                 <span class="tier-num">PHASE 3</span>
-                <span class="tier-req req-math">Depth — Calc II + III + Linear Algebra</span>
+                <span class="tier-req req-math">Depth - Calc III + Linear Algebra + Optimization</span>
             </div>
             <div class="st-row">
-                <div class="st-node" data-id="orbital-vel" data-tag="orbital-mechanics"
-                    data-title="Orbital Velocity & Dynamics"
-                    data-desc="Vis-viva equation: v² = GM(2/r - 1/a). Orbital velocity is the derivative of position. Circular LEO at 400 km: ~7.7 km/s. Escape velocity: √2 × orbital velocity. Hohmann transfers use two burns to move between orbital altitudes — this is how satellites boost from parking orbit to final orbit."
-                    data-resources="Curtis: Orbital Mechanics Ch. 2-4|Bate, Mueller, White: Fundamentals of Astrodynamics|JPL Horizons system for real ephemerides">
-                    <div class="node-icon">🚀</div>
-                    <div class="node-title">Orbital Velocity</div>
-                    <div class="node-sub">v = d(pos)/dt · vis-viva</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="constellation-routing" data-tag="constellation" data-title="Starlink Constellation Routing" data-desc="Generate shell-based LEO topology snapshots, ingest public ephemeris data, and route between ground endpoints across satellites, gateways, and POPs." data-resources="Module 08|Handley Delay is Not an Option|Hypatia simulator">
+                    <div class="node-icon">🛰️</div><div class="node-title">Constellation Routing</div><div class="node-sub">Shells · snapshots</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="doppler" data-tag="doppler" data-title="Doppler Analysis"
-                    data-desc="Doppler shift = (v_radial / c) × f_carrier. The rate of change of slant range is the radial velocity. A LEO satellite at 550 km altitude causes ±50 kHz Doppler on a 10 GHz carrier at overhead pass. DVB-S2 receivers and 5G NTN use pre-compensation at the transmitter to keep the received frequency stable."
-                    data-resources="Pratt & Bostian Ch. 7|3GPP TR 38.821 NTN Doppler|Misra & Enge: GPS Ch. 5 (Doppler ranging)">
-                    <div class="node-icon">〰️</div>
-                    <div class="node-title">Doppler Analysis</div>
-                    <div class="node-sub">Δf = d(range)/dt × f/c</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="graph-paths" data-tag="routing" data-title="Dynamic Graph Paths" data-desc="Use Dijkstra, A*, k-shortest paths, constrained shortest path, ECMP, route-churn penalties, and failure-aware rerouting." data-resources="Module 08|CLRS graph algorithms|Network topology design at 27000 km/hour">
+                    <div class="node-icon">🕸️</div><div class="node-title">Graph Paths</div><div class="node-sub">Dijkstra · k-shortest</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="contact-energy" data-tag="link-budget" data-title="Contact Window Energy"
-                    data-desc="Total data transferred during a satellite pass = ∫ throughput(t) dt over the contact window. As elevation changes, FSPL changes, Eb/N₀ changes, and the modulation rate adapts (ACM). Integrating the piecewise capacity curve gives the total bytes that can be transferred — a key metric for mission planning."
-                    data-resources="Wertz Ch. 13 (link analysis)|CCSDS Rate Adaptive Coding|ACM capacity analysis papers">
-                    <div class="node-icon">⚡</div>
-                    <div class="node-title">Contact Window Energy</div>
-                    <div class="node-sub">E = ∫ P(t) dt over pass</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="optical-isl" data-tag="optical" data-title="Optical Inter-Satellite Links" data-desc="Model Starlink-like optical links, pointing geometry, acquisition/tracking, point-ahead angle, and laser-link budgets." data-resources="Module 09|Starlink Technology|Free-Space Laser Communications">
+                    <div class="node-icon">🔭</div><div class="node-title">Optical ISL</div><div class="node-sub">Lasers · pointing</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="cpp-sockets" data-tag="cpp" data-title="C++ Sockets & UDP"
-                    data-desc="Your TCP/IP background makes this natural. POSIX sockets in C++: socket(), bind(), sendto(), recvfrom(). UDP is the foundation for LTP. Boost.Asio wraps POSIX sockets into an async model. You'll implement a reliable-over-unreliable protocol — exactly what LTP does for DTN over space links."
-                    data-resources="Stevens: UNIX Network Programming Vol.1|Boost.Asio docs + examples|Beej's Guide to Network Programming">
-                    <div class="node-icon">🔌</div>
-                    <div class="node-title">C++ Sockets & UDP</div>
-                    <div class="node-sub">POSIX · Boost.Asio · LTP</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="laser-scheduler" data-tag="optical" data-title="Laser Mesh Scheduler" data-desc="Assign a limited number of laser links per satellite while balancing latency, stability, capacity, and failure resilience." data-resources="Module 09|Graph matching|Local search and simulated annealing">
+                    <div class="node-icon">🔗</div><div class="node-title">Laser Scheduler</div><div class="node-sub">Limited terminals · churn</div><div class="node-check">✓</div>
+                </div>
+                <div class="st-node" data-id="topology-controller" data-tag="sdn" data-title="Topology Controller" data-desc="Build a controller that ingests topology, gateway, POP, link, demand, and policy state, then emits paths or Segment Routing policies." data-resources="Module 10|gRPC/Protobuf|Segment Routing references">
+                    <div class="node-icon">🧠</div><div class="node-title">Topology Controller</div><div class="node-sub">SR policy · APIs</div><div class="node-check">✓</div>
+                </div>
+                <div class="st-node" data-id="traffic-engineering" data-tag="traffic-engineering" data-title="Traffic Engineering" data-desc="Optimize traffic over constellation, gateway, POP, and peering edges using capacity constraints, demand matrices, and failure scenarios." data-resources="Module 10|LP optimization|Min-cost flow|Multi-commodity flow">
+                    <div class="node-icon">🚦</div><div class="node-title">Traffic Engineering</div><div class="node-sub">LP · utilization</div><div class="node-check">✓</div>
+                </div>
+                <div class="st-node" data-id="cpp-eigen" data-tag="cpp" data-title="C++ Eigen, Boost.Graph, and APIs" data-desc="Use Eigen for vectors/transforms, Boost.Graph for routing, pybind11 for Python interop, and REST/gRPC for topology services." data-resources="Eigen docs|Boost.Graph docs|pybind11|grpc++">
+                    <div class="node-icon">⚙️</div><div class="node-title">C++ Systems</div><div class="node-sub">Eigen · BGL · gRPC</div><div class="node-check">✓</div>
                 </div>
             </div>
-            <div class="st-project">
-                <span class="proj-label">🛠 Module 08 Project</span>
-                <strong>Constellation Topology Engine</strong> — orbit propagation + Dijkstra routing with Eigen &
-                std::async
-            </div>
+            <div class="st-project"><span class="proj-label">Modules 08-10 Project</span><strong>Starlink Topology Controller</strong> - route, schedule laser links, and optimize traffic across the space/ground graph.</div>
         </div>
 
-        <div class="st-connector">
-            <div class="connector-line"></div>
-            <div class="connector-text">complete Linear Algebra → start Probability</div>
-        </div>
+        <div class="st-connector"><div class="connector-line"></div><div class="connector-text">complete probability, statistics, graph theory, and optimization</div></div>
 
-        <!-- ── TIER 4 ─────────────────────────────────────────────── -->
         <div class="st-tier" id="tier4">
             <div class="st-tier-label">
-                <span class="tier-num">PHASE 3</span>
-                <span class="tier-req req-math">Linear Algebra + Optimization</span>
-            </div>
-            <div class="st-row">
-                <div class="st-node" data-id="spectral" data-tag="modulation" data-title="Spectral Efficiency"
-                    data-desc="Shannon capacity: C = B × log₂(1 + SNR). The Fourier transform decomposes signals into frequency components. Spectral efficiency (bits/s/Hz) determines how much data fits in a given bandwidth. QPSK = 2 bits/symbol, 16-APSK = 4 bits/symbol. DVB-S2X reaches 5.7 bits/s/Hz with 32-APSK."
-                    data-resources="Haykin: Communication Systems Ch. 4, 6|Sklar: Digital Communications|Proakis: Digital Communications">
-                    <div class="node-icon">📡</div>
-                    <div class="node-title">Spectral Efficiency</div>
-                    <div class="node-sub">Fourier · Bandwidth · Shannon limit</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="coords" data-tag="orbital-mechanics" data-title="Coordinate Frames"
-                    data-desc="Satellite positions are expressed in multiple frames: ECI (Earth-Centered Inertial, fixed to stars), ECEF (Earth-Centered Earth-Fixed, rotates with Earth), Topocentric (observer-relative azimuth/elevation). Rotation matrix chains (3×3) convert between them. Eigen library makes this ergonomic in C++."
-                    data-resources="Vallado: Fundamentals of Astrodynamics Ch. 2-3|Eigen C++ library docs|NASA SPICE toolkit">
-                    <div class="node-icon">🌍</div>
-                    <div class="node-title">Coordinate Frames</div>
-                    <div class="node-sub">ECI · ECEF · Rotation matrices</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="optical-isl" data-tag="optical" data-title="Optical Inter-Satellite Links"
-                    data-desc="OISL uses near-infrared lasers (1064nm or 1550nm) for Gbps inter-satellite links. Starlink Gen2 uses OISL to form a mesh backbone. Key challenges: pointing/acquisition/tracking (PAT) at 1 µrad accuracy, atmospheric turbulence for ground links, and thermal management. Zero RF spectrum usage."
-                    data-resources="Hemmati: Near-Earth Laser Communications|SpaceX Starlink FCC filings|TESAT SCOT80 laser terminal papers">
-                    <div class="node-icon">🔭</div>
-                    <div class="node-title">Optical ISL</div>
-                    <div class="node-sub">OISL · Pointing · Acquisition · Tracking</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="constellation" data-tag="constellation"
-                    data-title="Constellation Geometry"
-                    data-desc="Walker Delta constellations are parameterized as T/P/F (total sats / orbital planes / phase factor). Coverage is analyzed by computing the minimum elevation angle achievable at every point on Earth. Vector geometry in 3D: dot products for angles, cross products for orbital normals."
-                    data-resources="Wertz: Space Mission Engineering Ch. 7|Walker: Continuous Whole Earth Coverage|SpaceX Starlink ITU filings">
-                    <div class="node-icon">🛰️</div>
-                    <div class="node-title">Constellation Geometry</div>
-                    <div class="node-sub">Walker · 3D vectors · Coverage math</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="cpp-eigen" data-tag="cpp" data-title="C++ Eigen & Boost.Graph"
-                    data-desc="Eigen: header-only C++ linear algebra for matrix/vector ops used in orbit propagation and coordinate transforms. Boost.Graph: graph data structures and algorithms (Dijkstra, BFS) that underpin the CGR simulator in Tier 6. Both are industry-standard in space software."
-                    data-resources="Eigen3 documentation|Boost.Graph BGL book (free online)|Examples: orbit propagator with Eigen">
-                    <div class="node-icon">⚙️</div>
-                    <div class="node-title">C++ Eigen & Boost.Graph</div>
-                    <div class="node-sub">Matrix ops · Graph algorithms</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-            </div>
-            <div class="st-project">
-                <span class="proj-label">🛠 Module 10 Project</span>
-                <strong>SDN Controller</strong> — REST API for satellite mesh routing · ties Toolkit together
-            </div>
-        </div>
-
-        <div class="st-connector">
-            <div class="connector-line"></div>
-            <div class="connector-text">complete Probability + Statistics</div>
-        </div>
-
-        <!-- ── TIER 5 ─────────────────────────────────────────────── -->
-        <div class="st-tier" id="tier5">
-            <div class="st-tier-label">
                 <span class="tier-num">PHASE 4</span>
-                <span class="tier-req req-math">Mastery — Probability + Graph Theory</span>
+                <span class="tier-req req-math">Mastery - Reliability + Graph Optimization</span>
             </div>
             <div class="st-row">
-                <div class="st-node" data-id="ber" data-tag="link-budget" data-title="BER & Noise Analysis"
-                    data-desc="Bit Error Rate is the probability that a received bit is wrong. The Gaussian (AWGN) channel model gives BER as a function of Eb/N₀ (energy per bit / noise density). For BPSK: BER = Q(√(2Eb/N₀)). The Q function is the Gaussian tail integral — probability theory made physical."
-                    data-resources="Haykin: Communication Systems Ch. 7|Sklar: Digital Communications Ch. 4|Proakis & Salehi: Digital Communications">
-                    <div class="node-icon">📉</div>
-                    <div class="node-title">BER & Noise Analysis</div>
-                    <div class="node-sub">Eb/N₀ · AWGN · Q-function · BER curves</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="bgp-security" data-tag="security" data-title="BGP and Routing Security" data-desc="Validate BGP/SR route changes, RPKI/ROA status, route-origin safety, max-prefix limits, egress policy, and blast radius." data-resources="Module 11|RPKI operational guides|BGP security references">
+                    <div class="node-icon">🔒</div><div class="node-title">Routing Security</div><div class="node-sub">BGP · RPKI · policy</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="rain-fade" data-tag="link-budget" data-title="Rain Fade & Availability"
-                    data-desc="Rain attenuates Ka-band signals (26.5-40 GHz) significantly. ITU-R P.618 gives the statistical model: for a given location and availability target (99.9% uptime), compute the fade margin needed. Higher availability = more margin = bigger/more expensive dish. This trades off system cost vs service level."
-                    data-resources="ITU-R P.618 Propagation Model|Pratt & Bostian Ch. 6|Roddy Ch. 13 (Atmospheric effects)">
-                    <div class="node-icon">🌧️</div>
-                    <div class="node-title">Rain Fade & Availability</div>
-                    <div class="node-sub">ITU-R P.618 · Margin · Availability</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="resilience-stats" data-tag="resilience" data-title="Availability and Resilience Statistics" data-desc="Model gateway diversity, laser mesh redundancy, failure correlation, false positives, false negatives, and recovery times." data-resources="Module 11|Devore probability text|Monte Carlo availability">
+                    <div class="node-icon">📈</div><div class="node-title">Resilience Stats</div><div class="node-sub">Availability · failures</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="full-link" data-tag="link-budget" data-title="Full Integrated Link Budget"
-                    data-desc="The complete link budget combines EIRP, FSPL, atmospheric losses, antenna gain, noise figure, implementation losses, coding gain, and required BER. Output: link margin. Positive margin = link works. This is the central engineering artifact for any satellite communication system proposal."
-                    data-resources="Pratt & Bostian Ch. 5 full worked example|Roddy Ch. 12|ETSI TR 101 154 link budget template">
-                    <div class="node-icon">📋</div>
-                    <div class="node-title">Full Link Budget</div>
-                    <div class="node-sub">Noise + Margin + Availability combined</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="anomaly-detection" data-tag="security" data-title="Telemetry Anomaly Detection" data-desc="Detect jamming, interference, route churn, latency spikes, packet loss, and link-margin anomalies from simulated telemetry streams." data-resources="Module 11|Telemetry simulation|Jamming/interference analysis">
+                    <div class="node-icon">📉</div><div class="node-title">Anomaly Detection</div><div class="node-sub">Jamming · telemetry</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node" data-id="fec" data-tag="modulation" data-title="LDPC & Turbo Codes"
-                    data-desc="Forward Error Correction adds redundancy so the receiver can reconstruct bits lost to noise without retransmission. LDPC (Low Density Parity Check) codes are near-Shannon-limit and used in DVB-S2. Coding gain is the Eb/N₀ improvement vs uncoded — typically 8-10 dB, effectively making your dish receive 6x more power."
-                    data-resources="Richardson & Urbanke: Modern Coding Theory|ETSI DVB-S2 FEC specification|Lin & Costello: Error Control Coding">
-                    <div class="node-icon">📦</div>
-                    <div class="node-title">LDPC & Turbo Codes</div>
-                    <div class="node-sub">Coding gain · DVB FEC schemes</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node" data-id="graph-optimization" data-tag="optimization" data-title="Graph Theory and Optimization" data-desc="Apply time-expanded graphs, max flow, min-cost flow, integer programming, and online algorithms to routing, gateway choice, and laser assignment." data-resources="Module 12|CLRS|Rosen discrete math">
+                    <div class="node-icon">🧮</div><div class="node-title">Graph Optimization</div><div class="node-sub">Flows · ILP · online</div><div class="node-check">✓</div>
+                </div>
+                <div class="st-node" data-id="digital-twin" data-tag="capstone" data-title="Network Operations Digital Twin" data-desc="Integrate satellites, gateways, POPs, laser links, telemetry, route changes, incidents, policy checks, and remediation workflows." data-resources="Module 12|Time-series telemetry|Incident simulation|Config rollout/rollback">
+                    <div class="node-icon">🖥️</div><div class="node-title">Digital Twin</div><div class="node-sub">Telemetry · incidents</div><div class="node-check">✓</div>
                 </div>
             </div>
+            <div class="st-project"><span class="proj-label">Modules 11-12 Project</span><strong>Starlink Network Digital Twin</strong> - validate route changes and simulate service impact under failures.</div>
         </div>
 
-        <div class="st-connector">
-            <div class="connector-line"></div>
-            <div class="connector-text">complete Graph Theory + Optimization</div>
-        </div>
+        <div class="st-connector"><div class="connector-line"></div><div class="connector-text">choose two portfolio capstones</div></div>
 
-        <!-- ── TIER 6 ─────────────────────────────────────────────── -->
-        <div class="st-tier" id="tier6">
-            <div class="st-tier-label">
-                <span class="tier-num">PHASE 4</span>
-                <span class="tier-req req-math">Graph Theory + Optimization</span>
-            </div>
-            <div class="st-row">
-                <div class="st-node" data-id="cgr" data-tag="cgr" data-title="Contact Graph Routing"
-                    data-desc="CGR is the routing algorithm for DTN in space. The contact plan is a time-ordered list of all predicted satellite contacts. A time-expanded graph is built, and Dijkstra's algorithm finds the best path through time. The reference implementation is NASA's ION-DTN. This is where your networking background becomes immediately applicable."
-                    data-resources="Burleigh: Contact Graph Routing (CGR) RFC|Fraire et al: CGR survey paper|ION-DTN source code (NASA GSFC)">
-                    <div class="node-icon">🕸️</div>
-                    <div class="node-title">Contact Graph Routing</div>
-                    <div class="node-sub">CGR · Time-expanded graphs · Dijkstra</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="traffic-eng" data-tag="traffic-engineering"
-                    data-title="Traffic Engineering"
-                    data-desc="Traffic engineering optimizes how flows are routed through a network given capacity constraints. For satellite constellations: contact scheduling, TDMA slot assignment, and multi-path routing. LP/ILP (Linear Programming / Integer Linear Programming) formulate these as optimization problems solvable with GLPK or CPLEX."
-                    data-resources="Fortz & Thorup: Internet Traffic Engineering|Apostolopoulos et al: QoS Routing|Boost.Graph: max-flow algorithms">
-                    <div class="node-icon">🚦</div>
-                    <div class="node-title">Traffic Engineering</div>
-                    <div class="node-sub">LP/ILP · Scheduling · Multi-path</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="fsm" data-tag="protocols" data-title="Protocol State Machines"
-                    data-desc="COP-1 (Communications Operation Procedure) is the CCSDS telecommand reliability protocol. FARM (Frame Acceptance and Reporting Mechanism) and FOP (Frame Operation Procedure) are state machines that ensure reliable delivery of critical commands. Implementing FSMs in C++ is a core skill for flight software engineering."
-                    data-resources="CCSDS 232.1-B COP-1 Blue Book|Practical Statecharts in C/C++ – Samek|ECSS-E-ST-50C TC standards">
-                    <div class="node-icon">🔄</div>
-                    <div class="node-title">Protocol State Machines</div>
-                    <div class="node-sub">COP-1 · FARM · FOP · FSM design</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-                <div class="st-node" data-id="leo-routing" data-tag="constellation" data-title="LEO Routing & Handover"
-                    data-desc="In a LEO constellation, a ground terminal's serving satellite changes every 5-10 minutes. Handover must be seamless — similar to mobile network handover but with more predictability (orbital mechanics is deterministic). ISL mesh routing changes as the constellation topology evolves second-by-second."
-                    data-resources="Bhattacharyya et al: Starlink routing analysis|Bhattacharyya: LEO Routing paper|Del Portillo et al: Starlink network model">
-                    <div class="node-icon">🛰️</div>
-                    <div class="node-title">LEO Routing & Handover</div>
-                    <div class="node-sub">Handover · ISL topology · DTN</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
-                </div>
-            </div>
-            <div class="st-project">
-                <span class="proj-label">🛠 Module 11 Project</span>
-                <strong>SDLS Encryptor + BPSec</strong> — AES-GCM frame encryption with concurrent pipeline
-            </div>
-        </div>
-
-        <div class="st-connector">
-            <div class="connector-line"></div>
-            <div class="connector-text">all modules complete</div>
-        </div>
-
-        <!-- ── CAPSTONE ────────────────────────────────────────────── -->
         <div class="st-tier tier-capstone" id="tierCapstone">
             <div class="st-tier-label">
                 <span class="tier-num">CAPSTONE</span>
-                <span class="tier-req req-capstone">Module 12 — Choose 2</span>
+                <span class="tier-req req-capstone">Module 12 - Choose 2</span>
             </div>
             <div class="st-row">
-                <div class="st-node node-capstone" data-id="cap-sim" data-tag="constellation"
-                    data-title="LEO Constellation Simulator"
-                    data-desc="Full C++ simulation of a Walker Delta constellation. Inputs: TLE data from Celestrak. Outputs: coverage maps, contact schedules, link budgets per pass, routing tables via CGR. Python/Skyfield for visualization. This becomes a portfolio-grade open-source project."
-                    data-resources="Skyfield + Astropy for ephemerides|Boost.Graph for CGR|Matplotlib / Cesium for visualization">
-                    <div class="node-icon">🌌</div>
-                    <div class="node-title">LEO Constellation<br>Simulator</div>
-                    <div class="node-sub">C++ · Walker · CGR · Skyfield ground tracks</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node node-capstone" data-id="cap-routing" data-tag="constellation" data-title="LEO Topology and Routing Simulator" data-desc="A Starlink-inspired simulator that ingests public orbital data, assigns OISLs, routes global traffic, compares latency against terrestrial paths, and simulates failures." data-resources="Module 12 Project A|Handley paper|Hypatia">
+                    <div class="node-icon">🌌</div><div class="node-title">Routing Simulator</div><div class="node-sub">Shells · OISL · latency</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node node-capstone" data-id="cap-network" data-tag="sdn"
-                    data-title="Autonomous Network Manager"
-                    data-desc="A gRPC-based control plane that consumes real TLE data, builds a contact plan, runs CGR, and issues routing policy updates to simulated network elements. SDN-style: your payment systems gRPC expertise directly applicable. This is a hiring-signal project for companies like SES, Telesat, Viasat."
-                    data-resources="gRPC C++ documentation|ION-DTN APIs|Starlink network architecture papers">
-                    <div class="node-icon">🤖</div>
-                    <div class="node-title">Autonomous Network<br>Manager</div>
-                    <div class="node-sub">gRPC control plane · SDN · Real TLE data</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node node-capstone" data-id="cap-gateway" data-tag="ground-segment" data-title="Gateway, POP, and Peering Optimizer" data-desc="A planner that selects gateway/POP egress from visibility, weather, capacity, latency, and BGP policy constraints." data-resources="Module 12 Project B|Gateway diversity|BGP policy">
+                    <div class="node-icon">🌐</div><div class="node-title">Gateway Optimizer</div><div class="node-sub">POP egress · peering</div><div class="node-check">✓</div>
                 </div>
-                <div class="st-node node-capstone" data-id="cap-profile" data-tag="link-budget"
-                    data-title="Space Mission Profile"
-                    data-desc="A complete mission communication analysis document: spacecraft description, orbit selection, frequency band, full link budget, protocol stack, ground station network, availability analysis, cost model. This is the deliverable format used by space systems engineers at prime contractors and agencies."
-                    data-resources="Wertz: Space Mission Engineering (full)|SMAD: Space Mission Analysis and Design|ITU filing templates">
-                    <div class="node-icon">📋</div>
-                    <div class="node-title">Space Mission<br>Profile</div>
-                    <div class="node-sub">Full link budget · Protocol stack · Portfolio</div>
-                    <div class="node-check" aria-hidden="true">✓</div>
+                <div class="st-node node-capstone" data-id="cap-direct-cell" data-tag="direct-to-cell" data-title="Direct-to-Cell LTE Backhaul Simulator" data-desc="A roaming-style LTE simulator with satellite eNodeB attach, bearer setup, variable laser backhaul, and partner mobile-core landing." data-resources="Module 12 Project C|Starlink Direct to Cell|LTE/EPC">
+                    <div class="node-icon">📱</div><div class="node-title">Direct-to-Cell</div><div class="node-sub">LTE · backhaul</div><div class="node-check">✓</div>
+                </div>
+                <div class="st-node node-capstone" data-id="cap-laser" data-tag="optical" data-title="Optical Mesh Link Scheduler" data-desc="An OISL scheduler that optimizes limited laser links for latency, capacity, stability, failure resilience, and route churn." data-resources="Module 12 Project D|Graph matching|Local search">
+                    <div class="node-icon">🔭</div><div class="node-title">Laser Scheduler</div><div class="node-sub">OISL assignment</div><div class="node-check">✓</div>
+                </div>
+                <div class="st-node node-capstone" data-id="cap-digital-twin" data-tag="capstone" data-title="Network Operations Digital Twin" data-desc="A backend and dashboard for satellites, gateways, POPs, links, telemetry, route changes, alerts, and remediation workflows." data-resources="Module 12 Project E|gRPC/REST|Telemetry|Incident simulation">
+                    <div class="node-icon">🖥️</div><div class="node-title">Digital Twin</div><div class="node-sub">Ops · telemetry</div><div class="node-check">✓</div>
                 </div>
             </div>
         </div>
+    </div>
+</div>
 
-    </div><!-- /st-tree -->
-</div><!-- /st-page -->
-
-<!-- ── Modal ─────────────────────────────────────────────────── -->
 <div class="st-modal-backdrop" id="stBackdrop" aria-hidden="true"></div>
 <div class="st-modal" id="stModal" role="dialog" aria-modal="true" aria-labelledby="stModalTitle">
     <div class="st-modal-header">
         <div class="st-modal-icon" id="stModalIcon"></div>
         <h2 class="st-modal-title" id="stModalTitle"></h2>
-        <button class="st-modal-close" id="stModalClose" aria-label="Close">✕</button>
+        <button class="st-modal-close" id="stModalClose" aria-label="Close">x</button>
     </div>
     <div class="st-modal-body">
         <p class="st-modal-desc" id="stModalDesc"></p>
-        <div class="st-modal-resources" id="stModalResources">
+        <div class="st-modal-resources">
             <h3 class="resource-heading">Resources</h3>
             <ul class="resource-list" id="stResourceList"></ul>
         </div>
     </div>
     <div class="st-modal-footer">
-        <a class="st-modal-posts-link" id="stModalPostsLink" href="#" target="_blank">
-            📖 View journal posts →
-        </a>
+        <a class="st-modal-posts-link" id="stModalPostsLink" href="#">View related journal posts</a>
     </div>
 </div>
 
 <style>
-    /* ── Skill Tree Page Styles ────────────────────────────────── */
-    .st-page {
-        min-height: 100vh;
-        position: relative;
-        z-index: 1;
-    }
-
-    .st-header {
-        padding: 5rem 2rem 3rem;
-        text-align: center;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .st-header-inner {
-        max-width: 620px;
-        margin: 0 auto;
-    }
-
-    .st-title {
-        font-family: 'Orbitron', sans-serif;
-        font-size: clamp(2.5rem, 5vw, 4rem);
-        font-weight: 900;
-        letter-spacing: 0.06em;
-        text-transform: uppercase;
-        line-height: 1.1;
-        margin: 1rem 0 1.25rem;
-    }
-
-    .st-subtitle {
-        color: #8892a4;
-        font-size: 0.95rem;
-        line-height: 1.8;
-    }
-
-    .st-tree {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 4rem 2rem 6rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0;
-    }
-
-    .st-tier {
-        position: relative;
-    }
-
-    .st-tier-label {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .tier-num {
-        font-family: 'JetBrains Mono', monospace;
-        font-size: 0.7rem;
-        letter-spacing: 0.18em;
-        color: #4a5568;
-        text-transform: uppercase;
-    }
-
-    .tier-req {
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        padding: 0.2rem 0.75rem;
-        border-radius: 100px;
-        border: 1px solid;
-    }
-
-    .req-now {
-        color: #d1d5db;
-        border-color: rgba(209, 213, 219, 0.3);
-        background: rgba(209, 213, 219, 0.05);
-    }
-
-    .req-math {
-        color: #6b7280;
-        border-color: rgba(107, 114, 128, 0.3);
-        background: transparent;
-    }
-
-    .req-capstone {
-        color: #f0f4ff;
-        border-color: rgba(240, 244, 255, 0.4);
-        background: rgba(240, 244, 255, 0.05);
-    }
-
-    .st-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-    }
-
-    /* Node */
-    .st-node {
-        width: 160px;
-        min-height: 110px;
-        border-radius: 12px;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        background: rgba(255, 255, 255, 0.02);
-        padding: 1.1rem 1rem;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 0.4rem;
-        cursor: pointer;
-        transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-        position: relative;
-        user-select: none;
-    }
-
-    .st-node:hover {
-        transform: translateY(-3px);
-        border-color: rgba(160, 168, 184, 0.35);
-        box-shadow: 0 8px 28px rgba(160, 168, 184, 0.06);
-    }
-
-    .node-capstone {
-        width: 200px;
-        min-height: 130px;
-        border-color: rgba(255, 255, 255, 0.2);
-        background: rgba(255, 255, 255, 0.03);
-    }
-
-    .node-capstone:hover {
-        border-color: rgba(255, 255, 255, 0.5);
-        box-shadow: 0 12px 40px rgba(255, 255, 255, 0.07);
-    }
-
-    /* Legend */
-    .st-legend {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1.75rem;
-        flex-wrap: wrap;
-        margin-top: 1.5rem;
-    }
-
-    .legend-item {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        font-size: 0.8rem;
-        color: #8892a4;
-        letter-spacing: 0.05em;
-    }
-
-    .legend-dot {
-        width: 12px;
-        height: 12px;
-        border-radius: 50%;
-        border: 2px solid;
-        background: transparent;
-    }
-
-    .ld-notstarted {
-        border-color: #4a5568;
-    }
-
-    .ld-inprogress {
-        border-color: #3b82f6;
-    }
-
-    .ld-complete {
-        border-color: #22c55e;
-    }
-
-    /* Progress state outlines — outline only, no fill change */
-    .st-node.node-not-started {
-        border-color: rgba(74, 85, 104, 0.5);
-    }
-
-    .st-node.node-in-progress {
-        border-color: rgba(59, 130, 246, 0.7) !important;
-        box-shadow: 0 0 12px rgba(59, 130, 246, 0.15);
-    }
-
-    .st-node.node-in-progress:hover {
-        border-color: rgba(59, 130, 246, 1) !important;
-        box-shadow: 0 8px 28px rgba(59, 130, 246, 0.25);
-    }
-
-    .st-node.node-complete {
-        border-color: rgba(34, 197, 94, 0.7) !important;
-        box-shadow: 0 0 12px rgba(34, 197, 94, 0.1);
-    }
-
-    .st-node.node-complete:hover {
-        border-color: rgba(34, 197, 94, 1) !important;
-        box-shadow: 0 8px 28px rgba(34, 197, 94, 0.2);
-    }
-
-    /* keep old node-done for JS localStorage compat */
-    .st-node.node-done {
-        border-color: rgba(34, 197, 94, 0.7) !important;
-    }
-
-    .node-check {
-        position: absolute;
-        top: 7px;
-        right: 9px;
-        font-size: 0.65rem;
-        color: #22c55e;
-        opacity: 0;
-        transition: opacity 0.2s;
-        font-weight: 700;
-    }
-
-    .st-node.node-complete .node-check,
-    .st-node.node-done .node-check {
-        opacity: 1;
-    }
-
-    .node-icon {
-        font-size: 1.5rem;
-        line-height: 1;
-    }
-
-    .node-title {
-        font-family: 'Inter', sans-serif;
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: #c9ced8;
-        line-height: 1.3;
-        letter-spacing: 0.02em;
-    }
-
-    .node-capstone .node-title {
-        color: #e8ecf4;
-        font-size: 0.85rem;
-    }
-
-    .node-sub {
-        font-size: 0.68rem;
-        color: #4a5568;
-        line-height: 1.5;
-    }
-
-    /* Connectors */
-    .st-connector {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1rem 0;
-        gap: 0.4rem;
-    }
-
-    .connector-line {
-        width: 1px;
-        height: 40px;
-        background: linear-gradient(180deg, rgba(160, 168, 184, 0.1) 0%, rgba(160, 168, 184, 0.35) 50%, rgba(160, 168, 184, 0.1) 100%);
-    }
-
-    .connector-text {
-        font-size: 0.65rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #4a5568;
-    }
-
-    /* Project callout */
-    .st-project {
-        margin: 0.25rem auto 0.5rem;
-        padding: 0.75rem 1.25rem;
-        border: 1px dashed rgba(160, 168, 184, 0.18);
-        border-radius: 8px;
-        font-size: 0.82rem;
-        color: #6b7280;
-        text-align: center;
-        max-width: 600px;
-    }
-
-    .st-project strong {
-        color: #a0a8b8;
-        font-weight: 600;
-    }
-
-    .proj-label {
-        display: block;
-        font-size: 0.65rem;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: #4a5568;
-        margin-bottom: 0.3rem;
-    }
-
-    .tier-capstone .st-tier-label {
-        justify-content: center;
-    }
-
-    .tier-capstone .st-row {
-        gap: 1.5rem;
-    }
-
-    /* ── Modal ─────────────────────────────────────────────────── */
-    .st-modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(6px);
-        z-index: 200;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s;
-    }
-
-    .st-modal-backdrop.open {
-        opacity: 1;
-        pointer-events: all;
-    }
-
-    .st-modal {
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%) translateY(100%);
-        width: min(680px, 100vw);
-        max-height: 80vh;
-        background: #0d0d1a;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        border-bottom: none;
-        border-radius: 16px 16px 0 0;
-        z-index: 201;
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s cubic-bezier(0.34, 1.1, 0.64, 1);
-        overflow: hidden;
-    }
-
-    .st-modal.open {
-        transform: translateX(-50%) translateY(0);
-    }
-
-    .st-modal-header {
-        display: flex;
-        align-items: center;
-        gap: 1rem;
-        padding: 1.5rem 1.75rem 1.25rem;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.07);
-        flex-shrink: 0;
-    }
-
-    .st-modal-icon {
-        font-size: 2rem;
-        line-height: 1;
-    }
-
-    .st-modal-title {
-        font-family: 'Orbitron', sans-serif;
-        font-size: 1rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: #f0f4ff;
-        flex: 1;
-    }
-
-    .st-modal-close {
-        background: none;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        color: #6b7280;
-        width: 32px;
-        height: 32px;
-        border-radius: 50%;
-        cursor: pointer;
-        font-size: 0.8rem;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: all 0.2s;
-        flex-shrink: 0;
-    }
-
-    .st-modal-close:hover {
-        color: #fff;
-        border-color: rgba(255, 255, 255, 0.3);
-    }
-
-    .st-modal-body {
-        padding: 1.5rem 1.75rem;
-        overflow-y: auto;
-        flex: 1;
-    }
-
-    .st-modal-desc {
-        color: #8892a4;
-        font-size: 0.9rem;
-        line-height: 1.8;
-        margin-bottom: 1.5rem;
-    }
-
-    .st-modal-resources {
-        background: rgba(255, 255, 255, 0.02);
-        border-radius: 8px;
-        padding: 1.25rem;
-        border: 1px solid rgba(255, 255, 255, 0.04);
-    }
-
-    .resource-heading {
-        font-size: 0.65rem;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: #4a5568;
-        margin-bottom: 1rem;
-        font-weight: 700;
-    }
-
-    .resource-list {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-    }
-
-    .resource-list li {
-        font-size: 0.85rem;
-        color: #a0a8b8;
-        padding-left: 1rem;
-        position: relative;
-        line-height: 1.4;
-    }
-
-    .resource-list li::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 0.45rem;
-        width: 4px;
-        height: 4px;
-        border-radius: 50%;
-        background: #4a5568;
-    }
-
-    .st-modal-footer {
-        padding: 1.25rem 1.75rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        flex-shrink: 0;
-        background: #0a0a14;
-    }
-
-    .st-modal-posts-link {
-        color: #a0a8b8;
-        font-size: 0.85rem;
-        text-decoration: none;
-        transition: color 0.2s;
-    }
-
-    .st-modal-posts-link:hover {
-        color: #fff;
-    }
-
-    @media (max-width: 640px) {
-        .st-row {
-            gap: 0.75rem;
-        }
-
-        .st-node {
-            width: 140px;
-            min-height: 100px;
-            padding: 0.9rem 0.75rem;
-        }
-
-        .node-capstone {
-            width: 155px;
-        }
-
-        .node-icon {
-            font-size: 1.25rem;
-        }
-
-        .st-title {
-            font-size: 2rem;
-        }
-
-        .st-modal-footer {
-            flex-direction: column;
-            align-items: stretch;
-            text-align: center;
-            gap: 1rem;
-        }
-    }
+    .st-page { min-height: 100vh; position: relative; z-index: 1; }
+    .st-header { padding: 5rem 2rem 3rem; text-align: center; border-bottom: 1px solid rgba(255,255,255,.06); }
+    .st-header-inner { max-width: 760px; margin: 0 auto; }
+    .st-title { font-family: 'Orbitron', sans-serif; font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 900; letter-spacing: .06em; text-transform: uppercase; line-height: 1.1; margin: 1rem 0 1.25rem; }
+    .st-subtitle { color: #8892a4; font-size: .95rem; line-height: 1.8; margin: 0 auto 1.5rem; max-width: 680px; }
+    .st-legend { display: flex; align-items: center; justify-content: center; gap: 1.75rem; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: .5rem; font-size: .8rem; color: #8892a4; letter-spacing: .05em; }
+    .legend-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid; background: transparent; }
+    .ld-notstarted { border-color: #4a5568; }
+    .ld-inprogress { border-color: #3b82f6; }
+    .ld-complete { border-color: #22c55e; }
+    .st-tree { max-width: 1120px; margin: 0 auto; padding: 4rem 2rem 6rem; display: flex; flex-direction: column; }
+    .st-tier-label { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .tier-num { font-family: 'JetBrains Mono', monospace; font-size: .7rem; letter-spacing: .18em; color: #4a5568; text-transform: uppercase; }
+    .tier-req { font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: .2rem .75rem; border-radius: 100px; border: 1px solid; }
+    .req-now { color: #d1d5db; border-color: rgba(209,213,219,.3); background: rgba(209,213,219,.05); }
+    .req-math { color: #6b7280; border-color: rgba(107,114,128,.3); background: transparent; }
+    .req-capstone { color: #f0f4ff; border-color: rgba(240,244,255,.4); background: rgba(240,244,255,.05); }
+    .st-row { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 1.5rem; }
+    .st-node { width: 160px; min-height: 112px; border-radius: 12px; border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.02); padding: 1.1rem 1rem; display: flex; flex-direction: column; align-items: center; text-align: center; gap: .4rem; cursor: pointer; transition: border-color .2s, transform .2s, box-shadow .2s; position: relative; user-select: none; }
+    .st-node:hover { transform: translateY(-3px); border-color: rgba(160,168,184,.35); box-shadow: 0 8px 28px rgba(160,168,184,.06); }
+    .node-capstone { width: 190px; min-height: 128px; border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.03); }
+    .st-node.node-not-started { border-color: rgba(74,85,104,.5); }
+    .st-node.node-in-progress { border-color: rgba(59,130,246,.75); box-shadow: 0 0 16px rgba(59,130,246,.16); }
+    .st-node.node-complete { border-color: rgba(34,197,94,.75); box-shadow: 0 0 16px rgba(34,197,94,.12); }
+    .node-check { position: absolute; top: 7px; right: 9px; font-size: .65rem; color: #22c55e; opacity: 0; transition: opacity .2s; font-weight: 700; }
+    .st-node.node-complete .node-check { opacity: 1; }
+    .node-icon { font-size: 1.5rem; line-height: 1; }
+    .node-title { font-size: .8rem; font-weight: 700; color: #c9ced8; line-height: 1.3; letter-spacing: .02em; }
+    .node-sub { font-size: .68rem; color: #4a5568; line-height: 1.5; }
+    .st-connector { display: flex; flex-direction: column; align-items: center; padding: 1rem 0; gap: .4rem; }
+    .connector-line { width: 1px; height: 40px; background: linear-gradient(180deg, rgba(160,168,184,.1), rgba(160,168,184,.35), rgba(160,168,184,.1)); }
+    .connector-text { font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: #4a5568; text-align: center; }
+    .st-project { margin: .25rem auto .5rem; padding: .75rem 1.25rem; border: 1px dashed rgba(160,168,184,.18); border-radius: 8px; font-size: .82rem; color: #6b7280; text-align: center; max-width: 720px; }
+    .st-project strong { color: #a0a8b8; font-weight: 600; }
+    .proj-label { display: block; font-size: .65rem; letter-spacing: .12em; text-transform: uppercase; color: #4a5568; margin-bottom: .3rem; }
+    .tier-capstone .st-tier-label { justify-content: center; }
+    .st-modal-backdrop { position: fixed; inset: 0; background: rgba(0,0,0,.7); backdrop-filter: blur(6px); z-index: 200; opacity: 0; pointer-events: none; transition: opacity .2s; }
+    .st-modal-backdrop.open { opacity: 1; pointer-events: all; }
+    .st-modal { position: fixed; bottom: 0; left: 50%; transform: translateX(-50%) translateY(100%); width: min(680px, 100vw); max-height: 80vh; background: #0d0d1a; border: 1px solid rgba(255,255,255,.1); border-bottom: none; border-radius: 16px 16px 0 0; z-index: 201; display: flex; flex-direction: column; transition: transform .3s cubic-bezier(.34,1.1,.64,1); overflow: hidden; }
+    .st-modal.open { transform: translateX(-50%) translateY(0); }
+    .st-modal-header { display: flex; align-items: center; gap: 1rem; padding: 1.5rem 1.75rem 1.25rem; border-bottom: 1px solid rgba(255,255,255,.07); flex-shrink: 0; }
+    .st-modal-icon { font-size: 2rem; line-height: 1; }
+    .st-modal-title { font-family: 'Orbitron', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #f0f4ff; flex: 1; }
+    .st-modal-close { background: transparent; border: 1px solid rgba(255,255,255,.1); color: #6b7280; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: .8rem; display: flex; align-items: center; justify-content: center; transition: all .2s; flex-shrink: 0; }
+    .st-modal-close:hover { color: #fff; border-color: rgba(255,255,255,.3); }
+    .st-modal-body { padding: 1.5rem 1.75rem; overflow-y: auto; flex: 1; }
+    .st-modal-desc { color: #8892a4; font-size: .9rem; line-height: 1.8; margin-bottom: 1.5rem; }
+    .st-modal-resources { background: rgba(255,255,255,.02); border-radius: 8px; padding: 1.25rem; border: 1px solid rgba(255,255,255,.04); }
+    .resource-heading { font-size: .65rem; letter-spacing: .15em; text-transform: uppercase; color: #4a5568; margin-bottom: 1rem; font-weight: 700; }
+    .resource-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: .75rem; }
+    .resource-list li { font-size: .85rem; color: #a0a8b8; padding-left: 1rem; position: relative; line-height: 1.4; }
+    .resource-list li::before { content: ''; position: absolute; left: 0; top: .45rem; width: 4px; height: 4px; border-radius: 50%; background: #4a5568; }
+    .st-modal-footer { padding: 1.25rem 1.75rem; border-top: 1px solid rgba(255,255,255,.05); background: #0a0a14; }
+    .st-modal-posts-link { color: #a0a8b8; font-size: .85rem; text-decoration: none; transition: color .2s; }
+    .st-modal-posts-link:hover { color: #fff; }
+    @media (max-width: 640px) { .st-row { gap: .75rem; } .st-node { width: 140px; min-height: 104px; padding: .9rem .75rem; } .node-capstone { width: 155px; } .node-icon { font-size: 1.25rem; } .st-title { font-size: 2rem; } }
 </style>
 
 <script>
     (function () {
-        const BASE = '{{ .Site.BaseURL }}';
+        const siteBase = "{{ .Site.BaseURL }}";
+        const nodeStates = JSON.parse('{{ $nodeStatesJSON | safeJS }}');
 
-        // Server-side states from skill_progress.yaml
-        const yamlStates = JSON.parse({{ $nodeStatesJSON }});
+        function applyProgress() {
+            document.querySelectorAll(".st-node[data-id]").forEach((node) => {
+                const state = nodeStates[node.dataset.id] || "not_started";
+                node.classList.remove("node-not-started", "node-in-progress", "node-complete");
+                if (state === "complete") node.classList.add("node-complete");
+                else if (state === "in_progress") node.classList.add("node-in-progress");
+                else node.classList.add("node-not-started");
+            });
+        }
 
-    // Apply YAML-driven state classes
-    function applyYamlStates() {
-        document.querySelectorAll('.st-node[data-id]').forEach(node => {
-            const id = node.dataset.id;
-            const state = yamlStates[id] || 'not_started';
-            node.classList.remove('node-not-started', 'node-in-progress', 'node-complete');
-            if (state === 'complete') {
-                node.classList.add('node-complete');
-            } else if (state === 'in_progress') {
-                node.classList.add('node-in-progress');
-            } else {
-                node.classList.add('node-not-started');
-            }
+        const backdrop = document.getElementById("stBackdrop");
+        const modal = document.getElementById("stModal");
+        const closeButton = document.getElementById("stModalClose");
+        const postsLink = document.getElementById("stModalPostsLink");
+
+        function openModal(node) {
+            document.getElementById("stModalIcon").textContent = node.querySelector(".node-icon").textContent;
+            document.getElementById("stModalTitle").textContent = node.dataset.title;
+            document.getElementById("stModalDesc").textContent = node.dataset.desc;
+
+            const resourceList = document.getElementById("stResourceList");
+            resourceList.innerHTML = "";
+            (node.dataset.resources || "").split("|").forEach((resource) => {
+                if (resource.trim()) {
+                    const item = document.createElement("li");
+                    item.textContent = resource.trim();
+                    resourceList.appendChild(item);
+                }
+            });
+
+            const tag = node.dataset.tag || "";
+            postsLink.href = siteBase.replace(/\/$/, "") + "/tags/" + tag + "/";
+            backdrop.classList.add("open");
+            modal.classList.add("open");
+            backdrop.setAttribute("aria-hidden", "false");
+        }
+
+        function closeModal() {
+            backdrop.classList.remove("open");
+            modal.classList.remove("open");
+            backdrop.setAttribute("aria-hidden", "true");
+        }
+
+        closeButton.addEventListener("click", closeModal);
+        backdrop.addEventListener("click", closeModal);
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") closeModal();
         });
-    }
-
-    // Modal elements
-    const backdrop = document.getElementById('stBackdrop');
-    const modal = document.getElementById('stModal');
-    const closeBtn = document.getElementById('stModalClose');
-    const postsLink = document.getElementById('stModalPostsLink');
-
-    function openModal(node) {
-        document.getElementById('stModalIcon').textContent = node.querySelector('.node-icon').textContent;
-        document.getElementById('stModalTitle').textContent = node.dataset.title;
-        document.getElementById('stModalDesc').textContent = node.dataset.desc;
-
-        const list = document.getElementById('stResourceList');
-        list.innerHTML = '';
-        (node.dataset.resources || '').split('|').forEach(r => {
-            if (r.trim()) { const li = document.createElement('li'); li.textContent = r.trim(); list.appendChild(li); }
+        document.querySelectorAll(".st-node[data-id]").forEach((node) => {
+            node.addEventListener("click", () => openModal(node));
         });
 
-        const tag = node.dataset.tag || '';
-        postsLink.href = BASE.replace(/\/$/, '') + '/tags/' + tag + '/';
-        postsLink.textContent = '📖 View journal posts →';
-
-        backdrop.classList.add('open');
-        modal.classList.add('open');
-        backdrop.setAttribute('aria-hidden', 'false');
-    }
-
-    function closeModal() {
-        backdrop.classList.remove('open');
-        modal.classList.remove('open');
-        backdrop.setAttribute('aria-hidden', 'true');
-    }
-
-    closeBtn.addEventListener('click', closeModal);
-    backdrop.addEventListener('click', closeModal);
-    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
-
-    document.querySelectorAll('.st-node[data-id]').forEach(node => {
-        node.addEventListener('click', () => openModal(node));
-    });
-
-    applyYamlStates();
-    }) ();
+        applyProgress();
+    })();
 </script>
 {{ end }}

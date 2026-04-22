@@ -3,63 +3,49 @@
 # Outline colors: gray = not_started, blue = in_progress, green = complete
 #
 # Node IDs:
-#   Phase 1: ccsds, dtn, ground, ntn, security, cpp-basics
-#   Phase 2: link-math, antenna-geo, dvb, coverage, cpp-oop
-#           kepler, ground-track, sdn, cpp-async
-#   Phase 3: orbital-vel, doppler, contact-energy, cpp-sockets
-#            spectral, coords, optical-isl, constellation, cpp-eigen
-#   Phase 4: ber, rain-fade, full-link, fec
-#            cgr, traffic-eng, fsm, leo-routing
-#   Capstone: cap-sim, cap-network, cap-profile
+#   Phase 1: public-data, rf-units, phased-arrays, gateways-pops, isp-routing, cpp-basics
+#   Phase 2: variable-links, transport-behavior, link-budget, rain-fade, beam-scheduler, direct-to-cell, cpp-concurrency
+#   Phase 3: constellation-routing, graph-paths, optical-isl, laser-scheduler, topology-controller, traffic-engineering, cpp-eigen
+#   Phase 4: bgp-security, resilience-stats, anomaly-detection, graph-optimization, digital-twin
+#   Capstone: cap-routing, cap-gateway, cap-direct-cell, cap-laser, cap-digital-twin
 
 nodes:
-  # Phase 1 — Foundation
-  ccsds: in_progress
-  dtn: not_started
-  ground: not_started
-  ntn: not_started
-  security: not_started
+  # Phase 1 - Foundation
+  public-data: in_progress
+  rf-units: not_started
+  phased-arrays: not_started
+  gateways-pops: not_started
+  isp-routing: not_started
   cpp-basics: not_started
 
-  # Phase 2 — Acceleration (Tier 1)
-  link-math: not_started
-  antenna-geo: not_started
-  dvb: not_started
-  coverage: not_started
-  cpp-oop: not_started
+  # Phase 2 - Acceleration
+  variable-links: not_started
+  transport-behavior: not_started
+  link-budget: not_started
+  rain-fade: not_started
+  beam-scheduler: not_started
+  direct-to-cell: not_started
+  cpp-concurrency: not_started
 
-  # Phase 2 — Acceleration (Tier 2)
-  kepler: not_started
-  ground-track: not_started
-  sdn: not_started
-  cpp-async: not_started
-
-  # Phase 3 — Depth (Tier 3)
-  orbital-vel: not_started
-  doppler: not_started
-  contact-energy: not_started
-  cpp-sockets: not_started
-
-  # Phase 3 — Depth (Tier 4)
-  spectral: not_started
-  coords: not_started
+  # Phase 3 - Depth
+  constellation-routing: not_started
+  graph-paths: not_started
   optical-isl: not_started
-  constellation: not_started
+  laser-scheduler: not_started
+  topology-controller: not_started
+  traffic-engineering: not_started
   cpp-eigen: not_started
 
-  # Phase 4 — Mastery (Tier 5)
-  ber: not_started
-  rain-fade: not_started
-  full-link: not_started
-  fec: not_started
-
-  # Phase 4 — Mastery (Tier 6)
-  cgr: not_started
-  traffic-eng: not_started
-  fsm: not_started
-  leo-routing: not_started
+  # Phase 4 - Mastery
+  bgp-security: not_started
+  resilience-stats: not_started
+  anomaly-detection: not_started
+  graph-optimization: not_started
+  digital-twin: not_started
 
   # Capstone
-  cap-sim: not_started
-  cap-network: not_started
-  cap-profile: not_started
+  cap-routing: not_started
+  cap-gateway: not_started
+  cap-direct-cell: not_started
+  cap-laser: not_started
+  cap-digital-twin: not_started

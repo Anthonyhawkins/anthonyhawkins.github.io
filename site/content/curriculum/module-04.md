@@ -1,150 +1,135 @@
 ---
-title: "Module 04: Delay-Tolerant Networking"
-module_number: 04
-weight: 04
+title: "Module 04: Variable Links, Handover Resilience, and Transport Behavior"
+module_number: 4
+weight: 4
 ---
 
 
-**Phase:** 2 — Acceleration
-**Builds on:** Modules 01, 02, 03
+**Phase:** 2 - Acceleration
+**Builds on:** Modules 01, 02, and 03
 
 ---
 
-## 🔢 Math You'll Learn
+## Math You'll Learn
 
 ### Trigonometry Completion + Pre-Calculus Introduction
 
-Finishing trig and starting pre-calc — the bridge to calculus.
+This module bridges static geometry and time-varying behavior. Starlink links change continuously as satellites move, beams switch, gateways change, and capacity varies.
 
-- **Trig review & polar coordinates** — antenna radiation patterns are plotted in polar coordinates
-- **Angular velocity, arc length, radians** — satellite angular rate as seen from ground
-- **Functions, composition, inverses** — building mathematical models that chain together
-  - *Space application:* composing coordinate transforms, signal processing chains
-- **Parametric equations** — curves defined by a parameter (time)
-  - *Space application:* satellite ground tracks are parametric curves (lat(t), lon(t))
-- **Vectors introduction** — magnitude, direction, addition
-  - *Space application:* relative position and velocity between nodes in a DTN network
+- **Trig review and polar coordinates** - antenna patterns and scan angle.
+- **Angular velocity, arc length, radians** - pass duration and handover cadence.
+- **Functions, composition, and inverses** - chain geometry, link quality, and transport behavior.
+  - *Starlink application:* link quality as a function of elevation, weather, beam load, and gateway state.
+- **Parametric equations** - model satellite position and link quality over time.
+  - *Starlink application:* range(t), elevation(t), capacity(t), RTT(t).
+- **Piecewise functions** - model connected, degraded, handover, failed, and recovered states.
+- **Queueing intuition** - backlog accumulation during capacity drops or outages.
 
-**🔓 After this:** You can trace satellite ground tracks, work with antenna patterns, and reason about parametric motion.
+**After this:** You can model variable LEO links and reason about how normal internet transports behave during handover and capacity changes.
 
 **Resources:**
-- Khan Academy — Trigonometry completion + Pre-Calculus (free)
-- *Precalculus: Mathematics for Calculus* — Stewart
+
+- Khan Academy - Trigonometry completion and Pre-Calculus
+- TCP/IP Illustrated - transport behavior review
+- QUIC RFC 9000 and congestion-control references
 
 ---
 
-## 🛰️ What You'll Learn
+## What You'll Learn
 
-DTN is the most important paradigm shift from terrestrial networking. TCP assumes end-to-end connectivity exists. DTN assumes it doesn't. You'll learn the Bundle Protocol, Licklider Transmission Protocol, and Contact Graph Routing — the core of how the "Solar System Internet" works.
+Deep-space DTN is important background, but it is not the primary Starlink service model. Starlink is an always-on broadband ISP with variable wireless links, rapid handover, gateways, POPs, and normal internet traffic. This module studies how TCP/QUIC behave under those conditions.
 
-### The Problem DTN Solves
+### Variable LEO Links
 
-In terrestrial networks, if you send a TCP SYN, you expect a SYN-ACK within milliseconds. In space:
-- A Mars link has **4–24 minute one-way delay** (8–48 min round-trip)
-- A LEO satellite has **~5 minutes of contact** per ground station pass
-- Links are **scheduled**, not always-on — a node may only be reachable at specific orbital windows
-- TCP's assumption of continuous end-to-end path **completely breaks**
+- User-terminal satellite handover.
+- Gateway handover and POP egress changes.
+- Short outages, capacity drops, link degradation, jitter, and packet loss.
+- Beam load and congestion as network effects, not only RF effects.
+- Difference between disconnected DTN systems and low-latency broadband LEO service.
 
-DTN solves this with **store-and-forward** at the application layer, using custodial transfer where each node takes responsibility for data until the next hop is available.
+### Transport Behavior
 
-### Bundle Protocol (BP)
-- RFC 9171 (BPv7) — the current standard
-- Bundle structure: primary block, canonical blocks, payload block, extension blocks
-- Bundle endpoint IDs (EIDs) — `ipn:` and `dtn:` URI schemes
-- Custody transfer and bundle status reports
-- Fragmentation and reassembly
-- How BP compares to IP — and why it's an overlay, not a replacement
+- TCP slow start, congestion avoidance, loss recovery, CUBIC/BBR behavior.
+- QUIC path validation, connection IDs, NAT rebinding, and migration concepts.
+- Bufferbloat, ACK compression, jitter, and queue management.
+- Why high average throughput can still produce bad user experience if latency spikes.
+- What to measure: RTT, throughput, packet loss, retransmits, goodput, recovery time.
 
-### Licklider Transmission Protocol (LTP)
-- RFC 5326 — LTP specification
-- The "convergence layer" concept — how BP sits on top of LTP (or TCP, or UDP)
-- LTP segments: red parts (reliable) vs. green parts (unreliable)
-- Checkpoint/report retransmission mechanism
-- Why LTP exists: TCP can't handle 8-minute RTTs, but you still need reliability
-- **Your TCP expertise directly maps here** — LTP is essentially "TCP redesigned for space delays"
+### Test and Emulation
 
-### Contact Graph Routing (CGR) — Concepts
-- Time-variant routing: the topology changes on a schedule
-- Contact plans: list of (start_time, end_time, node_A, node_B, data_rate) tuples
-- Route computation: Dijkstra-like but over a time-expanded graph
-- *Note: Full CGR implementation comes in Module 12 (Capstone) after you learn Graph Theory*
-
-### Integration & Deployment
-- DTN on the ISS — operational since 2018
-- DTN in deep space: Mars relay network architecture
-- HDTN — NASA Glenn's High-rate DTN implementation
-- DTN for LEO constellations — emerging applications
+- `tc netem` for delay, jitter, loss, reorder, and rate limits.
+- Synthetic handover events and capacity-change traces.
+- Reproducible experiment design: fixed seeds, recorded traces, and clear assumptions.
+- DTN/BPv7/LTP as optional contrast for disconnected or store-and-forward systems.
 
 ---
 
-## 💻 C++ & Python Skills
+## C++ and Python Skills
 
-**C++ focus:** Networking (POSIX sockets, UDP), serialization (CBOR via tinycbor), Boost.Asio intro, async I/O basics
-**Python focus:** Socket programming, scientific comparison, matplotlib for results
+**C++ focus:** state machines, POSIX sockets or Boost.Asio basics, serialization, event loops.
+
+**Python focus:** experiment harnesses, subprocess control, plotting, statistical summaries.
 
 ---
 
 ## Projects
 
-### Project 1: BPv7 Bundle Creator (C++)
+### Project 1: Link-State and Handover State Machine (C++)
 
-Build a library that creates, serializes, and parses Bundle Protocol v7 bundles.
-
-**What you'll build:**
-- Define bundle structures: primary block, payload block, extension blocks
-- Serialize bundles to CBOR format (using tinycbor or nlohmann/json for prototyping)
-- Parse CBOR-encoded bundles back into structured data
-- Support `ipn:` endpoint IDs
-- Build as a reusable library with CMake
-
-**C++ skills used:** Structs/classes, serialization, CBOR, CMake library targets, unit tests (gtest)
-
-**🔧 Toolkit:** Add `BundleProtocol` module to the Space Network Toolkit — builds on the `PacketParser` from Module 01
-
-### Project 2: DTN vs TCP File Transfer Experiment (Python)
-
-Compare file delivery over a simulated disrupted link using TCP vs. a simple store-and-forward approach.
+Build a reusable state machine for terminal and gateway link state.
 
 **What you'll build:**
-- Set up a simulated lossy, delayed link using `tc netem` (add 2-second delay, 10% packet loss)
-- Transfer a file using TCP sockets
-- Transfer the same file using a basic store-and-forward approach over UDP
-- Measure completion time for both, plot comparison with matplotlib
-- Write up findings: when does DTN-style delivery win?
 
-**Python skills used:** Socket programming, subprocess (for `tc netem`), timing, matplotlib
+- Model states: searching, connected, degraded, handover pending, handover executing, failed, recovered.
+- Define events: elevation below threshold, better satellite available, packet loss spike, gateway unavailable, timeout, recovery.
+- Record transition history with timestamps and reason codes.
+- Feed synthetic link-quality traces into the state machine.
+- Export event logs as JSON for analysis.
+
+**C++ skills used:** enums, state machine design, classes, callbacks, unit tests.
+
+**Toolkit:** Add `HandoverStateMachine`.
+
+### Project 2: TCP/QUIC Handover Experiment (Python)
+
+Compare transport behavior across Starlink-like link events.
+
+**What you'll build:**
+
+- Use `tc netem` or a pure simulator to model delay, loss, jitter, variable capacity, and short outages.
+- Transfer data over TCP and, if practical, QUIC tooling.
+- Inject handover-like events and capacity drops.
+- Plot throughput, RTT, packet loss, retransmits, and recovery time.
+- Write a results note explaining when the transport recovered well and when it did not.
+
+**Python skills used:** socket tooling, subprocess, timing, pandas optional, matplotlib.
 
 ---
 
-## Protocol Reference Table
+## Technology Reference
 
-| Protocol | Spec | Layer | Problem It Solves | New/Legacy | Who Uses It |
-|---|---|---|---|---|---|
-| Bundle Protocol v7 | RFC 9171 | Overlay/Application | Store-and-forward across disrupted links | `[NEW SPACE]` | ISS, future deep space missions |
-| Bundle Protocol v6 | RFC 5050 | Overlay/Application | Original BP (being superseded) | `[LEGACY]` | Early ISS DTN experiments |
-| LTP | RFC 5326 | Convergence Layer | Reliable transfer over long-delay links | `[NEW SPACE]` | Deep space, ISS |
-| TCPCL (TCP Conv. Layer) | RFC 9174 | Convergence Layer | BP over TCP for ground segments | `[BOTH]` | Ground networks |
-| UDPCL | Draft | Convergence Layer | BP over UDP for low-overhead links | `[NEW SPACE]` | Experimental |
-| CGR | CCSDS Green Book | Routing | Time-variant multi-hop routing | `[NEW SPACE]` | ION, research networks |
-| BIBE | RFC 9172 | Tunneling | BP-in-BP encapsulation for admin regions | `[NEW SPACE]` | Future architectures |
+| Technology | Problem It Solves | Starlink Relevance |
+|---|---|---|
+| TCP CUBIC/BBR | Internet congestion control | User traffic over variable LEO links |
+| QUIC | User-space transport over UDP | Connection continuity and path changes |
+| `tc netem` | Reproducible network impairment | Handover and variable capacity tests |
+| State machine | Formal link behavior | Terminal/gateway handover logic |
+| DTN/BPv7/LTP | Store-and-forward for disconnected links | Useful contrast, not the primary Starlink path |
 
 ## Where This Tech Is Used
 
-| Application | Organizations | Status |
-|---|---|---|
-| ISS payload data relay | NASA | **Operational** since 2018 |
-| Mars relay network | NASA/JPL | DTN planned for future surface ops |
-| Lunar communications | NASA (LunaNet) | DTN is baseline architecture |
-| LEO constellation store-forward | Research / startups | Emerging — DTN for IoT data mules |
-| Disaster/disrupted terrestrial | Military, humanitarian | DTN for networks with no infrastructure |
+| Application | Notes |
+|---|---|
+| Starlink user experience | Latency and throughput during handover |
+| Network operations | Diagnosing spikes, drops, and recovery behavior |
+| Transport design | Satellite-friendly tuning and measurement |
+| Later modules | Scheduler, Direct to Cell, and topology controller simulations |
 
-## Books & Resources
+## Books and Resources
 
 | Resource | Notes |
 |---|---|
-| RFC 9171 (BPv7) | **Read this first.** The actual standard. |
-| RFC 5326 (LTP) | LTP specification — compare mentally to TCP |
-| *Delay-Tolerant Satellite Networks* (Fraire, Burleigh) | **The** book for this module — by the creators of CGR and ION |
-| CCSDS 734.x (DTN standards) | CCSDS profiling of BP for space missions |
-| ION-DTN Documentation | https://ion-dtn.readthedocs.io/ |
-| NASA HDTN GitHub | https://github.com/nasa/HDTN |
+| Stevens, *TCP/IP Illustrated* | Transport refresh |
+| RFC 9000 QUIC | QUIC behavior and path handling |
+| Linux `tc netem` docs | Link impairment simulation |
+| Fraire/Burleigh DTN book | Optional contrast for disconnected space links |

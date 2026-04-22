@@ -1,10 +1,10 @@
 # space-networking
 
-A code-first career transition into satellite communications and space networking, documented as a Hugo static blog.
+A code-first career transition into Starlink network, topology, and LEO broadband systems, documented as a Hugo static blog.
 
 ## 🛰️ What This Is
 
-**Orbital Protocol** — a personal blog and 52-week curriculum for a senior TCP/gRPC networking engineer transitioning into LEO constellation networking, CCSDS protocols, and Delay-Tolerant Networking.
+**Orbital Protocol** — a personal blog and 52-week curriculum for a senior TCP/gRPC networking engineer preparing for SpaceX Starlink network, topology, ground-network, and constellation-routing roles.
 
 Live site: `https://<your-github-username>.github.io/space-networking/`
 
@@ -50,8 +50,8 @@ make check         Run Hugo content/template checks
 ### Creating a new journal entry
 
 ```bash
-make new-post NAME=day-042-dtn-progress
-# Opens: site/content/blog/day-042-dtn-progress.md
+make new-post NAME=day-042-gateway-pathing
+# Opens: site/content/blog/day-042-gateway-pathing.md
 ```
 
 Edit the file, set `draft = false` when ready to publish. Push to `main` — GitHub Actions will deploy automatically.
@@ -106,8 +106,8 @@ space-networking/
 ├── curriculum/                     # Study plan (markdown source)
 │   ├── README.md                   # Curriculum index
 │   ├── learning-path.md            # Parallel track schedule
-│   ├── 00-math-foundations/
-│   ├── 01-foundations-of-space-comms/
+│   ├── 01-starlink-system-model/
+│   ├── 02-starlink-rf-foundations/
 │   └── ...
 └── site/                           # Hugo site
     ├── hugo.toml                   # Site configuration
@@ -132,15 +132,15 @@ Use front matter at the top of each post:
 
 ```toml
 +++
-title = "Day 042 — First LTP Simulator Running"
+title = "Day 042 — First Gateway Path Simulator Running"
 date = 2026-05-10
-tags = ["c++", "dtn", "ltp", "project"]
-summary = "Built a working LTP sender/receiver over UDP with red/green segments."
+tags = ["c++", "starlink", "routing", "project"]
+summary = "Built a gateway and POP path selector for a Starlink-inspired LEO access model."
 draft = false
 +++
 ```
 
-Suggested tags: `math`, `algebra`, `calculus`, `c++`, `python`, `dtn`, `ccsds`, `leo`, `project`, `books`, `planning`
+Suggested tags: `math`, `algebra`, `calculus`, `c++`, `python`, `starlink`, `leo`, `routing`, `topology`, `direct-to-cell`, `optical`, `project`, `books`, `planning`
 
 ---
 
@@ -155,9 +155,9 @@ Example front matter for a module:
 
 ```toml
 +++
-title = "Module 02 — CCSDS Protocol Stack"
+title = "Module 02 — Starlink RF Foundations and Phased-Array Access Links"
 module_number = 2
-summary = "The TCP/IP stack of space. Learn CCSDS from Space Packets to USLP."
+summary = "Learn Ku/Ka/E-band access links, phased-array beam geometry, delay, and path loss."
 math_required = false
 math_level = ""
 duration = "6 weeks"

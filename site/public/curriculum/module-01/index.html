@@ -1,20 +1,453 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="My journey into satellite networking, space protocols, and the future of space communications."><title>Module 01: CCSDS Protocol Stack | Escape Velocity</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel=stylesheet><link rel=stylesheet href="https://anthony-hawkins.github.io/space-networking/css/orbital.css?v=1776219886"></head><body><div class=starfield id=starfield></div><header class=site-header><nav class=nav-container><a href=https://anthony-hawkins.github.io/space-networking/ class=nav-logo><span class=logo-icon>◈</span>
-<span class=logo-text>Escape Velocity</span></a><ul class=nav-links><li><a href=/space-networking/>Home</a></li><li><a href=/space-networking/blog/>Journal</a></li><li><a href=/space-networking/skill-tree/>Skill Tree</a></li><li><a href=/space-networking/curriculum/>Curriculum</a></li><li><a href=/space-networking/about/>About</a></li></ul><button class=nav-toggle id=navToggle aria-label="Toggle navigation">
-<span></span><span></span><span></span></button></nav></header><main class=site-main><div class="docs-layout container"><aside class=docs-sidebar><div class=sidebar-header><h3 class=sidebar-title>Curriculum</h3></div><nav class=sidebar-nav><ul class=sidebar-list><li><a href=https://anthony-hawkins.github.io/space-networking/curriculum/ class=sidebar-link><span class=sidebar-icon>⬡</span> Overview</a></li><li><a href=/space-networking/curriculum/learning-path/ class=sidebar-link><span class=sidebar-number>00</span>
-<span class=sidebar-text>Learning Path</span></a></li><li><a href=/space-networking/curriculum/module-01/ class="sidebar-link active"><span class=sidebar-number>01</span>
-<span class=sidebar-text>Module 01: CCSDS Protocol Stack</span></a></li><li><a href=/space-networking/curriculum/module-02/ class=sidebar-link><span class=sidebar-number>02</span>
-<span class=sidebar-text>Module 02: Foundations of Space Communications</span></a></li><li><a href=/space-networking/curriculum/module-03/ class=sidebar-link><span class=sidebar-number>03</span>
-<span class=sidebar-text>Module 03: Ground Segment Architecture</span></a></li><li><a href=/space-networking/curriculum/module-04/ class=sidebar-link><span class=sidebar-number>04</span>
-<span class=sidebar-text>Module 04: Delay-Tolerant Networking</span></a></li><li><a href=/space-networking/curriculum/module-05/ class=sidebar-link><span class=sidebar-number>05</span>
-<span class=sidebar-text>Module 05: Satellite Link Engineering</span></a></li><li><a href=/space-networking/curriculum/module-06/ class=sidebar-link><span class=sidebar-number>06</span>
-<span class=sidebar-text>Module 06: DVB Standards & Satellite Broadband</span></a></li><li><a href=/space-networking/curriculum/module-07/ class=sidebar-link><span class=sidebar-number>07</span>
-<span class=sidebar-text>Module 07: 5G Non-Terrestrial Networks (NTN)</span></a></li><li><a href=/space-networking/curriculum/module-08/ class=sidebar-link><span class=sidebar-number>08</span>
-<span class=sidebar-text>Module 08: LEO Constellations & Routing</span></a></li><li><a href=/space-networking/curriculum/module-09/ class=sidebar-link><span class=sidebar-number>09</span>
-<span class=sidebar-text>Module 09: Optical Inter-Satellite Links (OISL)</span></a></li><li><a href=/space-networking/curriculum/module-10/ class=sidebar-link><span class=sidebar-number>10</span>
-<span class=sidebar-text>Module 10: SDN & Autonomous Network Management</span></a></li><li><a href=/space-networking/curriculum/module-11/ class=sidebar-link><span class=sidebar-number>11</span>
-<span class=sidebar-text>Module 11: Security in Space Networks</span></a></li><li><a href=/space-networking/curriculum/module-12/ class=sidebar-link><span class=sidebar-number>12</span>
-<span class=sidebar-text>Module 12: Capstone Projects</span></a></li></ul></nav></aside><div class=docs-content><article class=module-single><header class="module-header docs-header"><div class=module-header-meta style=margin-bottom:1rem;display:flex;gap:.75rem;flex-wrap:wrap><span class=module-number-lg style=color:#60a5fa;font-weight:600;letter-spacing:.05em>Module 01</span>
-<span class=math-badge style="background:rgba(245,158,11,.1);color:#f59e0b;padding:.2rem .6rem;border-radius:4px;font-size:.75rem">Requires:</span></div><h1 class=docs-title>Module 01: CCSDS Protocol Stack</h1></header><div class="module-body prose docs-body"><p><strong>Phase:</strong> 1 — Foundation
-<strong>Builds on:</strong> None — this is your starting point</p><hr><h2 id=-math-youll-learn>🔢 Math You&rsquo;ll Learn</h2><h3 id=algebra-2-logarithms-exponentials--db-arithmetic>Algebra 2: Logarithms, Exponentials & dB Arithmetic</h3><p>This is the most immediately useful math for space communications. Every link budget, every power measurement, and every gain calculation uses decibels.</p><ul><li><strong>Exponentials & logarithms</strong> — signal power decays exponentially with distance; logarithms compress this into manageable numbers<ul><li><em>Space application:</em> dB = 10·log₁₀(P₂/P₁) — every link budget uses this</li><li><em>Space application:</em> adding dB values = multiplying linear powers — the language of RF engineering</li></ul></li><li><strong>Polynomials & rational expressions</strong> — polynomial curve fitting for antenna gain patterns</li><li><strong>Logarithm properties & equations</strong> — converting between dB, dBW, dBm; combining gains and losses</li></ul><p><strong>🔓 After this:</strong> You can compute link budgets in dB, understand EIRP, path loss, and G/T.</p><p><strong>Resources:</strong></p><ul><li>Khan Academy — Algebra 2 (free, self-paced)</li><li>Textbook: <em>Algebra and Trigonometry</em> — Stewart, Redlin, Watson</li><li>3Blue1Brown — <em>Essence of Calculus</em> (watch early for context, even though you won&rsquo;t use calculus yet)</li></ul><hr><h2 id=-what-youll-learn>🛰️ What You&rsquo;ll Learn</h2><p>The CCSDS protocol stack is to space what the TCP/IP stack is to the internet. You&rsquo;ll learn its layered architecture — from Space Packets down to physical-layer framing — and understand which missions use which protocols and why.</p><h3 id=architecture-overview>Architecture Overview</h3><ul><li>CCSDS layered reference model vs. OSI vs. TCP/IP</li><li>The three link types: Space Link (long-range), Proximity Link (short-range), Ground-Ground</li><li>Transfer frames vs. packets: why space uses both</li><li>Read: CCSDS 130.0-G-4 — <em>Overview of Space Communications Protocols</em></li></ul><h3 id=data-link-layer-protocols>Data Link Layer Protocols</h3><ul><li><strong>TM Space Data Link Protocol (CCSDS 132.0):</strong> Telemetry frames, virtual channels, idle data insertion</li><li><strong>TC Space Data Link Protocol (CCSDS 232.0):</strong> Telecommand frames, COP-1 (reliable delivery), FARM/FOP state machines</li><li><strong>AOS Space Data Link Protocol (CCSDS 732.0):</strong> Advanced Orbiting Systems — multiplexing, bitstream services</li><li><strong>Unified Space Data Link Protocol (USLP, CCSDS 732.1):</strong> The modern replacement unifying TM, TC, and AOS</li><li><strong>Proximity-1 (CCSDS 211.x):</strong> Short-range orbiter-to-lander/rover links (used on Mars missions)</li></ul><h3 id=application-layer>Application Layer</h3><ul><li><strong>Space Packet Protocol (CCSDS 133.0):</strong> The primary application data unit — analogous to IP datagrams</li><li><strong>CCSDS File Delivery Protocol (CFDP, CCSDS 727.0):</strong> Reliable file transfer for space — analogous to FTP but designed for disruption</li><li><strong>Asynchronous Message Service (AMS):</strong> Publish-subscribe messaging for space</li></ul><h3 id=sync-coding--security>Sync, Coding & Security</h3><ul><li><strong>TM/TC Synchronization and Channel Coding:</strong> Frame synchronization markers, randomization, Reed-Solomon, turbo, LDPC</li><li><strong>Space Data Link Security (SDLS, CCSDS 355.0):</strong> Authentication and encryption at the data link layer — your TLS/mTLS experience maps here</li><li><strong>Space Link Extension (SLE):</strong> How ground stations from different agencies interoperate — cross-support services</li></ul><hr><h2 id=-c--python-skills>💻 C++ & Python Skills</h2><p><strong>C++ focus:</strong> Variables, types, control flow, functions, arrays, pointers, binary I/O, bitwise operations
-<strong>Python focus:</strong> Basic scripting, matplotlib for visualization</p><p>This is your first C++ module — you&rsquo;ll learn the language fundamentals by building practical tools that parse binary protocol data.</p><hr><h2 id=projects>Projects</h2><h3 id=project-1-ccsds-space-packet-parser-c>Project 1: CCSDS Space Packet Parser (C++)</h3><p>Build a CLI tool that parses CCSDS Space Packet primary headers from binary data.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Parse the 6-byte primary header: version, type, secondary header flag, APID, sequence flags, sequence count, data length</li><li>Use <code>std::span</code> and bitwise ops for field extraction</li><li>Read binary files from stdin or file argument</li><li>Output parsed fields in a human-readable table</li></ul><p><strong>C++ skills used:</strong> Binary I/O, bitwise operators, <code>std::span</code>, command-line arguments, <code>struct</code></p><p><strong>🔧 Toolkit:</strong> This starts the <strong>Space Network Toolkit</strong> — save the parser as a reusable library (<code>PacketParser</code>)</p><h3 id=project-2-db-conversion-toolkit-python>Project 2: dB Conversion Toolkit (Python)</h3><p>Build a Python tool for RF power calculations.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Convert between linear power (Watts, milliwatts) and dB scales (dB, dBW, dBm)</li><li>Compute EIRP given transmit power and antenna gain</li><li>Chain gains and losses in a simple link budget</li><li>Visualize the CCSDS protocol stack layers as a diagram with matplotlib</li></ul><p><strong>Python skills used:</strong> Functions, f-strings, matplotlib, basic NumPy</p><hr><h2 id=protocol-reference-table>Protocol Reference Table</h2><table><thead><tr><th>Protocol</th><th>CCSDS Doc</th><th>Layer</th><th>Problem It Solves</th><th>New/Legacy</th><th>Who Uses It</th></tr></thead><tbody><tr><td>Space Packet Protocol</td><td>133.0-B</td><td>Application</td><td>Standard data unit format across agencies</td><td><code>[BOTH]</code></td><td>All CCSDS-compliant missions</td></tr><tr><td>TM Data Link</td><td>132.0-B</td><td>Data Link</td><td>Multiplexed telemetry downlink</td><td><code>[LEGACY]</code></td><td>ISS, most Earth orbiters</td></tr><tr><td>TC Data Link</td><td>232.0-B</td><td>Data Link</td><td>Reliable commanding with COP-1</td><td><code>[LEGACY]</code></td><td>Most missions</td></tr><tr><td>AOS Data Link</td><td>732.0-B</td><td>Data Link</td><td>High-rate, multi-service downlink</td><td><code>[LEGACY]</code></td><td>ISS, high-rate science missions</td></tr><tr><td>USLP</td><td>732.1-B</td><td>Data Link</td><td>Unified modern replacement for TM/TC/AOS</td><td><code>[NEW SPACE]</code></td><td>Next-gen missions, Lunar Gateway</td></tr><tr><td>Proximity-1</td><td>211.x-B</td><td>Physical + Data Link</td><td>Short-range links (orbiter↔lander)</td><td><code>[BOTH]</code></td><td>Mars rovers (Curiosity, Perseverance)</td></tr><tr><td>CFDP</td><td>727.0-B</td><td>Application</td><td>Reliable file delivery over disrupted links</td><td><code>[BOTH]</code></td><td>Deep space missions, ISS</td></tr><tr><td>SDLS</td><td>355.0-B</td><td>Data Link</td><td>Link-layer encryption and authentication</td><td><code>[NEW SPACE]</code></td><td>Classified & sensitive missions</td></tr><tr><td>SLE</td><td>911.x-B</td><td>Cross-support</td><td>Ground station interoperability</td><td><code>[LEGACY]</code></td><td>DSN, ESTRACK, JAXA</td></tr></tbody></table><h2 id=where-this-tech-is-used>Where This Tech Is Used</h2><table><thead><tr><th>Application</th><th>Companies/Agencies</th><th>Notes</th></tr></thead><tbody><tr><td>Deep space exploration</td><td>NASA/JPL, ESA, JAXA</td><td>CCSDS is mandatory for interoperability</td></tr><tr><td>ISS operations</td><td>NASA, ESA, JAXA, CSA</td><td>Uses TM, TC, AOS, CFDP</td></tr><tr><td>Mars surface operations</td><td>NASA/JPL</td><td>Proximity-1 for MRO↔rover relay</td></tr><tr><td>Lunar Gateway</td><td>NASA, ESA</td><td>Will use USLP and CFDP</td></tr><tr><td>CubeSat/SmallSat missions</td><td>Universities, startups</td><td>Increasingly adopting CCSDS for interop</td></tr><tr><td>Commercial ground station networks</td><td>KSAT, SSC, AWS Ground Station</td><td>SLE for cross-support</td></tr></tbody></table><h2 id=books--resources>Books & Resources</h2><table><thead><tr><th>Resource</th><th>Chapters/Sections</th></tr></thead><tbody><tr><td>CCSDS 130.0-G-4 (Green Book)</td><td>Entire document — the &ldquo;map&rdquo;</td></tr><tr><td>CCSDS Blue Books (individual protocol specs)</td><td>Reference as needed per protocol</td></tr><tr><td><em>Satellite Communications Systems</em> (Maral et al.)</td><td>Ch. on data handling & protocols</td></tr></tbody></table></div><footer class="module-footer docs-footer"><div class=docs-nav style="display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)"><a href=/space-networking/curriculum/module-02/ class="docs-nav-link prev" style="text-decoration:none;color:var(--text-secondary);transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>← Previous</div><div class=nav-title style=color:#fff;font-weight:500>Module 02: Foundations of Space Communications</div></a></div></footer></article></div></div></main><footer class=site-footer><div class=footer-container><div class=footer-brand><span class=logo-icon>◈</span>
-<span>Escape Velocity</span></div><p class=footer-tagline></p><div class=footer-links><a href=https://github.com/anthonyhawkins target=_blank rel=noopener>GitHub</a></div><p class=footer-copy>Built with Hugo. Deployed to GitHub Pages.</p></div></footer><script src=https://anthony-hawkins.github.io/space-networking/js/orbital.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="My journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 01: Starlink System Model, Public Data, and RF Units | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1776821511" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="http://localhost:1313/space-networking/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Path</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Starlink System Model, Public Data, and RF Units</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: Starlink RF Foundations and Phased-Array Access Links</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Variable Links, Handover Resilience, and Transport Behavior</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Starlink Security, Resilience, and Operational Reliability</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Starlink-Focused Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 01</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 01: Starlink System Model, Public Data, and RF Units</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Phase:</strong> 1 - Foundation
+<strong>Builds on:</strong> None - this is your starting point</p>
+<hr>
+<h2 id="math-youll-learn">Math You&rsquo;ll Learn</h2>
+<h3 id="algebra-2-logarithms-exponentials-ratios-and-db-arithmetic">Algebra 2: Logarithms, Exponentials, Ratios, and dB Arithmetic</h3>
+<p>Starlink is an RF network and an ISP. You need dB math immediately because link budgets, antenna gain, path loss, EIRP, G/T, and noise density all use logarithmic units.</p>
+<ul>
+<li><strong>Exponentials and logarithms</strong> - signal power changes across huge ratios, and logarithms make those ratios usable.
+<ul>
+<li><em>Starlink application:</em> dB = 10 log10(P2/P1), used for every gain/loss term in an access or gateway link.</li>
+<li><em>Starlink application:</em> adding dB values is multiplying linear powers, which is how link budgets become readable.</li>
+</ul>
+</li>
+<li><strong>Unit conversions and ratios</strong> - W, mW, dBW, dBm, Hz, MHz, GHz, bps, Mbps, Gbps.
+<ul>
+<li><em>Starlink application:</em> convert public frequency bands and bandwidths from FCC filings into engineering units.</li>
+</ul>
+</li>
+<li><strong>Scientific notation and estimation</strong> - approximate delay, range, and free-space path-loss ratios.
+<ul>
+<li><em>Starlink application:</em> compare LEO propagation at roughly 550 km with GEO at 35,786 km.</li>
+</ul>
+</li>
+<li><strong>Basic tabular data handling</strong> - read and validate numeric fields from public data files.
+<ul>
+<li><em>Starlink application:</em> parse TLE/OEM-style orbital data and FCC frequency tables.</li>
+</ul>
+</li>
+</ul>
+<p><strong>After this:</strong> You can read public Starlink/FCC technical data, convert RF units, estimate delay/path loss, and avoid treating proprietary Starlink internals as known facts.</p>
+<p><strong>Resources:</strong></p>
+<ul>
+<li>Khan Academy - Algebra 2: logarithms and exponentials</li>
+<li>Starlink Technology - <a href="https://www.starlink.com/technology">https://www.starlink.com/technology</a></li>
+<li>Starlink Satellite Operators - <a href="https://www.starlink.com/satellite-operators">https://www.starlink.com/satellite-operators</a></li>
+<li>FCC Starlink Gen2 Order - <a href="https://docs.fcc.gov/public/attachments/FCC-22-91A1.pdf">https://docs.fcc.gov/public/attachments/FCC-22-91A1.pdf</a></li>
+</ul>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>The first module changes the entry point from a generic CCSDS protocol stack to a public Starlink system model. CCSDS still matters as background, especially for ephemeris and space interoperability, but it is not the center of Starlink&rsquo;s broadband network.</p>
+<h3 id="starlink-as-a-networked-system">Starlink as a Networked System</h3>
+<ul>
+<li>Satellites, user terminals, gateways, POPs, backbone links, and operations systems.</li>
+<li>Starlink as a vertically integrated ISP: access network, space segment, ground segment, backbone, peering, telemetry, and automation.</li>
+<li>What is public vs proprietary: frequency bands, orbital parameters, regulatory constraints, some architecture claims, public ephemeris data, and high-level Direct to Cell claims are public; internal PHY/MAC/routing/control-plane implementation is not.</li>
+<li>How to build defensible simulations from public constraints instead of inventing internal details.</li>
+</ul>
+<h3 id="public-data-sources">Public Data Sources</h3>
+<ul>
+<li>TLEs and ephemerides: satellite identifier, epoch, position/velocity concepts, covariance and maneuver metadata where available.</li>
+<li>CCSDS OEM as a useful public ephemeris format.</li>
+<li>FCC filings and orders: frequency bands, orbital shells, power constraints, interference constraints, and gateway authorizations.</li>
+<li>CelesTrak and Space-Track as supporting data sources for public orbital data.</li>
+</ul>
+<h3 id="rf-and-link-vocabulary">RF and Link Vocabulary</h3>
+<ul>
+<li>Frequency, wavelength, bandwidth, noise density, EIRP, G/T, FSPL, link margin.</li>
+<li>Ku service links, Ka/E-band feeder links, and TT&amp;C as separate link categories.</li>
+<li>Why LEO latency is lower than GEO but topology changes constantly.</li>
+<li>Why public data is enough to build useful models for interview preparation and portfolio projects.</li>
+</ul>
+<hr>
+<h2 id="c-and-python-skills">C++ and Python Skills</h2>
+<p><strong>C++ focus:</strong> variables, types, functions, structs, file I/O, command-line arguments, parsing text/binary records, unit tests for conversion functions.</p>
+<p><strong>Python focus:</strong> basic scripting, CSV/JSON parsing, NumPy arrays, matplotlib plots.</p>
+<hr>
+<h2 id="projects">Projects</h2>
+<h3 id="project-1-starlink-public-data-parser-c">Project 1: Starlink Public Data Parser (C++)</h3>
+<p>Build a CLI/library that ingests public Starlink-relevant records and normalizes them into typed structures.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Parse TLE records into satellite ID, epoch, inclination, RAAN, eccentricity, mean motion, and related fields.</li>
+<li>Parse a simplified OEM-style ephemeris record into timestamp, position, velocity, and optional covariance fields.</li>
+<li>Parse a small FCC frequency table into service-link, feeder-link, and TT&amp;C bands.</li>
+<li>Validate units and reject malformed records with useful error messages.</li>
+<li>Output normalized JSON for later modules.</li>
+</ul>
+<p><strong>C++ skills used:</strong> file I/O, structs/classes, string parsing, error handling, command-line arguments, unit tests.</p>
+<p><strong>Toolkit:</strong> Start the <strong>Starlink Network Toolkit</strong> with <code>PublicDataParser</code>.</p>
+<h3 id="project-2-starlink-rf-unit-toolkit-python">Project 2: Starlink RF Unit Toolkit (Python)</h3>
+<p>Build a small RF calculator and visualizer.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Convert W, mW, dBW, dBm, dB, MHz, GHz, and wavelength.</li>
+<li>Compute EIRP and chain simple gain/loss terms.</li>
+<li>Estimate one-way propagation delay for LEO, MEO, and GEO altitudes.</li>
+<li>Plot path-loss ratio comparisons for Ku, Ka, and E-band examples.</li>
+<li>Write a short note identifying which values came from public sources and which are assumptions.</li>
+</ul>
+<p><strong>Python skills used:</strong> functions, dictionaries, CSV/JSON, NumPy, matplotlib.</p>
+<hr>
+<h2 id="technology-reference">Technology Reference</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Concept</th>
+          <th>Problem It Solves</th>
+          <th>Starlink Relevance</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>TLE</td>
+          <td>Compact public orbital elements</td>
+          <td>Public satellite tracking and first-pass propagation</td>
+      </tr>
+      <tr>
+          <td>CCSDS OEM</td>
+          <td>Precise ephemeris exchange format</td>
+          <td>Useful for operator data exchange and high-fidelity simulations</td>
+      </tr>
+      <tr>
+          <td>FCC filings</td>
+          <td>Public regulatory constraints</td>
+          <td>Frequencies, shells, power/interference limits</td>
+      </tr>
+      <tr>
+          <td>dBW/dBm/dB</td>
+          <td>RF unit system</td>
+          <td>Link budgets and antenna calculations</td>
+      </tr>
+      <tr>
+          <td>EIRP and G/T</td>
+          <td>Transmit and receive figures of merit</td>
+          <td>Access/gateway link analysis</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="where-this-tech-is-used">Where This Tech Is Used</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Area</th>
+          <th>Use</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Starlink network modeling</td>
+          <td>Build public, reproducible assumptions for simulations</td>
+      </tr>
+      <tr>
+          <td>Ground-network planning</td>
+          <td>Connect orbital visibility to gateway/POP decisions</td>
+      </tr>
+      <tr>
+          <td>Link engineering</td>
+          <td>Convert public RF constraints into link-budget inputs</td>
+      </tr>
+      <tr>
+          <td>Interview prep</td>
+          <td>Explain what is public, what is inferred, and what is proprietary</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books-and-resources">Books and Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Starlink Technology</td>
+          <td>Public architecture and hardware claims</td>
+      </tr>
+      <tr>
+          <td>Starlink Satellite Operators</td>
+          <td>Public ephemeris and space-safety workflow</td>
+      </tr>
+      <tr>
+          <td>FCC Gen2 Starlink Order</td>
+          <td>Public orbital/frequency constraints</td>
+      </tr>
+      <tr>
+          <td>Pratt, <em>Satellite Communications</em></td>
+          <td>Intro RF and link terminology</td>
+      </tr>
+      <tr>
+          <td>CCSDS OEM documentation</td>
+          <td>Ephemeris format background</td>
+      </tr>
+  </tbody>
+</table>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    
+                    
+                    
+                    
+                    <a href="/space-networking/curriculum/learning-path/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Learning Path</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-02/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 02: Starlink RF Foundations and Phased-Array Access Links</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline"></p>
+      <div class="footer-links">
+        <a href="https://github.com/anthonyhawkins" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

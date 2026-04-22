@@ -11,6 +11,7 @@ for dir in curriculum/[0-9][0-9]-*; do
   if [ -d "$dir" ] && [ -f "$dir/README.md" ]; then
     dirname=$(basename "$dir")
     num=${dirname:0:2}
+    num_dec=$((10#$num))
     
     # Extract title
     title=$(grep -m 1 "^# " "$dir/README.md" | sed 's/^# //' || echo "Module $num")
@@ -20,8 +21,8 @@ for dir in curriculum/[0-9][0-9]-*; do
     cat <<EOF > "$outfile"
 ---
 title: "$title"
-module_number: $num
-weight: $num
+module_number: $num_dec
+weight: $num_dec
 ---
 
 EOF

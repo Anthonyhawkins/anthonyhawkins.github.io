@@ -1,143 +1,136 @@
 ---
-title: "Module 10: SDN & Autonomous Network Management"
+title: "Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering"
 module_number: 10
 weight: 10
 ---
 
 
-**Phase:** 3 — Depth
-**Builds on:** Modules 03, 08, 09
+**Phase:** 3 - Depth
+**Builds on:** Modules 03, 08, and 09
 
 ---
 
-## 🔢 Math You'll Learn
+## Math You'll Learn
 
-### Linear Algebra (Applied) + Optimization Introduction
+### Applied Linear Algebra + Optimization Introduction
 
-Applying linear algebra to real systems and beginning optimization.
+Topology work becomes operational when you optimize under capacity, policy, and failure constraints.
 
-- **Linear algebra: Least squares** — fitting models to noisy data
-  - *Space application:* orbit determination from noisy tracking data
-  - *Space application:* fitting traffic demand models to observations
-- **Optimization intro: Linear programming (LP)** — maximizing/minimizing subject to constraints
-  - *Space application:* ground station contact scheduling
-  - *Space application:* traffic engineering — optimal link utilization
-- **Finite state machines** — formal models of protocol and system behavior
-  - *Space application:* SDN controller states, satellite mode transitions
+- **Least squares** - fit demand or latency models to noisy telemetry.
+  - *Starlink application:* forecast traffic demand and link utilization.
+- **Linear programming** - maximize/minimize subject to constraints.
+  - *Starlink application:* minimize maximum link utilization across satellite, gateway, POP, and peering links.
+- **Multi-commodity flow intuition** - many source/destination demands share the same network.
+- **Finite state machines** - controller states, rollout states, and failure remediation.
+- **Control-loop basics** - avoid unstable automation that thrashes routes or config.
 
-**🔓 After this:** You can formulate optimization problems, fit models to data, and design formal state machine specifications.
+**After this:** You can design a topology controller that consumes moving-network state and emits defensible routing or Segment Routing policies.
 
 **Resources:**
-- *Introduction to Linear Algebra* — Strang (least squares chapters)
-- *Introduction to Algorithms* (CLRS) — Chapters 22–26 (graph algorithms used in optimization)
+
+- Strang, least squares chapters
+- CLRS graph algorithms and flows
+- Service-provider routing references for BGP, IS-IS, MPLS, and Segment Routing
 
 ---
 
-## 🛰️ What You'll Learn
+## What You'll Learn
 
-Software-Defined Networking (SDN) and Network Function Virtualization (NFV) are transforming satellite networks from manually configured, static systems into programmable, self-healing networks. This is where your software engineering skills dominate.
+This module replaces generic SDN with the protocols, algorithms, and operational automation that map to Starlink network and topology roles.
 
-### The Problem
-Traditional satellite networks are:
-- **Statically configured:** Link parameters set at launch, hard to change
-- **Manually managed:** Operators monitor and intervene by hand
-- **Vendor-locked:** Proprietary ground systems tied to specific satellite platforms
-- **Inflexible:** Can't dynamically reroute traffic or adapt to changing demand
+### Service-Provider Control Plane
 
-Modern constellations with 1000+ satellites can't be managed this way.
+- BGP peering/transit, route policy, communities, filtering, max-prefix, and route leaks.
+- IS-IS/OSPF as internal routing protocols.
+- MPLS, SR-MPLS, SRv6, ECMP, fast reroute, and traffic-engineering policy.
+- Control-plane vs data-plane responsibilities in a hybrid space/ground network.
+- How gateways, POPs, backbone links, satellites, and laser links become one topology graph.
 
-### SDN Fundamentals for Space
-- SDN architecture review: control plane / data plane separation
-- OpenFlow, P4, and programmable forwarding in satellite context
-- Centralized vs. distributed controllers for constellations
-- Challenge: controller-to-satellite communication latency
-- Ground-based vs. on-board controllers
+### Topology Service Design
 
-### Network Function Virtualization
-- NFV in satellite ground segments: virtualized modems, gateways
-- On-board processing (OBP): moving compute to orbit
-- Edge computing in space: processing data before downlink
-- Container orchestration for ground segment (Kubernetes in ground stations)
+- Inputs: ephemeris, link state, gateway state, POP state, demand matrix, policy, failures, maintenance windows.
+- Outputs: next-hop decisions, Segment Routing policies, preferred gateway/POP egress, and capacity reservations.
+- Snapshot vs predictive control: current topology, near-future topology, and scheduled changes.
+- Route churn control and safe rollout.
+- API design with gRPC/Protobuf and REST.
 
-### Autonomous Network Operations
-- Intent-based networking for constellations
-- AI/ML for traffic prediction and resource allocation
-- Self-healing networks: automatic rerouting around failed satellites or links
-- Digital twin: simulation-based network planning and optimization
+### Automation and Operations
 
-### Aalyria Spacetime & Industry
-- Aalyria's "Spacetime" platform: the most ambitious space SDN effort (ex-Google Loon)
-- Temporospatial SDN (TS-SDN): controlling networks whose topology changes in time
-- Multi-orbit, multi-operator networking
+- Telemetry: link utilization, latency, loss, route churn, queue depth, and alarms.
+- Inventory and desired-state reconciliation.
+- Config generation, validation, canary, rollback, and blast-radius control.
+- Incident simulation: gateway down, POP isolated, OISL failure, high latency, route leak.
+- Linux production operations for network software.
 
 ---
 
-## 💻 C++ & Python Skills
+## C++ and Python Skills
 
-**C++ focus:** REST API (cpp-httplib or Crow), async orchestration, gRPC in C++ (grpc++), system design patterns
-**Python focus:** PuLP or SciPy for LP optimization, NetworkX, matplotlib animation
+**C++ focus:** REST/gRPC service, async orchestration, JSON/Protobuf schemas, Boost.Graph integration, system design.
 
-This module brings together your C++ skills into a **system-level design** — an SDN controller that ties together the toolkit modules.
+**Python focus:** PuLP/SciPy/OR-Tools, NetworkX, telemetry analysis, optimization visualization.
 
 ---
 
 ## Projects
 
-### Project 1: SDN Controller for Satellite Mesh (C++)
+### Project 1: Starlink-Inspired Topology Controller (C++)
 
-Build a simplified SDN controller that manages forwarding for a satellite constellation.
+Build a simplified network controller.
 
 **What you'll build:**
-- Load constellation topology from Module 08's `ConstellationEngine`
-- Compute forwarding tables for each satellite node using Dijkstra
-- Expose a REST API (cpp-httplib) for: querying routes, pushing flow rules, simulating link failures
-- Implement failure detection and automatic rerouting (self-healing)
-- Use async I/O for handling multiple simultaneous API requests
-- Load a contact plan and pre-compute SDN flow rules for each time window
 
-**C++ skills used:** cpp-httplib (REST API), `std::async`, JSON serialization, Boost.Graph integration, system design
+- Ingest topology snapshots from Modules 08 and 09.
+- Ingest gateway/POP state and demand matrices.
+- Compute paths and generate forwarding decisions or Segment Routing policy objects.
+- Expose APIs for route query, link failure, gateway drain, policy update, and recompute.
+- Implement failure detection events and automatic rerouting.
+- Track route churn and reject unstable updates.
 
-**🔧 Toolkit:** Add `SDNController` to the Space Network Toolkit — this is the integration point that ties modules together
+**C++ skills used:** REST/gRPC, Boost.Graph, async I/O, JSON/Protobuf, system design.
+
+**Toolkit:** Add `TopologyController`.
 
 ### Project 2: Traffic Engineering Optimizer (Python)
 
-Optimize bandwidth allocation across a constellation.
+Optimize traffic allocation.
 
 **What you'll build:**
-- Given a constellation topology (from Module 08) and a traffic demand matrix (city-to-city data rates)
-- Formulate the traffic engineering problem as a linear program
-- Solve with PuLP or SciPy `linprog`: minimize maximum link utilization subject to demand and capacity constraints
-- Visualize optimal vs. shortest-path routing — show how TE reduces congestion
-- Animate link failure and re-optimization with matplotlib
 
-**Python skills used:** PuLP/SciPy, NetworkX, matplotlib animation
+- Build a network graph with satellite links, gateways, POPs, and peering edges.
+- Load a traffic demand matrix between regions/cities.
+- Formulate TE as minimizing maximum link utilization subject to capacity and policy constraints.
+- Compare shortest path, ECMP, and optimized TE.
+- Animate failure and re-optimization.
+
+**Python skills used:** NetworkX, PuLP/SciPy/OR-Tools, matplotlib.
 
 ---
 
 ## Technology Reference
 
-| Technology | Problem It Solves | New/Legacy |
+| Technology | Problem It Solves | Starlink Relevance |
 |---|---|---|
-| SDN / OpenFlow | Programmable forwarding, centralized control | `[NEW SPACE]` |
-| P4 (Protocol-Indep. Switch Architecture) | Custom packet processing on satellite routers | `[NEW SPACE]` |
-| ONOS / OpenDaylight | SDN controllers (adapted for space) | `[NEW SPACE]` |
-| Kubernetes (ground segment) | Orchestrating virtualized ground functions | `[NEW SPACE]` |
-| TS-SDN (Temporospatial SDN) | Controlling topology that changes over time | `[NEW SPACE]` |
+| BGP | Peering, transit, internet reachability | POP and provider edge |
+| IS-IS/OSPF | Internal routing | Backbone and controlled domains |
+| MPLS/SR | Explicit policy and traffic engineering | Path control and fast reroute |
+| gRPC/Protobuf | Typed control APIs | Network automation services |
+| LP/TE | Capacity-aware routing | Avoid congested satellite/gateway links |
 
-## Companies
+## Where This Tech Is Used
 
-| Company | Product/Focus | New/Legacy |
-|---|---|---|
-| **Aalyria** (ex-Google Loon) | Spacetime — network orchestration for space/ground/air | `[NEW SPACE]` |
-| **Rivada Space Networks** | SDN-managed optical LEO mesh | `[NEW SPACE]` |
-| **Lockheed Martin** | SmartSat — software-defined satellite platform | `[NEW SPACE]` |
-| **SES** | O3b mPOWER — software-defined MEO constellation | `[BOTH]` |
-| **Astranis** | Software-defined GEO microsats | `[NEW SPACE]` |
+| Application | Notes |
+|---|---|
+| Starlink ground network | POPs, peering, transport, routing |
+| Starlink topology systems | Moving graph, route policy, failure response |
+| ISP backbone operations | TE, BGP policy, telemetry, safe rollout |
+| Capstones | Digital twin and topology simulator integration |
 
-## Books & Resources
+## Books and Resources
 
 | Resource | Notes |
 |---|---|
-| Aalyria Spacetime docs/papers | https://aalyria.com/ |
-| "Software-Defined Networking for Satellites" (IEEE papers) | Search IEEE Xplore |
-| ONF (Open Networking Foundation) SDN specs | https://opennetworking.org/ |
+| Public SpaceX network job descriptions | Protocols and operations focus |
+| Halabi, *Internet Routing Architectures* | BGP policy |
+| MPLS/SR references | Provider traffic engineering |
+| CLRS | Shortest paths and optimization basics |

@@ -1,20 +1,444 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="My journey into satellite networking, space protocols, and the future of space communications."><title>Module 05: Satellite Link Engineering | Escape Velocity</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel=stylesheet><link rel=stylesheet href="https://anthony-hawkins.github.io/space-networking/css/orbital.css?v=1776219886"></head><body><div class=starfield id=starfield></div><header class=site-header><nav class=nav-container><a href=https://anthony-hawkins.github.io/space-networking/ class=nav-logo><span class=logo-icon>◈</span>
-<span class=logo-text>Escape Velocity</span></a><ul class=nav-links><li><a href=/space-networking/>Home</a></li><li><a href=/space-networking/blog/>Journal</a></li><li><a href=/space-networking/skill-tree/>Skill Tree</a></li><li><a href=/space-networking/curriculum/>Curriculum</a></li><li><a href=/space-networking/about/>About</a></li></ul><button class=nav-toggle id=navToggle aria-label="Toggle navigation">
-<span></span><span></span><span></span></button></nav></header><main class=site-main><div class="docs-layout container"><aside class=docs-sidebar><div class=sidebar-header><h3 class=sidebar-title>Curriculum</h3></div><nav class=sidebar-nav><ul class=sidebar-list><li><a href=https://anthony-hawkins.github.io/space-networking/curriculum/ class=sidebar-link><span class=sidebar-icon>⬡</span> Overview</a></li><li><a href=/space-networking/curriculum/learning-path/ class=sidebar-link><span class=sidebar-number>00</span>
-<span class=sidebar-text>Learning Path</span></a></li><li><a href=/space-networking/curriculum/module-01/ class=sidebar-link><span class=sidebar-number>01</span>
-<span class=sidebar-text>Module 01: CCSDS Protocol Stack</span></a></li><li><a href=/space-networking/curriculum/module-02/ class=sidebar-link><span class=sidebar-number>02</span>
-<span class=sidebar-text>Module 02: Foundations of Space Communications</span></a></li><li><a href=/space-networking/curriculum/module-03/ class=sidebar-link><span class=sidebar-number>03</span>
-<span class=sidebar-text>Module 03: Ground Segment Architecture</span></a></li><li><a href=/space-networking/curriculum/module-04/ class=sidebar-link><span class=sidebar-number>04</span>
-<span class=sidebar-text>Module 04: Delay-Tolerant Networking</span></a></li><li><a href=/space-networking/curriculum/module-05/ class="sidebar-link active"><span class=sidebar-number>05</span>
-<span class=sidebar-text>Module 05: Satellite Link Engineering</span></a></li><li><a href=/space-networking/curriculum/module-06/ class=sidebar-link><span class=sidebar-number>06</span>
-<span class=sidebar-text>Module 06: DVB Standards & Satellite Broadband</span></a></li><li><a href=/space-networking/curriculum/module-07/ class=sidebar-link><span class=sidebar-number>07</span>
-<span class=sidebar-text>Module 07: 5G Non-Terrestrial Networks (NTN)</span></a></li><li><a href=/space-networking/curriculum/module-08/ class=sidebar-link><span class=sidebar-number>08</span>
-<span class=sidebar-text>Module 08: LEO Constellations & Routing</span></a></li><li><a href=/space-networking/curriculum/module-09/ class=sidebar-link><span class=sidebar-number>09</span>
-<span class=sidebar-text>Module 09: Optical Inter-Satellite Links (OISL)</span></a></li><li><a href=/space-networking/curriculum/module-10/ class=sidebar-link><span class=sidebar-number>10</span>
-<span class=sidebar-text>Module 10: SDN & Autonomous Network Management</span></a></li><li><a href=/space-networking/curriculum/module-11/ class=sidebar-link><span class=sidebar-number>11</span>
-<span class=sidebar-text>Module 11: Security in Space Networks</span></a></li><li><a href=/space-networking/curriculum/module-12/ class=sidebar-link><span class=sidebar-number>12</span>
-<span class=sidebar-text>Module 12: Capstone Projects</span></a></li></ul></nav></aside><div class=docs-content><article class=module-single><header class="module-header docs-header"><div class=module-header-meta style=margin-bottom:1rem;display:flex;gap:.75rem;flex-wrap:wrap><span class=module-number-lg style=color:#60a5fa;font-weight:600;letter-spacing:.05em>Module 05</span>
-<span class=math-badge style="background:rgba(245,158,11,.1);color:#f59e0b;padding:.2rem .6rem;border-radius:4px;font-size:.75rem">Requires:</span></div><h1 class=docs-title>Module 05: Satellite Link Engineering</h1></header><div class="module-body prose docs-body"><p><strong>Phase:</strong> 2 — Acceleration
-<strong>Builds on:</strong> Modules 01, 02, 03</p><hr><h2 id=-math-youll-learn>🔢 Math You&rsquo;ll Learn</h2><h3 id=pre-calculus-completion--calculus-i-introduction>Pre-Calculus Completion + Calculus I Introduction</h3><p>The math that makes satellite link design quantitative — and the start of calculus.</p><ul><li><strong>Exponential & logarithmic functions (deeper)</strong> — exponential decay, log-linear relationships<ul><li><em>Space application:</em> signal power decay models, noise floor calculations</li></ul></li><li><strong>Conic sections — focus on ellipses</strong> — eccentricity, semi-major axis, foci<ul><li><em>Space application:</em> <strong>Kepler&rsquo;s orbits are ellipses</strong> — orbit shape, apogee/perigee geometry</li></ul></li><li><strong>Calculus I: Limits & continuity</strong> — the foundation for derivatives</li><li><strong>Calculus I: Derivatives — definition, power rule</strong> — rate of change<ul><li><em>Space application:</em> Doppler shift = d(range)/dt — the rate of change of distance to a satellite</li></ul></li></ul><p><strong>🔓 After this:</strong> You understand orbit shapes (ellipses), can compute Doppler shift conceptually, and can build complete link budgets.</p><p><strong>Resources:</strong></p><ul><li>Khan Academy — Pre-Calculus completion (free)</li><li><em>Calculus: Early Transcendentals</em> — James Stewart (Chapters 1–3)</li><li>3Blue1Brown — <em>Essence of Calculus</em> (watch now!)</li></ul><hr><h2 id=-what-youll-learn>🛰️ What You&rsquo;ll Learn</h2><p>How to design a communication link that &ldquo;closes&rdquo; — meaning the signal arrives with enough energy to be decoded. This is the equivalent of &ldquo;capacity planning&rdquo; in terrestrial networking, except you&rsquo;re fighting physics instead of budget.</p><h3 id=link-budget-analysis>Link Budget Analysis</h3><ul><li>The link equation: EIRP + G/T - path loss - atmospheric loss = C/N₀</li><li>Transmit power, antenna gain, beamwidth</li><li>Free-space path loss (FSPL) — scales with distance² and frequency²</li><li>System noise temperature and noise figure</li><li>Eb/N₀ requirements for different modulation + coding schemes</li><li>Link margin philosophy: how much margin is enough?</li></ul><h3 id=atmospheric-effects>Atmospheric Effects</h3><ul><li>Rain attenuation (ITU-R P.618 model) — critical for Ka-band and above</li><li>Gaseous absorption, cloud attenuation, scintillation</li><li>Faraday rotation at lower frequencies</li><li>Site diversity: using multiple ground stations to combat weather</li><li>Why Ka-band is dominant in new LEO constellations despite rain issues</li></ul><h3 id=antenna-systems>Antenna Systems</h3><ul><li>Parabolic reflectors, phased arrays, flat-panel antennas</li><li>Antenna gain, beamwidth, sidelobe patterns</li><li>Electronically steered arrays (ESAs) — the key enabler for LEO user terminals</li><li>Multi-beam satellites and frequency reuse</li></ul><h3 id=multiple-access--capacity>Multiple Access & Capacity</h3><ul><li>FDMA, TDMA, CDMA, OFDMA — trade-offs for satellite</li><li>Demand assignment vs. fixed assignment</li><li>Bandwidth-limited vs. power-limited systems</li><li>Capacity calculations for a bent-pipe vs. regenerative transponder</li><li>High Throughput Satellites (HTS) — multi-spot-beam architecture</li></ul><hr><h2 id=-c--python-skills>💻 C++ & Python Skills</h2><p><strong>C++ focus:</strong> File I/O, JSON config parsing (nlohmann/json), CMake project structure, Google Test (gtest)
-<strong>Python focus:</strong> SciPy for statistical models, matplotlib for curves</p><hr><h2 id=projects>Projects</h2><h3 id=project-1-complete-link-budget-calculator-c>Project 1: Complete Link Budget Calculator (C++)</h3><p>Build a configurable link budget calculator with JSON input.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Read link parameters from a JSON config file (transmit power, antenna gain, frequency, distance, atmospheric model)</li><li>Compute full link budget: EIRP → path loss → atmospheric loss → G/T → C/N₀ → Eb/N₀ → link margin</li><li>Output a formatted link budget table (like a real engineering spreadsheet)</li><li>Support presets for common scenarios (LEO Ka-band, GEO Ku-band, Deep space X-band)</li><li>Unit tests with gtest for each calculation step</li></ul><p><strong>C++ skills used:</strong> nlohmann/json, file I/O, gtest, CMake, structured output</p><p><strong>🔧 Toolkit:</strong> Add <code>LinkBudget</code> module to the Space Network Toolkit</p><h3 id=project-2-rain-fade-availability-simulator-python>Project 2: Rain Fade Availability Simulator (Python)</h3><p>Simulate how rain affects Ka-band link availability.</p><p><strong>What you&rsquo;ll build:</strong></p><ul><li>Implement a simplified ITU-R P.618 rain attenuation model</li><li>Given a ground station location and link frequency, calculate attenuation at different rain rates</li><li>Plot availability curves: what percentage of time does the link meet its margin requirement?</li><li>Compare Ka-band vs. Ku-band vs. X-band rain sensitivity</li><li>Show how site diversity (2 ground stations) improves availability</li></ul><p><strong>Python skills used:</strong> SciPy, NumPy, matplotlib, statistical distributions</p><hr><h2 id=protocol-reference-table>Protocol Reference Table</h2><table><thead><tr><th>Protocol/Standard</th><th>Spec</th><th>Problem It Solves</th><th>New/Legacy</th></tr></thead><tbody><tr><td>ITU-R P.618</td><td>ITU</td><td>Rain attenuation prediction</td><td><code>[BOTH]</code></td></tr><tr><td>ITU-R S.1503</td><td>ITU</td><td>EPFD limits — interference to GEO from NGSO</td><td><code>[BOTH]</code></td></tr><tr><td>DVB-S2X ACM</td><td>ETSI EN 302 307-2</td><td>Adaptive coding/modulation for varying link conditions</td><td><code>[NEW SPACE]</code></td></tr></tbody></table><h2 id=where-this-tech-is-used>Where This Tech Is Used</h2><table><thead><tr><th>Application</th><th>Companies</th><th>Notes</th></tr></thead><tbody><tr><td>LEO user terminal design</td><td>SpaceX (Starlink), Amazon (Kuiper)</td><td>Phased array design, Ka-band links</td></tr><tr><td>GEO HTS operations</td><td>Viasat, Hughes (EchoStar), SES</td><td>Multi-spot-beam capacity planning</td></tr><tr><td>Ground gateway design</td><td>SpaceX, Amazon, Telesat</td><td>Gateway diversity, rain mitigation</td></tr><tr><td>Deep space comms</td><td>NASA DSN, ESA ESTRACK</td><td>X-band and Ka-band link budgets</td></tr><tr><td>CubeSat missions</td><td>Planet Labs, Spire</td><td>Low-power S/X-band link design</td></tr></tbody></table><h2 id=books--resources>Books & Resources</h2><table><thead><tr><th>Resource</th><th>Chapters/Sections</th></tr></thead><tbody><tr><td><em>Satellite Communications</em> (Pratt et al.)</td><td>Ch. 4–6 (Link budgets, propagation, multiple access)</td></tr><tr><td><em>Satellite Comms Systems Engineering</em> (Ippolito)</td><td>Entire book focuses on this</td></tr><tr><td><em>Satellite Comms Systems</em> (Maral et al.)</td><td>Ch. 5–7 (Link design, multiple access)</td></tr></tbody></table></div><footer class="module-footer docs-footer"><div class=docs-nav style="display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)"><a href=/space-networking/curriculum/module-06/ class="docs-nav-link prev" style="text-decoration:none;color:var(--text-secondary);transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>← Previous</div><div class=nav-title style=color:#fff;font-weight:500>Module 06: DVB Standards & Satellite Broadband</div></a><a href=/space-networking/curriculum/module-04/ class="docs-nav-link next" style="text-decoration:none;color:var(--text-secondary);text-align:right;transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>Next →</div><div class=nav-title style=color:#fff;font-weight:500>Module 04: Delay-Tolerant Networking</div></a></div></footer></article></div></div></main><footer class=site-footer><div class=footer-container><div class=footer-brand><span class=logo-icon>◈</span>
-<span>Escape Velocity</span></div><p class=footer-tagline></p><div class=footer-links><a href=https://github.com/anthonyhawkins target=_blank rel=noopener>GitHub</a></div><p class=footer-copy>Built with Hugo. Deployed to GitHub Pages.</p></div></footer><script src=https://anthony-hawkins.github.io/space-networking/js/orbital.js></script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="My journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1776821511" />
+  
+</head>
+
+<body>
+  <div class="starfield" id="starfield"></div>
+
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="http://localhost:1313/space-networking/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Path</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Starlink System Model, Public Data, and RF Units</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: Starlink RF Foundations and Phased-Array Access Links</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Variable Links, Handover Resilience, and Transport Behavior</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Starlink Security, Resilience, and Operational Reliability</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Starlink-Focused Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
+
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 05</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
+
+                <h1 class="docs-title">Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</h1>
+                
+            </header>
+
+            <div class="module-body prose docs-body">
+                <p><strong>Phase:</strong> 2 - Acceleration
+<strong>Builds on:</strong> Modules 01, 02, 03, and 04</p>
+<hr>
+<h2 id="math-youll-learn">Math You&rsquo;ll Learn</h2>
+<h3 id="pre-calculus-completion--calculus-i-introduction">Pre-Calculus Completion + Calculus I Introduction</h3>
+<p>This module makes link design quantitative and introduces derivatives as rates of change.</p>
+<ul>
+<li><strong>Exponential and logarithmic functions, deeper pass</strong> - log-linear signal models and noise-density calculations.
+<ul>
+<li><em>Starlink application:</em> link margin changes across range, frequency, antenna gain, and weather.</li>
+</ul>
+</li>
+<li><strong>Conic sections and orbital geometry preview</strong> - why shells and orbital altitude matter.</li>
+<li><strong>Limits and continuity</strong> - foundation for differentiating link-quality curves.</li>
+<li><strong>Derivatives and rate of change</strong> - range rate and Doppler intuition.
+<ul>
+<li><em>Starlink application:</em> Doppler is driven by d(range)/dt; margin sensitivity is d(margin)/d(parameter).</li>
+</ul>
+</li>
+<li><strong>Sensitivity analysis</strong> - which parameter matters most: elevation, rain rate, scan angle, bandwidth, or antenna gain.</li>
+</ul>
+<p><strong>After this:</strong> You can build Starlink-style access and gateway link budgets, reason about rain fade and scan loss, and explain which assumptions dominate the result.</p>
+<p><strong>Resources:</strong></p>
+<ul>
+<li>Stewart, <em>Calculus: Early Transcendentals</em>, Chapters 1-3</li>
+<li>Ippolito, <em>Satellite Communications Systems Engineering</em></li>
+<li>ITU-R P.618 propagation model</li>
+<li>FCC Starlink authorizations for public frequency context</li>
+</ul>
+<hr>
+<h2 id="what-youll-learn">What You&rsquo;ll Learn</h2>
+<p>Link engineering answers whether a link closes with enough margin to carry traffic. For Starlink, you care most about Ku user links, Ka/E-band feeder links, phased-array scan loss, rain fade, interference constraints, and gateway diversity.</p>
+<h3 id="link-budgets">Link Budgets</h3>
+<ul>
+<li>EIRP, G/T, FSPL, atmospheric loss, implementation loss, C/N0, Eb/N0, and link margin.</li>
+<li>Ku-band service-link examples for user terminals.</li>
+<li>Ka/E-band feeder-link examples for gateways.</li>
+<li>Elevation mask, slant range, scan loss, and antenna gain.</li>
+<li>Doppler and frequency compensation as link-budget adjacent effects.</li>
+<li>Transparent vs regenerative payload context, without assuming Starlink internals.</li>
+</ul>
+<h3 id="atmospheric-and-interference-effects">Atmospheric and Interference Effects</h3>
+<ul>
+<li>Rain attenuation with ITU-R P.618, especially for Ka/E-band gateway links.</li>
+<li>Gaseous absorption, clouds, scintillation, and availability targets.</li>
+<li>Gateway diversity and weather-aware routing.</li>
+<li>EPFD and protecting GEO systems from NGSO interference.</li>
+<li>Sidelobes, frequency reuse, beam isolation, and coordination constraints.</li>
+</ul>
+<h3 id="engineering-judgment">Engineering Judgment</h3>
+<ul>
+<li>Link margin philosophy: nominal, degraded, outage, and recovery states.</li>
+<li>Sensitivity analysis to avoid over-optimizing the wrong term.</li>
+<li>Public data vs inferred values; documenting assumptions cleanly.</li>
+<li>How link state becomes an input to scheduler and topology decisions.</li>
+</ul>
+<hr>
+<h2 id="c-and-python-skills">C++ and Python Skills</h2>
+<p><strong>C++ focus:</strong> JSON config parsing with nlohmann/json, CMake structure, Google Test, clean calculation modules.</p>
+<p><strong>Python focus:</strong> SciPy/NumPy for attenuation curves, Monte Carlo availability, and plotting.</p>
+<hr>
+<h2 id="projects">Projects</h2>
+<h3 id="project-1-starlink-style-link-budget-calculator-c">Project 1: Starlink-Style Link Budget Calculator (C++)</h3>
+<p>Build a configurable link-budget calculator.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Read JSON input for frequency, bandwidth, range, elevation, antenna gain, scan loss, power, noise temperature, rain rate, and implementation loss.</li>
+<li>Support presets for Ku user link, Ka feeder link, E-band feeder link, and a generic comparison link.</li>
+<li>Compute FSPL, atmospheric/rain loss, G/T, C/N0, Eb/N0, and link margin.</li>
+<li>Emit a spreadsheet-style table and machine-readable JSON.</li>
+<li>Unit-test each formula and conversion.</li>
+</ul>
+<p><strong>C++ skills used:</strong> CMake, nlohmann/json, gtest, structured output.</p>
+<p><strong>Toolkit:</strong> Add <code>StarlinkLinkBudget</code>.</p>
+<h3 id="project-2-gateway-diversity-and-rain-fade-simulator-python">Project 2: Gateway Diversity and Rain Fade Simulator (Python)</h3>
+<p>Model weather-aware gateway selection.</p>
+<p><strong>What you&rsquo;ll build:</strong></p>
+<ul>
+<li>Implement a simplified ITU-R P.618 rain attenuation model.</li>
+<li>Simulate rain fade at multiple gateway sites.</li>
+<li>Estimate link availability with one gateway vs multiple gateways.</li>
+<li>Route traffic to the gateway with best margin, then show the latency trade-off.</li>
+<li>Plot availability, outage duration, and margin distributions.</li>
+</ul>
+<p><strong>Python skills used:</strong> NumPy, SciPy, matplotlib, random sampling, tabular summaries.</p>
+<hr>
+<h2 id="technology-reference">Technology Reference</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Technology</th>
+          <th>Problem It Solves</th>
+          <th>Starlink Relevance</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>ITU-R P.618</td>
+          <td>Rain attenuation prediction</td>
+          <td>Gateway availability and diversity</td>
+      </tr>
+      <tr>
+          <td>EPFD</td>
+          <td>Protect GSO systems from NGSO interference</td>
+          <td>Regulatory constraint</td>
+      </tr>
+      <tr>
+          <td>E-band feeder links</td>
+          <td>High-capacity gateway backhaul</td>
+          <td>Publicly authorized Starlink expansion area</td>
+      </tr>
+      <tr>
+          <td>Scan loss</td>
+          <td>Phased-array off-boresight penalty</td>
+          <td>User/gateway link margin</td>
+      </tr>
+      <tr>
+          <td>Link margin</td>
+          <td>Whether service can be decoded reliably</td>
+          <td>Scheduler and operations input</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="where-this-tech-is-used">Where This Tech Is Used</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Application</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Starlink access service</td>
+          <td>Ku user-link quality and capacity</td>
+      </tr>
+      <tr>
+          <td>Starlink gateways</td>
+          <td>Ka/E feeder-link availability</td>
+      </tr>
+      <tr>
+          <td>Gateway planning</td>
+          <td>Weather, diversity, capacity, and latency</td>
+      </tr>
+      <tr>
+          <td>Topology controller</td>
+          <td>Link state feeds path selection and TE</td>
+      </tr>
+  </tbody>
+</table>
+<h2 id="books-and-resources">Books and Resources</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Resource</th>
+          <th>Notes</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Ippolito, <em>Satellite Communications Systems Engineering</em></td>
+          <td>Propagation and link design</td>
+      </tr>
+      <tr>
+          <td>Pratt, <em>Satellite Communications</em></td>
+          <td>Link-budget fundamentals</td>
+      </tr>
+      <tr>
+          <td>ITU-R P.618</td>
+          <td>Rain attenuation model</td>
+      </tr>
+      <tr>
+          <td>FCC Starlink filings</td>
+          <td>Public frequency and interference constraints</td>
+      </tr>
+  </tbody>
+</table>
+
+            </div>
+
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    
+                    
+                    
+                    
+                    <a href="/space-networking/curriculum/module-04/" class="docs-nav-link prev"
+                        style="text-decoration: none; color: var(--text-secondary); transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            ← Previous</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 04: Variable Links, Handover Resilience, and Transport Behavior</div>
+                    </a>
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-06/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline"></p>
+      <div class="footer-links">
+        <a href="https://github.com/anthonyhawkins" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>

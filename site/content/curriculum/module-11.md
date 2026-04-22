@@ -1,134 +1,133 @@
 ---
-title: "Module 11: Security in Space Networks"
+title: "Module 11: Starlink Security, Resilience, and Operational Reliability"
 module_number: 11
 weight: 11
 ---
 
 
-**Phase:** 4 — Mastery
-**Builds on:** Modules 01, 04, 06
+**Phase:** 4 - Mastery
+**Builds on:** Modules 03, 05, 07, and 10
 
 ---
 
-## 🔢 Math You'll Learn
+## Math You'll Learn
 
-### Probability & Statistics
+### Probability and Statistics
 
-The math behind noise analysis, error rates, and system reliability.
+This module uses probability to reason about noise, failures, alarms, and service availability.
 
-- **Random variables, PDF, CDF, expectation, variance** — statistical foundations
-- **Gaussian (Normal) distribution & Central Limit Theorem** — the basis for noise modeling
-  - *Space application:* thermal noise is Gaussian → this is why Eb/N₀ and BER curves work
-  - *Space application:* understanding false alarm rates in intrusion detection
-- **Rayleigh & Rician fading** — multipath models for satellite-ground links
-  - *Space application:* channel modeling, link availability statistics
-- **Markov chains (basics)** — state-based probabilistic models
-  - *Space application:* channel state modeling, protocol state machines, attack modeling
+- **Random variables, PDF, CDF, expectation, variance** - statistical foundations.
+- **Gaussian distribution and Central Limit Theorem** - noise and measurement models.
+  - *Starlink application:* link telemetry and anomaly thresholds.
+- **Rayleigh/Rician fading concepts** - wireless-channel variability.
+- **Markov chains basics** - state transitions for link health and failure recovery.
+- **False positives and false negatives** - security and operations alerts.
+- **Availability modeling** - gateway diversity, laser mesh redundancy, and correlated failures.
 
-**🔓 After this:** You can compute full link budgets with noise, BER, rain fade availability, and model security detection rates.
+**After this:** You can estimate reliability, detect anomalies, and evaluate security policy changes using quantitative evidence.
 
 **Resources:**
-- *Probability and Statistics for Engineering and the Sciences* — Jay Devore
-- Khan Academy — Probability & Statistics (free)
+
+- Devore, *Probability and Statistics for Engineering and the Sciences*
+- NIST security references for operational controls
+- RPKI/BGP security operational references
 
 ---
 
-## 🛰️ What You'll Learn
+## What You'll Learn
 
-Space network security has unique constraints: limited compute on spacecraft, immutable hardware (can't upgrade a satellite's crypto chip after launch), broadcast RF that anyone can receive, and potential jamming/spoofing from adversaries. Your TLS/mTLS experience provides strong foundations here.
+This module shifts from CCSDS SDLS/BPSec as the primary security topic toward Starlink-relevant ISP, ground-network, RF, and operations security. CCSDS security remains useful background for non-Starlink space systems.
 
-### The Problem
-Satellite links face threats that terrestrial networks don't:
-- **Eavesdropping:** RF signals cover wide areas — anyone with an antenna can listen
-- **Jamming:** Deliberate interference to deny service
-- **Spoofing:** Injecting false commands or telemetry
-- **Replay attacks:** Recording and re-transmitting valid commands
-- **Limited on-board resources:** Spacecraft processors are radiation-hardened, slow, and can't be upgraded
+### Network and Routing Security
 
-### Link-Layer Security
-- CCSDS Space Data Link Security (SDLS, CCSDS 355.0) — authentication and encryption at the frame level
-- Encryption algorithms: AES-256-GCM, AES-CTR
-- Key management for spacecraft: pre-loaded keys, key update procedures
-- Anti-replay: sequence numbers and sliding windows
-- Comparison to TLS: SDLS is like TLS record layer but at the data link level
+- BGP route leaks, prefix hijacks, route filtering, max-prefix, and communities.
+- RPKI/ROA validation and route-origin security.
+- DDoS mitigation, scrubbing, RTBH/flowspec concepts.
+- Management-plane isolation and configuration integrity.
+- Policy validation before rollout.
 
-### Network & Application Layer Security
-- Bundle Protocol Security (BPSec, RFC 9172) — securing DTN bundles
-- Block-level security: confidentiality blocks (BCB) and integrity blocks (BIB)
-- DTLS, TLS for ground-ground segments
-- TRANSEC in DVB systems
-- COMSEC for military/government links
+### Subscriber and Ground-Network Security
 
-### Threats, Resilience & Emerging Tech
-- Electronic warfare: jamming and anti-jam techniques (spread spectrum, frequency hopping)
-- Cyber threats to ground segments
-- Quantum Key Distribution (QKD) over satellite
-- Post-quantum cryptography for long-lived spacecraft
+- AAA/RADIUS, subscriber identity, CGNAT logging, abuse workflows.
+- Gateway/POP hardening, secrets management, access control, audit logs.
+- Device lifecycle, provisioning, and configuration drift.
+- Telemetry integrity and anomaly detection.
+
+### RF, Space, and Direct-to-Cell Threats
+
+- Jamming, spoofing, interference detection, and spectrum monitoring.
+- Direct-to-cell trust boundaries: roaming, mobile-core authentication, IPsec, lawful-intercept awareness.
+- Space-safety operational data: ephemeris sharing, maneuver status, conjunction workflows.
+- Availability under satellite, gateway, POP, laser-link, and weather failures.
 
 ---
 
-## 💻 C++ & Python Skills
+## C++ and Python Skills
 
-**C++ focus:** OpenSSL or libsodium for crypto, concurrent encrypt/decrypt pipelines, memory-safe patterns
-**Python focus:** SciPy for BER curves, NumPy for signal simulation, matplotlib
+**C++ focus:** policy-checking services, route/config validation, concurrent analysis, safe data models.
+
+**Python focus:** telemetry simulation, anomaly detection, Monte Carlo availability, BER/interference plots.
 
 ---
 
 ## Projects
 
-### Project 1: SDLS Frame Encryptor with BPSec (C++)
+### Project 1: Routing Security and Policy Guard (C++)
 
-Build a security layer for space data link frames and DTN bundles.
-
-**What you'll build:**
-- Implement AES-GCM encryption/decryption for CCSDS transfer frames (using OpenSSL or libsodium)
-- Add sequence-number-based anti-replay protection (sliding window)
-- Integrate BPSec: add BIB (integrity) and BCB (confidentiality) blocks to your Module 04 bundle library
-- Use concurrent pipeline: one thread encrypts while another frames — producer/consumer pattern
-- Benchmark encryption throughput for different frame sizes
-
-**C++ skills used:** OpenSSL/libsodium, `std::thread`, concurrent producer/consumer, integration with toolkit modules
-
-### Project 2: Jamming Resilience & BER Analysis (Python)
-
-Analyze how spread spectrum provides jamming resistance.
+Build a pre-deployment validator for network policy changes.
 
 **What you'll build:**
-- Simulate a narrowband signal being jammed at various jammer-to-signal ratios
-- Implement direct-sequence spread spectrum (DSSS) with configurable spreading gain
-- Show how DSSS provides jamming resistance at the cost of bandwidth
-- Plot BER curves for BPSK under Gaussian noise: theoretical vs. simulated
-- Compute and plot link availability given noise statistics and required Eb/N₀
 
-**Python skills used:** NumPy, SciPy (erfc for BER), matplotlib, Monte Carlo simulation
+- Validate proposed BGP/SR route changes against policy.
+- Check max-prefix thresholds, route-origin status, and disallowed egress.
+- Estimate blast radius for a proposed route or gateway change.
+- Reject unsafe changes with precise reasons.
+- Emit an audit log and machine-readable validation report.
+
+**C++ skills used:** rule engine, data validation, structured errors, concurrency optional.
+
+**Toolkit:** Add `ReliabilitySecurityAnalyzer`.
+
+### Project 2: Jamming, Availability, and Anomaly Analysis (Python)
+
+Analyze reliability and security telemetry.
+
+**What you'll build:**
+
+- Simulate link degradation from interference or jamming.
+- Generate telemetry streams for link margin, packet loss, latency, and route churn.
+- Detect anomalies with threshold and statistical methods.
+- Estimate service availability under gateway, POP, satellite, and laser-link failures.
+- Plot false positives/false negatives for alert thresholds.
+
+**Python skills used:** NumPy, SciPy, matplotlib, Monte Carlo simulation.
 
 ---
 
-## Protocol Reference Table
+## Technology Reference
 
-| Protocol | Spec | Problem It Solves | New/Legacy |
-|---|---|---|---|
-| SDLS | CCSDS 355.0 | Link-layer auth + encryption for space | `[NEW SPACE]` |
-| BPSec | RFC 9172 | End-to-end DTN bundle security | `[NEW SPACE]` |
-| DTLS 1.3 | RFC 9147 | Securing convergence layers | `[BOTH]` |
-| TRANSEC (DVB) | DVB-RCS2 spec | Over-the-air encryption for VSAT | `[BOTH]` |
-| AES-GCM / AES-CTR | NIST | Symmetric encryption for space links | `[BOTH]` |
-| QKD | Experimental | Future-proof key exchange | `[NEW SPACE]` |
-
-## Companies
-
-| Company | Role | New/Legacy |
+| Technology | Problem It Solves | Starlink Relevance |
 |---|---|---|
-| **L3Harris** | Military COMSEC, protected satellite comms (AEHF) | `[LEGACY]` |
-| **Northrop Grumman** | Protected tactical satcom, anti-jam | `[BOTH]` |
-| **SEAKR Engineering** | Radiation-hardened crypto processors for space | `[BOTH]` |
-| **Arqit** | Satellite-based QKD service | `[NEW SPACE]` |
-| **NASA/JPL** | SDLS and BPSec development | `[BOTH]` |
+| RPKI/ROA | Route-origin validation | BGP safety at POPs |
+| DDoS mitigation | Protect service availability | ISP operations |
+| AAA/RADIUS | Subscriber auth/accounting | Access operations |
+| RF monitoring | Detect jamming/interference | Wireless service resilience |
+| Availability modeling | Quantifies resilience | Gateway/laser/satellite redundancy |
 
-## Books & Resources
+## Where This Tech Is Used
+
+| Application | Notes |
+|---|---|
+| Starlink network operations | Routing safety and incident response |
+| Ground network security | POP/gateway management and access control |
+| Direct to Cell | Mobile-core trust boundaries |
+| Digital twin | Failure and attack simulation |
+
+## Books and Resources
 
 | Resource | Notes |
 |---|---|
-| CCSDS 355.0-B (SDLS Specification) | The link-layer security standard |
-| RFC 9172 (BPSec) | DTN security specification |
-| CCSDS 350.x (Security Green Books) | Threat analysis and architecture guides |
+| RPKI operational guides | Route-origin security |
+| BGP security references | Leaks, hijacks, filtering |
+| NIST security controls | Operational security framing |
+| Devore probability text | Statistics and availability math |

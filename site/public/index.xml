@@ -1,327 +1,124 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Escape Velocity</title><link>https://anthony-hawkins.github.io/space-networking/</link><description>Recent content on Escape Velocity</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Mon, 13 Apr 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://anthony-hawkins.github.io/space-networking/index.xml" rel="self" type="application/rss+xml"/><item><title>Module 01: CCSDS Protocol Stack</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-01/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-01/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 1 — Foundation
-&lt;strong>Builds on:&lt;/strong> None — this is your starting point&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="algebra-2-logarithms-exponentials--db-arithmetic">Algebra 2: Logarithms, Exponentials &amp;amp; dB Arithmetic&lt;/h3>
-&lt;p>This is the most immediately useful math for space communications. Every link budget, every power measurement, and every gain calculation uses decibels.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Exponentials &amp;amp; logarithms&lt;/strong> — signal power decays exponentially with distance; logarithms compress this into manageable numbers
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> dB = 10·log₁₀(P₂/P₁) — every link budget uses this&lt;/li>
-&lt;li>&lt;em>Space application:&lt;/em> adding dB values = multiplying linear powers — the language of RF engineering&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Polynomials &amp;amp; rational expressions&lt;/strong> — polynomial curve fitting for antenna gain patterns&lt;/li>
-&lt;li>&lt;strong>Logarithm properties &amp;amp; equations&lt;/strong> — converting between dB, dBW, dBm; combining gains and losses&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You can compute link budgets in dB, understand EIRP, path loss, and G/T.&lt;/p></description></item><item><title>Module 02: Foundations of Space Communications</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-02/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-02/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 1 — Foundation
-&lt;strong>Builds on:&lt;/strong> Module 01&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="algebra-2-completion--trigonometry-introduction">Algebra 2 Completion + Trigonometry Introduction&lt;/h3>
-&lt;p>You&amp;rsquo;ll finish Algebra 2 and begin trigonometry — the math that unlocks satellite geometry.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Sequences &amp;amp; summation notation&lt;/strong> — time-series data, telemetry streams, serial data patterns&lt;/li>
-&lt;li>&lt;strong>Unit circle, sin/cos/tan&lt;/strong> — the foundation for all satellite geometry
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> elevation angle = arctan(height/distance) — when can a ground station see a satellite?&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Inverse trig functions&lt;/strong> — computing angles from known distances
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> determining look angles for antenna pointing&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You understand the basic geometry of space communication — why signals weaken, how orbits affect links, and what frequency bands are used for what.&lt;/p></description></item><item><title>Module 03: Ground Segment Architecture</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-03/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-03/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 1 — Foundation
-&lt;strong>Builds on:&lt;/strong> Modules 01, 02&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="trigonometry-law-of-cosines-elevation-angles--slant-range">Trigonometry: Law of Cosines, Elevation Angles &amp;amp; Slant Range&lt;/h3>
-&lt;p>This is where trig becomes immediately practical — you&amp;rsquo;ll compute whether a ground station can see a satellite and how far away it is.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Law of sines / cosines&lt;/strong> — computing slant range (distance from ground station to satellite)
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> slant range = f(Earth radius, satellite altitude, elevation angle)&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Inverse trig: arctan, arcsin&lt;/strong> — computing elevation angle from geometry
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> minimum elevation angle determines when a satellite is &amp;ldquo;visible&amp;rdquo; (typically &amp;gt;5°)&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Polar coordinates &amp;amp; vectors intro&lt;/strong> — antenna radiation patterns are plotted in polar coordinates&lt;/li>
-&lt;li>&lt;strong>Angular velocity, arc length, radians&lt;/strong> — satellite angular rate as seen from ground&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You can compute ground station visibility, slant range, and antenna beam geometry.&lt;/p></description></item><item><title>Module 04: Delay-Tolerant Networking</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-04/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-04/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 2 — Acceleration
-&lt;strong>Builds on:&lt;/strong> Modules 01, 02, 03&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="trigonometry-completion--pre-calculus-introduction">Trigonometry Completion + Pre-Calculus Introduction&lt;/h3>
-&lt;p>Finishing trig and starting pre-calc — the bridge to calculus.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Trig review &amp;amp; polar coordinates&lt;/strong> — antenna radiation patterns are plotted in polar coordinates&lt;/li>
-&lt;li>&lt;strong>Angular velocity, arc length, radians&lt;/strong> — satellite angular rate as seen from ground&lt;/li>
-&lt;li>&lt;strong>Functions, composition, inverses&lt;/strong> — building mathematical models that chain together
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> composing coordinate transforms, signal processing chains&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Parametric equations&lt;/strong> — curves defined by a parameter (time)
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> satellite ground tracks are parametric curves (lat(t), lon(t))&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Vectors introduction&lt;/strong> — magnitude, direction, addition
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> relative position and velocity between nodes in a DTN network&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You can trace satellite ground tracks, work with antenna patterns, and reason about parametric motion.&lt;/p></description></item><item><title>Module 05: Satellite Link Engineering</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-05/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-05/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 2 — Acceleration
-&lt;strong>Builds on:&lt;/strong> Modules 01, 02, 03&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="pre-calculus-completion--calculus-i-introduction">Pre-Calculus Completion + Calculus I Introduction&lt;/h3>
-&lt;p>The math that makes satellite link design quantitative — and the start of calculus.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Exponential &amp;amp; logarithmic functions (deeper)&lt;/strong> — exponential decay, log-linear relationships
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> signal power decay models, noise floor calculations&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Conic sections — focus on ellipses&lt;/strong> — eccentricity, semi-major axis, foci
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> &lt;strong>Kepler&amp;rsquo;s orbits are ellipses&lt;/strong> — orbit shape, apogee/perigee geometry&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Calculus I: Limits &amp;amp; continuity&lt;/strong> — the foundation for derivatives&lt;/li>
-&lt;li>&lt;strong>Calculus I: Derivatives — definition, power rule&lt;/strong> — rate of change
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> Doppler shift = d(range)/dt — the rate of change of distance to a satellite&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You understand orbit shapes (ellipses), can compute Doppler shift conceptually, and can build complete link budgets.&lt;/p></description></item><item><title>Module 06: DVB Standards &amp; Satellite Broadband</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-06/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-06/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 2 — Acceleration
-&lt;strong>Builds on:&lt;/strong> Modules 03, 05&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="calculus-i-derivatives--chain-rule-optimization--applications">Calculus I: Derivatives — Chain Rule, Optimization &amp;amp; Applications&lt;/h3>
-&lt;p>Deepening your calculus with the tools for optimization and rate-of-change analysis.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Chain rule, product/quotient rules&lt;/strong> — composing derivatives of complex functions
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> Doppler shift rate — how fast Doppler changes during a pass&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Implicit differentiation&lt;/strong> — related rates in orbital rendezvous&lt;/li>
-&lt;li>&lt;strong>Applications — optimization, related rates&lt;/strong> — finding maxima/minima
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> optimizing antenna pointing angle for maximum gain&lt;/li>
-&lt;li>&lt;em>Space application:&lt;/em> maximum data throughput given power and bandwidth constraints&lt;/li>
-&lt;li>&lt;em>Space application:&lt;/em> ACM optimization — choosing the best MODCOD for current conditions&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You can optimize system parameters, compute rate-of-change for dynamic systems, and understand adaptive coding/modulation mathematically.&lt;/p></description></item><item><title>Module 07: 5G Non-Terrestrial Networks (NTN)</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-07/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-07/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 2 — Acceleration
-&lt;strong>Builds on:&lt;/strong> Modules 05, 06&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="calculus-i-completion--calculus-ii-introduction">Calculus I Completion + Calculus II Introduction&lt;/h3>
-&lt;p>Finishing single-variable calculus and starting the tools for signal analysis.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Integrals — fundamental theorem of calculus&lt;/strong> — accumulating quantities over time
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> total signal energy = ∫ power(t) dt over a satellite pass&lt;/li>
-&lt;li>&lt;em>Space application:&lt;/em> total data transferred = ∫ data_rate(t) dt during a contact window&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Integration techniques — substitution, parts&lt;/strong>&lt;/li>
-&lt;li>&lt;strong>Applications of integrals — area, average value&lt;/strong>
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> average data rate over a variable-capacity link&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Calculus II intro: sequences &amp;amp; series&lt;/strong> — infinite sums and convergence
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> error correction coding theory relies on series expansions&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You can compute signal energy budgets, total data transfer over variable links, and begin understanding spectral analysis.&lt;/p></description></item><item><title>Module 08: LEO Constellations &amp; Routing</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-08/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-08/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 3 — Depth
-&lt;strong>Builds on:&lt;/strong> Modules 03, 04, 05&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="calculus-ii-completion--calculus-iii-3d-vectors">Calculus II Completion + Calculus III: 3D Vectors&lt;/h3>
-&lt;p>The math that makes constellation engineering possible — signal decomposition and 3D orbital geometry.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Calculus II: Taylor/Maclaurin series&lt;/strong> — approximating complex functions&lt;/li>
-&lt;li>&lt;strong>Calculus II: Fourier series intro&lt;/strong> — decomposing signals into frequency components
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> understanding bandwidth, spectral efficiency, why OFDM works&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Calculus III: Vectors in 3D&lt;/strong> — position, velocity, acceleration vectors
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> satellite state vector = [x, y, z, vx, vy, vz]&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Calc III: Dot product &amp;amp; cross product&lt;/strong> — angles between vectors, perpendicular components
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> angular momentum = r × v, orbital plane normal vector&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Calc III: Partial derivatives &amp;amp; gradients&lt;/strong> — how functions change in multiple directions
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> link quality gradient as elevation, range, and weather change simultaneously&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You can propagate orbits, compute satellite positions in 3D, and work with constellation geometry.&lt;/p></description></item><item><title>Module 09: Optical Inter-Satellite Links (OISL)</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-09/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-09/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 3 — Depth
-&lt;strong>Builds on:&lt;/strong> Modules 05, 08&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="calculus-iii-completion--linear-algebra">Calculus III Completion + Linear Algebra&lt;/h3>
-&lt;p>Coordinate transforms and rotation matrices — the math behind reference frame conversions.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Calc III: Coordinate systems&lt;/strong> — Cartesian, spherical, cylindrical
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> lat/lon/alt ↔ ECEF ↔ ECI — the core coordinate frames for space&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Linear algebra: Matrices&lt;/strong> — operations, inverse, transpose, determinant&lt;/li>
-&lt;li>&lt;strong>Linear algebra: Rotation matrices &amp;amp; coordinate transforms&lt;/strong> — the core tool for space math
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> ECI ↔ ECEF ↔ topocentric ↔ body frame — every space system uses these&lt;/li>
-&lt;li>&lt;em>Space application:&lt;/em> pointing vectors for laser terminals&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Linear algebra: Eigenvalues &amp;amp; eigenvectors (basics)&lt;/strong> — stability analysis
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> principal axes, stability of pointing systems&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You can transform between any coordinate frame and implement reference frame conversions — essential for laser pointing.&lt;/p></description></item><item><title>Module 10: SDN &amp; Autonomous Network Management</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-10/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-10/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 3 — Depth
-&lt;strong>Builds on:&lt;/strong> Modules 03, 08, 09&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="linear-algebra-applied--optimization-introduction">Linear Algebra (Applied) + Optimization Introduction&lt;/h3>
-&lt;p>Applying linear algebra to real systems and beginning optimization.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Linear algebra: Least squares&lt;/strong> — fitting models to noisy data
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> orbit determination from noisy tracking data&lt;/li>
-&lt;li>&lt;em>Space application:&lt;/em> fitting traffic demand models to observations&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Optimization intro: Linear programming (LP)&lt;/strong> — maximizing/minimizing subject to constraints
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> ground station contact scheduling&lt;/li>
-&lt;li>&lt;em>Space application:&lt;/em> traffic engineering — optimal link utilization&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Finite state machines&lt;/strong> — formal models of protocol and system behavior
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> SDN controller states, satellite mode transitions&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You can formulate optimization problems, fit models to data, and design formal state machine specifications.&lt;/p></description></item><item><title>Module 11: Security in Space Networks</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-11/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-11/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 4 — Mastery
-&lt;strong>Builds on:&lt;/strong> Modules 01, 04, 06&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="probability--statistics">Probability &amp;amp; Statistics&lt;/h3>
-&lt;p>The math behind noise analysis, error rates, and system reliability.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Random variables, PDF, CDF, expectation, variance&lt;/strong> — statistical foundations&lt;/li>
-&lt;li>&lt;strong>Gaussian (Normal) distribution &amp;amp; Central Limit Theorem&lt;/strong> — the basis for noise modeling
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> thermal noise is Gaussian → this is why Eb/N₀ and BER curves work&lt;/li>
-&lt;li>&lt;em>Space application:&lt;/em> understanding false alarm rates in intrusion detection&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Rayleigh &amp;amp; Rician fading&lt;/strong> — multipath models for satellite-ground links
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> channel modeling, link availability statistics&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Markov chains (basics)&lt;/strong> — state-based probabilistic models
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> channel state modeling, protocol state machines, attack modeling&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You can compute full link budgets with noise, BER, rain fade availability, and model security detection rates.&lt;/p></description></item><item><title>Module 12: Capstone Projects</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/module-12/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/module-12/</guid><description>&lt;p>&lt;strong>Phase:&lt;/strong> 4 — Mastery
-&lt;strong>Builds on:&lt;/strong> All previous modules&lt;/p>
-&lt;hr>
-&lt;h2 id="-math-youll-learn">🔢 Math You&amp;rsquo;ll Learn&lt;/h2>
-&lt;h3 id="graph-theory--optimization">Graph Theory &amp;amp; Optimization&lt;/h3>
-&lt;p>The final math module — algorithms for routing, scheduling, and optimization.&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>Graph fundamentals&lt;/strong> — nodes, edges, weighted, directed&lt;/li>
-&lt;li>&lt;strong>Shortest path — Dijkstra, Bellman-Ford&lt;/strong> — optimal routing through networks
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> satellite routing, ISL path selection&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Time-expanded graphs&lt;/strong> — modeling networks that change over time
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> Contact Graph Routing (CGR) — the core DTN routing algorithm&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>Linear programming (LP) and Integer LP&lt;/strong> — optimization under constraints
-&lt;ul>
-&lt;li>&lt;em>Space application:&lt;/em> traffic engineering, ground station contact scheduling&lt;/li>
-&lt;li>&lt;em>Space application:&lt;/em> resource allocation under limited capacity&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>🔓 After this:&lt;/strong> You can implement CGR, optimize traffic engineering, and design full-system scheduling algorithms.&lt;/p></description></item><item><title>Sol 1 - The Numbers</title><link>https://anthony-hawkins.github.io/space-networking/blog/2026-04-13-the-numbers/</link><pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/blog/2026-04-13-the-numbers/</guid><description>My starting point and getting organized.</description></item><item><title>About</title><link>https://anthony-hawkins.github.io/space-networking/about/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/about/</guid><description>&lt;h1 id="about-this-site">About This Site&lt;/h1>
-&lt;p>&lt;strong>Escape Velocity&lt;/strong> is a personal learning journal documenting my journey from terrestrial networking (TCP, IP, gRPC, edge protocols) and software engineering into the world of satellite communications and space-based networks.&lt;/p>
-&lt;h2 id="who-i-am">Who I Am&lt;/h2>
-&lt;p>I’m a lead software engineer specializing in TCP-based networking, IP, gRPC, edge protocols, and distributed systems, currently working in the payments industry. I’ve been working in the payments domain for nearly 15 years and am ready for a pivot into a new industry. One that I’ve always admired: the new space age.&lt;/p></description></item><item><title>Learning Path</title><link>https://anthony-hawkins.github.io/space-networking/curriculum/learning-path/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/curriculum/learning-path/</guid><description>&lt;h1 id="learning-path--skill-tree--roadmap">Learning Path — Skill Tree &amp;amp; Roadmap&lt;/h1>
-&lt;p>Your starting point: &lt;strong>Algebra 1 (through quadratics)&lt;/strong>, senior-level networking expertise, new to C++.&lt;/p>
-&lt;p>Each module teaches the math you need, then applies it to a space networking topic with hands-on C++ and Python projects. Start at Module 01 and work forward.&lt;/p>
-&lt;hr>
-&lt;h2 id="the-skill-tree">The Skill Tree&lt;/h2>
-&lt;pre tabindex="0">&lt;code>YOUR STARTING SKILLS WHAT THEY UNLOCK (Module 01)
-───────────────────── ────────────────────────────
-Algebra 1 (quadratics) ──────────────► dB arithmetic, basic link math
-TCP/IP / gRPC expertise ──────────────► CCSDS protocol stack, DTN concepts,
- protocol state machines, SDN, security
-Software engineering ──────────────► C++ fundamentals, build systems
-
-
-MATH UNLOCKS SPACE NETWORKING UNLOCKS
-──────────── ────────────────────────
-Algebra 2 + Trig ──────────────► Link budgets, elevation angles,
-(Modules 01–03) antenna beam geometry, Doppler (basic)
-
-Pre-Calculus ──────────────► Frequency analysis concepts,
-(Modules 04–05) signal power, modulation intuition,
- Kepler orbits (ellipses!)
-
-Calculus I ──────────────► Doppler rate-of-change, orbital velocity,
-(Modules 05–07) signal energy over a pass, optimization
-
-Calculus II ──────────────► Fourier basics, spectral efficiency,
-(Modules 07–08) coding theory
-
-Calculus III ──────────────► Orbital mechanics vectors, satellite
-(Modules 08–09) position/velocity, constellation geometry
-
-Linear Algebra ──────────────► Coordinate frame transforms (ECI↔ECEF),
-(Modules 09–10) rotation matrices, antenna patterns
-
-Probability &amp;amp; Stats ──────────────► BER curves, noise analysis, rain fade
-(Module 11) availability, channel modeling
-
-Graph Theory ──────────────► Contact Graph Routing, Dijkstra,
-(Module 12) traffic engineering optimization
-&lt;/code>&lt;/pre>&lt;hr>
-&lt;h2 id="phase-1-foundation-modules-0103">Phase 1: Foundation (Modules 01–03)&lt;/h2>
-&lt;blockquote>
-&lt;p>&lt;strong>Math:&lt;/strong> Algebra 2 → Trigonometry
-&lt;strong>C++:&lt;/strong> Language fundamentals → OOP
-&lt;strong>Space:&lt;/strong> Protocol concepts + industry landscape&lt;/p></description></item><item><title>Skill Tree</title><link>https://anthony-hawkins.github.io/space-networking/skill-tree/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://anthony-hawkins.github.io/space-networking/skill-tree/</guid><description/></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Escape Velocity</title>
+    <link>http://localhost:1313/space-networking/</link>
+    <description>Recent content on Escape Velocity</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/space-networking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Module 01: Starlink System Model, Public Data, and RF Units</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-01/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-01/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 1 - Foundation&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; None - this is your starting point&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;algebra-2-logarithms-exponentials-ratios-and-db-arithmetic&#34;&gt;Algebra 2: Logarithms, Exponentials, Ratios, and dB Arithmetic&lt;/h3&gt;&#xA;&lt;p&gt;Starlink is an RF network and an ISP. You need dB math immediately because link budgets, antenna gain, path loss, EIRP, G/T, and noise density all use logarithmic units.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Exponentials and logarithms&lt;/strong&gt; - signal power changes across huge ratios, and logarithms make those ratios usable.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; dB = 10 log10(P2/P1), used for every gain/loss term in an access or gateway link.&lt;/li&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; adding dB values is multiplying linear powers, which is how link budgets become readable.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Unit conversions and ratios&lt;/strong&gt; - W, mW, dBW, dBm, Hz, MHz, GHz, bps, Mbps, Gbps.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; convert public frequency bands and bandwidths from FCC filings into engineering units.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Scientific notation and estimation&lt;/strong&gt; - approximate delay, range, and free-space path-loss ratios.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; compare LEO propagation at roughly 550 km with GEO at 35,786 km.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Basic tabular data handling&lt;/strong&gt; - read and validate numeric fields from public data files.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; parse TLE/OEM-style orbital data and FCC frequency tables.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can read public Starlink/FCC technical data, convert RF units, estimate delay/path loss, and avoid treating proprietary Starlink internals as known facts.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 02: Starlink RF Foundations and Phased-Array Access Links</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-02/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-02/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 1 - Foundation&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; Module 01&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;algebra-2-completion--trigonometry-introduction&#34;&gt;Algebra 2 Completion + Trigonometry Introduction&lt;/h3&gt;&#xA;&lt;p&gt;You will finish the Algebra 2 pieces needed for RF calculations and begin trigonometry, the math used for satellite visibility, phased-array steering, and handover timing.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Sequences and summation notation&lt;/strong&gt; - time-series link quality, telemetry samples, and scheduler history.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Unit circle, sine, cosine, tangent&lt;/strong&gt; - the foundation for beam direction and satellite geometry.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; user-terminal beam steering and satellite look angles.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Inverse trig functions&lt;/strong&gt; - compute angles from known distances and vectors.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; elevation and scan angle from terminal to satellite.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Frequency and wavelength relationship&lt;/strong&gt; - lambda = c/f.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; antenna size, gain, and beamwidth depend on wavelength.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can reason about Starlink access-link geometry, why phased arrays are required for LEO broadband, and how slant range drives delay and path loss.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-03/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-03/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 1 - Foundation&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; Modules 01 and 02&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;trigonometry-law-of-cosines-elevation-angles-slant-range-and-latency-geometry&#34;&gt;Trigonometry: Law of Cosines, Elevation Angles, Slant Range, and Latency Geometry&lt;/h3&gt;&#xA;&lt;p&gt;This is where trig becomes operational: which gateways can see which satellites, what delay a path adds, and when a gateway/POP choice is better or worse.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Law of sines and cosines&lt;/strong&gt; - compute slant range from Earth radius, satellite altitude, and elevation angle.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; determine whether a satellite can use a candidate gateway at a given time.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Inverse trig&lt;/strong&gt; - compute elevation and azimuth from geometry.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; gateway visibility and antenna pointing.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Radians, angular velocity, and arc length&lt;/strong&gt; - understand how fast geometry changes.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; estimate pass duration and gateway handover timing.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Latency decomposition&lt;/strong&gt; - add terminal-to-satellite, satellite-to-gateway, gateway-to-POP, and POP-to-destination components.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can model gateway visibility, POP egress latency, and the terrestrial networking side of Starlink service.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 04: Variable Links, Handover Resilience, and Transport Behavior</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-04/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-04/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 2 - Acceleration&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; Modules 01, 02, and 03&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;trigonometry-completion--pre-calculus-introduction&#34;&gt;Trigonometry Completion + Pre-Calculus Introduction&lt;/h3&gt;&#xA;&lt;p&gt;This module bridges static geometry and time-varying behavior. Starlink links change continuously as satellites move, beams switch, gateways change, and capacity varies.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Trig review and polar coordinates&lt;/strong&gt; - antenna patterns and scan angle.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Angular velocity, arc length, radians&lt;/strong&gt; - pass duration and handover cadence.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Functions, composition, and inverses&lt;/strong&gt; - chain geometry, link quality, and transport behavior.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; link quality as a function of elevation, weather, beam load, and gateway state.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Parametric equations&lt;/strong&gt; - model satellite position and link quality over time.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; range(t), elevation(t), capacity(t), RTT(t).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Piecewise functions&lt;/strong&gt; - model connected, degraded, handover, failed, and recovered states.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Queueing intuition&lt;/strong&gt; - backlog accumulation during capacity drops or outages.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can model variable LEO links and reason about how normal internet transports behave during handover and capacity changes.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-05/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-05/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 2 - Acceleration&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; Modules 01, 02, 03, and 04&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;pre-calculus-completion--calculus-i-introduction&#34;&gt;Pre-Calculus Completion + Calculus I Introduction&lt;/h3&gt;&#xA;&lt;p&gt;This module makes link design quantitative and introduces derivatives as rates of change.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Exponential and logarithmic functions, deeper pass&lt;/strong&gt; - log-linear signal models and noise-density calculations.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; link margin changes across range, frequency, antenna gain, and weather.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Conic sections and orbital geometry preview&lt;/strong&gt; - why shells and orbital altitude matter.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Limits and continuity&lt;/strong&gt; - foundation for differentiating link-quality curves.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Derivatives and rate of change&lt;/strong&gt; - range rate and Doppler intuition.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; Doppler is driven by d(range)/dt; margin sensitivity is d(margin)/d(parameter).&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Sensitivity analysis&lt;/strong&gt; - which parameter matters most: elevation, rain rate, scan angle, bandwidth, or antenna gain.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can build Starlink-style access and gateway link budgets, reason about rain fade and scan loss, and explain which assumptions dominate the result.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-06/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-06/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 2 - Acceleration&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; Modules 02, 04, and 05&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;calculus-i-derivatives-chain-rule-optimization-and-applications&#34;&gt;Calculus I: Derivatives, Chain Rule, Optimization, and Applications&lt;/h3&gt;&#xA;&lt;p&gt;Scheduling is optimization under changing constraints. You will use derivatives and piecewise functions to reason about marginal capacity, MCS thresholds, and beam-resource allocation.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Chain rule, product rule, quotient rule&lt;/strong&gt; - composed capacity and link-quality functions.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; throughput depends on SNR, beam load, bandwidth, and scheduler policy.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Related rates&lt;/strong&gt; - changing elevation changes range, FSPL, margin, and capacity.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Optimization&lt;/strong&gt; - choose the best allocation under power, bandwidth, beam, and fairness constraints.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; decide which terminal or beam gets the next unit of resource.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Piecewise functions&lt;/strong&gt; - MCS thresholds and outage behavior.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can simulate a Starlink-like broadband scheduler and explain fairness/throughput trade-offs without assuming Starlink&amp;rsquo;s proprietary MAC.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-07/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-07/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 2 - Acceleration&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; Modules 04, 05, and 06&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;calculus-i-completion--calculus-ii-introduction&#34;&gt;Calculus I Completion + Calculus II Introduction&lt;/h3&gt;&#xA;&lt;p&gt;You will finish single-variable calculus and start the math needed for accumulated capacity and signal analysis.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Integrals and the Fundamental Theorem of Calculus&lt;/strong&gt; - accumulated quantities over time.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; total data transferred during a satellite visibility window equals the integral of rate over time.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Average value of a function&lt;/strong&gt; - average cell capacity during a pass.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Integration techniques&lt;/strong&gt; - approximate area under variable-rate curves.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Sequences and series intro&lt;/strong&gt; - coding and signal-analysis preparation.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Doppler/timing budget analysis&lt;/strong&gt; - rate and accumulated error over time.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can estimate Direct to Cell contact windows, total data delivered, timing constraints, and backhaul requirements.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-08/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-08/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 3 - Depth&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; Modules 03, 04, 05, and 07&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;calculus-ii-completion--calculus-iii-3d-vectors&#34;&gt;Calculus II Completion + Calculus III: 3D Vectors&lt;/h3&gt;&#xA;&lt;p&gt;This is the math that makes constellation routing possible: state vectors, line-of-sight, topology snapshots, and gradients across several changing dimensions.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Taylor/Maclaurin series&lt;/strong&gt; - approximating complex functions.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Fourier series intro&lt;/strong&gt; - signal and bandwidth intuition.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;3D vectors&lt;/strong&gt; - position, velocity, and acceleration.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; satellite state vector = [x, y, z, vx, vy, vz].&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Dot product and cross product&lt;/strong&gt; - angles, visibility, orbital planes, and relative geometry.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Partial derivatives and gradients&lt;/strong&gt; - link quality changes with range, elevation, weather, gateway state, and load.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can compute LEO satellite positions, build topology snapshots, and run routing algorithms over a changing constellation graph.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-09/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-09/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 3 - Depth&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; Modules 05 and 08&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;calculus-iii-completion--linear-algebra&#34;&gt;Calculus III Completion + Linear Algebra&lt;/h3&gt;&#xA;&lt;p&gt;Optical inter-satellite links require coordinate transforms, relative motion, pointing vectors, and graph constraints.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Coordinate systems&lt;/strong&gt; - Cartesian, spherical, cylindrical, ECI, ECEF, topocentric, and satellite body frames.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; transform from global satellite positions to laser-terminal pointing vectors.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Matrices&lt;/strong&gt; - operations, inverse, transpose, determinant.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Rotation matrices and coordinate transforms&lt;/strong&gt; - core tool for laser pointing and geometry.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; ECI to ECEF to body frame to terminal frame.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Eigenvalues/eigenvectors basics&lt;/strong&gt; - stability and principal-axis intuition.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Point-ahead geometry&lt;/strong&gt; - target where the receiving satellite will be when light arrives, not where it is now.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Graph constraints&lt;/strong&gt; - limited laser terminals create link-assignment constraints.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can model laser-link geometry, assign constrained OISLs, and study route behavior when the mesh changes.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-10/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-10/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 3 - Depth&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; Modules 03, 08, and 09&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;applied-linear-algebra--optimization-introduction&#34;&gt;Applied Linear Algebra + Optimization Introduction&lt;/h3&gt;&#xA;&lt;p&gt;Topology work becomes operational when you optimize under capacity, policy, and failure constraints.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Least squares&lt;/strong&gt; - fit demand or latency models to noisy telemetry.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; forecast traffic demand and link utilization.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Linear programming&lt;/strong&gt; - maximize/minimize subject to constraints.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; minimize maximum link utilization across satellite, gateway, POP, and peering links.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Multi-commodity flow intuition&lt;/strong&gt; - many source/destination demands share the same network.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Finite state machines&lt;/strong&gt; - controller states, rollout states, and failure remediation.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Control-loop basics&lt;/strong&gt; - avoid unstable automation that thrashes routes or config.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can design a topology controller that consumes moving-network state and emits defensible routing or Segment Routing policies.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 11: Starlink Security, Resilience, and Operational Reliability</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-11/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-11/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 4 - Mastery&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; Modules 03, 05, 07, and 10&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;probability-and-statistics&#34;&gt;Probability and Statistics&lt;/h3&gt;&#xA;&lt;p&gt;This module uses probability to reason about noise, failures, alarms, and service availability.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Random variables, PDF, CDF, expectation, variance&lt;/strong&gt; - statistical foundations.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Gaussian distribution and Central Limit Theorem&lt;/strong&gt; - noise and measurement models.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; link telemetry and anomaly thresholds.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Rayleigh/Rician fading concepts&lt;/strong&gt; - wireless-channel variability.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Markov chains basics&lt;/strong&gt; - state transitions for link health and failure recovery.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;False positives and false negatives&lt;/strong&gt; - security and operations alerts.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Availability modeling&lt;/strong&gt; - gateway diversity, laser mesh redundancy, and correlated failures.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can estimate reliability, detect anomalies, and evaluate security policy changes using quantitative evidence.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Module 12: Starlink-Focused Capstone Projects</title>
+      <link>http://localhost:1313/space-networking/curriculum/module-12/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/module-12/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Phase:&lt;/strong&gt; 4 - Mastery&#xA;&lt;strong&gt;Builds on:&lt;/strong&gt; All previous modules&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;math-youll-learn&#34;&gt;Math You&amp;rsquo;ll Learn&lt;/h2&gt;&#xA;&lt;h3 id=&#34;graph-theory-and-optimization&#34;&gt;Graph Theory and Optimization&lt;/h3&gt;&#xA;&lt;p&gt;The final math module turns the moving Starlink-inspired network into graphs, flows, assignments, schedules, and online decisions.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Graph fundamentals&lt;/strong&gt; - nodes, edges, directed/undirected, weighted, capacities.&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Shortest paths&lt;/strong&gt; - Dijkstra, Bellman-Ford, A*, k-shortest paths.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; satellite/gateway/POP routing across topology snapshots.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Time-expanded graphs&lt;/strong&gt; - represent a moving network through time.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; scheduled topology and route planning.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Flows and cuts&lt;/strong&gt; - max flow, min cut, min-cost flow.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; gateway/POP capacity and traffic-engineering constraints.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Integer and linear programming&lt;/strong&gt; - optimize under discrete constraints.&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;em&gt;Starlink application:&lt;/em&gt; limited laser terminals, gateway assignment, maintenance windows.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Online algorithms&lt;/strong&gt; - update decisions as demand, failures, and topology change.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;strong&gt;After this:&lt;/strong&gt; You can build portfolio-grade Starlink-facing systems that combine RF, topology, routing, automation, and resilience.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Sol 1 - The Numbers</title>
+      <link>http://localhost:1313/space-networking/blog/2026-04-13-the-numbers/</link>
+      <pubDate>Mon, 13 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/blog/2026-04-13-the-numbers/</guid>
+      <description>My starting point and getting organized.</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/space-networking/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/about/</guid>
+      <description>&lt;h1 id=&#34;about-this-site&#34;&gt;About This Site&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Escape Velocity&lt;/strong&gt; is a personal learning journal documenting my journey from terrestrial networking (TCP, IP, gRPC, edge protocols) and software engineering into the world of satellite communications and space-based networks.&lt;/p&gt;&#xA;&lt;h2 id=&#34;who-i-am&#34;&gt;Who I Am&lt;/h2&gt;&#xA;&lt;p&gt;I’m a lead software engineer specializing in TCP-based networking, IP, gRPC, edge protocols, and distributed systems, currently working in the payments industry. I’ve been working in the payments domain for nearly 15 years and am ready for a pivot into a new industry. One that I’ve always admired: the new space age.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Learning Path</title>
+      <link>http://localhost:1313/space-networking/curriculum/learning-path/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/curriculum/learning-path/</guid>
+      <description>&lt;h1 id=&#34;learning-path---starlink-network-and-topology-roadmap&#34;&gt;Learning Path - Starlink Network and Topology Roadmap&lt;/h1&gt;&#xA;&lt;p&gt;Your starting point: &lt;strong&gt;Algebra 1 through quadratics&lt;/strong&gt;, senior-level networking expertise, and new-to-intermediate C++.&lt;/p&gt;&#xA;&lt;p&gt;Each module teaches the math first, then applies it to a Starlink-relevant networking topic with C++ and Python projects. The sequence intentionally moves from simpler RF/link geometry to dynamic graphs, optical mesh scheduling, traffic engineering, and production operations.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;skill-tree&#34;&gt;Skill Tree&lt;/h2&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;div style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&#xA;&lt;table style=&#34;border-spacing:0;padding:0;margin:0;border:0;&#34;&gt;&lt;tr&gt;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 1&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 2&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 3&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 4&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 5&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 6&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 7&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 8&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt; 9&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;10&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;11&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;12&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;13&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;14&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;15&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;16&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;17&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;18&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;19&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;20&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;21&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;22&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;23&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;24&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;25&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;26&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;27&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;28&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;29&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;30&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;31&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;32&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;33&#xA;&lt;/span&gt;&lt;span style=&#34;white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f&#34;&gt;34&#xA;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&#xA;&lt;td style=&#34;vertical-align:top;padding:0;margin:0;border:0;;width:100%&#34;&gt;&#xA;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-text&#34; data-lang=&#34;text&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;YOUR STARTING SKILLS                    WHAT THEY UNLOCK&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;---------------------                   ----------------&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Algebra 1                -------------&amp;gt; dB math, path loss, link ratios&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;TCP/IP / gRPC expertise  -------------&amp;gt; Starlink ground network, BGP/IS-IS,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         Segment Routing, topology services&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Software engineering     -------------&amp;gt; C++ toolkit, Python analysis,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;                                         automation and digital twin projects&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;MATH UNLOCKS                            STARLINK NETWORKING UNLOCKS&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;------------                            ---------------------------&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Algebra 2 + Trig        -------------&amp;gt; Ku/Ka/E-band links, phased-array&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Modules 01-03)                         beams, gateway visibility, POP paths&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Pre-Calculus            -------------&amp;gt; Time-varying link quality, handover&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Modules 04-05)                         state, Doppler intuition, rain fade&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Calculus I              -------------&amp;gt; Link-margin sensitivity, scheduler&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Modules 05-07)                         optimization, MCS and capacity curves&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Calculus II             -------------&amp;gt; Total data over passes, spectral&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Modules 07-08)                         efficiency, shell/routing analysis&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Calculus III            -------------&amp;gt; State vectors, line-of-sight geometry,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Modules 08-09)                         constellation topology snapshots&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Linear Algebra          -------------&amp;gt; ECI/ECEF/body-frame transforms,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Modules 09-10)                         laser pointing, topology control&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Probability &amp;amp; Stats     -------------&amp;gt; Availability, jamming/interference,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Module 11)                             telemetry anomaly detection&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;Graph Theory            -------------&amp;gt; Time-expanded graphs, k-shortest path,&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;(Module 12)                             min-cost flow, laser/gateway scheduling&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&#xA;&lt;/div&gt;&#xA;&lt;/div&gt;&lt;hr&gt;&#xA;&lt;h2 id=&#34;phase-1-foundation-modules-01-03&#34;&gt;Phase 1: Foundation (Modules 01-03)&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;Math:&lt;/strong&gt; Algebra 2 to Trigonometry&#xA;&lt;strong&gt;C++:&lt;/strong&gt; Language fundamentals to OOP&#xA;&lt;strong&gt;Space/Network:&lt;/strong&gt; Starlink public system model, RF access links, gateways, POPs, and ISP routing&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Skill Tree</title>
+      <link>http://localhost:1313/space-networking/skill-tree/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/space-networking/skill-tree/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

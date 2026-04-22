@@ -1,147 +1,138 @@
 ---
-title: "Module 08: LEO Constellations & Routing"
-module_number: 08
-weight: 08
+title: "Module 08: Starlink LEO Constellations, Shells, Routing, and Latency"
+module_number: 8
+weight: 8
 ---
 
 
-**Phase:** 3 — Depth
-**Builds on:** Modules 03, 04, 05
+**Phase:** 3 - Depth
+**Builds on:** Modules 03, 04, 05, and 07
 
 ---
 
-## 🔢 Math You'll Learn
+## Math You'll Learn
 
 ### Calculus II Completion + Calculus III: 3D Vectors
 
-The math that makes constellation engineering possible — signal decomposition and 3D orbital geometry.
+This is the math that makes constellation routing possible: state vectors, line-of-sight, topology snapshots, and gradients across several changing dimensions.
 
-- **Calculus II: Taylor/Maclaurin series** — approximating complex functions
-- **Calculus II: Fourier series intro** — decomposing signals into frequency components
-  - *Space application:* understanding bandwidth, spectral efficiency, why OFDM works
-- **Calculus III: Vectors in 3D** — position, velocity, acceleration vectors
-  - *Space application:* satellite state vector = [x, y, z, vx, vy, vz]
-- **Calc III: Dot product & cross product** — angles between vectors, perpendicular components
-  - *Space application:* angular momentum = r × v, orbital plane normal vector
-- **Calc III: Partial derivatives & gradients** — how functions change in multiple directions
-  - *Space application:* link quality gradient as elevation, range, and weather change simultaneously
+- **Taylor/Maclaurin series** - approximating complex functions.
+- **Fourier series intro** - signal and bandwidth intuition.
+- **3D vectors** - position, velocity, and acceleration.
+  - *Starlink application:* satellite state vector = [x, y, z, vx, vy, vz].
+- **Dot product and cross product** - angles, visibility, orbital planes, and relative geometry.
+- **Partial derivatives and gradients** - link quality changes with range, elevation, weather, gateway state, and load.
 
-**🔓 After this:** You can propagate orbits, compute satellite positions in 3D, and work with constellation geometry.
+**After this:** You can compute LEO satellite positions, build topology snapshots, and run routing algorithms over a changing constellation graph.
 
 **Resources:**
-- *Calculus: Early Transcendentals* — Stewart (Chapters 7–14)
-- *Orbital Mechanics for Engineering Students* (Curtis) — applies Calc III directly
-- 3Blue1Brown — *Essence of Linear Algebra* (watch early for context)
-- 3Blue1Brown — *But what is a Fourier series?*
+
+- Stewart, *Calculus: Early Transcendentals*, Chapters 7-14
+- Curtis, *Orbital Mechanics for Engineering Students*
+- Handley, "Delay is Not an Option"
+- Bhattacherjee/Singla, "Network Topology Design at 27,000 km/hour"
+- Hypatia LEO simulator
 
 ---
 
-## 🛰️ What You'll Learn
+## What You'll Learn
 
-How to design, model, and route traffic through large LEO constellations. This is where your networking skills become your superpower — constellation routing is essentially distributed systems + graph theory under extreme dynamism.
-
-### The Problem
-A single LEO satellite sees a ground station for ~5–10 minutes per pass. A constellation of thousands of satellites creates a **continuously changing mesh topology** where:
-- Neighbors change every few minutes
-- Inter-satellite link (ISL) distances vary with orbital geometry
-- Ground station handover happens every ~15 seconds for a user terminal
-- You need end-to-end latency competitive with terrestrial fiber (~20–40ms)
+This is the first core topology module. The goal is to model a Starlink-inspired constellation using public shell/orbital data where possible, then route traffic across satellites, gateways, POPs, and terrestrial destinations.
 
 ### Constellation Design
-- Walker Delta and Walker Star patterns
-- Orbital planes, phasing, and the "seam" problem (counter-rotating planes)
-- Constellation parameters: altitude, inclination, satellites/plane, number of planes
-- Coverage analysis: latitude-dependent performance
-- Starlink's shell architecture (540km, 550km, 570km shells)
 
-### Inter-Satellite Link Routing
-- **Static routing:** Pre-computed based on orbital mechanics (deterministic topology)
-- **Shortest-path:** Modified Dijkstra over time-varying topology snapshots
-- **Segment routing:** Pre-computed path segments, stitched at runtime
-- **+Grid routing:** Exploiting the regular grid structure of Walker constellations
-- **Bent-pipe vs. ISL:** When satellites relay to each other vs. always bounce to ground
-- Latency optimization: ISL path vs. fiber path — when does space routing win?
+- Starlink shell architecture: altitude, inclination, planes, satellites per plane, and phasing.
+- Walker Delta/Star patterns as useful simplifications.
+- Public Starlink shell data vs simplified models.
+- Coverage analysis, latitude effects, and elevation masks.
+- Partial deployment, satellite churn, deorbit/replacement, and operational topology changes.
 
-### Ground Segment Integration
-- User terminal handover: beam switching, cell assignment
-- Gateway handover and load balancing
-- POP (Point of Presence) integration with terrestrial internet
-- **This is where your edge routing experience is directly applicable**
+### Routing and Latency
 
-### Traffic Engineering & QoS
-- Capacity allocation across ISL topology
-- Traffic matrices for a global constellation
-- Congestion management when ISL capacity is limited
-- QoS differentiation: real-time (voice/video) vs. bulk transfer
+- Time-varying topology snapshots from deterministic orbital motion.
+- Shortest path, A*, k-shortest paths, ECMP, and constrained shortest path.
+- Route churn minimization: avoid changing paths too often when a slightly worse path is stable.
+- Gateway selection and POP egress as part of routing.
+- Latency vs terrestrial fiber: when LEO can beat fiber and when it cannot.
+- Failure-aware rerouting around satellites, gateways, POPs, and links.
+
+### Public Research Patterns
+
+- +Grid routing and structure-aware paths.
+- Motif-based and long-short-link topology ideas.
+- Time-expanded graphs as a bridge to Module 12.
+- How to validate against public simulators without copying assumptions blindly.
 
 ---
 
-## 💻 C++ & Python Skills
+## C++ and Python Skills
 
-**C++ focus:** Eigen library, Boost.Graph, `std::async`/`std::future`, spatial algorithms
-**Python focus:** Skyfield, Plotly/Cartopy for 3D visualization, NetworkX
+**C++ focus:** Eigen, Boost.Graph, `std::async`, spatial algorithms, deterministic simulation.
 
-This module introduces **Eigen** for linear algebra and **async patterns** for concurrent computation.
+**Python focus:** Skyfield, NetworkX, Plotly/Cartopy, latency heatmaps, animation.
 
 ---
 
 ## Projects
 
-### Project 1: Constellation Topology Engine (C++)
+### Project 1: Starlink-Inspired Constellation Topology Engine (C++)
 
-Build a C++ engine that computes satellite positions and inter-satellite link topology for a Walker constellation.
-
-**What you'll build:**
-- Generate Walker Delta constellation parameters (altitude, inclination, planes, sats/plane)
-- Propagate satellite positions using simplified circular orbit model (Eigen vectors)
-- Compute ISL links: determine which satellites can see each other (line-of-sight, max distance)
-- Build a graph of the constellation topology at each timestep using Boost.Graph
-- Run Dijkstra to find lowest-latency path between two ground points through the constellation
-- Use `std::async` to parallelize orbit propagation across satellites
-
-**C++ skills used:** Eigen, Boost.Graph, `std::async`, `std::future`, spatial geometry, CMake with external libraries
-
-**🔧 Toolkit:** Add `ConstellationEngine` to the Space Network Toolkit
-
-### Project 2: Constellation Visualizer & Latency Comparator (Python)
-
-Visualize and benchmark your constellation.
+Build the first full topology engine.
 
 **What you'll build:**
-- Visualize the constellation on a 3D globe (Plotly) or 2D map (Cartopy)
-- For 10 city pairs (NYC↔London, LA↔Tokyo, etc.), compute: (a) great-circle fiber latency, (b) satellite ISL latency
-- Plot comparative bar charts showing where satellite routing beats fiber
-- Animate the constellation topology over one orbital period
 
-**Python skills used:** Skyfield, Plotly or Cartopy, NetworkX, matplotlib animation
+- Generate shell-based LEO topologies from altitude, inclination, planes, and satellites per plane.
+- Optionally ingest public TLE/ephemeris data.
+- Compute satellite positions and line-of-sight relationships.
+- Add ground nodes: users, gateways, POPs, and destinations.
+- Build graph snapshots at time intervals.
+- Run Dijkstra/A* and k-shortest paths between ground endpoints.
+- Track latency, hop count, gateway egress, and route churn.
+
+**C++ skills used:** Eigen, Boost.Graph, async computation, JSON output, CMake.
+
+**Toolkit:** Add `ConstellationEngine`.
+
+### Project 2: Latency and Path Comparator (Python)
+
+Compare LEO routing against terrestrial paths.
+
+**What you'll build:**
+
+- Visualize constellation snapshots on a globe or map.
+- Select city pairs and compare satellite-path latency vs great-circle fiber estimates.
+- Plot latency, hop count, gateway egress, and route stability over time.
+- Simulate failed satellites/gateways and show path recovery.
+- Write a short report on which pairs benefit from space routing and why.
+
+**Python skills used:** Skyfield, NetworkX, Plotly/Cartopy, matplotlib.
 
 ---
 
-## Protocol Reference Table
+## Technology Reference
 
-| Protocol/Concept | Spec/Source | Problem It Solves | New/Legacy |
-|---|---|---|---|
-| CGR (Contact Graph Routing) | CCSDS / ION | Time-variant routing with scheduled contacts | `[NEW SPACE]` |
-| Segment Routing (SRv6 in space) | Research | Source-routing for deterministic path control | `[NEW SPACE]` |
-| OSPF/IS-IS adaptations | Research | Traditional IGP adapted for dynamic satellite topology | `[NEW SPACE]` |
-| BGP (ground peering) | RFC 4271 | Peering at satellite ground gateways | `[BOTH]` |
+| Protocol/Concept | Problem It Solves | Starlink Relevance |
+|---|---|---|
+| Topology snapshot | Freezes moving graph for routing | Practical simulation unit |
+| Dijkstra/A* | Lowest-cost path | Baseline routing |
+| k-shortest paths | Path diversity | Failure and TE inputs |
+| Constrained shortest path | Policy/capacity-aware routes | Gateway/POP/link constraints |
+| Route churn minimization | Operational stability | Avoids excessive path changes |
 
 ## Where This Tech Is Used
 
-| System | Company | Satellites | ISLs | Notes |
-|---|---|---|---|---|
-| Starlink | SpaceX | ~6,000+ | Laser (4 per sat) | Largest operational LEO constellation |
-| Kuiper | Amazon | 3,236 planned | Laser | Launching 2026+ |
-| OneWeb (Eutelsat) | Eutelsat | ~648 | No ISLs (bent-pipe) | GW-reliant architecture |
-| Lightspeed | Telesat | 188 planned | Laser | Enterprise/gov focus |
-| SDA Transport Layer | US DoD / SDA | ~300+ | Laser | Military PWSA mesh |
+| System | Notes |
+|---|---|
+| Starlink | Large LEO constellation with public shell data and laser mesh |
+| Kuiper/Telesat/SDA | Similar LEO topology problems with different parameters |
+| ISP traffic engineering | Ground egress and policy constraints |
+| Research simulators | Hypatia and related LEO networking work |
 
-## Books & Resources
+## Books and Resources
 
 | Resource | Notes |
 |---|---|
-| *Satellite Communications Systems* (Maral et al.) | Constellation design chapters |
-| *Delay-Tolerant Satellite Networks* (Fraire, Burleigh) | CGR algorithms and analysis |
-| Handley 2018 — "Delay is Not an Option" | Foundational analysis of Starlink routing |
-| Bhattacherjee et al. — "Network Topology Design at 27000 km/h" | Grid routing for LEO constellations |
-| Hypatia simulator | https://github.com/snkas/hypatia |
+| Handley, "Delay is Not an Option" | Starlink-like low-latency routing analysis |
+| Bhattacherjee/Singla paper | LEO topology design at orbital speed |
+| Hypatia | Open LEO network simulator |
+| Curtis, *Orbital Mechanics* | State vectors and geometry |

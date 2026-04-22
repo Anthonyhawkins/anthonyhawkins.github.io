@@ -1,53 +1,61 @@
-# Space Networking Curriculum
+# Starlink Network and Topology Curriculum
 
-A structured, self-directed study plan for a senior networking engineer transitioning into space communications and satellite networking.
+A structured, self-directed study plan for a senior networking engineer preparing for SpaceX Starlink network, topology, ground-network, and constellation-routing roles.
 
 **Languages:** C++ and Python
-**Math starting point:** Algebra 1 (through quadratics)
-**Approach:** Learn the math → learn the topic → build a project — see the [Learning Path](./learning-path.md) for the high-level roadmap
+**Math starting point:** Algebra 1 through quadratics
+**Approach:** Learn the math, study the Starlink-relevant systems, then build a project that becomes part of a growing network toolkit. See the [Learning Path](./learning-path.md) for the full roadmap.
+
+This curriculum is based on public information. Starlink's internal PHY, MAC, routing stack, beam scheduler, and operational control plane are proprietary, so the projects model them from public constraints, FCC filings, SpaceX/Starlink public pages, public job descriptions, and peer-reviewed/open-source LEO networking research.
 
 ---
 
-## 🗺️ Start Here
+## Start Here
 
 ### [Learning Path](./learning-path.md)
-**The master roadmap.** Four phases that progress from protocol foundations through constellation engineering to production-quality capstone projects. Each module teaches the math you need, then applies it.
+
+The master roadmap. Four phases progress from RF and ground-network foundations through broadband access, constellation routing, optical mesh scheduling, traffic engineering, security, and capstone projects.
 
 ---
 
 ## Module Reference
 
-Modules are ordered by learning sequence — start at 01 and work forward. Each module teaches its own math prerequisites.
+Modules are ordered by learning sequence. Each module teaches the math it needs before applying it to Starlink-relevant technologies and algorithms.
 
 | Module | Topic | Math Taught | Phase |
-|--------|-------|-------------|-------|
-| [01](./01-ccsds-protocol-stack/) | CCSDS Protocol Stack | Algebra 2 (logs, dB) | 1 — Foundation |
-| [02](./02-foundations-of-space-comms/) | Foundations of Space Communications | Algebra 2 + Trig intro | 1 — Foundation |
-| [03](./03-ground-segment-architecture/) | Ground Segment Architecture | Trig (elevation, slant range) | 1 — Foundation |
-| [04](./04-delay-tolerant-networking/) | Delay-Tolerant Networking (DTN) | Trig + Pre-Calc intro | 2 — Acceleration |
-| [05](./05-satellite-link-engineering/) | Satellite Link Engineering | Pre-Calc + Calc I intro | 2 — Acceleration |
-| [06](./06-dvb-standards-and-broadband/) | DVB Standards & Satellite Broadband | Calc I (derivatives, optimization) | 2 — Acceleration |
-| [07](./07-5g-ntn-integration/) | 5G Non-Terrestrial Networks (NTN) | Calc I + Calc II intro | 2 — Acceleration |
-| [08](./08-leo-constellations-and-routing/) | LEO Constellations & Routing | Calc II + Calc III | 3 — Depth |
-| [09](./09-optical-inter-satellite-links/) | Optical Inter-Satellite Links (OISL) | Calc III + Linear Algebra | 3 — Depth |
-| [10](./10-sdn-and-network-management/) | SDN & Autonomous Network Management | Linear Algebra + Optimization | 3 — Depth |
-| [11](./11-security-in-space-networks/) | Security in Space Networks | Probability & Statistics | 4 — Mastery |
-| [12](./12-capstone-projects/) | Capstone Projects | Graph Theory & Optimization | 4 — Mastery |
+|---|---|---|---|
+| [01](./01-starlink-system-model/) | Starlink System Model, Public Data, and RF Units | Algebra 2: logs, dB, unit conversion | 1 - Foundation |
+| [02](./02-starlink-rf-foundations/) | Starlink RF Foundations and Phased-Array Access Links | Algebra 2 + Trig intro | 1 - Foundation |
+| [03](./03-starlink-ground-network/) | Starlink Ground Network, Gateways, POPs, and Internet Peering | Trig: elevation, slant range, latency geometry | 1 - Foundation |
+| [04](./04-variable-links-handover-transport/) | Variable Links, Handover Resilience, and Transport Behavior | Trig completion + Pre-Calc intro | 2 - Acceleration |
+| [05](./05-starlink-link-engineering/) | Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference | Pre-Calc + Calc I intro | 2 - Acceleration |
+| [06](./06-starlink-broadband-phy-mac/) | Broadband PHY/MAC Scheduling for a Starlink-Like System | Calc I: derivatives, optimization | 2 - Acceleration |
+| [07](./07-starlink-direct-to-cell/) | Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul | Calc I + Calc II intro | 2 - Acceleration |
+| [08](./08-starlink-constellations-routing/) | Starlink LEO Constellations, Shells, Routing, and Latency | Calc II + Calc III | 3 - Depth |
+| [09](./09-starlink-optical-inter-satellite-links/) | Starlink Optical Inter-Satellite Links and Laser Mesh Topology | Calc III + Linear Algebra | 3 - Depth |
+| [10](./10-starlink-network-control/) | Starlink Network Control, Segment Routing, Automation, and Traffic Engineering | Linear Algebra + Optimization | 3 - Depth |
+| [11](./11-starlink-security-resilience/) | Starlink Security, Resilience, and Operational Reliability | Probability & Statistics | 4 - Mastery |
+| [12](./12-starlink-capstone-projects/) | Starlink-Focused Capstone Projects | Graph Theory & Optimization | 4 - Mastery |
 
-## Long-Running Project: Space Network Toolkit
+## Long-Running Project: Starlink Network Toolkit
 
-A C++ library that grows across modules:
+A C++ library and Python analysis suite that grows across modules:
 
 | Module | Addition |
-|--------|----------|
-| 01 | `PacketParser` — CCSDS Space Packet parsing |
-| 03 | `GroundStation` — elevation angle + visibility |
-| 04 | `BundleProtocol` — BPv7 bundle creation/serialization |
-| 05 | `LinkBudget` — FSPL + atmospheric loss |
-| 08 | `ConstellationEngine` — orbit propagation + topology |
-| 09 | `ISLTopology` — optical link geometry + mesh |
-| 10 | `SDNController` — forwarding tables, REST API |
+|---|---|
+| 01 | `PublicDataParser` - TLE/OEM/ephemeris and FCC frequency-table parsing |
+| 02 | `AccessLinkModel` - Ku/Ka/E-band delay, FSPL, and phased-array beam geometry |
+| 03 | `GatewayPopModel` - gateway visibility, POP egress, and path-latency model |
+| 04 | `HandoverStateMachine` - variable link and handover behavior |
+| 05 | `StarlinkLinkBudget` - Ku/Ka/E link budget, rain fade, scan loss, interference margin |
+| 06 | `BeamScheduler` - MCS selection and beam/resource allocation |
+| 07 | `DirectToCellModel` - LTE attach, bearer, and satellite-backhaul simulation |
+| 08 | `ConstellationEngine` - shell topology, public ephemeris ingestion, routing snapshots |
+| 09 | `LaserMeshScheduler` - OISL link assignment and failure-aware topology |
+| 10 | `TopologyController` - Segment Routing/TE policy generation and route API |
+| 11 | `ReliabilitySecurityAnalyzer` - BGP/RPKI checks, DDoS/jamming/failure analysis |
+| 12 | `DigitalTwin` - integrated simulation, telemetry, route control, and portfolio demos |
 
 ## Reading List
 
-See [books.md](./books.md) for the complete annotated reading list.
+See [books.md](./books.md) for the complete annotated reading list, including Starlink public pages, FCC authorizations, SpaceX job descriptions, LEO routing papers, and core networking references.

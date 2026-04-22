@@ -1,69 +1,573 @@
-<!doctype html><html lang=en><head><meta charset=UTF-8><meta name=viewport content="width=device-width,initial-scale=1"><meta name=description content="My journey into satellite networking, space protocols, and the future of space communications."><title>Learning Path | Escape Velocity</title><link rel=preconnect href=https://fonts.googleapis.com><link rel=preconnect href=https://fonts.gstatic.com crossorigin><link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap" rel=stylesheet><link rel=stylesheet href="https://anthony-hawkins.github.io/space-networking/css/orbital.css?v=1776219886"></head><body><div class=starfield id=starfield></div><header class=site-header><nav class=nav-container><a href=https://anthony-hawkins.github.io/space-networking/ class=nav-logo><span class=logo-icon>◈</span>
-<span class=logo-text>Escape Velocity</span></a><ul class=nav-links><li><a href=/space-networking/>Home</a></li><li><a href=/space-networking/blog/>Journal</a></li><li><a href=/space-networking/skill-tree/>Skill Tree</a></li><li><a href=/space-networking/curriculum/>Curriculum</a></li><li><a href=/space-networking/about/>About</a></li></ul><button class=nav-toggle id=navToggle aria-label="Toggle navigation">
-<span></span><span></span><span></span></button></nav></header><main class=site-main><div class="docs-layout container"><aside class=docs-sidebar><div class=sidebar-header><h3 class=sidebar-title>Curriculum</h3></div><nav class=sidebar-nav><ul class=sidebar-list><li><a href=https://anthony-hawkins.github.io/space-networking/curriculum/ class=sidebar-link><span class=sidebar-icon>⬡</span> Overview</a></li><li><a href=/space-networking/curriculum/learning-path/ class="sidebar-link active"><span class=sidebar-number>00</span>
-<span class=sidebar-text>Learning Path</span></a></li><li><a href=/space-networking/curriculum/module-01/ class=sidebar-link><span class=sidebar-number>01</span>
-<span class=sidebar-text>Module 01: CCSDS Protocol Stack</span></a></li><li><a href=/space-networking/curriculum/module-02/ class=sidebar-link><span class=sidebar-number>02</span>
-<span class=sidebar-text>Module 02: Foundations of Space Communications</span></a></li><li><a href=/space-networking/curriculum/module-03/ class=sidebar-link><span class=sidebar-number>03</span>
-<span class=sidebar-text>Module 03: Ground Segment Architecture</span></a></li><li><a href=/space-networking/curriculum/module-04/ class=sidebar-link><span class=sidebar-number>04</span>
-<span class=sidebar-text>Module 04: Delay-Tolerant Networking</span></a></li><li><a href=/space-networking/curriculum/module-05/ class=sidebar-link><span class=sidebar-number>05</span>
-<span class=sidebar-text>Module 05: Satellite Link Engineering</span></a></li><li><a href=/space-networking/curriculum/module-06/ class=sidebar-link><span class=sidebar-number>06</span>
-<span class=sidebar-text>Module 06: DVB Standards & Satellite Broadband</span></a></li><li><a href=/space-networking/curriculum/module-07/ class=sidebar-link><span class=sidebar-number>07</span>
-<span class=sidebar-text>Module 07: 5G Non-Terrestrial Networks (NTN)</span></a></li><li><a href=/space-networking/curriculum/module-08/ class=sidebar-link><span class=sidebar-number>08</span>
-<span class=sidebar-text>Module 08: LEO Constellations & Routing</span></a></li><li><a href=/space-networking/curriculum/module-09/ class=sidebar-link><span class=sidebar-number>09</span>
-<span class=sidebar-text>Module 09: Optical Inter-Satellite Links (OISL)</span></a></li><li><a href=/space-networking/curriculum/module-10/ class=sidebar-link><span class=sidebar-number>10</span>
-<span class=sidebar-text>Module 10: SDN & Autonomous Network Management</span></a></li><li><a href=/space-networking/curriculum/module-11/ class=sidebar-link><span class=sidebar-number>11</span>
-<span class=sidebar-text>Module 11: Security in Space Networks</span></a></li><li><a href=/space-networking/curriculum/module-12/ class=sidebar-link><span class=sidebar-number>12</span>
-<span class=sidebar-text>Module 12: Capstone Projects</span></a></li></ul></nav></aside><div class=docs-content><article class=module-single><header class="module-header docs-header"><div class=module-header-meta style=margin-bottom:1rem;display:flex;gap:.75rem;flex-wrap:wrap><span class=module-number-lg style=color:#60a5fa;font-weight:600;letter-spacing:.05em>Module 00</span>
-<span class=math-badge style="background:rgba(245,158,11,.1);color:#f59e0b;padding:.2rem .6rem;border-radius:4px;font-size:.75rem">Requires:</span></div><h1 class=docs-title>Learning Path</h1></header><div class="module-body prose docs-body"><h1 id=learning-path--skill-tree--roadmap>Learning Path — Skill Tree & Roadmap</h1><p>Your starting point: <strong>Algebra 1 (through quadratics)</strong>, senior-level networking expertise, new to C++.</p><p>Each module teaches the math you need, then applies it to a space networking topic with hands-on C++ and Python projects. Start at Module 01 and work forward.</p><hr><h2 id=the-skill-tree>The Skill Tree</h2><pre tabindex=0><code>YOUR STARTING SKILLS                    WHAT THEY UNLOCK (Module 01)
-─────────────────────                   ────────────────────────────
-Algebra 1 (quadratics)  ──────────────► dB arithmetic, basic link math
-TCP/IP / gRPC expertise ──────────────► CCSDS protocol stack, DTN concepts,
-                                         protocol state machines, SDN, security
-Software engineering    ──────────────► C++ fundamentals, build systems
+<!DOCTYPE html>
+<html lang="en">
 
+<head><script src="/space-networking/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=space-networking/livereload" data-no-instant defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="My journey into satellite networking, space protocols, and the future of space communications." />
+  <title>Learning Path | Escape Velocity</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Orbitron:wght@400;700;900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="http://localhost:1313/space-networking/css/orbital.css?v=1776821511" />
+  
+</head>
 
-MATH UNLOCKS                            SPACE NETWORKING UNLOCKS
-────────────                            ────────────────────────
-Algebra 2 + Trig        ──────────────► Link budgets, elevation angles,
-(Modules 01–03)                          antenna beam geometry, Doppler (basic)
+<body>
+  <div class="starfield" id="starfield"></div>
 
-Pre-Calculus             ──────────────► Frequency analysis concepts,
-(Modules 04–05)                          signal power, modulation intuition,
-                                         Kepler orbits (ellipses!)
+  <header class="site-header">
+    <nav class="nav-container">
+      <a href="http://localhost:1313/space-networking/" class="nav-logo">
+        <span class="logo-icon">◈</span>
+        <span class="logo-text">Escape Velocity</span>
+      </a>
+      <ul class="nav-links">
+        
+        <li>
+          <a href="/space-networking/" class="">
+            Home
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/blog/" class="">
+            Journal
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/skill-tree/" class="">
+            Skill Tree
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/curriculum/" class="">
+            Curriculum
+          </a>
+        </li>
+        
+        <li>
+          <a href="/space-networking/about/" class="">
+            About
+          </a>
+        </li>
+        
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
 
-Calculus I               ──────────────► Doppler rate-of-change, orbital velocity,
-(Modules 05–07)                          signal energy over a pass, optimization
+  <main class="site-main">
+    
+<div class="docs-layout container">
+    <aside class="docs-sidebar">
+    <div class="sidebar-header">
+        <h3 class="sidebar-title">Curriculum</h3>
+    </div>
+    <nav class="sidebar-nav">
+        <ul class="sidebar-list">
+            <li>
+                <a href="http://localhost:1313/space-networking/curriculum/" class="sidebar-link ">
+                    <span class="sidebar-icon">⬡</span> Overview
+                </a>
+            </li>
+            
+            
+            
+            <li>
+                <a href="/space-networking/curriculum/learning-path/"
+                    class="sidebar-link active">
+                    <span class="sidebar-number">00</span>
+                    <span class="sidebar-text">Learning Path</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-01/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">01</span>
+                    <span class="sidebar-text">Module 01: Starlink System Model, Public Data, and RF Units</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-02/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">02</span>
+                    <span class="sidebar-text">Module 02: Starlink RF Foundations and Phased-Array Access Links</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-03/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">03</span>
+                    <span class="sidebar-text">Module 03: Starlink Ground Network, Gateways, POPs, and Internet Peering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-04/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">04</span>
+                    <span class="sidebar-text">Module 04: Variable Links, Handover Resilience, and Transport Behavior</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-05/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">05</span>
+                    <span class="sidebar-text">Module 05: Starlink Link Engineering: Ku, Ka, E-Band, Rain Fade, and Interference</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-06/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">06</span>
+                    <span class="sidebar-text">Module 06: Broadband PHY/MAC Scheduling for a Starlink-Like System</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-07/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">07</span>
+                    <span class="sidebar-text">Module 07: Starlink Direct to Cell, LTE Roaming, and Mobile Backhaul</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-08/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">08</span>
+                    <span class="sidebar-text">Module 08: Starlink LEO Constellations, Shells, Routing, and Latency</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-09/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">09</span>
+                    <span class="sidebar-text">Module 09: Starlink Optical Inter-Satellite Links and Laser Mesh Topology</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-10/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">10</span>
+                    <span class="sidebar-text">Module 10: Starlink Network Control, Segment Routing, Automation, and Traffic Engineering</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-11/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">11</span>
+                    <span class="sidebar-text">Module 11: Starlink Security, Resilience, and Operational Reliability</span>
+                </a>
+            </li>
+            
+            <li>
+                <a href="/space-networking/curriculum/module-12/"
+                    class="sidebar-link ">
+                    <span class="sidebar-number">12</span>
+                    <span class="sidebar-text">Module 12: Starlink-Focused Capstone Projects</span>
+                </a>
+            </li>
+            
+            
+        </ul>
+    </nav>
+</aside>
 
-Calculus II              ──────────────► Fourier basics, spectral efficiency,
-(Modules 07–08)                          coding theory
+    <div class="docs-content">
+        <article class="module-single">
+            <header class="module-header docs-header">
+                <div class="module-header-meta"
+                    style="margin-bottom: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                    <span class="module-number-lg"
+                        style="color: #60a5fa; font-weight: 600; letter-spacing: 0.05em;">Module 00</span>
+                    
+                    <span class="math-badge"
+                        style="background: rgba(245, 158, 11, 0.1); color: #f59e0b; padding: 0.2rem 0.6rem; border-radius: 4px; font-size: 0.75rem;">Requires:
+                        </span>
+                    
+                    
+                    
+                </div>
 
-Calculus III             ──────────────► Orbital mechanics vectors, satellite
-(Modules 08–09)                          position/velocity, constellation geometry
+                <h1 class="docs-title">Learning Path</h1>
+                
+            </header>
 
-Linear Algebra           ──────────────► Coordinate frame transforms (ECI↔ECEF),
-(Modules 09–10)                          rotation matrices, antenna patterns
+            <div class="module-body prose docs-body">
+                <h1 id="learning-path---starlink-network-and-topology-roadmap">Learning Path - Starlink Network and Topology Roadmap</h1>
+<p>Your starting point: <strong>Algebra 1 through quadratics</strong>, senior-level networking expertise, and new-to-intermediate C++.</p>
+<p>Each module teaches the math first, then applies it to a Starlink-relevant networking topic with C++ and Python projects. The sequence intentionally moves from simpler RF/link geometry to dynamic graphs, optical mesh scheduling, traffic engineering, and production operations.</p>
+<hr>
+<h2 id="skill-tree">Skill Tree</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">15
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">16
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">17
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">18
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">19
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">20
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">21
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">22
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">23
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">24
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">25
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">26
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">27
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">28
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">29
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">30
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">31
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">32
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">33
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">34
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>YOUR STARTING SKILLS                    WHAT THEY UNLOCK
+</span></span><span style="display:flex;"><span>---------------------                   ----------------
+</span></span><span style="display:flex;"><span>Algebra 1                -------------&gt; dB math, path loss, link ratios
+</span></span><span style="display:flex;"><span>TCP/IP / gRPC expertise  -------------&gt; Starlink ground network, BGP/IS-IS,
+</span></span><span style="display:flex;"><span>                                         Segment Routing, topology services
+</span></span><span style="display:flex;"><span>Software engineering     -------------&gt; C++ toolkit, Python analysis,
+</span></span><span style="display:flex;"><span>                                         automation and digital twin projects
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>MATH UNLOCKS                            STARLINK NETWORKING UNLOCKS
+</span></span><span style="display:flex;"><span>------------                            ---------------------------
+</span></span><span style="display:flex;"><span>Algebra 2 + Trig        -------------&gt; Ku/Ka/E-band links, phased-array
+</span></span><span style="display:flex;"><span>(Modules 01-03)                         beams, gateway visibility, POP paths
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Pre-Calculus            -------------&gt; Time-varying link quality, handover
+</span></span><span style="display:flex;"><span>(Modules 04-05)                         state, Doppler intuition, rain fade
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Calculus I              -------------&gt; Link-margin sensitivity, scheduler
+</span></span><span style="display:flex;"><span>(Modules 05-07)                         optimization, MCS and capacity curves
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Calculus II             -------------&gt; Total data over passes, spectral
+</span></span><span style="display:flex;"><span>(Modules 07-08)                         efficiency, shell/routing analysis
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Calculus III            -------------&gt; State vectors, line-of-sight geometry,
+</span></span><span style="display:flex;"><span>(Modules 08-09)                         constellation topology snapshots
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Linear Algebra          -------------&gt; ECI/ECEF/body-frame transforms,
+</span></span><span style="display:flex;"><span>(Modules 09-10)                         laser pointing, topology control
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Probability &amp; Stats     -------------&gt; Availability, jamming/interference,
+</span></span><span style="display:flex;"><span>(Module 11)                             telemetry anomaly detection
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Graph Theory            -------------&gt; Time-expanded graphs, k-shortest path,
+</span></span><span style="display:flex;"><span>(Module 12)                             min-cost flow, laser/gateway scheduling
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="phase-1-foundation-modules-01-03">Phase 1: Foundation (Modules 01-03)</h2>
+<blockquote>
+<p><strong>Math:</strong> Algebra 2 to Trigonometry
+<strong>C++:</strong> Language fundamentals to OOP
+<strong>Space/Network:</strong> Starlink public system model, RF access links, gateways, POPs, and ISP routing</p></blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>Module</th>
+          <th>Math</th>
+          <th>C++</th>
+          <th>Starlink Topic</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>01 - Starlink System Model</td>
+          <td>Algebra 2: logs, exponentials, dB</td>
+          <td>Variables, types, binary/text parsing</td>
+          <td>Public Starlink architecture, ephemeris, FCC data, RF units</td>
+      </tr>
+      <tr>
+          <td>02 - RF Foundations and Phased Arrays</td>
+          <td>Algebra 2 + Trig intro</td>
+          <td>Control flow, classes, enums</td>
+          <td>Ku/Ka/E links, phased-array beam geometry, delay/path loss</td>
+      </tr>
+      <tr>
+          <td>03 - Ground Network and Peering</td>
+          <td>Trig: law of cosines, elevation, slant range</td>
+          <td>OOP, containers, algorithms</td>
+          <td>Gateways, POPs, BGP, IS-IS/MPLS/SR, subscriber services</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="phase-1-integrated-project-starlink-access-and-ground-model">Phase 1 Integrated Project: <strong>Starlink Access and Ground Model</strong></h3>
+<ul>
+<li>Parse public orbital/frequency data into reusable C++ structures.</li>
+<li>Compute delay, slant range, FSPL, and phased-array scan loss.</li>
+<li>Select gateway/POP egress based on visibility and latency.</li>
+</ul>
+<hr>
+<h2 id="phase-2-acceleration-modules-04-07">Phase 2: Acceleration (Modules 04-07)</h2>
+<blockquote>
+<p><strong>Math:</strong> Pre-Calculus to Calculus II intro
+<strong>C++:</strong> Networking, state machines, scheduling, first concurrency
+<strong>Space/Network:</strong> Variable links, link budgets, broadband access scheduling, Direct to Cell</p></blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>Module</th>
+          <th>Math</th>
+          <th>C++</th>
+          <th>Starlink Topic</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>04 - Variable Links and Handover</td>
+          <td>Trig completion + Pre-Calc intro</td>
+          <td>State machines, sockets, link emulation</td>
+          <td>TCP/QUIC over dynamic LEO links, handover resilience</td>
+      </tr>
+      <tr>
+          <td>05 - Starlink Link Engineering</td>
+          <td>Pre-Calc + Calc I intro</td>
+          <td>JSON config, CMake, gtest</td>
+          <td>Ku/Ka/E link budgets, rain fade, scan loss, interference</td>
+      </tr>
+      <tr>
+          <td>06 - Broadband PHY/MAC Scheduling</td>
+          <td>Calc I: derivatives, optimization</td>
+          <td>Templates, strategy pattern, schedulers</td>
+          <td>MCS/ACM, beam scheduling, resource allocation, QoS</td>
+      </tr>
+      <tr>
+          <td>07 - Direct to Cell and LTE Backhaul</td>
+          <td>Calc I completion + Calc II intro</td>
+          <td><code>std::thread</code>, mutex, concurrency</td>
+          <td>LTE phones, onboard eNodeB, roaming, laser backhaul</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="phase-2-integrated-project-variable-capacity-access-network-simulator">Phase 2 Integrated Project: <strong>Variable-Capacity Access Network Simulator</strong></h3>
+<ul>
+<li>Model terminal handover and degraded link states.</li>
+<li>Run Starlink-style link budgets for user and gateway links.</li>
+<li>Allocate beam resources across terminals with different demand and QoS.</li>
+<li>Simulate Direct to Cell attach and data flow over variable satellite backhaul.</li>
+</ul>
+<hr>
+<h2 id="phase-3-depth-modules-08-10">Phase 3: Depth (Modules 08-10)</h2>
+<blockquote>
+<p><strong>Math:</strong> Calculus II to Linear Algebra and Optimization
+<strong>C++:</strong> Eigen, Boost.Graph, async, APIs, system design
+<strong>Space/Network:</strong> Constellation routing, optical laser mesh, topology control, traffic engineering</p></blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>Module</th>
+          <th>Math</th>
+          <th>C++</th>
+          <th>Starlink Topic</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>08 - Constellations and Routing</td>
+          <td>Calc II + Calc III vectors</td>
+          <td>Eigen, Boost.Graph, <code>std::async</code></td>
+          <td>Shells, topology snapshots, shortest path, route churn</td>
+      </tr>
+      <tr>
+          <td>09 - Optical ISLs and Laser Mesh</td>
+          <td>Calc III + Linear Algebra</td>
+          <td>pybind11, Eigen transforms, performance</td>
+          <td>OISL assignment, laser pointing, link scheduling, failure behavior</td>
+      </tr>
+      <tr>
+          <td>10 - Network Control and TE</td>
+          <td>Linear Algebra + Optimization</td>
+          <td>REST/gRPC APIs, async orchestration</td>
+          <td>Segment Routing, BGP/IS-IS/MPLS, TE, topology controller</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="phase-3-integrated-project-starlink-topology-controller">Phase 3 Integrated Project: <strong>Starlink Topology Controller</strong></h3>
+<ul>
+<li>Propagate satellites and compute topology snapshots.</li>
+<li>Assign constrained optical links and model failures.</li>
+<li>Generate paths or Segment Routing policies between ground endpoints.</li>
+<li>Optimize traffic allocation across satellite, gateway, POP, and peering links.</li>
+</ul>
+<hr>
+<h2 id="phase-4-mastery-modules-11-12">Phase 4: Mastery (Modules 11-12)</h2>
+<blockquote>
+<p><strong>Math:</strong> Probability &amp; Statistics to Graph Theory and Optimization
+<strong>C++:</strong> Production-quality services, policy checks, simulation integration
+<strong>Space/Network:</strong> Security, resilience, reliability, full portfolio capstones</p></blockquote>
+<table>
+  <thead>
+      <tr>
+          <th>Module</th>
+          <th>Math</th>
+          <th>C++</th>
+          <th>Starlink Topic</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>11 - Security and Resilience</td>
+          <td>Probability &amp; Statistics</td>
+          <td>Policy engine, concurrent analysis</td>
+          <td>RPKI/BGP safety, DDoS, jamming, anomaly detection, availability</td>
+      </tr>
+      <tr>
+          <td>12 - Capstone Projects</td>
+          <td>Graph Theory &amp; Optimization</td>
+          <td>Full production stack</td>
+          <td>Choose 2 Starlink-facing portfolio projects</td>
+      </tr>
+  </tbody>
+</table>
+<h3 id="phase-4-integrated-project-starlink-network-digital-twin">Phase 4 Integrated Project: <strong>Starlink Network Digital Twin</strong></h3>
+<ul>
+<li>Model satellites, laser links, gateways, POPs, peering, failures, and telemetry.</li>
+<li>Validate route and policy changes before deployment.</li>
+<li>Demonstrate service impact, recovery, and traffic-engineering decisions.</li>
+</ul>
+<hr>
+<h2 id="long-running-project-starlink-network-toolkit">Long-Running Project: Starlink Network Toolkit</h2>
+<div class="highlight"><div style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">
+<table style="border-spacing:0;padding:0;margin:0;border:0;"><tr><td style="vertical-align:top;padding:0;margin:0;border:0;">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 1
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 2
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 3
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 4
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 5
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 6
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 7
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 8
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f"> 9
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">10
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">11
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">12
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">13
+</span><span style="white-space:pre;-webkit-user-select:none;user-select:none;margin-right:0.4em;padding:0 0.4em 0 0.4em;color:#7f7f7f">14
+</span></code></pre></td>
+<td style="vertical-align:top;padding:0;margin:0;border:0;;width:100%">
+<pre tabindex="0" style="color:#f8f8f2;background-color:#282a36;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-text" data-lang="text"><span style="display:flex;"><span>Module  Addition                         Builds On
+</span></span><span style="display:flex;"><span>------  -------------------------------  ------------------------------
+</span></span><span style="display:flex;"><span>01      PublicDataParser                 -
+</span></span><span style="display:flex;"><span>02      AccessLinkModel                  PublicDataParser
+</span></span><span style="display:flex;"><span>03      GatewayPopModel                  AccessLinkModel
+</span></span><span style="display:flex;"><span>04      HandoverStateMachine             AccessLinkModel
+</span></span><span style="display:flex;"><span>05      StarlinkLinkBudget               AccessLinkModel + GatewayPopModel
+</span></span><span style="display:flex;"><span>06      BeamScheduler                    StarlinkLinkBudget
+</span></span><span style="display:flex;"><span>07      DirectToCellModel                HandoverStateMachine
+</span></span><span style="display:flex;"><span>08      ConstellationEngine              GatewayPopModel
+</span></span><span style="display:flex;"><span>09      LaserMeshScheduler               ConstellationEngine
+</span></span><span style="display:flex;"><span>10      TopologyController               ConstellationEngine + LaserMeshScheduler
+</span></span><span style="display:flex;"><span>11      ReliabilitySecurityAnalyzer      TopologyController
+</span></span><span style="display:flex;"><span>12      DigitalTwin                      All prior modules
+</span></span></code></pre></td></tr></table>
+</div>
+</div><hr>
+<h2 id="daily-schedule-template">Daily Schedule Template</h2>
+<table>
+  <thead>
+      <tr>
+          <th>Block</th>
+          <th style="text-align: right">Duration</th>
+          <th>Focus</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>Morning</td>
+          <td style="text-align: right">~45 min</td>
+          <td>Math lessons and problem sets</td>
+      </tr>
+      <tr>
+          <td>Midday</td>
+          <td style="text-align: right">~30 min</td>
+          <td>C++ implementation and small tests</td>
+      </tr>
+      <tr>
+          <td>Evening</td>
+          <td style="text-align: right">~45 min</td>
+          <td>Starlink/network reading and project work</td>
+      </tr>
+  </tbody>
+</table>
+<p>Weekends: integrate project modules, write short technical notes, and compare results against public Starlink/FCC/research data.</p>
 
-Probability &amp; Stats      ──────────────► BER curves, noise analysis, rain fade
-(Module 11)                              availability, channel modeling
+            </div>
 
-Graph Theory             ──────────────► Contact Graph Routing, Dijkstra,
-(Module 12)                              traffic engineering optimization
-</code></pre><hr><h2 id=phase-1-foundation-modules-0103>Phase 1: Foundation (Modules 01–03)</h2><blockquote><p><strong>Math:</strong> Algebra 2 → Trigonometry
-<strong>C++:</strong> Language fundamentals → OOP
-<strong>Space:</strong> Protocol concepts + industry landscape</p></blockquote><table><thead><tr><th>Module</th><th>Math</th><th>C++</th><th>Space Topic</th></tr></thead><tbody><tr><td>01 — CCSDS Protocol Stack</td><td>Algebra 2: logs, exponentials, dB</td><td>Variables, types, binary I/O, bitwise</td><td>Protocol architecture, Space Packets, data link</td></tr><tr><td>02 — Foundations of Space Comms</td><td>Algebra 2 + Trig intro</td><td>Control flow, classes, enums</td><td>Space environment, frequency bands, delays</td></tr><tr><td>03 — Ground Segment Architecture</td><td>Trig: law of cosines, elevation angles</td><td>OOP, containers, algorithms</td><td>Ground stations, gateways, POPs, cloud GS</td></tr></tbody></table><h3 id=phase-1-integrated-project-ccsds-protocol-toolkit-c>Phase 1 Integrated Project: <strong>CCSDS Protocol Toolkit (C++)</strong></h3><ul><li>Parses CCSDS Space Packet headers (binary/bitwise)</li><li>Computes free-space path loss for different bands (logarithms + trig)</li><li>Calculates ground station elevation angle for a given satellite altitude (trig)</li></ul><hr><h2 id=phase-2-acceleration-modules-0407>Phase 2: Acceleration (Modules 04–07)</h2><blockquote><p><strong>Math:</strong> Pre-Calculus → Calculus I → Calculus II intro
-<strong>C++:</strong> Networking + systems programming + first concurrency
-<strong>Space:</strong> DTN implementation + link engineering + broadband standards</p></blockquote><table><thead><tr><th>Module</th><th>Math</th><th>C++</th><th>Space Topic</th></tr></thead><tbody><tr><td>04 — Delay-Tolerant Networking</td><td>Trig completion + Pre-Calc intro</td><td>Sockets, UDP, CBOR serialization</td><td>Bundle Protocol, LTP, store-and-forward</td></tr><tr><td>05 — Satellite Link Engineering</td><td>Pre-Calc + Calc I intro</td><td>JSON config, CMake, gtest</td><td>Link budgets, FSPL, rain fade, antennas</td></tr><tr><td>06 — DVB Standards & Broadband</td><td>Calc I: derivatives, optimization</td><td>Templates, state machines, patterns</td><td>DVB-S2/RCS2, MODCOD, ACM, PEPs</td></tr><tr><td>07 — 5G NTN Integration</td><td>Calc I completion + Calc II intro</td><td><code>std::thread</code>, mutex, concurrency</td><td>NTN architecture, HARQ, handover</td></tr></tbody></table><h3 id=phase-2-integrated-project-dtn-node-prototype-c>Phase 2 Integrated Project: <strong>DTN Node Prototype (C++)</strong></h3><ul><li>BPv7 bundle creation and CBOR serialization</li><li>LTP over UDP with checkpoint/retransmission</li><li>Store-and-forward when link unavailable</li></ul><hr><h2 id=phase-3-depth-modules-0810>Phase 3: Depth (Modules 08–10)</h2><blockquote><p><strong>Math:</strong> Calculus II → Calculus III → Linear Algebra
-<strong>C++:</strong> Eigen, async, system design
-<strong>Space:</strong> Constellation routing, optical links, SDN orchestration</p></blockquote><table><thead><tr><th>Module</th><th>Math</th><th>C++</th><th>Space Topic</th></tr></thead><tbody><tr><td>08 — LEO Constellations & Routing</td><td>Calc II + Calc III (3D vectors)</td><td>Eigen, Boost.Graph, <code>std::async</code></td><td>Walker constellations, ISL routing, handover</td></tr><tr><td>09 — Optical Inter-Satellite Links</td><td>Calc III + Linear Algebra</td><td>pybind11, performance-critical</td><td>Laser links, ATP, OISL mesh topology</td></tr><tr><td>10 — SDN & Network Management</td><td>Linear Algebra + Optimization</td><td>REST API, gRPC, system design</td><td>Programmable networks, TS-SDN, traffic eng.</td></tr></tbody></table><h3 id=phase-3-integrated-project-leo-constellation-simulator-c--python>Phase 3 Integrated Project: <strong>LEO Constellation Simulator (C++ + Python)</strong></h3><ul><li>C++ engine: propagate orbits, compute ISL topology, run Dijkstra routing</li><li>Python layer: visualize constellation on a globe, plot latency heatmaps</li></ul><hr><h2 id=phase-4-mastery-modules-1112>Phase 4: Mastery (Modules 11–12)</h2><blockquote><p><strong>Math:</strong> Probability & Statistics → Graph Theory
-<strong>C++:</strong> Production-quality, crypto, distributed systems
-<strong>Space:</strong> Security, full system integration, capstone</p></blockquote><table><thead><tr><th>Module</th><th>Math</th><th>C++</th><th>Space Topic</th></tr></thead><tbody><tr><td>11 — Security in Space Networks</td><td>Probability & Statistics</td><td>OpenSSL, concurrent crypto</td><td>SDLS, BPSec, jamming, QKD</td></tr><tr><td>12 — Capstone Projects</td><td>Graph Theory & Optimization</td><td>Full production stack</td><td>Choose 2 portfolio-grade projects</td></tr></tbody></table><h3 id=phase-4-integrated-project-capstone-choose-2>Phase 4 Integrated Project: <strong>Capstone (choose 2)</strong></h3><ul><li>DTN Bundle Protocol implementation</li><li>LEO Constellation Network Simulator</li><li>Ground Station Network Orchestrator</li><li>Satellite-Friendly Transport Protocol</li><li>Space Network Security Testbed</li></ul><hr><h2 id=long-running-project-space-network-toolkit>Long-Running Project: Space Network Toolkit</h2><p>A C++ library that grows across modules:</p><pre tabindex=0><code>Module  Addition                              Builds On
-──────────────────────────────────────────────────────────
-01      PacketParser (CCSDS Space Packets)     —
-03      GroundStation (elevation, visibility)  —
-04      BundleProtocol (BPv7 bundles, CBOR)   PacketParser
-05      LinkBudget (FSPL, atmospheric loss)    —
-08      ConstellationEngine (orbits, topology) GroundStation
-09      ISLTopology (optical links, mesh)      ConstellationEngine
-10      SDNController (forwarding, REST API)   ConstellationEngine + ISLTopology
-</code></pre><hr><h2 id=daily-schedule-template>Daily Schedule Template</h2><table><thead><tr><th>Block</th><th>Duration</th><th>Focus</th></tr></thead><tbody><tr><td>Morning</td><td>~45 min</td><td>🔢 Math — structured lessons + problem sets</td></tr><tr><td>Midday</td><td>~30 min</td><td>💻 C++ — language learning + small exercises</td></tr><tr><td>Evening</td><td>~45 min</td><td>🛰️ Space — reading + project work (using current math + C++)</td></tr></tbody></table><p>Weekends: project work, reading CCSDS specs, watching 3Blue1Brown</p><hr><h2 id=math-resources>Math Resources</h2><table><thead><tr><th>Topic</th><th>Primary Resource</th><th>Visual Supplement</th></tr></thead><tbody><tr><td>Algebra 2</td><td>Khan Academy (free)</td><td>3Blue1Brown — <em>Essence of Calculus</em> (watch early for context)</td></tr><tr><td>Trigonometry</td><td>Khan Academy (free)</td><td>—</td></tr><tr><td>Pre-Calculus</td><td>Khan Academy (free)</td><td>—</td></tr><tr><td>Calculus I–II</td><td><em>Calculus: Early Transcendentals</em> (Stewart)</td><td>3Blue1Brown — <em>Essence of Calculus</em></td></tr><tr><td>Calculus III</td><td>Stewart + <em>Orbital Mechanics</em> (Curtis)</td><td>3Blue1Brown — <em>Essence of Linear Algebra</em></td></tr><tr><td>Linear Algebra</td><td><em>Intro to Linear Algebra</em> (Strang) + MIT OCW 18.06</td><td>3Blue1Brown — <em>Essence of Linear Algebra</em></td></tr><tr><td>Probability</td><td>Khan Academy + <em>Probability for Engineers</em> (Devore)</td><td>—</td></tr><tr><td>Graph Theory</td><td>CLRS Ch. 22–26 + Khan Academy discrete math</td><td>—</td></tr></tbody></table><h2 id=c--python-setup-do-this-before-module-01>C++ & Python Setup (Do This Before Module 01)</h2><h3 id=c-toolchain>C++ Toolchain</h3><ul><li>Compiler: <code>clang++</code> or <code>g++</code> with C++20</li><li>Build system: CMake</li><li>Libraries: Eigen (linear algebra), Boost (networking, math), nlohmann/json</li><li>Testing: Google Test (gtest)</li><li>IDE: VS Code with clangd</li></ul><h3 id=python-toolchain>Python Toolchain</h3><ul><li>Python 3.11+</li><li>Libraries: NumPy, SciPy, Matplotlib, Astropy, Skyfield, NetworkX</li><li>Jupyter notebooks for exploration</li><li>pytest for testing</li></ul><h3 id=setup-exercise>Setup Exercise</h3><ol><li>Build a C++ project with CMake — verify by printing &ldquo;Hello, Space Networking&rdquo;</li><li>Build a Python environment that imports NumPy and Matplotlib — verify by plotting sin(x)</li></ol></div><footer class="module-footer docs-footer"><div class=docs-nav style="display:flex;justify-content:space-between;margin-top:4rem;padding-top:2rem;border-top:1px solid rgba(255,255,255,.1)"><a href=/space-networking/curriculum/module-12/ class="docs-nav-link next" style="text-decoration:none;color:var(--text-secondary);text-align:right;transition:color .2s"><div class=nav-label style=font-size:.8rem;text-transform:uppercase;letter-spacing:.05em;margin-bottom:.2rem>Next →</div><div class=nav-title style=color:#fff;font-weight:500>Module 12: Capstone Projects</div></a></div></footer></article></div></div></main><footer class=site-footer><div class=footer-container><div class=footer-brand><span class=logo-icon>◈</span>
-<span>Escape Velocity</span></div><p class=footer-tagline></p><div class=footer-links><a href=https://github.com/anthonyhawkins target=_blank rel=noopener>GitHub</a></div><p class=footer-copy>Built with Hugo. Deployed to GitHub Pages.</p></div></footer><script src=https://anthony-hawkins.github.io/space-networking/js/orbital.js></script></body></html>
+            <footer class="module-footer docs-footer">
+                <div class="docs-nav"
+                    style="display: flex; justify-content: space-between; margin-top: 4rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    
+                    
+                    
+                    
+                    
+
+                    
+                    <a href="/space-networking/curriculum/module-01/" class="docs-nav-link next"
+                        style="text-decoration: none; color: var(--text-secondary); text-align: right; transition: color 0.2s;">
+                        <div class="nav-label"
+                            style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.2rem;">
+                            Next →</div>
+                        <div class="nav-title" style="color: #fff; font-weight: 500;">Module 01: Starlink System Model, Public Data, and RF Units</div>
+                    </a>
+                    
+                </div>
+            </footer>
+        </article>
+    </div>
+</div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span class="logo-icon">◈</span>
+        <span>Escape Velocity</span>
+      </div>
+      <p class="footer-tagline"></p>
+      <div class="footer-links">
+        <a href="https://github.com/anthonyhawkins" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <p class="footer-copy">Built with Hugo. Deployed to GitHub Pages.</p>
+    </div>
+  </footer>
+
+  <script src="http://localhost:1313/space-networking/js/orbital.js"></script>
+</body>
+
+</html>
